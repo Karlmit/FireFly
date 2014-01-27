@@ -9,8 +9,7 @@ Player::Player(float positionX, float positionY)
 	position.y = positionY;
 	aliveStatus = true;
 	ID = "player";
-	sprite.setColor(sf::Color::Yellow);
-	sprite.setTexture();
+	sprite.setTexture(Loading::getLoading().getplayer());
 }
 
 

@@ -17,5 +17,5 @@ Loading &Loading::getLoading()
 
 void Loading::loadLevel0()
 {
-	
+	player.loadFromFile("Resources/sprite proto.jpg");
 }
