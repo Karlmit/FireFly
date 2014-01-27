@@ -9,7 +9,7 @@ public:
 	typedef std::list <Entity*> entityList;
 	entityList listedEntities;
 	void addEntity(Entity *entity);	//adds new entities
-	void updateList();	//deletes "dead" enetities
+	void updateList();	//deletes "dead" entities
 
 private:
 	EntityList();

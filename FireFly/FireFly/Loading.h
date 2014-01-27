@@ -12,6 +12,4 @@ private:
 	~Loading();
 	void operator=(const Loading &loading);
 	static Loading loading;
-
-
 };

@@ -19,9 +19,9 @@ public:
 protected:
 	std::string ID;
 	sf::Vector2f position;	
-	sf::Sprite sprite;	//in each entity asign position and texture.
+	sf::Sprite sprite;	//in each entity, assign position and texture.
 	bool aliveStatus;	//true = the entity is alive.
-	sf::FloatRect rectangle; //In each identity declare with and height. Used for collision.
+	sf::FloatRect rectangle; //In each identity declare width and height. Used for collision.
 
 };
 

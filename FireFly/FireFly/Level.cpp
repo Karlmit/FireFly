@@ -10,6 +10,11 @@ Level::~Level(void)
 {
 }
 
+Level &Level::getLevel()
+{
+	return level;
+}
+
 void Level::level0(sf::RenderWindow *window)
 {
 	update();
