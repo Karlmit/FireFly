@@ -1,4 +1,7 @@
 #include <SFML/Graphics.hpp>
+#include "Level.h"
+
+Level level;
 
 int main()
 {
@@ -15,6 +18,7 @@ int main()
                 window.close();
         }
 
+		level.level0(&window);
         window.clear();
         window.draw(shape);
         window.display();
