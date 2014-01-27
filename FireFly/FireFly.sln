@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FireFly", "FireFly\FireFly.vcxproj", "{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FireFly", "FireFly\FireFly.vcxproj", "{5EB110C4-69BB-4F95-BD6A-3F5007CD8508}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}.Debug|Win32.ActiveCfg = Debug|Win32
-		{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}.Debug|Win32.Build.0 = Debug|Win32
-		{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}.Release|Win32.ActiveCfg = Release|Win32
-		{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}.Release|Win32.Build.0 = Release|Win32
+		{5EB110C4-69BB-4F95-BD6A-3F5007CD8508}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5EB110C4-69BB-4F95-BD6A-3F5007CD8508}.Debug|Win32.Build.0 = Debug|Win32
+		{5EB110C4-69BB-4F95-BD6A-3F5007CD8508}.Release|Win32.ActiveCfg = Release|Win32
+		{5EB110C4-69BB-4F95-BD6A-3F5007CD8508}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
