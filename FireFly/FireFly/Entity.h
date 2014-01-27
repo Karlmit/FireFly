@@ -2,6 +2,7 @@
 #include <string>
 #include <SFML\Graphics.hpp>
 
+
 class Entity
 {
 public:
@@ -9,7 +10,7 @@ public:
 	~Entity(void);
 	std::string returnID(){return ID;}
 	sf::Vector2f returnPosition(){return position;}
-	
+	virtual void updateEntity() = 0;
 
 protected:
 	std::string ID;
