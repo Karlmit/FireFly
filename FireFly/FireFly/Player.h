@@ -4,7 +4,12 @@
 class Player : public Entity
 {
 public:
-	Player(void);
-	~Player(void);
+	Player(float positionX, float positionY);
+	~Player();
+	void updateEntity();
+	void drawEntity(sf::RenderWindow *window);
+
+private:
+	float move;
 };
 

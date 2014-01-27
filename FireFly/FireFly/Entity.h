@@ -13,7 +13,7 @@ public:
 	virtual void updateEntity() = 0;
 	virtual void drawEntity(sf::RenderWindow *window) = 0;
 	std::string getID(){return ID;}
-	virtual bool getAliveStatus(){return aliveStatus;}
+	bool getAliveStatus(){return aliveStatus;}
 	void killEntity(){aliveStatus = false;}
 
 protected:
