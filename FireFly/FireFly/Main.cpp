@@ -5,9 +5,9 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "FireFly 0.00001");
+	Loading::getLoading().loadLevel0();
 	Player player(100, 100);
 	EntityList::getEntityList().addEntity(&player);
-	Loading::getLoading().loadLevel0();
     while (window.isOpen())
     {
         sf::Event event;

@@ -20,7 +20,6 @@ void Level::level0(sf::RenderWindow *window)
 {
 	update();
 	draw(window);
-	
 }
 
 void Level::draw(sf::RenderWindow *window)
