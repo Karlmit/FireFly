@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FireFly", "FireFly\FireFly.vcxproj", "{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Singleton", "..\..\..\Visual Studio 2012\Projects\Singleton\Singleton\Singleton.vcxproj", "{279415F5-31EE-4890-8DA8-794B1DF4A997}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,10 +13,6 @@ Global
 		{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}.Debug|Win32.Build.0 = Debug|Win32
 		{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}.Release|Win32.ActiveCfg = Release|Win32
 		{ADE219F5-8EF9-433B-A20B-1B30C7B7E2EE}.Release|Win32.Build.0 = Release|Win32
-		{279415F5-31EE-4890-8DA8-794B1DF4A997}.Debug|Win32.ActiveCfg = Debug|Win32
-		{279415F5-31EE-4890-8DA8-794B1DF4A997}.Debug|Win32.Build.0 = Debug|Win32
-		{279415F5-31EE-4890-8DA8-794B1DF4A997}.Release|Win32.ActiveCfg = Release|Win32
-		{279415F5-31EE-4890-8DA8-794B1DF4A997}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
