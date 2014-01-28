@@ -5,7 +5,7 @@ class Loading
 {
 public:
 	static Loading &getLoading();
-	void loadLevel0();
+	void loadplayer();
 	sf::Texture getplayer(){return player;}
 
 private:

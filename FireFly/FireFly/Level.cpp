@@ -18,9 +18,8 @@ Level &Level::getLevel()
 
 void Level::loadLevel0()
 {
-	Loading::getLoading().loadLevel0();
+	Loading::getLoading().loadplayer();
 	Player *player = new Player(100, 100);
 	EntityList::getEntityList().addEntity(player);
-
 }
 

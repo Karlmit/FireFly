@@ -15,7 +15,7 @@ Loading &Loading::getLoading()
 	return loading;
 }
 
-void Loading::loadLevel0()
+void Loading::loadplayer()
 {
 	player.loadFromFile("Resources/sprite.jpg");
 }

@@ -7,6 +7,8 @@ Player::Player(float positionX, float positionY)
 	rectangle.width = 64;
 	position.x = positionX;
 	position.y = positionY;
+	velocity.x = 0;
+	velocity.y = 0;
 	aliveStatus = true;
 	ID = "player";
 	texture = Loading::getLoading().getplayer();

@@ -2,7 +2,6 @@
 #include <string>
 #include <SFML\Graphics.hpp>
 #include "Loading.h"
-#include "Player.h"
 
 class Entity
 {

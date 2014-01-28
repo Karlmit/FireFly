@@ -4,6 +4,7 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "FireFly 0.00001");
+	window.setFramerateLimit(60);
 	Level::getLevel().loadLevel0();
     while (window.isOpen())
     {
@@ -13,8 +14,8 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-		GameLoop::getGameLoop().runPrototype(&window);
         window.clear();
+		GameLoop::getGameLoop().runPrototype(&window);
         window.display();
     }
 

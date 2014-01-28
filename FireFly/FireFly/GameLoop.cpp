@@ -1,5 +1,6 @@
 #include "GameLoop.h"
 
+
 GameLoop GameLoop::gameloop;
 
 GameLoop::GameLoop()
@@ -9,6 +10,11 @@ GameLoop::GameLoop()
 
 GameLoop::~GameLoop()
 {
+}
+
+GameLoop &GameLoop::getGameLoop()
+{
+	return gameloop;
 }
 
 void GameLoop::runPrototype(sf::RenderWindow *window)
