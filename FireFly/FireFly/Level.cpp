@@ -16,25 +16,11 @@ Level &Level::getLevel()
 	return level;
 }
 
-void Level::level0(sf::RenderWindow *window)
+void Level::loadLevel0()
 {
-	update();
-	draw(window);
+	Loading::getLoading().loadLevel0();
+	Player *player = new Player(100, 100);
+	EntityList::getEntityList().addEntity(player);
+
 }
 
-void Level::draw(sf::RenderWindow *window)
-{
-	for(EntityList::entityList::iterator i = EntityList::getEntityList().listedEntities.begin(); i != EntityList::getEntityList().listedEntities.end(); i++)
-	{
-		(*i)->drawEntity(window);
-	}
-}
-
-void Level::update()
-{
-	EntityList::getEntityList().updateList(); //deletes dead entities
-	for(EntityList::entityList::iterator i = EntityList::getEntityList().listedEntities.begin(); i != EntityList::getEntityList().listedEntities.end(); i++)
-	{
-		(*i)->updateEntity();
-	}
-}

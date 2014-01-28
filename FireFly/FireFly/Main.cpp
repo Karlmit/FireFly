@@ -1,13 +1,10 @@
 #include <SFML/Graphics.hpp>
-#include "Level.h"
-#include "Player.h"
+#include "GameLoop.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "FireFly 0.00001");
-	Loading::getLoading().loadLevel0();
-	Player player(100, 100);
-	EntityList::getEntityList().addEntity(&player);
+	Level::getLevel().loadLevel0();
     while (window.isOpen())
     {
         sf::Event event;
@@ -16,8 +13,8 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+		GameLoop::getGameLoop().runPrototype(&window);
         window.clear();
-		Level::getLevel().level0(&window);
         window.display();
     }
 

@@ -10,6 +10,6 @@ public:
 	void drawEntity(sf::RenderWindow *window);
 
 private:
-	float move;
+	float moveSpeed;
 };
 

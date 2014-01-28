@@ -9,7 +9,8 @@ Player::Player(float positionX, float positionY)
 	position.y = positionY;
 	aliveStatus = true;
 	ID = "player";
-	sprite.setTexture(Loading::getLoading().getplayer());
+	texture = Loading::getLoading().getplayer();
+	sprite.setTexture(texture);
 }
 
 
@@ -20,6 +21,9 @@ Player::~Player()
 
 void Player::updateEntity()
 {
+	velocity.x++;
+	sprite.setRotation(velocity.x);
+
 	sprite.setPosition(position);
 }
 

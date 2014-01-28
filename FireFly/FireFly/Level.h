@@ -1,15 +1,14 @@
 #pragma once
 #include "EntityList.h"
+#include "Player.h"
 class Level
 {
 public:
 	static Level &getLevel();
-	void level0(sf::RenderWindow *window);
+	void loadLevel0();
 private:
 	Level();
 	~Level();
-	void draw(sf::RenderWindow *window);
-	void update();
 	void operator=(const Level &level);
 	static Level level;
 };

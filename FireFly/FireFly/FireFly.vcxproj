@@ -84,6 +84,7 @@
   <ItemGroup>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityList.h" />
+    <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Loading.h" />
     <ClInclude Include="Player.h" />
@@ -91,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityList.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Loading.cpp" />
     <ClCompile Include="Main.cpp" />
