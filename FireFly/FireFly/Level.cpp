@@ -2,12 +2,12 @@
 
 Level Level::level;
 
-Level::Level(void)
+Level::Level()
 {
 }
 
 
-Level::~Level(void)
+Level::~Level()
 {
 }
 
