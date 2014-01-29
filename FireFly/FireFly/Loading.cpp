@@ -17,5 +17,5 @@ Loading &Loading::getLoading()
 
 void Loading::loadplayer()
 {
-	player.loadFromFile("Resources/sprite.jpg");
+	player.loadFromFile("Resources/zid.png");
 }

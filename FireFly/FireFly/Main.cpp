@@ -14,7 +14,7 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        window.clear();
+        window.clear(sf::Color::Magenta);
 		GameLoop::getGameLoop().runPrototype(&window);
         window.display();
     }

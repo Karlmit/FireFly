@@ -37,5 +37,6 @@ void GameLoop::update()
 	for(EntityList::entityList::iterator i = EntityList::getEntityList().listedEntities.begin(); i != EntityList::getEntityList().listedEntities.end(); i++)
 	{
 		(*i)->updateEntity();
+
 	}
 }
