@@ -8,8 +8,8 @@ public:
 	~Player();
 	void updateEntity();
 	void drawEntity(sf::RenderWindow *window);
-
 private:
 	float moveSpeed;
+	sf::Listener playerListener;
 };
 

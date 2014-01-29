@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <SFML\Graphics.hpp>
+#include <SFML\Audio.hpp>
 #include "Loading.h"
 
 class Entity
@@ -19,10 +20,11 @@ public:
 protected:
 	std::string ID;
 	sf::Vector2f position;
-	sf::Vector2f velocity;
 	sf::Sprite sprite;	//in each entity, assign position and texture.
 	bool aliveStatus;	//true = the entity is alive.
 	sf::FloatRect rectangle; //In each identity declare width and height. Used for collision.
 	sf::Texture texture; //store loaded texture here
+	sf::SoundBuffer buffer; //stores loaded buffer
+	sf::Sound sound;
 };
 

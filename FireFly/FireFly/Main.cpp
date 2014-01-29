@@ -5,7 +5,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "FireFly 0.00001");
 	window.setFramerateLimit(60);
-	Level::getLevel().loadLevel0();
+	Level::getLevel().startLevel0();
     while (window.isOpen())
     {
         sf::Event event;
