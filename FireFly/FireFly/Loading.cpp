@@ -1,6 +1,10 @@
 #include "Loading.h"
 
 Loading Loading::loading;
+Loading &Loading::getLoading()
+{
+	return loading;
+}
 
 Loading::Loading()
 {
@@ -8,17 +12,41 @@ Loading::Loading()
 
 Loading::~Loading()
 {
+	
 }
 
-Loading &Loading::getLoading()
+
+
+const sf::Texture& Loading::GetTexture(Textures::ID id) const
 {
-	return loading;
+	return mTextureHolder.get(id);
 }
+
+sf::Texture& Loading::GetTexture(Textures::ID id)
+{
+	return mTextureHolder.get(id);
+}
+
+const sf::SoundBuffer& Loading::GetSound(SoundEffects::ID id) const
+{
+	return mSoundBufferHolder.get(id);
+}
+
+sf::SoundBuffer& Loading::GetSound(SoundEffects::ID id)
+{
+	return mSoundBufferHolder.get(id);
+}
+
+
+
+
 
 void Loading::loadLevel0()
 {
-	player.loadFromFile("Resources/zid.png");
-	fly.loadFromFile("Resources/canary.wav");
-	
-	mothTexture.loadFromFile("Resources/mal.png");
+	// Sounds
+	mSoundBufferHolder.load(SoundEffects::Moth, "Resources/canary.wav");
+
+	// Textures
+	mTextureHolder.load(Textures::Zid, "Resources/zid.png");
+	mTextureHolder.load(Textures::Moth, "Resources/mal.png");
 }
