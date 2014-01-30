@@ -9,22 +9,21 @@ class Entity
 public:
 	Entity();
 	~Entity();
-	std::string returnID(){return ID;}	//Used to identify 
-	sf::Vector2f returnPosition(){return position;}
+	std::string getID(){return mID;}	//Used to identify 
+	sf::Vector2f returnPosition(){return mPosition;}
 	virtual void updateEntity() = 0;
 	virtual void drawEntity(sf::RenderWindow *window) = 0;
-	std::string getID(){return ID;}
-	bool getAliveStatus(){return aliveStatus;}
-	void killEntity(){aliveStatus = false;}
+	bool getAliveStatus(){return mAliveStatus;}
+	void killEntity(){mAliveStatus = false;}
 
 protected:
-	std::string ID;
-	sf::Vector2f position;
-	sf::Sprite sprite;	//in each entity, assign position and texture.
-	bool aliveStatus;	//true = the entity is alive.
-	sf::FloatRect rectangle; //In each identity declare width and height. Used for collision.
-	sf::Texture texture; //store loaded texture here
-	sf::SoundBuffer buffer; //stores loaded buffer
-	sf::Sound sound;
+	std::string mID;
+	sf::Vector2f mPosition;
+	sf::Sprite mSprite;	//in each entity, assign position and texture.
+	bool mAliveStatus;	//true = the entity is alive.
+	sf::FloatRect mRectangle; //In each identity declare width and height. Used for collision.
+	sf::Texture mTexture; //store loaded texture here
+	sf::SoundBuffer mBuffer; //stores loaded buffer
+	sf::Sound mSound;
 };
 

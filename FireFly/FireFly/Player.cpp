@@ -4,15 +4,15 @@
 Player::Player(float positionX, float positionY)
 {
 	moveSpeed = 4;
-	rectangle.height = 64;
-	rectangle.width = 64;
-	position.x = positionX;
-	position.y = positionY;
-	aliveStatus = true;
-	ID = "player";
-	texture = Loading::getLoading().getplayer();
-	sprite.setTexture(texture);
-	sprite.setOrigin(32, 32);
+	mRectangle.height = 64;
+	mRectangle.width = 64;
+	mPosition.x = positionX;
+	mPosition.y = positionY;
+	mAliveStatus = true;
+	mID = "player";
+	mTexture = Loading::getLoading().getplayer();
+	mSprite.setTexture(mTexture);
+	mSprite.setOrigin(32, 32);
 	
 	
 }
@@ -28,27 +28,27 @@ void Player::updateEntity()
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		position.x -= moveSpeed;
+		mPosition.x -= moveSpeed;
 	}
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		position.y -= moveSpeed;
+		mPosition.y -= moveSpeed;
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		position.x += moveSpeed;
+		mPosition.x += moveSpeed;
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		position.y += moveSpeed;
+		mPosition.y += moveSpeed;
 	}
 
-	playerListener.setPosition(position.x, position.y, 1);
-	sprite.setPosition(position);
+	playerListener.setPosition(mPosition.x, mPosition.y, 1);
+	mSprite.setPosition(mPosition);
 }
 
 void Player::drawEntity(sf::RenderWindow *window)
 {
-	window->draw(sprite);
+	window->draw(mSprite);
 }
