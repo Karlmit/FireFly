@@ -10,6 +10,7 @@ public:
 	entityList listedEntities;
 	void addEntity(Entity *entity);	//adds new entities
 	void updateList();	//deletes "dead" entities
+	void emptyList();
 
 private:
 	EntityList();

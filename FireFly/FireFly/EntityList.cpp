@@ -37,3 +37,11 @@ void EntityList::updateList()
 	listedEntities = tempEntities;
 	tempEntities.clear();
 }
+
+void EntityList::emptyList()
+{
+	for(entityList::iterator i = listedEntities.begin(); i != listedEntities.end(); i++)
+	{
+		delete (*i);
+	}
+}
