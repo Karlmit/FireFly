@@ -45,12 +45,7 @@ private:
 	Loading();
 	~Loading();
 	void operator=(const Loading &loading);
-	
-
-	//sf::SoundBuffer mothBuffer;
-	//sf::SoundBuffer fly;
 
 	ResourceHolder<sf::Texture, Textures::ID> mTextureHolder;
-
 	ResourceHolder<sf::SoundBuffer, SoundEffects::ID> mSoundBufferHolder;
 };
