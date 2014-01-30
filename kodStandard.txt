@@ -1,0 +1,45 @@
+
+
+
+Nested if/for/while har ett TAB för att markera vilken “dimension” de är i
+
+float EntityManager::getPlayerePositionX()
+{              //for loopen under är för att gå igenom entityListan.
+	for(EntityList::entityList::iterator i = EntityList::getEntityList().listedEntities.begin(); i != EntityList::getEntityList().listedEntities.end(); i++)
+	{
+		if(memberEntities[i]->geteID() == "player")
+		{
+			return memberEntities[i]->getXposition();
+		}
+	}
+}
+
+Entity subklasser och klasser generellt
+#pragma once
+#include "Entity.h"
+
+class Mal : public Entity
+{
+public:
+	Mal();
+	~Mal();
+	void updateEntity();					       updateEntity och drawEntity måste defineras 
+	void drawEntity(sf::RenderWindow *window);	   för varje ny subklass till Entity
+private:
+//om funktioner/variabler behövs för entiteten gör dem helst privata.
+};
+
+//i konstruktorn för en ny subklass för Entity måste man definera följande
+
+Example::Example()	//iput parametrar går att specifiera.
+	moveSpeed = 4;
+	rectangle.height = 64;	//hur stor fienden ska vara, kanske ej behövs beroende på Box2D
+	rectangle.width = 64;
+	position.x = 100;
+	position.y = 100;
+	aliveStatus = true;	
+	ID = "player";
+	texture = Loading::getLoading().getplayer();	//för att ge entiteten en textur måste den lagras i texture från loading klassen.
+	sprite.setTexture(texture);						//glöm ej att setta texturen.
+	sprite.setOrigin(32, 32);                       //ska ha halva värdet av width och height, sätter då mitten i mitten.
+}
