@@ -10,8 +10,8 @@ Player::Player(float positionX, float positionY)
 	position.y = positionY;
 	aliveStatus = true;
 	ID = "player";
-	texture = Loading::getLoading().getplayer();
-	sprite.setTexture(texture);
+	
+	sprite.setTexture(Loading::getLoading().GetTexture(Textures::Zid));
 	sprite.setOrigin(32, 32);
 	
 	

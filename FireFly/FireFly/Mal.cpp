@@ -8,11 +8,11 @@ Mal::Mal(void)
 	position.y = 300;
 	aliveStatus = true;
 	ID = "mal";
-	texture = Loading::getLoading().getMothTexture();
-	sprite.setTexture(texture);
+	
+	sprite.setTexture(Loading::getLoading().GetTexture(Textures::Moth));
 	sprite.setOrigin(32, 32);
-	buffer = Loading::getLoading().getFlySound();
-	sound.setBuffer(buffer);
+	
+	sound.setBuffer(Loading::getLoading().GetSound(SoundEffects::Moth));
 	sound.setLoop(true);
 	sound.setPosition(400, 300, 1);
 	sound.play(); //if sound should loop, play(); is in the constructor.
