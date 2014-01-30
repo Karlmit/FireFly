@@ -11,10 +11,11 @@ public:
 	~Entity();
 	std::string getID(){return mID;}	//Used to identify 
 	sf::Vector2f returnPosition(){return mPosition;}
-	virtual void updateEntity() = 0;
+	virtual void updateEntity(sf:: Time timePerFrame) = 0;
 	virtual void drawEntity(sf::RenderWindow *window) = 0;
 	bool getAliveStatus(){return mAliveStatus;}
 	void killEntity(){mAliveStatus = false;}
+	sf::Sprite getSprite(){return mSprite;}
 
 protected:
 	std::string mID;

@@ -24,7 +24,7 @@ Player::~Player()
 }
 
 
-void Player::updateEntity()
+void Player::updateEntity(sf:: Time timePerFrame)
 {
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))

@@ -23,7 +23,7 @@ Mal::~Mal(void)
 {
 }
 
-void Mal::updateEntity()
+void Mal::updateEntity(sf:: Time timePerFrame)
 {
 	mSprite.setPosition(mPosition);
 }
