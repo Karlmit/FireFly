@@ -10,6 +10,7 @@ namespace Textures
 	{
 		Zid,
 		Moth,
+		Background_Room1,
 	};
 }
 

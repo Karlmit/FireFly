@@ -1,12 +1,13 @@
 #include "GameLoop.h"
-
+#include "Box2dWorld.h"
 
 GameLoop GameLoop::gameloop;
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 
 GameLoop::GameLoop()
-	: mWindow(sf::VideoMode(800, 600), "FireFly", sf::Style::Default),
+	: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
+	mCamera(&mWindow),
 	mFont(),
 	mStatisticsText(),
 	mStatisticsUpdateTime(),
@@ -17,6 +18,8 @@ GameLoop::GameLoop()
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
+
+	
 }
 
 
@@ -31,6 +34,9 @@ GameLoop &GameLoop::getGameLoop()
 
 void GameLoop::run()
 {
+	// Temp load first level
+	Level::getLevel().startLevel0();
+
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
@@ -76,24 +82,43 @@ void GameLoop::processEvents()
 
 void GameLoop::draw()
 {
-	mWindow.clear(sf::Color::Magenta);
+	mWindow.clear(sf::Color::Black);
+
+	mWindow.setView(mCamera.getView());
 	for(EntityList::entityList::iterator i = EntityList::getEntityList().listedEntities.begin(); i != EntityList::getEntityList().listedEntities.end(); i++)
 	{
-		mWindow.draw((*i)->getSprite());
+		mWindow.draw(**i);
 	}
-	mWindow.draw(mStatisticsText);
+
 	mWindow.setView(mWindow.getDefaultView());
+	mWindow.draw(mStatisticsText);
+
 	mWindow.display();
 }
 
 void GameLoop::update(sf:: Time timePerFrame)
 {
+	// Update camera
+	mCamera.update(timePerFrame);
+
+	// Update entities
 	EntityList::getEntityList().updateList(); //deletes dead entities
+	/*
 	for(EntityList::entityList::iterator i = EntityList::getEntityList().listedEntities.begin(); i != EntityList::getEntityList().listedEntities.end(); i++)
 	{
-		(*i)->updateEntity(timePerFrame);
-
+		(*i)->update(timePerFrame);
 	}
+	*/
+	for (Entity* e : EntityList::getEntityList().listedEntities) 
+	{
+		e->update(timePerFrame);
+	}
+
+	// Box2d physics step
+	float32 timeStep = 1.0f / 60.0f;
+	int32 velocityIterations = 6;
+	int32 positionIterations = 2;
+	Box2dWorld::instance().Step(timeStep, velocityIterations, positionIterations);
 }
 
 void GameLoop::updateStatistics(sf::Time elapsedTime)
@@ -116,5 +141,8 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
 	if (key == sf::Keyboard::Escape && isPressed == true)
 		mWindow.close();
+
+	if (key == sf::Keyboard::F12 && isPressed)
+		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
 }
 

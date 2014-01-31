@@ -1,8 +1,9 @@
 #include "Player.h"
-
+#include <SFML\Window\Keyboard.hpp>
 
 Player::Player(float positionX, float positionY)
 {
+	/*
 	moveSpeed = 4;
 	mRectangle.height = 64;
 	mRectangle.width = 64;
@@ -15,7 +16,7 @@ Player::Player(float positionX, float positionY)
 	mSprite.setTexture(Loading::getLoading().GetTexture(Textures::Zid));
 	mSprite.setOrigin(32, 32);
 	
-	
+	*/
 }
 
 
@@ -24,9 +25,9 @@ Player::~Player()
 }
 
 
-void Player::updateEntity(sf:: Time timePerFrame)
+void Player::updateEntity(sf::Time dt)
 {
-
+	/*
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		mPosition.x -= moveSpeed;
@@ -47,9 +48,10 @@ void Player::updateEntity(sf:: Time timePerFrame)
 
 	playerListener.setPosition(mPosition.x, mPosition.y, 1);
 	mSprite.setPosition(mPosition);
+	*/
 }
 
-void Player::drawEntity(sf::RenderWindow *window)
+void Player::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	window->draw(mSprite);
+	//window->draw(mSprite);
 }

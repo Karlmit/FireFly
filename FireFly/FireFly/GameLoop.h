@@ -7,6 +7,9 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "Camera.h"
+#include <Box2D\Box2D.h>
+
 class GameLoop
 {
 public:
@@ -27,7 +30,7 @@ private:
 	static const sf::Time TimePerFrame;
 	
 	sf::RenderWindow mWindow;
-	//World mWorld;
+	Camera mCamera;
 	sf::Font mFont;
 	sf::Text mStatisticsText;
 	sf::Time mStatisticsUpdateTime;
