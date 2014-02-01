@@ -1,5 +1,4 @@
-#ifndef BOOK_RESOURCEHOLDER_H
-#define BOOK_RESOURCEHOLDER_H
+#pragma once
 
 #include <map>
 #include <string>
@@ -30,4 +29,4 @@ class ResourceHolder
 };
 
 #include "ResourceHolder.inl"
-#endif
+

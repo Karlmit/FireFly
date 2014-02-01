@@ -46,7 +46,7 @@ void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		*/
 
 	// Apply transform of current node
-	states.transform *= getTransform();
+	//states.transform *= getTransform();
 
 	// Called on child classes
 	drawEntity(target, states);

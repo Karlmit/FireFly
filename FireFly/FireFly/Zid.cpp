@@ -54,7 +54,7 @@ void Zid::updateEntity(sf::Time dt)
 		
 void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {	
-	states.transform = getTransform();
+	states.transform *= getTransform();
 	target.draw(mSprite, states);
 
 	// Rigidbody debug draw

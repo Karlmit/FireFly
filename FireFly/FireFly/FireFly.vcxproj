@@ -132,6 +132,7 @@
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="LevelBoundryCollider.h" />
     <ClInclude Include="StaticCollider.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityList.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="LevelBoundryCollider.cpp" />
     <ClCompile Include="StaticCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityList.cpp" />

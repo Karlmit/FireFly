@@ -31,10 +31,17 @@ public:
 
 
 public:
-	Rigidbody( sf::FloatRect rect, bool isStatic = true);
-	Rigidbody( b2Body* body);
+	// Creates nothing. Call AddBody to make it do something
+	Rigidbody();
+	// Rectangle
+	Rigidbody( sf::FloatRect rect, bool isStatic);
+	//Circle
 	Rigidbody( float radius, sf::Vector2f position, bool isStatic);
+
 	virtual ~Rigidbody();
+
+	// Static Lines
+	void AddStaticLineBody(const std::vector<sf::Vector2f>& pointList);
 
 public:
 	void			update();

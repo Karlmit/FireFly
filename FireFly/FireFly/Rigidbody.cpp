@@ -54,6 +54,17 @@ float Rigidbody::BoxToSfFloat(float32 val)
 // End of conversion functions //
 
 //
+// Creates an empty rigidbody. 
+// Call AddBody to add a box2d body to it.
+//
+Rigidbody::Rigidbody()
+: mB2World(&Box2dWorld::instance())
+,mBody(nullptr)
+{
+}
+
+
+//
 // Creates a rectangle rigidbody
 //
 Rigidbody::Rigidbody(sf::FloatRect rect, bool isStatic)
@@ -143,19 +154,43 @@ Rigidbody::Rigidbody(float radius, sf::Vector2f position, bool isStatic)
 
 }
 
-/*
-Rigidbody::Rigidbody(b2Body* body) 
-: mB2World(&Box2dWorld::instance())
-, mBody(body)
-{
-	// No debug with this version
-}
-*/
 
 // The destructor makes sure to remove the body from the box2d simulation
 Rigidbody::~Rigidbody() {
 	// Removes the body from box2d	
 	mB2World->DestroyBody(mBody);
+}
+
+//
+// 
+//
+void Rigidbody::AddStaticLineBody(const std::vector<sf::Vector2f>& pointList)
+{
+	if (mBody)
+		throw std::runtime_error("Rigidbody::AddBody - Tried to add a body more than once.");
+
+
+	// Define the ground body.
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position = SfToBoxVec(0, 0);
+
+	// Creates body
+	mBody  = mB2World->CreateBody(&groundBodyDef);
+
+	// Define the Edge shape
+	b2EdgeShape edgeShape;	
+
+	for (std::vector<sf::Vector2f>::size_type i = 0; i < pointList.size(); i++) 
+	{
+		auto next = (i + 1) % pointList.size();
+		edgeShape.Set(SfToBoxVec(pointList.at(i)), SfToBoxVec(pointList.at(next)));
+		mBody->CreateFixture(&edgeShape, 0);
+	}
+
+
+	// Debug shape visuals
+	// TODO debug visuals for lines
+	//mRectShape.setOutlineColor(sf::Color::Red);
 }
 
 
