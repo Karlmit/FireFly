@@ -4,6 +4,7 @@
 
 #include "ResourceHolder.h"
 
+/*
 namespace Textures
 {
 	enum ID
@@ -13,7 +14,28 @@ namespace Textures
 		Background_Room1,
 	};
 }
+*/
 
+enum class TexturesID
+{
+	Zid,
+	Moth,
+	ROOM1_Background,
+	ROOM1_Foreground,
+	ROOM1_Coat1,
+	ROOM1_Coat2,
+	ROOM1_Coat3,
+	ROOM1_Coat4,
+	ROOM1_Coat5,
+};
+
+enum class SoundEffectsID
+{
+	Fly,
+	Moth,
+};
+
+/*
 namespace SoundEffects
 {
 	enum ID
@@ -22,6 +44,7 @@ namespace SoundEffects
 		Moth,
 	};
 }
+*/
 
 class Loading
 {
@@ -35,18 +58,18 @@ public:
 	void loadLevel0();
 
 	// Get texture based on Textures id
-	const sf::Texture& getTexture(Textures::ID id) const;
-	sf::Texture& getTexture(Textures::ID id);
+	const sf::Texture& getTexture(TexturesID id) const;
+	sf::Texture& getTexture(TexturesID id);
 
 	// Get soundbuffer based on SoundsEffects id
-	 const sf::SoundBuffer& getSound(SoundEffects::ID id) const;
-	 sf::SoundBuffer& getSound(SoundEffects::ID id);
+	 const sf::SoundBuffer& getSound(SoundEffectsID id) const;
+	 sf::SoundBuffer& getSound(SoundEffectsID id);
 
 private:
 	Loading();
 	~Loading();
 	void operator=(const Loading &loading);
 
-	ResourceHolder<sf::Texture, Textures::ID> mTextureHolder;
-	ResourceHolder<sf::SoundBuffer, SoundEffects::ID> mSoundBufferHolder;
+	ResourceHolder<sf::Texture, TexturesID> mTextureHolder;
+	ResourceHolder<sf::SoundBuffer, SoundEffectsID> mSoundBufferHolder;
 };

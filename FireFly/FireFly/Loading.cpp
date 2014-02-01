@@ -17,22 +17,22 @@ Loading::~Loading()
 
 
 
-const sf::Texture& Loading::getTexture(Textures::ID id) const
+const sf::Texture& Loading::getTexture(TexturesID id) const
 {
 	return mTextureHolder.get(id);
 }
 
-sf::Texture& Loading::getTexture(Textures::ID id)
+sf::Texture& Loading::getTexture(TexturesID id)
 {
 	return mTextureHolder.get(id);
 }
 
-const sf::SoundBuffer& Loading::getSound(SoundEffects::ID id) const
+const sf::SoundBuffer& Loading::getSound(SoundEffectsID id) const
 {
 	return mSoundBufferHolder.get(id);
 }
 
-sf::SoundBuffer& Loading::getSound(SoundEffects::ID id)
+sf::SoundBuffer& Loading::getSound(SoundEffectsID id)
 {
 	return mSoundBufferHolder.get(id);
 }
@@ -44,11 +44,14 @@ sf::SoundBuffer& Loading::getSound(SoundEffects::ID id)
 void Loading::loadLevel0()
 {
 	// Sounds
-	mSoundBufferHolder.load(SoundEffects::Moth, "Resources/canary.wav");
+	mSoundBufferHolder.load(SoundEffectsID::Moth, "Resources/canary.wav");
 
 	// Textures
-	mTextureHolder.load(Textures::Zid, "Resources/zid.png");
-	mTextureHolder.load(Textures::Moth, "Resources/mal.png");
+	mTextureHolder.load(TexturesID::Zid, "Resources/zid.png");
+	mTextureHolder.load(TexturesID::Moth, "Resources/mal.png");
 
-	mTextureHolder.load(Textures::Background_Room1, "Resources/RUM_1.png");
+	mTextureHolder.load(TexturesID::ROOM1_Background, "Resources/Room 1/RUM_1.png");
+	mTextureHolder.load(TexturesID::ROOM1_Foreground, "Resources/Room 1/Forgrund.png");
+	mTextureHolder.load(TexturesID::ROOM1_Coat1, "Resources/Room 1/Coat 1.png");
+	mTextureHolder.load(TexturesID::ROOM1_Coat5, "Resources/Room 1/Coat 5.png");
 }

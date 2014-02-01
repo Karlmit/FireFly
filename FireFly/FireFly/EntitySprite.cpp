@@ -1,6 +1,6 @@
 #include "EntitySprite.h"
 
-EntitySprite::EntitySprite(Textures::ID  textureID) 
+EntitySprite::EntitySprite(TexturesID textureID) 
 : mSprite(Loading::getLoading().getTexture(textureID))
 {
 	// Sätter origin för spriten till mitten
@@ -8,7 +8,7 @@ EntitySprite::EntitySprite(Textures::ID  textureID)
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 }
 
-EntitySprite::EntitySprite(Textures::ID  textureID ,sf::Vector2f position) 
+EntitySprite::EntitySprite(TexturesID textureID ,sf::Vector2f position) 
 : mSprite(Loading::getLoading().getTexture(textureID))
 {
 	// Sätter origin för spriten till mitten
