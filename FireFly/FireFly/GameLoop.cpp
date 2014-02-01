@@ -85,10 +85,13 @@ void GameLoop::draw()
 	mWindow.clear(sf::Color::Black);
 
 	mWindow.setView(mCamera.getView());
+	EntityList::getEntityList().draw(mWindow);	// Draws all entities
+	/*
 	for(EntityList::entityList::iterator i = EntityList::getEntityList().listedEntities.begin(); i != EntityList::getEntityList().listedEntities.end(); i++)
 	{
 		mWindow.draw(**i);
 	}
+	*/
 
 	mWindow.setView(mWindow.getDefaultView());
 	mWindow.draw(mStatisticsText);
@@ -103,11 +106,13 @@ void GameLoop::update(sf:: Time timePerFrame)
 
 	// Update entities
 	EntityList::getEntityList().updateList(); //deletes dead entities
-
+	EntityList::getEntityList().update(TimePerFrame);	// Updates all entities
+	/*
 	for (Entity* e : EntityList::getEntityList().listedEntities) 
 	{
 		e->update(timePerFrame);
 	}
+	*/
 
 	// Box2d physics step
 	float32 timeStep = 1.0f / 60.0f;

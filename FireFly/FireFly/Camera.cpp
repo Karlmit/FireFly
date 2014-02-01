@@ -4,7 +4,7 @@
 const float CAMERA_SPEED = 340.f;
 const float ZOOM_SPEED = 1.f;
 
-Camera* Camera::sCurrentCamera = 0;
+Camera* Camera::sCurrentCamera = nullptr;
 
 Camera& Camera::currentCamera() {
 	return *sCurrentCamera;
@@ -27,21 +27,6 @@ sf::Vector2f Lerp(sf::Vector2f from, sf::Vector2f to, float t )
 }
 
 void Camera::update(sf::Time dt) {
-	/*
-	sf::Vector2f camMovement;
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        camMovement.y -= CAMERA_SPEED;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        camMovement.y += CAMERA_SPEED;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        camMovement.x -= CAMERA_SPEED;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        camMovement.x += CAMERA_SPEED;
-
-	move(camMovement * dt.asSeconds());
-	*/
-
 
 	// Smooth follow after target position
 	// low damping = slower follow
@@ -84,16 +69,7 @@ void Camera::update(sf::Time dt) {
 		setPosition(x, y);
 	}
 	
-	mView.setCenter(getPosition());
-
-	//setPosition(mBounds.left + viewSize.x/2, getPosition().y);
-	
-
-	// Sets the position and view size
-	
-	
-
-	
+	mView.setCenter(getPosition());	
 }
 
 
