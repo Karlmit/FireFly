@@ -8,7 +8,7 @@
 #include <iostream>
 
 Zid::Zid()
-: mSprite(Loading::getLoading().GetTexture(Textures::Zid))
+: mSprite(Loading::getLoading().getTexture(Textures::Zid))
 , mRigidbody( sf::FloatRect(0,0,84.f,68.f), false)
 {
 	// Sätter origin för spriten till mitten

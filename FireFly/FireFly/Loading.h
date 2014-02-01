@@ -35,12 +35,12 @@ public:
 	void loadLevel0();
 
 	// Get texture based on Textures id
-	const sf::Texture& GetTexture(Textures::ID id) const;
-	sf::Texture& GetTexture(Textures::ID id);
+	const sf::Texture& getTexture(Textures::ID id) const;
+	sf::Texture& getTexture(Textures::ID id);
 
 	// Get soundbuffer based on SoundsEffects id
-	 const sf::SoundBuffer& GetSound(SoundEffects::ID id) const;
-	 sf::SoundBuffer& GetSound(SoundEffects::ID id);
+	 const sf::SoundBuffer& getSound(SoundEffects::ID id) const;
+	 sf::SoundBuffer& getSound(SoundEffects::ID id);
 
 private:
 	Loading();

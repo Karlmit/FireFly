@@ -17,22 +17,22 @@ Loading::~Loading()
 
 
 
-const sf::Texture& Loading::GetTexture(Textures::ID id) const
+const sf::Texture& Loading::getTexture(Textures::ID id) const
 {
 	return mTextureHolder.get(id);
 }
 
-sf::Texture& Loading::GetTexture(Textures::ID id)
+sf::Texture& Loading::getTexture(Textures::ID id)
 {
 	return mTextureHolder.get(id);
 }
 
-const sf::SoundBuffer& Loading::GetSound(SoundEffects::ID id) const
+const sf::SoundBuffer& Loading::getSound(SoundEffects::ID id) const
 {
 	return mSoundBufferHolder.get(id);
 }
 
-sf::SoundBuffer& Loading::GetSound(SoundEffects::ID id)
+sf::SoundBuffer& Loading::getSound(SoundEffects::ID id)
 {
 	return mSoundBufferHolder.get(id);
 }

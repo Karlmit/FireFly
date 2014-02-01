@@ -1,7 +1,7 @@
 #include "EntitySprite.h"
 
 EntitySprite::EntitySprite(Textures::ID  textureID) 
-: mSprite(Loading::getLoading().GetTexture(textureID))
+: mSprite(Loading::getLoading().getTexture(textureID))
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -9,7 +9,7 @@ EntitySprite::EntitySprite(Textures::ID  textureID)
 }
 
 EntitySprite::EntitySprite(Textures::ID  textureID ,sf::Vector2f position) 
-: mSprite(Loading::getLoading().GetTexture(textureID))
+: mSprite(Loading::getLoading().getTexture(textureID))
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
