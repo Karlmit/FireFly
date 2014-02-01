@@ -103,12 +103,7 @@ void GameLoop::update(sf:: Time timePerFrame)
 
 	// Update entities
 	EntityList::getEntityList().updateList(); //deletes dead entities
-	/*
-	for(EntityList::entityList::iterator i = EntityList::getEntityList().listedEntities.begin(); i != EntityList::getEntityList().listedEntities.end(); i++)
-	{
-		(*i)->update(timePerFrame);
-	}
-	*/
+
 	for (Entity* e : EntityList::getEntityList().listedEntities) 
 	{
 		e->update(timePerFrame);

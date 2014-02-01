@@ -55,5 +55,8 @@ void Level::startLevel0()
 
 	EntityList::getEntityList().addEntity(new StaticCollider(sf::Vector2f(0, 200.f)));
 	EntityList::getEntityList().addEntity(new LevelBoundryCollider(levelBoundry));
+
+	sf::FloatRect levelBoundry2(-1500, -580, 2000, 500);
+	EntityList::getEntityList().addEntity(new LevelBoundryCollider(levelBoundry2));
 }
 

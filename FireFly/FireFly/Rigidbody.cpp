@@ -162,12 +162,12 @@ Rigidbody::~Rigidbody() {
 }
 
 //
-// 
+// Add a static chain collider
 //
-void Rigidbody::AddStaticLineBody(const std::vector<sf::Vector2f>& pointList)
+void Rigidbody::AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bool loop)
 {
 	if (mBody)
-		throw std::runtime_error("Rigidbody::AddBody - Tried to add a body more than once.");
+		throw std::logic_error("Rigidbody::AddStaticLineBody - Tried to add a body more than once.");
 
 
 	// Define the ground body.
@@ -177,20 +177,65 @@ void Rigidbody::AddStaticLineBody(const std::vector<sf::Vector2f>& pointList)
 	// Creates body
 	mBody  = mB2World->CreateBody(&groundBodyDef);
 
-	// Define the Edge shape
-	b2EdgeShape edgeShape;	
+	// Convert the list of sfml points to box2d points
+	std::vector<b2Vec2> pointListb2Vec;
+	for (sf::Vector2f sf : pointList)
+		pointListb2Vec.push_back(SfToBoxVec(sf));
+	b2Vec2 *vs = &pointListb2Vec[0];
 
-	for (std::vector<sf::Vector2f>::size_type i = 0; i < pointList.size(); i++) 
-	{
-		auto next = (i + 1) % pointList.size();
-		edgeShape.Set(SfToBoxVec(pointList.at(i)), SfToBoxVec(pointList.at(next)));
-		mBody->CreateFixture(&edgeShape, 0);
-	}
+	// Make a chain shape of the points
+	b2ChainShape chain;
+	if (loop)
+		chain.CreateLoop(vs, pointList.size());
+	else
+		chain.CreateChain(vs, pointList.size());	
+
+	// Add the chain to the body
+	mBody->CreateFixture(&chain, 0);
 
 
 	// Debug shape visuals
-	// TODO debug visuals for lines
-	//mRectShape.setOutlineColor(sf::Color::Red);
+	if (loop)
+	{		
+		mLinePointList = pointList;
+		mLinePointList.push_back(pointList.at(0));
+	}
+	else
+		mLinePointList = pointList;
+}
+
+void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position)
+{
+	if (mBody)
+		throw std::logic_error("Rigidbody::AddDynCircleBody - Tried to add a body more than once.");
+
+	/*
+	// Define the dynamic body. We set its position and call the body factory.
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position = SfToBoxVec(position);
+	mBody = mB2World->CreateBody(&bodyDef);
+
+	b2CircleShape dynamicCircle;
+	dynamicCircle.
+
+	// Define another box shape for our dynamic body.
+	b2PolygonShape dynamicBox;
+	dynamicBox.SetAsBox(SfToBoxFloat(rect.width/2) , SfToBoxFloat(rect.height/2));
+	// Define the dynamic body fixture.
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &dynamicBox;
+	// Set the box density to be non-zero, so it will be dynamic.
+	fixtureDef.density = 1.0f;
+	// Override the default friction.
+	fixtureDef.friction = 0.3f;
+	//
+	fixtureDef.restitution = 0.f;
+	//
+
+	// Add the shape to the body.
+	mBody->CreateFixture(&fixtureDef);
+	*/
 }
 
 
@@ -212,7 +257,15 @@ void Rigidbody::drawDebug(sf::RenderTarget& target, sf::RenderStates states) con
 	// Apply transform of current rigidbody transform
 	states.transform = getTransform();
 	
+	// Draw Rectangle
 	target.draw(mRectShape, states);
+
+	// Draw Lines
+	sf::VertexArray lines(sf::LinesStrip, mLinePointList.size());
+	for (std::vector<sf::Vector2f>::size_type i = 0; i < mLinePointList.size(); i++)
+		lines[i].position = mLinePointList.at(i);
+	target.draw(lines, states);
+
 }
 
 // Return the body

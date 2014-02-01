@@ -5,6 +5,7 @@
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics/ConvexShape.hpp>
 #include <Box2D/Box2D.h>
 
 
@@ -41,7 +42,9 @@ public:
 	virtual ~Rigidbody();
 
 	// Static Lines
-	void AddStaticLineBody(const std::vector<sf::Vector2f>& pointList);
+	void AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bool loop = false);
+	// Dynamic Circle
+	void AddDynCircleBody(float radius, sf::Vector2f position);
 
 public:
 	void			update();
@@ -54,6 +57,7 @@ private:
 
 	sf::RectangleShape	mRectShape;
 	sf::CircleShape		mCircleShape;
+	std::vector<sf::Vector2f> mLinePointList;
 	bool		mStatic;
 	b2Body*		mBody;
 

@@ -10,7 +10,7 @@ LevelBoundryCollider::LevelBoundryCollider(sf::FloatRect rect)
 	listOfPoints.push_back(sf::Vector2f(rect.left,				rect.top+rect.height));
 	listOfPoints.push_back(sf::Vector2f(rect.left+rect.width,	rect.top+rect.height));
 	listOfPoints.push_back(sf::Vector2f(rect.left+rect.width,	rect.top));
-	mRigidbody.AddStaticLineBody(listOfPoints);
+	mRigidbody.AddStaticLineBody(listOfPoints, true);
 }
 
 void LevelBoundryCollider::updateEntity(sf::Time dt) 
