@@ -9,11 +9,15 @@
 
 Zid::Zid()
 : mSprite(Loading::getLoading().getTexture(Textures::Zid))
-, mRigidbody( sf::FloatRect(0,0,84.f,68.f), false)
+, mRigidbody()
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+
+	float colRadius = 24.f;
+	float density = 3.f;
+	mRigidbody.AddDynCircleBody(colRadius, getPosition(), density);
 
 	// Damping for slowing zid down when not moving
 	mRigidbody.getBody()->SetLinearDamping(2.f);

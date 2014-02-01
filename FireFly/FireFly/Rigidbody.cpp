@@ -147,18 +147,14 @@ Rigidbody::Rigidbody(sf::FloatRect rect, bool isStatic)
 	update();
 } 
 
-Rigidbody::Rigidbody(float radius, sf::Vector2f position, bool isStatic) 
-: mB2World(&Box2dWorld::instance())
-, mStatic(isStatic)
-{
 
-}
 
 
 // The destructor makes sure to remove the body from the box2d simulation
 Rigidbody::~Rigidbody() {
-	// Removes the body from box2d	
-	mB2World->DestroyBody(mBody);
+	// Removes the body from box2d
+	if (mBody)
+		mB2World->DestroyBody(mBody);
 }
 
 //
@@ -204,12 +200,12 @@ void Rigidbody::AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bo
 		mLinePointList = pointList;
 }
 
-void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position)
+void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 density )
 {
 	if (mBody)
 		throw std::logic_error("Rigidbody::AddDynCircleBody - Tried to add a body more than once.");
 
-	/*
+	
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -217,16 +213,18 @@ void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position)
 	mBody = mB2World->CreateBody(&bodyDef);
 
 	b2CircleShape dynamicCircle;
-	dynamicCircle.
+	dynamicCircle.m_radius = SfToBoxFloat(radius);
 
 	// Define another box shape for our dynamic body.
-	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox(SfToBoxFloat(rect.width/2) , SfToBoxFloat(rect.height/2));
+	//b2PolygonShape dynamicBox;
+	//dynamicBox.SetAsBox(SfToBoxFloat(rect.width/2) , SfToBoxFloat(rect.height/2));
+
+
 	// Define the dynamic body fixture.
 	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;
+	fixtureDef.shape = &dynamicCircle;
 	// Set the box density to be non-zero, so it will be dynamic.
-	fixtureDef.density = 1.0f;
+	fixtureDef.density = density;
 	// Override the default friction.
 	fixtureDef.friction = 0.3f;
 	//
@@ -235,14 +233,23 @@ void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position)
 
 	// Add the shape to the body.
 	mBody->CreateFixture(&fixtureDef);
+
+	// Debug draw
+	/*
+	mCircleShape.setOrigin(radius/2.f, radius/2.f);
+	mCircleShape.setRadius(radius);
+	mCircleShape.setFillColor(sf::Color::Transparent);
+	mCircleShape.setOutlineColor(sf::Color::Green);
+	mCircleShape.setOutlineThickness(1.f);
 	*/
+	
+	
 }
 
 
 // Updates the transform on the rigidbody with sfml units
 void Rigidbody::update() 
 {	
-	// (Possible just update the transform directly with a reference to parent enitity)
 	b2Vec2 b2Position = mBody->GetPosition();	
 	float32 b2Angle = mBody->GetAngle();
 	
@@ -259,6 +266,9 @@ void Rigidbody::drawDebug(sf::RenderTarget& target, sf::RenderStates states) con
 	
 	// Draw Rectangle
 	target.draw(mRectShape, states);
+
+	// Draw Circle
+	//target.draw(mCircleShape, states);
 
 	// Draw Lines
 	sf::VertexArray lines(sf::LinesStrip, mLinePointList.size());

@@ -36,15 +36,14 @@ public:
 	Rigidbody();
 	// Rectangle
 	Rigidbody( sf::FloatRect rect, bool isStatic);
-	//Circle
-	Rigidbody( float radius, sf::Vector2f position, bool isStatic);
+
 
 	virtual ~Rigidbody();
 
 	// Static Lines
 	void AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bool loop = false);
 	// Dynamic Circle
-	void AddDynCircleBody(float radius, sf::Vector2f position);
+	void AddDynCircleBody(float radius, sf::Vector2f position, float32 density = 1.f);
 
 public:
 	void			update();
