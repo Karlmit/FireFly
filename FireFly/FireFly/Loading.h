@@ -3,48 +3,8 @@
 #include <SFML/Audio/SoundBuffer.hpp>
 
 #include "ResourceHolder.h"
+#include "ResourceID.h"
 
-/*
-namespace Textures
-{
-	enum ID
-	{
-		Zid,
-		Moth,
-		Background_Room1,
-	};
-}
-*/
-
-enum class TexturesID
-{
-	Zid,
-	Moth,
-	ROOM1_Background,
-	ROOM1_Foreground,
-	ROOM1_Coat1,
-	ROOM1_Coat2,
-	ROOM1_Coat3,
-	ROOM1_Coat4,
-	ROOM1_Coat5,
-};
-
-enum class SoundEffectsID
-{
-	Fly,
-	Moth,
-};
-
-/*
-namespace SoundEffects
-{
-	enum ID
-	{
-		Fly,
-		Moth,
-	};
-}
-*/
 
 class Loading
 {

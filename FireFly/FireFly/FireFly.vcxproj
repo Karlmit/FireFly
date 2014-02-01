@@ -133,6 +133,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
+    <ClInclude Include="ResourceID.h" />
     <ClInclude Include="StaticCollider.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityList.h" />

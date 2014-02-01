@@ -204,6 +204,9 @@
     <ClInclude Include="LevelBoundryCollider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ResourceID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
