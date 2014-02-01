@@ -18,7 +18,7 @@ public:
 	void update(sf::Time dt);	// Updates all entities
 	void draw(sf::RenderWindow& window);	// Draws all entities
 	
-	void addEntity(Entity *entity);	//adds new entities
+	void addEntity(Entity *entity, Layer layer);	//adds new entities
 	void updateList();	//deletes "dead" entities
 	void emptyList();
 

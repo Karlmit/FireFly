@@ -48,15 +48,17 @@ void Level::startLevel0()
 	Mal *mal = new Mal();
 	EntityList::getEntityList().addEntity(mal);
 	*/
+	EntityList::getEntityList().addEntity(new Zid(), Layer::Front);
 
-	EntityList::getEntityList().addEntity(new EntitySprite(Textures::Background_Room1));
+	EntityList::getEntityList().addEntity(new EntitySprite(Textures::Background_Room1), Layer::Background);
 
-	EntityList::getEntityList().addEntity(new Zid());
-
-	EntityList::getEntityList().addEntity(new StaticCollider(sf::Vector2f(0, 200.f)));
-	EntityList::getEntityList().addEntity(new LevelBoundryCollider(levelBoundry));
+	
+	EntityList::getEntityList().addEntity(new StaticCollider(sf::Vector2f(0, 200.f)), Layer::Front);
+	EntityList::getEntityList().addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front);
 
 	sf::FloatRect levelBoundry2(-1500, -580, 2000, 500);
-	EntityList::getEntityList().addEntity(new LevelBoundryCollider(levelBoundry2));
+	Entity* levelCol = new LevelBoundryCollider(levelBoundry2);
+	EntityList::getEntityList().addEntity(levelCol, Layer::Front);
+	levelCol->killEntity();
 }
 
