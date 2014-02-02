@@ -1,12 +1,12 @@
 #include "GameLoop.h"
 #include "Box2dWorld.h"
 
-GameLoop GameLoop::gameloop;
-
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 
-GameLoop::GameLoop()
-: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
+GameLoop::GameLoop(sf::Vector2u windowSize)
+: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
+//: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
+//: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
 mCamera(&mWindow),
 mFont(),
 mStatisticsText(),
@@ -21,19 +21,13 @@ mStatisticsNumFrames(0)
 	
 }
 
-
 GameLoop::~GameLoop()
 {
 }
 
-GameLoop &GameLoop::getGameLoop()
-{
-	return gameloop;
-}
-
 void GameLoop::run()
 {
-	// Temp load first level
+	// Load first level
 	Level::getLevel().startLevel0();
 
 	sf::Clock clock;

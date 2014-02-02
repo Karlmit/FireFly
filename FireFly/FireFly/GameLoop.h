@@ -13,13 +13,12 @@
 class GameLoop
 {
 public:
-	static GameLoop &getGameLoop();
-	void run();
-private:
-	GameLoop();
+	GameLoop(sf::Vector2u windowSize);
 	~GameLoop();
+
+	void run();
+private:	
 	void operator=(const GameLoop &gameloop);
-	static GameLoop gameloop;
 
 	void draw();
 	void update(sf:: Time timePerFrame);
