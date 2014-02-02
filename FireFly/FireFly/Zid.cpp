@@ -92,8 +92,8 @@ void Zid::movement()
 
 	// Apply impulse for the right mouse button
 	static bool mouseRightDownLast = false;
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Right) == true) {
-
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Right) == true) 
+	{
 		if (mouseRightDownLast) {
 			//mouseRightDownLast = false;
 		}
@@ -114,4 +114,12 @@ void Zid::movement()
 	else {
 		mouseRightDownLast = false;
 	}
+
+
+	// Debug teleport ability with F11 and mouse position
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F11))
+	{
+		body->SetTransform(Rigidbody::SfToBoxVec(Camera::currentCamera().getMousePosition()), 0);
+	}
+
 }
