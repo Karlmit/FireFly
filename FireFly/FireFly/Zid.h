@@ -11,7 +11,7 @@
 class Zid : public Entity
 {
 public:
-	Zid();
+	Zid(sf::Vector2f position);
 
 private:
 	virtual void	updateEntity(sf::Time dt);	

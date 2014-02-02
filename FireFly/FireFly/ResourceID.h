@@ -1,5 +1,7 @@
 #pragma once
 
+// IDs for resources
+
 enum class TexturesID
 {
 	Zid,

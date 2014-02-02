@@ -42,7 +42,6 @@ public:
 
 public:
 	virtual void update(sf::Time dt);
-	//void addRigidbody(Rigidbody *rigidbody);
 
 	bool getAliveStatus(){return mAliveStatus;}
 	void killEntity(){mAliveStatus = false;}
@@ -54,8 +53,5 @@ private:
 
 private:
 	bool mAliveStatus;	//true = the entity is alive.
-
-//protected:
-//	std::unique_ptr<Rigidbody> mRigidbody;
 };
 

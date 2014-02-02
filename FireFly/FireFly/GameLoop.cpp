@@ -6,19 +6,18 @@ GameLoop GameLoop::gameloop;
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 
 GameLoop::GameLoop()
-	: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
-	mCamera(&mWindow),
-	mFont(),
-	mStatisticsText(),
-	mStatisticsUpdateTime(),
-	mStatisticsNumFrames(0)
+: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
+mCamera(&mWindow),
+mFont(),
+mStatisticsText(),
+mStatisticsUpdateTime(),
+mStatisticsNumFrames(0)
 {
 	mWindow.setVerticalSyncEnabled(true);
 	mFont.loadFromFile("Resources/Sansation.ttf");
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
-
 	
 }
 

@@ -9,13 +9,11 @@
 #include "LevelBoundryCollider.h"
 #include "Jar.h"
 
-
 Level Level::level;
 
 Level::Level()
 {
 }
-
 
 Level::~Level()
 {
@@ -43,32 +41,20 @@ void Level::startLevel0()
 
 	// Create the entities for this level 
 	// Should come from a level file later
-	/*
-	Player *player = new Player(100, 100);
-	EntityList::getEntityList().addEntity(player);
-	Mal *mal = new Mal();
-	EntityList::getEntityList().addEntity(mal);
-	*/
+	EntityList& eList = EntityList::getEntityList();	
 
-	EntityList& eList = EntityList::getEntityList();
-
-	
-
+	// Adding some sprites
 	eList.addEntity(new EntitySprite(TexturesID::ROOM1_Background), Layer::Background);
 	eList.addEntity(new EntitySprite(TexturesID::ROOM1_Foreground), Layer::Foreground);
 	eList.addEntity(new EntitySprite(TexturesID::ROOM1_Coat5), Layer::Front);
 
-	eList.addEntity(new Zid(), Layer::Front);
+	// Adding Zid
+	eList.addEntity(new Zid(sf::Vector2f(300, 0)), Layer::Front);
 	
-	// eList.addEntity(new StaticCollider(sf::Vector2f(0, 200.f)), Layer::Front);
 	// Adds a collider around the entire level
 	eList.addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front);
 
-	sf::FloatRect levelBoundry2(-1500, -580, 2000, 500);
-	Entity* levelCol = new LevelBoundryCollider(levelBoundry2);
-	eList.addEntity(levelCol, Layer::Front);
-	levelCol->killEntity();
-
-	eList.addEntity(new Jar(TexturesID::ROOM1_JAR, sf::Vector2f()), Layer::Foreground);
+	// Adds a jar
+	eList.addEntity(new Jar(TexturesID::ROOM1_JAR, sf::Vector2f(0,0)), Layer::Front);
 }
 

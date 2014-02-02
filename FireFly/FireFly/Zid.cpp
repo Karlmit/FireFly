@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-Zid::Zid()
+Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getLoading().getTexture(TexturesID::Zid))
 , mRigidbody()
 {
@@ -15,6 +15,14 @@ Zid::Zid()
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 
+	// Sätter startposition
+	setPosition(position);
+
+	// Sätter camerans start position
+	Camera::currentCamera().setPosition(position);
+	Camera::currentCamera().setTargetPosition(position);
+
+	// Adds a dynamic circle body to zid
 	float colRadius = 24.f;
 	float density = 3.f;
 	mRigidbody.AddDynCircleBody(colRadius, getPosition(), density);

@@ -6,6 +6,8 @@ class Level
 {
 public:
 	static Level &getLevel();
+
+	// Initiates level 0
 	void startLevel0();
 private:
 	Level();

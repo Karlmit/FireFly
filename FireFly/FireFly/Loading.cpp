@@ -6,41 +6,39 @@ Loading &Loading::getLoading()
 	return loading;
 }
 
-Loading::Loading()
-{
-}
+Loading::Loading(){}
 
-Loading::~Loading()
-{
-	
-}
+Loading::~Loading(){}
 
-
-
+//
+// Get texture based on Textures id
+//
 const sf::Texture& Loading::getTexture(TexturesID id) const
 {
 	return mTextureHolder.get(id);
 }
 
+
+// Get texture based on Textures id
 sf::Texture& Loading::getTexture(TexturesID id)
 {
 	return mTextureHolder.get(id);
 }
 
+// Get soundbuffer based on SoundsEffects id
 const sf::SoundBuffer& Loading::getSound(SoundEffectsID id) const
 {
 	return mSoundBufferHolder.get(id);
 }
 
+// Get soundbuffer based on SoundsEffects id
 sf::SoundBuffer& Loading::getSound(SoundEffectsID id)
 {
 	return mSoundBufferHolder.get(id);
 }
 
 
-
-
-
+// Loads the resources for level 0
 void Loading::loadLevel0()
 {
 	// Sounds

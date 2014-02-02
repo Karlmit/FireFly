@@ -17,7 +17,6 @@ Jar::Jar(TexturesID textureID, sf::Vector2f position)
 	bounds.top += glassHeightAdjust;
 	bounds.width = bounds.width - 2*glassWidthAdjust;
 	bounds.height = bounds.height - 2*glassHeightAdjust;
-
 	
 	float width = 20.f;
 	std::vector<sf::FloatRect> rects;

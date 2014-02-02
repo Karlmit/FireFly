@@ -1,14 +1,10 @@
 #ifndef RIGIDBODY_H
 #define RIGIDBODY_H
 
-
-
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/ConvexShape.hpp>
 #include <Box2D/Box2D.h>
-
-
 
 
 class Rigidbody : public sf::Transformable
@@ -28,9 +24,6 @@ public:
 public:
 	// Creates nothing. Call AddBody to make it do something
 	Rigidbody();
-	// Rectangle
-	//Rigidbody( sf::FloatRect rect, bool isStatic);
-
 	virtual ~Rigidbody();
 
 	// Static Lines
