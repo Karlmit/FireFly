@@ -166,8 +166,7 @@ void Rigidbody::AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f po
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position = SfToBoxVec(position);
 	mBody = mB2World->CreateBody(&bodyDef);
-
-	
+		
 	
 	for (sf::FloatRect rect : rects) {
 		// Define another box shape for our dynamic body.
@@ -193,17 +192,12 @@ void Rigidbody::AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f po
 	for (sf::FloatRect rect : rects) {
 		sf::RectangleShape rectShape;
 		rectShape.setSize(sf::Vector2f(rect.width, rect.height));
-		
 		rectShape.setPosition(sf::Vector2f(rect.left, rect.top));
 		rectShape.setFillColor(sf::Color::Transparent);
-		rectShape.setOutlineColor(sf::Color(255-60*i, 255-60*i, 255-60*i));
 		rectShape.setOutlineThickness(-4);
 		mRectShapes.push_back(rectShape);
 		i++;
-	}
-
-
-	
+	}		
 }
 
 
@@ -215,7 +209,6 @@ void Rigidbody::update()
 	
 	setPosition(BoxToSfVec(b2Position));
 	setRotation(BoxToSfAngle(b2Angle));
-
 }
 
 // Draw debug shapes
