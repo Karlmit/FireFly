@@ -54,4 +54,5 @@ void Loading::loadLevel0()
 	mTextureHolder.load(TexturesID::ROOM1_Foreground, "Resources/Room 1/Forgrund.png");
 	mTextureHolder.load(TexturesID::ROOM1_Coat1, "Resources/Room 1/Coat 1.png");
 	mTextureHolder.load(TexturesID::ROOM1_Coat5, "Resources/Room 1/Coat 5.png");
+	mTextureHolder.load(TexturesID::ROOM1_JAR, "Resources/Room 1/Firefly_burk.png");
 }

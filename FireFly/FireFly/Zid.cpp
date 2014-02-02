@@ -33,7 +33,6 @@ void Zid::updateEntity(sf::Time dt)
 	b2Body* body = mRigidbody.getBody();
 
 	
-
 	// Checks mouse input and apply force on the rigidbody based on that
 	movement();
 	

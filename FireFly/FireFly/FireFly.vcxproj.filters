@@ -207,6 +207,9 @@
     <ClInclude Include="ResourceID.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Jar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -393,6 +396,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LevelBoundryCollider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Jar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

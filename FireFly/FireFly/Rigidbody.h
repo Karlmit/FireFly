@@ -9,13 +9,7 @@
 #include <Box2D/Box2D.h>
 
 
-enum class RigidType 
-{
-	CIRCLE,
-	BOX,
 
-
-};
 
 class Rigidbody : public sf::Transformable
 {
@@ -35,8 +29,7 @@ public:
 	// Creates nothing. Call AddBody to make it do something
 	Rigidbody();
 	// Rectangle
-	Rigidbody( sf::FloatRect rect, bool isStatic);
-
+	//Rigidbody( sf::FloatRect rect, bool isStatic);
 
 	virtual ~Rigidbody();
 
@@ -44,6 +37,8 @@ public:
 	void AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bool loop = false);
 	// Dynamic Circle
 	void AddDynCircleBody(float radius, sf::Vector2f position, float32 density = 1.f);
+	// Dynamic Rectangles
+	void AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f position, float density = 1.f);
 
 public:
 	void			update();
@@ -54,7 +49,7 @@ public:
 private:
 	b2World*	mB2World;
 
-	sf::RectangleShape	mRectShape;
+	std::vector<sf::RectangleShape>	mRectShapes;
 	sf::CircleShape		mCircleShape;
 	std::vector<sf::Vector2f> mLinePointList;
 	bool		mStatic;

@@ -2,7 +2,7 @@
 
 
 StaticCollider::StaticCollider(sf::Vector2f position) 
-: mRigidbody(sf::FloatRect(position.x, position.y, 1000.f, 100.f), true)
+: mRigidbody()
 {
 
 }

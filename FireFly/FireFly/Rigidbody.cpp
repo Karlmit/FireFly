@@ -67,6 +67,7 @@ Rigidbody::Rigidbody()
 //
 // Creates a rectangle rigidbody
 //
+/*
 Rigidbody::Rigidbody(sf::FloatRect rect, bool isStatic)
 : mB2World(&Box2dWorld::instance())
 , mStatic(isStatic)
@@ -123,12 +124,12 @@ Rigidbody::Rigidbody(sf::FloatRect rect, bool isStatic)
 
 
 		// Test second shape ///////////////
-		/* WORKS !!!
-		dynamicBox.SetAsBox(rect.width/(2*PIXELS_PER_METER), rect.height/(2*PIXELS_PER_METER), SfToBoxVec(300.f, 0), 0);
-		fixtureDef.shape = &dynamicBox;
+		// WORKS !!!
+		//dynamicBox.SetAsBox(rect.width/(2*PIXELS_PER_METER), rect.height/(2*PIXELS_PER_METER), SfToBoxVec(300.f, 0), 0);
+		//fixtureDef.shape = &dynamicBox;
 
-		mBody->CreateFixture(&fixtureDef);
-		*/
+		//mBody->CreateFixture(&fixtureDef);
+		
 		///////////////////////////////////////////
 
 
@@ -146,7 +147,7 @@ Rigidbody::Rigidbody(sf::FloatRect rect, bool isStatic)
 	
 	update();
 } 
-
+*/
 
 
 
@@ -235,14 +236,61 @@ void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 de
 	mBody->CreateFixture(&fixtureDef);
 
 	// Debug draw
-	/*
-	mCircleShape.setOrigin(radius/2.f, radius/2.f);
+		
 	mCircleShape.setRadius(radius);
 	mCircleShape.setFillColor(sf::Color::Transparent);
 	mCircleShape.setOutlineColor(sf::Color::Green);
 	mCircleShape.setOutlineThickness(1.f);
-	*/
+	mCircleShape.setPosition(-radius, -radius);
+}
+
+//
+// Adds dynamic rectangles to a body
+//
+void Rigidbody::AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f position, float density)
+{
+	// Define the dynamic body. We set its position and call the body factory.
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position = SfToBoxVec(position);
+	mBody = mB2World->CreateBody(&bodyDef);
+
 	
+	
+	for (sf::FloatRect rect : rects) {
+		// Define another box shape for our dynamic body.
+		b2PolygonShape dynamicBox;
+		b2Vec2 center = SfToBoxVec(rect.left+rect.width/2, rect.top+rect.height/2);
+		dynamicBox.SetAsBox(SfToBoxFloat(rect.width/2) , SfToBoxFloat(rect.height/2), center, 0);
+		// Define the dynamic body fixture.
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &dynamicBox;
+		// Set the box density to be non-zero, so it will be dynamic.
+		fixtureDef.density = density;
+		// Override the default friction.
+		fixtureDef.friction = 0.3f;
+		//
+		fixtureDef.restitution = 0.f;
+		//
+
+		// Add the shape to the body.
+		mBody->CreateFixture(&fixtureDef);
+	}
+
+	int i = 0;
+	for (sf::FloatRect rect : rects) {
+		sf::RectangleShape rectShape;
+		rectShape.setSize(sf::Vector2f(rect.width, rect.height));
+		
+		rectShape.setPosition(sf::Vector2f(rect.left, rect.top));
+		rectShape.setFillColor(sf::Color::Transparent);
+		rectShape.setOutlineColor(sf::Color(255-60*i, 255-60*i, 255-60*i));
+		rectShape.setOutlineThickness(-4);
+		mRectShapes.push_back(rectShape);
+		i++;
+	}
+
+
 	
 }
 
@@ -265,10 +313,11 @@ void Rigidbody::drawDebug(sf::RenderTarget& target, sf::RenderStates states) con
 	states.transform = getTransform();
 	
 	// Draw Rectangle
-	target.draw(mRectShape, states);
+	for (sf::RectangleShape mRectShape : mRectShapes)
+		target.draw(mRectShape, states);
 
 	// Draw Circle
-	//target.draw(mCircleShape, states);
+	target.draw(mCircleShape, states);
 
 	// Draw Lines
 	sf::VertexArray lines(sf::LinesStrip, mLinePointList.size());

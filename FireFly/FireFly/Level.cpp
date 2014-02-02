@@ -7,6 +7,7 @@
 #include "EntitySprite.h"
 #include "StaticCollider.h"
 #include "LevelBoundryCollider.h"
+#include "Jar.h"
 
 
 Level Level::level;
@@ -67,5 +68,7 @@ void Level::startLevel0()
 	Entity* levelCol = new LevelBoundryCollider(levelBoundry2);
 	eList.addEntity(levelCol, Layer::Front);
 	levelCol->killEntity();
+
+	eList.addEntity(new Jar(TexturesID::ROOM1_JAR, sf::Vector2f()), Layer::Foreground);
 }
 
