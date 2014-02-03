@@ -29,7 +29,7 @@ Jar::Jar(TexturesID textureID, sf::Vector2f position)
 	//Right
 	rects.push_back(sf::FloatRect(bounds.width/2-width, -bounds.height/2, width, bounds.height));
 
-	float density = 3.f;
+	float density = 2.f;
 	mRigidbody.AddDynRectBody(rects, position, density);
 }
 
