@@ -31,6 +31,9 @@ Zid::Zid(sf::Vector2f position)
 	// Damping for slowing zid down when not moving
 	mRigidbody.getBody()->SetLinearDamping(2.f);
 	mRigidbody.getBody()->SetFixedRotation(true);
+
+	// Set zid as bullet to prevent going through stuff
+	mRigidbody.getBody()->SetBullet(true);
 } 
 
 
