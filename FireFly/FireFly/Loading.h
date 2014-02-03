@@ -12,7 +12,6 @@ public:
 	static Loading &getLoading();
 private:
 	static Loading loading;
-
 public:
 	// Load res for level 0
 	void loadLevel0();

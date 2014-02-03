@@ -2,6 +2,7 @@
 #define ZID_H
 
 #include "Entity.h"
+#include "Animation.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -22,6 +23,7 @@ private:
 private:
 	sf::Sprite		mSprite;
 	Rigidbody		mRigidbody;
+	Animation idleAnimation;
 	
 };
 

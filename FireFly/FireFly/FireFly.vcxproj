@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Box2dWorld.h" />
     <ClInclude Include="Box2D\Box2D.h" />
     <ClInclude Include="Box2D\Collision\b2BroadPhase.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Zid.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Box2dWorld.cpp" />
     <ClCompile Include="Box2D\Collision\b2BroadPhase.cpp" />
     <ClCompile Include="Box2D\Collision\b2CollideCircle.cpp" />

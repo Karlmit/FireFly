@@ -9,6 +9,7 @@
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getLoading().getTexture(TexturesID::Zid))
+,idleAnimation(TexturesID::Spider, 128, 128, 150, 15, 10, 10) 
 , mRigidbody()
 {
 	// Sätter origin för spriten till mitten
@@ -37,6 +38,7 @@ Zid::Zid(sf::Vector2f position)
 
 void Zid::updateEntity(sf::Time dt) 
 {
+	idleAnimation.updateAnimation();
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
 
@@ -66,7 +68,7 @@ void Zid::updateEntity(sf::Time dt)
 void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {	
 	states.transform *= getTransform();
-	target.draw(mSprite, states);
+	target.draw(idleAnimation.getCurrentSprite(), states);
 
 	// Rigidbody debug draw
 	if (Globals::DEBUG_MODE)
