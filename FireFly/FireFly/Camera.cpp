@@ -14,6 +14,7 @@ Camera::Camera(sf::Window* window)
 : mWindow(window)
 , mView()
 , mZoom(1.5f)
+, mTargetZoom(1.5f)
 , mFollowTargetPosition()
 , mBounds()
 {
@@ -38,11 +39,18 @@ void Camera::update(sf::Time dt) {
 	mView = sf::View(getPosition(), viewSize);
 
 	// Zooms in and out withthe pageup and pqgedown keys
+	/*
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::PageUp))
         mZoom -= ZOOM_SPEED * dt.asSeconds();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::PageDown))
         mZoom += ZOOM_SPEED * dt.asSeconds(); 
+	*/
+
+	// Smooth zoom
+	float zoomDamping = 3.f;
+	mZoom = mZoom + (mTargetZoom - mZoom) * (dt.asSeconds() * zoomDamping);
 	mView.zoom(mZoom);
+	
 
 	// Size after zoom
 	viewSize = mView.getSize();
@@ -94,4 +102,16 @@ void Camera::setTargetPosition(sf::Vector2f position)
 void Camera::setBounds(sf::FloatRect bounds)
 {
 	mBounds = bounds;
+}
+
+void Camera::changeZoom(int steps) 
+{
+	float zoomStep = 0.1f;
+	float lowerLimit = 0.1f;
+	float topLimit = 2.f;
+	mTargetZoom -= steps * zoomStep;
+	if (mTargetZoom < lowerLimit)
+		mTargetZoom = lowerLimit;
+	if (mTargetZoom > topLimit)
+		mTargetZoom = topLimit;
 }

@@ -21,11 +21,13 @@ public:
 
 	void setTargetPosition(sf::Vector2f position);
 	void setBounds(sf::FloatRect bounds);
+	void changeZoom(int steps);
 
 private:
 	sf::Window* mWindow;
 	sf::View	mView;
 	float		mZoom;
+	float		mTargetZoom;
 
 	sf::Vector2f mFollowTargetPosition;
 	sf::FloatRect mBounds;

@@ -68,6 +68,10 @@ void GameLoop::processEvents()
 			case sf::Event::Closed:
 				mWindow.close();
 				break;
+			case::sf::Event::MouseWheelMoved:
+				mCamera.changeZoom(event.mouseWheel.delta);
+				break;
+
 		}
 	}
 }
