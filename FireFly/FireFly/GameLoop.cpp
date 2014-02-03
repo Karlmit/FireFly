@@ -123,7 +123,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 	if (key == sf::Keyboard::Escape && isPressed == true)
 		mWindow.close();
 
-	if (key == sf::Keyboard::F12 && isPressed)
+	if (key == sf::Keyboard::F12 && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
 }
 

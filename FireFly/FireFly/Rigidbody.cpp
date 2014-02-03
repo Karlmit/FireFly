@@ -214,21 +214,30 @@ void Rigidbody::update()
 // Draw debug shapes
 void Rigidbody::drawDebug(sf::RenderTarget& target, sf::RenderStates states) const
 {	
+	
 	// Apply transform of current rigidbody transform
 	states.transform = getTransform();
+	
 	
 	// Draw Rectangle
 	for (sf::RectangleShape mRectShape : mRectShapes)
 		target.draw(mRectShape, states);
-
+	
+	
 	// Draw Circle
+	// Crashes the program for som reason when running the exe directly and turn on debug draw in the beginning
+	// Only runs it if in debug mode so not to crash the release version.
+#ifdef _DEBUG
 	target.draw(mCircleShape, states);
-
-	// Draw Lines
+#endif
+	
+	// Draw Lines	
 	sf::VertexArray lines(sf::LinesStrip, mLinePointList.size());
 	for (std::vector<sf::Vector2f>::size_type i = 0; i < mLinePointList.size(); i++)
 		lines[i].position = mLinePointList.at(i);
 	target.draw(lines, states);
+	
+	
 
 }
 
