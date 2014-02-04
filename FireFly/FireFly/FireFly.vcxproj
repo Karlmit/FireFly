@@ -207,6 +207,8 @@
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
+    <ClCompile Include="MapObject.cpp" />
+    <ClCompile Include="MapObjectGroup.cpp" />
     <ClCompile Include="MapObjectProperty.cpp" />
     <ClCompile Include="StaticCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -216,14 +218,14 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Loading.cpp" />
     <ClCompile Include="Main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Mal.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="xmltest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Zid.cpp" />
   </ItemGroup>

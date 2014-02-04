@@ -446,5 +446,11 @@
     <ClCompile Include="MapObjectProperty.cpp">
       <Filter>Source Files\LevelEditor</Filter>
     </ClCompile>
+    <ClCompile Include="MapObject.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjectGroup.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
