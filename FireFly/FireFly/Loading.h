@@ -31,4 +31,7 @@ private:
 
 	ResourceHolder<sf::Texture, TexturesID> mTextureHolder;
 	ResourceHolder<sf::SoundBuffer, SoundEffectsID> mSoundBufferHolder;
+
+private:
+	void loadTextureSmooth(TexturesID textureId, const std::string& filename);
 };

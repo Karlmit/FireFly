@@ -37,6 +37,12 @@ sf::SoundBuffer& Loading::getSound(SoundEffectsID id)
 	return mSoundBufferHolder.get(id);
 }
 
+void Loading::loadTextureSmooth(TexturesID textureId, const std::string& filename)
+{
+	mTextureHolder.load(textureId, filename);
+	getTexture(textureId).setSmooth(true);
+}
+
 
 // Loads the resources for level 0
 void Loading::loadLevel0()
@@ -45,14 +51,14 @@ void Loading::loadLevel0()
 	mSoundBufferHolder.load(SoundEffectsID::Moth, "Resources/canary.wav");
 
 	// Textures
-	mTextureHolder.load(TexturesID::Zid, "Resources/zid.png");
-	mTextureHolder.load(TexturesID::Moth, "Resources/mal.png");
+	loadTextureSmooth(TexturesID::Zid, "Resources/zid.png");
+	loadTextureSmooth(TexturesID::Moth, "Resources/mal.png");
 
 	mTextureHolder.load(TexturesID::ROOM1_Background, "Resources/Room 1/RUM_1.png");
 	mTextureHolder.load(TexturesID::ROOM1_Foreground, "Resources/Room 1/Forgrund.png");
 	mTextureHolder.load(TexturesID::ROOM1_Coat1, "Resources/Room 1/Coat 1.png");
 	mTextureHolder.load(TexturesID::ROOM1_Coat5, "Resources/Room 1/Coat 5.png");
-	mTextureHolder.load(TexturesID::ROOM1_JAR, "Resources/Room 1/Firefly_burk.png");
-	mTextureHolder.load(TexturesID::Spider, "Resources/testspide.png");
+	loadTextureSmooth(TexturesID::ROOM1_JAR, "Resources/Room 1/Firefly_burk.png");
+	loadTextureSmooth(TexturesID::Spider, "Resources/testspide.png");
 
 }
