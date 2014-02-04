@@ -243,6 +243,12 @@
     <ClInclude Include="MapObjectProperty.h">
       <Filter>Header Files\LevelEditor</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTileset.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -450,6 +456,9 @@
       <Filter>Source Files\LevelEditor</Filter>
     </ClCompile>
     <ClCompile Include="MapObjectGroup.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTileset.cpp">
       <Filter>Source Files\LevelEditor</Filter>
     </ClCompile>
   </ItemGroup>

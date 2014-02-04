@@ -137,9 +137,11 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapObjectGroup.h" />
     <ClInclude Include="MapObjectProperty.h" />
+    <ClInclude Include="MapTileset.h" />
     <ClInclude Include="ResourceID.h" />
     <ClInclude Include="StaticCollider.h" />
     <ClInclude Include="Entity.h" />
@@ -210,6 +212,7 @@
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="MapObjectGroup.cpp" />
     <ClCompile Include="MapObjectProperty.cpp" />
+    <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="StaticCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityList.cpp" />

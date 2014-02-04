@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <string>
 #include <vector>
 using namespace std;
@@ -12,6 +11,7 @@ class MapObject
 private:
 	string mName;
     string mType;
+	int mGid;
     int mWidth;
     int mHeight;
     int mX;
@@ -19,7 +19,7 @@ private:
     vector<MapObjectProperty> mProperties;
 
 public:
-	MapObject(string name, string type, int width, int height, int x, int y);
+	MapObject(string name, string type, int gid, int width, int height, int x, int y);
 	~MapObject();
 
 	string getName(){ return mName; }
