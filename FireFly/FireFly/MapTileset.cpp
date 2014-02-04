@@ -9,3 +9,11 @@ MapTileset::MapTileset(int firstgid, string name, int tilewidth, int tileheight,
 {
 }
 
+MapTileset::MapTileset()
+{
+}
+
+MapTileset::~MapTileset()
+{
+}
+

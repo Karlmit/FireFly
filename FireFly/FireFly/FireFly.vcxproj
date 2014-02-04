@@ -209,6 +209,7 @@
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="MapObjectGroup.cpp" />
     <ClCompile Include="MapObjectProperty.cpp" />

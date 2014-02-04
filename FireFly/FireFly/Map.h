@@ -23,7 +23,17 @@ public:
 	Map(string source);
     ~Map();
 
-	bool loadMap(string source);
-	bool loadTilesets(tinyxml2::XMLDocument *map);
-	bool loadObjectGroups(tinyxml2::XMLDocument *map);
+	void loadMap(string source);
+	void loadTilesets(tinyxml2::XMLDocument *xmlmap);
+	void loadObjectGroups(tinyxml2::XMLDocument *xmlmap);
+
+	string getVersion(){ return mVersion; }
+    string getOrientation(){ return mOrientation; }
+    int getWidth(){ return mWidth; }
+    int getHeight(){ return mHeight; }
+    int getTileWidth(){ return mTilewidth; }
+    int getTileHeight(){ return mTileheight; }
+	vector<MapTileset> getTilesets() { return mTilesets; }
+	vector<MapObjectGroup> getObjectGroups() { return mObjectGroups; }
+	
 };

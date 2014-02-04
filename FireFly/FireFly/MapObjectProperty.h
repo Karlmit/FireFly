@@ -10,6 +10,7 @@ private:
 	string mValue;
 
 public:
+	MapObjectProperty();
 	MapObjectProperty(string name, string value);
 	~MapObjectProperty();
 	
@@ -18,7 +19,7 @@ public:
     int getValueInt();    
 
 	void setName(string name);
-    //void setName(char* name){ this->name = name; }
+    void setName(char* name){ mName = name; }
     void setValue(string value);
-    //void setValue(char* value){ this->value = value; }
+    void setValue(char* value){ mValue = value; }
 };

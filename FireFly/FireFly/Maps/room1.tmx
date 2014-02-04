@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="5000" tileheight="2160">
+ <tileset firstgid="1" name="ROOM1_Background" tilewidth="5000" tileheight="2160">
+  <image source="E:/Repositorys/Firefly/FireFly/FireFly/FireFly/Resources/Room 1/RUM_1.png" width="5000" height="2160"/>
+ </tileset>
+ <tileset firstgid="2" name="ROOM1_Byra" tilewidth="1024" tileheight="1024">
+  <image source="E:/Repositorys/Firefly/FireFly/FireFly/FireFly/Resources/Room 1/Firefly_byra.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3" name="ROOM1_Jar" tilewidth="376" tileheight="416">
+  <image source="E:/Repositorys/Firefly/FireFly/FireFly/FireFly/Resources/Room 1/Firefly_burk.png" width="376" height="416"/>
+ </tileset>
+ <tileset firstgid="4" name="ROOM1_Table" tilewidth="1430" tileheight="1341">
+  <image source="E:/Repositorys/Firefly/FireFly/FireFly/FireFly/Resources/Room 1/Firefly_bord.png" width="1430" height="1341"/>
+ </tileset>
+ <tileset firstgid="5" name="ROOM1_Foreground" tilewidth="5000" tileheight="2160">
+  <image source="E:/Repositorys/Firefly/FireFly/FireFly/FireFly/Resources/Room 1/Forgrund.png" width="5000" height="2160"/>
+ </tileset>
+ <objectgroup name="Background" width="1" height="1">
+  <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
+ </objectgroup>
+ <objectgroup name="Front" width="1" height="1">
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="202" y="1258"/>
+  <object name="ROOM1_Byra" type="EntitySprite" gid="2" x="0" y="2205"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="200" y="799">
+   <properties>
+    <property name="Health" value="10"/>
+    <property name="Speed" value="99"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Foreground" width="1" height="1" visible="0">
+  <object name="ROOM1_Foreground" type="EntitySprite" gid="5" x="0" y="2160"/>
+ </objectgroup>
+ <objectgroup name="Collision" width="1" height="1">
+  <object name="Byra" type="StaticCollision" x="0" y="1259">
+   <polyline points="0,0 703,-4 704,41 673,47 673,86 655,111 655,847 634,866 634,897"/>
+  </object>
+ </objectgroup>
+</map>

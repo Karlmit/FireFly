@@ -461,5 +461,8 @@
     <ClCompile Include="MapTileset.cpp">
       <Filter>Source Files\LevelEditor</Filter>
     </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

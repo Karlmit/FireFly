@@ -1,5 +1,9 @@
 #include "MapObjectProperty.h"
 
+MapObjectProperty::MapObjectProperty()
+{
+}
+
 MapObjectProperty::MapObjectProperty(string name, string value)
 : mName(name)
 , mValue(value)

@@ -7,6 +7,10 @@ MapObjectGroup::MapObjectGroup(string name, int width, int height)
 {
 }
 
+MapObjectGroup::MapObjectGroup()
+{
+}
+
 MapObjectGroup::~MapObjectGroup()
 {
 }
