@@ -28,7 +28,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load first level
-	Level::getLevel().startLevel0();
+	Level::getLevel().startLevel1();
 
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;

@@ -8,17 +8,7 @@
 int main()
 {	
 	try
-	{
-		Map map("Maps/room1.tmx");
-		cout << map.getVersion() << " " << map.getOrientation() << " " << map.getTileWidth() << " " << map.getTileHeight() << endl;
-
-		for (MapObjectGroup group : map.getObjectGroups())
-		{
-			cout << group.getName() << " ";
-		}
-
-		cout << endl;
-
+	{		
 		// Creates the window relative to desktop resolution
 		// Temporary, should probably be in fullscreen for release
 		sf::Vector2u windowSize;

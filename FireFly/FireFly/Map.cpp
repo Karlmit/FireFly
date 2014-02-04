@@ -96,30 +96,35 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
             obj.setName(object->Attribute("name"));
             obj.setType(object->Attribute("type"));
+			if (object->Attribute("gid") != NULL)
+				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
             obj.setY(stringToInt(object->Attribute("y")));
-            obj.setWidth(stringToInt(object->Attribute("width")));
-            obj.setHeight(stringToInt(object->Attribute("height")));
+            //obj.setWidth(stringToInt(object->Attribute("width")));
+            //obj.setHeight(stringToInt(object->Attribute("height")));
 
-            if((property = object->FirstChildElement("properties")->FirstChildElement("property")) != NULL)
-            {
-                MapObjectProperty prop;// = new TiledMapObjectProperty();
+			if (object->FirstChildElement("properties") != NULL) 
+			{
+				if((property = object->FirstChildElement("properties")->FirstChildElement("property")) != NULL)
+				{
+					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
-                prop.setName(property->Attribute("name"));
-                prop.setValue(property->Attribute("value"));
+					prop.setName(property->Attribute("name"));
+					prop.setValue(property->Attribute("value"));
 
-                obj.insertProperty(prop);
-            }
+					obj.insertProperty(prop);
+				}
 
-            while((property = object->NextSiblingElement("property")) != NULL)
-            {
-                MapObjectProperty prop;// = new TiledMapObjectProperty();
+				while((property = object->NextSiblingElement("property")) != NULL)
+				{
+					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
-                prop.setName(property->Attribute("name"));
-                prop.setValue(property->Attribute("value"));
+					prop.setName(property->Attribute("name"));
+					prop.setValue(property->Attribute("value"));
 
-                obj.insertProperty(prop);
-            }
+					obj.insertProperty(prop);
+				}
+			}
 
             temp.insertObject(obj);
         }
@@ -130,30 +135,35 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
             obj.setName(object->Attribute("name"));
             obj.setType(object->Attribute("type"));
+			if (object->Attribute("gid") != NULL)
+				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
             obj.setY(stringToInt(object->Attribute("y")));
-            obj.setWidth(stringToInt(object->Attribute("width")));
-            obj.setHeight(stringToInt(object->Attribute("height")));
+            //obj.setWidth(stringToInt(object->Attribute("width")));
+            //obj.setHeight(stringToInt(object->Attribute("height")));
 
-            if((property = object->FirstChildElement("properties")->FirstChildElement("property")) != NULL)
-            {
-                MapObjectProperty prop;// = new TiledMapObjectProperty();
+			if (object->FirstChildElement("properties") != NULL) 
+			{
+				if((property = object->FirstChildElement("properties")->FirstChildElement("property")) != NULL)
+				{
+					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
-                prop.setName(property->Attribute("name"));
-                prop.setValue(property->Attribute("value"));
+					prop.setName(property->Attribute("name"));
+					prop.setValue(property->Attribute("value"));
 
-                obj.insertProperty(prop);
-            }
+					obj.insertProperty(prop);
+				}
 
-            while((property = object->NextSiblingElement("property")) != NULL)
-            {
-                MapObjectProperty prop;// = new TiledMapObjectProperty();
+				while((property = object->NextSiblingElement("property")) != NULL)
+				{
+					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
-                prop.setName(property->Attribute("name"));
-                prop.setValue(property->Attribute("value"));
+					prop.setName(property->Attribute("name"));
+					prop.setValue(property->Attribute("value"));
 
-                obj.insertProperty(prop);
-            }
+					obj.insertProperty(prop);
+				}
+			}
 
             temp.insertObject(obj);
         }
@@ -175,30 +185,35 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
             obj.setName(object->Attribute("name"));
             obj.setType(object->Attribute("type"));
+			if (object->Attribute("gid") != NULL)
+				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
             obj.setY(stringToInt(object->Attribute("y")));
-            obj.setWidth(stringToInt(object->Attribute("width")));
-            obj.setHeight(stringToInt(object->Attribute("height")));
+            //obj.setWidth(stringToInt(object->Attribute("width")));
+            //obj.setHeight(stringToInt(object->Attribute("height")));
 
-            if((property = object->FirstChildElement("properties")->FirstChildElement("property")) != NULL)
-            {
-                MapObjectProperty prop;// = new TiledMapObjectProperty();
+			if (object->FirstChildElement("properties") != NULL) 
+			{
+				if((property = object->FirstChildElement("properties")->FirstChildElement("property")) != NULL)
+				{
+					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
-                prop.setName(property->Attribute("name"));
-                prop.setValue(property->Attribute("value"));
+					prop.setName(property->Attribute("name"));
+					prop.setValue(property->Attribute("value"));
 
-                obj.insertProperty(prop);
-            }
+					obj.insertProperty(prop);
+				}
 
-            while((property = object->NextSiblingElement("property")) != NULL)
-            {
-                MapObjectProperty prop;// = new TiledMapObjectProperty();
+				while((property = object->NextSiblingElement("property")) != NULL)
+				{
+					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
-                prop.setName(property->Attribute("name"));
-                prop.setValue(property->Attribute("value"));
+					prop.setName(property->Attribute("name"));
+					prop.setValue(property->Attribute("value"));
 
-                obj.insertProperty(prop);
-            }
+					obj.insertProperty(prop);
+				}
+			}
 
             temp.insertObject(obj);
         }
@@ -209,30 +224,35 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
             obj.setName(object->Attribute("name"));
             obj.setType(object->Attribute("type"));
+			if (object->Attribute("gid") != NULL)
+				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
             obj.setY(stringToInt(object->Attribute("y")));
-            obj.setWidth(stringToInt(object->Attribute("width")));
-            obj.setHeight(stringToInt(object->Attribute("height")));
+            //obj.setWidth(stringToInt(object->Attribute("width")));
+            //obj.setHeight(stringToInt(object->Attribute("height")));
 
-            if((property = object->FirstChildElement("properties")->FirstChildElement("property")) != NULL)
-            {
-                MapObjectProperty prop;// = new TiledMapObjectProperty();
+			if (object->FirstChildElement("properties") != NULL) 
+			{
+				if((property = object->FirstChildElement("properties")->FirstChildElement("property")) != NULL)
+				{
+					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
-                prop.setName(property->Attribute("name"));
-                prop.setValue(property->Attribute("value"));
+					prop.setName(property->Attribute("name"));
+					prop.setValue(property->Attribute("value"));
 
-                obj.insertProperty(prop);
-            }
+					obj.insertProperty(prop);
+				}
 
-            while((property = object->NextSiblingElement("property")) != NULL)
-            {
-                MapObjectProperty prop;// = new TiledMapObjectProperty();
+				while((property = object->NextSiblingElement("property")) != NULL)
+				{
+					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
-                prop.setName(property->Attribute("name"));
-                prop.setValue(property->Attribute("value"));
+					prop.setName(property->Attribute("name"));
+					prop.setValue(property->Attribute("value"));
 
-                obj.insertProperty(prop);
-            }
+					obj.insertProperty(prop);
+				}
+			}
 
             temp.insertObject(obj);
         }
@@ -240,4 +260,16 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
         //this->insertObjectGroup(temp);
 		mObjectGroups.push_back(temp);
     }
+}
+
+
+MapTileset Map::getTileset(int gid) 
+{
+	for (MapTileset tileset : mTilesets)
+		if (tileset.getFirstgid() == gid)
+			return tileset;
+
+	throw logic_error("Map::getTileset - Finns inget tileset med det gid");
+	return MapTileset();
+
 }

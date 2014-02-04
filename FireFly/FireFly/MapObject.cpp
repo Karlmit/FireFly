@@ -1,11 +1,9 @@
 #include "MapObject.h"
 
-MapObject::MapObject(string name, string type, int gid, int width, int height, int x, int y)
+MapObject::MapObject(string name, string type, int gid, int x, int y)
 : mName(name)
 , mType(type)
 , mGid(gid)
-, mWidth(width)
-, mHeight(height)
 , mX(x)
 , mY(y)
 {

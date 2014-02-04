@@ -33,6 +33,8 @@ public:
     int getHeight(){ return mHeight; }
     int getTileWidth(){ return mTilewidth; }
     int getTileHeight(){ return mTileheight; }
+	MapTileset getTileset(int gid);
+	
 	vector<MapTileset> getTilesets() { return mTilesets; }
 	vector<MapObjectGroup> getObjectGroups() { return mObjectGroups; }
 	

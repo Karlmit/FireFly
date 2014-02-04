@@ -7,6 +7,7 @@ enum class Layer
 	Background,
 	Front,
 	Foreground,
+	Collision,
 };
 
 class EntityList
