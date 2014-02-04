@@ -28,6 +28,12 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{b7bc313b-379e-4f5f-9963-59087c4f91ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\LevelEditor">
+      <UniqueIdentifier>{a9662447-027e-410e-abb9-59db324346bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LevelEditor">
+      <UniqueIdentifier>{7cc95daf-e1fc-4703-982c-d9f46f8e2fbf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntityList.h">
@@ -225,6 +231,18 @@
     <ClInclude Include="Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjectGroup.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObject.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjectProperty.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -418,6 +436,15 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="xmltest.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjectProperty.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
