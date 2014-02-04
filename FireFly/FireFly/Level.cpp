@@ -118,7 +118,9 @@ void Level::loadMap(string filename)
 				MapTileset tileset = map.getTileset(obj.getGid());
 				float imageWidth  = float(tileset.getTilewidth());
 				float imageHeight = float(tileset.getTileheight());
+				string imageName = tileset.getImageSource();
 				Layer layer = getLayerFromString(group.getName());
+				//position = sf::Vector2f(position.x+imageWidth/2, position.y+imageHeight/2);
 
 
 				eList.addEntity(new EntitySprite(TexturesID::ROOM1_JAR, position), layer);
