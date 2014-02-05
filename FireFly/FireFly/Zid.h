@@ -21,10 +21,12 @@ private:
 	void movement();
 
 private:
-	sf::Sprite		mSprite;
+sf::Sprite		mSprite;
 	Rigidbody		mRigidbody;
 	Animation idleAnimation;
-	
+	Animation dashAnimation;
+	bool zidDash;
+	unsigned int dashFrameNo;
 };
 
 #endif

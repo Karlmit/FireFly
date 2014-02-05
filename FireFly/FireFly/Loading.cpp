@@ -1,12 +1,11 @@
 #include "Loading.h"
 
 Loading Loading::loading;
+
 Loading &Loading::getLoading()
 {
 	return loading;
 }
-
-Loading::Loading(){}
 
 Loading::~Loading(){}
 

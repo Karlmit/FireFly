@@ -9,7 +9,8 @@
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getLoading().getTexture(TexturesID::Zid))
-,idleAnimation(TexturesID::Spider, 128, 128, 150, 15, 10, 10) 
+,idleAnimation(TexturesID::Spider, 128, 128, 150, 15, 10, 10)
+,dashAnimation(TexturesID::SpiderDash, 64, 64, 25, 5, 2, 5)
 , mRigidbody()
 {
 	// Sätter origin för spriten till mitten
@@ -34,6 +35,8 @@ Zid::Zid(sf::Vector2f position)
 
 	// Set zid as bullet to prevent going through stuff
 	mRigidbody.getBody()->SetBullet(true);
+
+	dashFrameNo = 0;
 } 
 
 
@@ -41,7 +44,27 @@ Zid::Zid(sf::Vector2f position)
 
 void Zid::updateEntity(sf::Time dt) 
 {
-	idleAnimation.updateAnimation();
+	if(zidDash == true)
+	{
+		if(dashFrameNo<dashAnimation.getAnimLength())
+		{
+			++dashFrameNo;
+			dashAnimation.updateAnimation();
+			mSprite=dashAnimation.getCurrentSprite();
+		}
+		else
+		{
+			dashFrameNo = 0;
+			zidDash = false;
+			idleAnimation.updateAnimation();
+			mSprite=idleAnimation.getCurrentSprite();
+		}
+	}
+	else
+	{
+		idleAnimation.updateAnimation();
+		mSprite=idleAnimation.getCurrentSprite();
+	}
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
 
@@ -121,6 +144,8 @@ void Zid::movement()
 			force *= 10.f;
 
 			body->ApplyLinearImpulse(force , body->GetWorldCenter(), true);
+
+			zidDash = true;
 		}
 			
 	}

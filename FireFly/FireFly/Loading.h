@@ -27,7 +27,8 @@ public:
 private:
 	Loading();
 	~Loading();
-	void operator=(const Loading &loading);
+	Loading(const Loading&){};
+	void operator=(const Loading&);
 
 	ResourceHolder<sf::Texture, TexturesID> mTextureHolder;
 	ResourceHolder<sf::SoundBuffer, SoundEffectsID> mSoundBufferHolder;

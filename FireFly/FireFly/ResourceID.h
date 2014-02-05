@@ -15,6 +15,7 @@ enum class TexturesID
 	ROOM1_Coat5,
 	ROOM1_JAR,
 	Spider,
+	SpiderDash,
 };
 
 enum class SoundEffectsID
