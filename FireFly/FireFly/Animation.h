@@ -25,6 +25,7 @@ public:
 	void setPosition(const sf::Vector2f& position);
 	void resetAnimation();
 	void updateAnimation();
+	int getAnimLength();
 	bool endOfAnimation() const;
 
 	~Animation();
@@ -41,7 +42,8 @@ private:
 		,left
 		,currentRowNumber
 		,top
-		,currentRow;
+		,currentRow
+		,totalFrames;
 	bool mEndOfAnimation;
 };
 

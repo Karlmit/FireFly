@@ -21,7 +21,7 @@ Animation::Animation(TexturesID texture,
 	currentRowNumber(0),
 	top(0),
 	currentRow(0),
-	left(0)
+	left(0),
 {
 	mSprite.setTextureRect(sf::IntRect(0,0, spriteWidth, spriteHeight));
 	mSprite.setOrigin( static_cast<float>(spriteWidth/2), static_cast<float>(spriteHeight/2) );
@@ -68,11 +68,11 @@ void Animation::updateAnimation()
 		mSprite.setTextureRect(sf::IntRect(left, top, mSpriteWidth, mSpriteHeight));
 		if(mCurrentFrame <= mNumberOfSprites)
 		{
-			mCurrentFrame++;
-			currentRowNumber++;
+			++mCurrentFrame;
+			++currentRowNumber;
 			if(currentRowNumber == mSpriteRows)
 			{
-				currentRow++;
+				++currentRow;
 				currentRowNumber = 0;
 				if(currentRow == mNumberOfRows)
 				{
@@ -85,6 +85,11 @@ void Animation::updateAnimation()
 	}
 
 	}		
+}
+
+int Animation::getAnimLength(){
+	totalFrames = mNumberOfSprites * mTimePerFrame;
+	return totalFrames;
 }
 
 void Animation::resetAnimation(){
