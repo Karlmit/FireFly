@@ -87,6 +87,11 @@ void Animation::updateAnimation()
 	}		
 }
 
+int Animation::getAnimLength(){
+	totalFrames = mNumberOfSprites * mTimePerFrame;
+	return totalFrames;
+}
+
 void Animation::resetAnimation(){
 	mCurrentFrame= 0;
 }
