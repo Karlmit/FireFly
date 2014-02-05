@@ -21,6 +21,7 @@ public:
 	void addEntity(Entity *entity, Layer layer);	//adds new entities
 	void updateList();	//deletes "dead" entities
 	void emptyList();
+	Entity* getEntity(std::string id);
 
 private:
 	EntityList();

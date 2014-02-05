@@ -8,6 +8,7 @@
 #include "StaticCollider.h"
 #include "LevelBoundryCollider.h"
 #include "Jar.h"
+#include "Mal.h"
 
 Level Level::level;
 
@@ -56,5 +57,8 @@ void Level::startLevel0()
 
 	// Adds a jar
 	eList.addEntity(new Jar(TexturesID::ROOM1_JAR, sf::Vector2f(0,0)), Layer::Front);
+
+	//Adding Mal
+	eList.addEntity(new Mal(sf::Vector2f(400, 0)), Layer::Front);
 }
 

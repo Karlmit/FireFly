@@ -13,7 +13,6 @@ int main()
 		sf::Vector2u windowSize;
 		windowSize.x = unsigned(sf::VideoMode::getDesktopMode().width*0.8f);
 		windowSize.y = unsigned(sf::VideoMode::getDesktopMode().height*0.8f);
-
 		// Creates the GameLoop
 		GameLoop gameLoop(windowSize);
 

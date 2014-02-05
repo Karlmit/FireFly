@@ -118,3 +118,15 @@ void EntityList::emptyList()
 		delete (*i);
 	}
 }
+
+Entity* EntityList::getEntity(std::string id)
+{
+	for (Entity* e : listedEntities) 
+	{
+		if(e->getID() == id)
+		{
+			return e;
+		}
+
+	}
+}

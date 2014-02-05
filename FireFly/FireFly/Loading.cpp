@@ -52,7 +52,7 @@ void Loading::loadLevel0()
 
 	// Textures
 	loadTextureSmooth(TexturesID::Zid, "Resources/zid.png");
-	loadTextureSmooth(TexturesID::Moth, "Resources/mal.png");
+	loadTextureSmooth(TexturesID::Moth, "Resources/spritesheet_moth1.png");
 
 	mTextureHolder.load(TexturesID::ROOM1_Background, "Resources/Room 1/RUM_1.png");
 	mTextureHolder.load(TexturesID::ROOM1_Foreground, "Resources/Room 1/Forgrund.png");

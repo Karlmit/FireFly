@@ -45,13 +45,17 @@ public:
 
 	bool getAliveStatus(){return mAliveStatus;}
 	void killEntity(){mAliveStatus = false;}
-
+	std::string getID(){return mID;}
+protected:
+	std::string mID;
 private:
 	virtual void	updateEntity(sf::Time dt);
 	virtual void	draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void	drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 
+
 private:
 	bool mAliveStatus;	//true = the entity is alive.
+	
 };
 

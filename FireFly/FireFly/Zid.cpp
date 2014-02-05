@@ -10,7 +10,7 @@
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getLoading().getTexture(TexturesID::Zid))
 ,idleAnimation(TexturesID::Spider, 128, 128, 150, 15, 10, 10) 
-, mRigidbody()
+,mRigidbody()
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -34,6 +34,8 @@ Zid::Zid(sf::Vector2f position)
 
 	// Set zid as bullet to prevent going through stuff
 	mRigidbody.getBody()->SetBullet(true);
+
+	mID = "Zid";
 } 
 
 
