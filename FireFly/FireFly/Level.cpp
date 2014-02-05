@@ -56,7 +56,7 @@ void Level::startLevel0()
 	eList.addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front);
 
 	// Adds a jar
-	eList.addEntity(new Jar(TexturesID::ROOM1_JAR, sf::Vector2f(0,0)), Layer::Front);
+	eList.addEntity(new Jar(TexturesID::ROOM1_Jar, sf::Vector2f(0,0)), Layer::Front);
 }
 
 void Level::startLevel1()
@@ -83,10 +83,11 @@ void Level::loadMap(string filename)
 
 	// Get the map width and height
 	float mapWidth = float(map.getTileWidth());
-	float mapHeight = float(map.getTileWidth());	
+	float mapHeight = float(map.getTileHeight());	
 
 	// Level boundry
-	sf::FloatRect levelBoundry(-mapWidth/2, -mapHeight/2, mapWidth, mapHeight);
+	//sf::FloatRect levelBoundry(-mapWidth/2, -mapHeight/2, mapWidth, mapHeight);
+	sf::FloatRect levelBoundry(0, 0, mapWidth, mapHeight);
 
 	// Sets level boundry for the camera
 	Camera::currentCamera().setBounds(levelBoundry);
@@ -94,8 +95,8 @@ void Level::loadMap(string filename)
 	// Adds a collider around the entire level
 	eList.addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front);
 
-	// Adding Zid
-	eList.addEntity(new Zid(sf::Vector2f(300, 0)), Layer::Front);
+	// Adding Zid get that from the object loop
+	//eList.addEntity(new Zid(sf::Vector2f(300, 0)), Layer::Front);
 
 	// Goes through images used in the map
 	cout << "\n[Image set]\n";
@@ -111,33 +112,33 @@ void Level::loadMap(string filename)
 	{		
 		cout << "--[" << group.getName() << "]--" << endl;
 		for (MapObject obj : group.getObjects())
-		{			
-			if (obj.getType() == "EntitySprite")
-			{
-				sf::Vector2f position(float(obj.getX()), float(obj.getY()));
-				MapTileset tileset = map.getTileset(obj.getGid());
-				float imageWidth  = float(tileset.getTilewidth());
-				float imageHeight = float(tileset.getTileheight());
-				string imageName = tileset.getImageSource();
-				Layer layer = getLayerFromString(group.getName());
-				//position = sf::Vector2f(position.x+imageWidth/2, position.y+imageHeight/2);
+		{
+			sf::Vector2f position(float(obj.getX()), float(obj.getY()));
+			MapTileset tileset = map.getTileset(obj.getGid());
+			float imageWidth  = float(tileset.getTilewidth());
+			float imageHeight = float(tileset.getTileheight());
+			string imageName = tileset.getImageSource();
+			Layer layer = getLayerFromString(group.getName());
+			position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
+			TexturesID texID = getTexIdFromString(tileset.getName());
+			string entityType = obj.getType();
 
-
-				eList.addEntity(new EntitySprite(TexturesID::ROOM1_JAR, position), layer);
-
-				cout << "[" << "EntitySprite" << "](" << position.x << ", " <<  position.y << ")\t" 
+			cout << "[" << obj.getType() << "](" << position.x << ", " <<  position.y << ")\t" 
 					<< "\"" << obj.getName() << "\"" << "\t"
 					<< "gid=" << obj.getGid() << " "
 					<< endl;
-			}
-			else
+
+			if (entityType == "EntitySprite")
 			{
-				sf::Vector2f position(float(obj.getX()), float(obj.getY()));
-				Layer layer = getLayerFromString(group.getName());
-				cout << "[" << obj.getType() << "](" << position.x << ", " <<  position.y << ") " 
-					<< "\"" << obj.getName() << "\"" << " "
-					<< "gid=" << obj.getGid() << " "
-					<< endl;
+				eList.addEntity(new EntitySprite(texID, position), layer);
+			}
+			else if (entityType == "Jar")
+			{
+				eList.addEntity(new Jar(texID, position), layer);
+			}
+			else if (entityType == "ZidSpawn") 
+			{
+				eList.addEntity(new Zid(position), Layer::Front);
 			}
 		}
 
@@ -155,7 +156,8 @@ TexturesID Level::getTexIdFromString(string strTexId)
 			return TexturesID(i);
 	}
 
-	throw logic_error("Level::getTexIdFromString - No texture id with that name.");
+	string s = "Level::getTexIdFromString - No texture id with the name \"" +  strTexId +"\"";
+	throw logic_error(s);
 	return TexturesID::SIZE_OF_ENUM;
 }
 

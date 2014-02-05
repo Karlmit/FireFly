@@ -15,42 +15,28 @@
  <tileset firstgid="5" name="ROOM1_Foreground" tilewidth="5000" tileheight="2160">
   <image source="../Resources/Room 1/Forgrund.png" width="5000" height="2160"/>
  </tileset>
+ <tileset firstgid="6" name="ROOM1_Coat5" tilewidth="5000" tileheight="2160">
+  <image source="../Resources/Room 1/Coat 5.png" width="5000" height="2160"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
+  <object name="Coat5" type="EntitySprite" gid="6" x="0" y="2160"/>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="202" y="1258"/>
   <object name="ROOM1_Byra" type="EntitySprite" gid="2" x="0" y="2205"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="200" y="799">
-   <properties>
-    <property name="Health" value="10"/>
-    <property name="Speed" value="99"/>
-   </properties>
-  </object>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="998" y="1078"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="996" y="1456"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1318" y="1086"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1316" y="1464"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1310" y="1782"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="990" y="1774"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="988" y="2152"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1308" y="2160"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1970" y="1102"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1650" y="1094"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1960" y="2176"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1962" y="1798"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1642" y="1790"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1640" y="2168"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1648" y="1472"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1968" y="1480"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1972" y="752"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1320" y="736"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1000" y="728"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1652" y="744"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1972" y="430"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1000" y="406"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1652" y="422"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1320" y="414"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="1296" y="1703"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="1738" y="1710"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="1750" y="1231"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="1384" y="776"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="1372" y="1255"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="1299" y="2082"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="1741" y="2088"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="1360" y="419"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="860" y="446"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="799" y="2110"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="796" y="1731"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="872" y="1282"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="884" y="803"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="5" x="0" y="2160"/>
@@ -58,6 +44,9 @@
  <objectgroup name="Collision" width="1" height="1">
   <object name="Byra" type="StaticCollision" x="0" y="1259">
    <polyline points="0,0 703,-4 704,41 673,47 673,86 655,111 655,847 634,866 634,897"/>
+  </object>
+  <object name="zids spawn" type="ZidSpawn" x="2251" y="643" width="115" height="104">
+   <ellipse/>
   </object>
  </objectgroup>
 </map>
