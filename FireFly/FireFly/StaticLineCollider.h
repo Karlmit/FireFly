@@ -6,7 +6,7 @@ using namespace std;
 class StaticLineCollider : public Entity 
 {
 public:
-	StaticLineCollider(vector<sf::Vector2f> points);
+	StaticLineCollider(vector<sf::Vector2f> points, bool loop = false);
 
 private:
 	virtual void	updateEntity(sf::Time dt);	

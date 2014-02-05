@@ -47,8 +47,8 @@
   <object name="Byra" type="StaticCollision" x="0" y="1259">
    <polyline points="0,0 703,-4 704,41 673,47 673,86 655,111 655,847 634,866 634,897"/>
   </object>
-  <object name="asdf" type="StaticCollision" x="660" y="272">
-   <polyline points="0,0 312,-170 276,58 3,164 -167,-118"/>
+  <object type="StaticCollisionLoop" x="2895" y="657">
+   <polyline points="0,0 6,700 621,709 615,0"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">

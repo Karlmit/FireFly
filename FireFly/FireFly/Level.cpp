@@ -142,8 +142,9 @@ void Level::loadMap(string filename)
 			{
 				eList.addEntity(new Zid(position), Layer::NPC);
 			}
-			else if (entityType == "StaticCollision")
+			else if (entityType == "StaticCollision" || entityType == "StaticCollisionLoop")
 			{
+				bool loop = entityType == "StaticCollisionLoop" ? true : false;
 				vector<sf::Vector2f> sfPoints;
 
 				cout << "Polylines= ";
@@ -156,7 +157,7 @@ void Level::loadMap(string filename)
 				}
 				cout << endl;
 
-				eList.addEntity(new StaticLineCollider(sfPoints), layer);
+				eList.addEntity(new StaticLineCollider(sfPoints, loop), Layer::Foreground);
 			}
 		}
 

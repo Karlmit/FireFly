@@ -34,6 +34,7 @@ void EntityList::draw(sf::RenderWindow& window)
 		window.draw(*e);
 	for (Entity* e : ForegroundLayerList)
 		window.draw(*e);
+
 }
 
 void EntityList::addEntity(Entity *entity, Layer layer)

@@ -1,10 +1,10 @@
 #include "StaticLineCollider.h"
 
 
-StaticLineCollider::StaticLineCollider(vector<sf::Vector2f> points)
+StaticLineCollider::StaticLineCollider(vector<sf::Vector2f> points, bool loop)
 : mRigidbody()
 {
-	mRigidbody.AddStaticLineBody(points);
+	mRigidbody.AddStaticLineBody(points, loop);
 }
 
 void StaticLineCollider::updateEntity(sf::Time dt) 
