@@ -22,6 +22,7 @@
   <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
   <object name="Coat5" type="EntitySprite" gid="6" x="0" y="2160"/>
  </objectgroup>
+ <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
   <object name="ROOM1_Byra" type="EntitySprite" gid="2" x="0" y="2205"/>
   <object name="ROOM1_Jar" type="Jar" gid="3" x="1296" y="1703"/>
@@ -32,11 +33,12 @@
   <object name="ROOM1_Jar" type="Jar" gid="3" x="1299" y="2082"/>
   <object name="ROOM1_Jar" type="Jar" gid="3" x="1741" y="2088"/>
   <object name="ROOM1_Jar" type="Jar" gid="3" x="1360" y="419"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="860" y="446"/>
   <object name="ROOM1_Jar" type="Jar" gid="3" x="799" y="2110"/>
   <object name="ROOM1_Jar" type="Jar" gid="3" x="796" y="1731"/>
   <object name="ROOM1_Jar" type="Jar" gid="3" x="872" y="1282"/>
   <object name="ROOM1_Jar" type="Jar" gid="3" x="884" y="803"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="50" y="1082"/>
+  <object name="ROOM1_Jar" type="Jar" gid="3" x="66" y="652"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="5" x="0" y="2160"/>
@@ -45,7 +47,12 @@
   <object name="Byra" type="StaticCollision" x="0" y="1259">
    <polyline points="0,0 703,-4 704,41 673,47 673,86 655,111 655,847 634,866 634,897"/>
   </object>
-  <object name="zids spawn" type="ZidSpawn" x="2251" y="643" width="115" height="104">
+  <object name="asdf" type="StaticCollision" x="660" y="272">
+   <polyline points="0,0 312,-170 276,58 3,164 -167,-118"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="zids spawn" type="ZidSpawn" x="1882" y="988" width="115" height="104">
    <ellipse/>
   </object>
  </objectgroup>

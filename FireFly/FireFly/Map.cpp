@@ -82,6 +82,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
     XMLElement* objectgroup;
     XMLElement* object;
     XMLElement* property;
+	XMLElement* polyline;
 
     if((objectgroup = xmlmap->FirstChildElement("map")->FirstChildElement("objectgroup")) != NULL)
     {
@@ -126,6 +127,11 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 				}
 			}
 
+			if ((polyline = object->FirstChildElement("polyline")) != NULL)
+			{
+				obj.setPolyline(polyline->Attribute("points"));				
+			}
+
             temp.insertObject(obj);
         }
 
@@ -163,6 +169,11 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
 					obj.insertProperty(prop);
 				}
+			}
+
+			if ((polyline = object->FirstChildElement("polyline")) != NULL)
+			{
+				obj.setPolyline(polyline->Attribute("points"));				
 			}
 
             temp.insertObject(obj);
@@ -215,6 +226,11 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 				}
 			}
 
+			if ((polyline = object->FirstChildElement("polyline")) != NULL)
+			{
+				obj.setPolyline(polyline->Attribute("points"));				
+			}
+
             temp.insertObject(obj);
         }
 
@@ -252,6 +268,11 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
 					obj.insertProperty(prop);
 				}
+			}
+
+			if ((polyline = object->FirstChildElement("polyline")) != NULL)
+			{
+				obj.setPolyline(polyline->Attribute("points"));				
 			}
 
             temp.insertObject(obj);

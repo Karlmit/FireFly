@@ -5,7 +5,7 @@
 
 #include "Zid.h"
 #include "EntitySprite.h"
-#include "StaticCollider.h"
+#include "StaticLineCollider.h"
 #include "LevelBoundryCollider.h"
 #include "Jar.h"
 
@@ -119,7 +119,7 @@ void Level::loadMap(string filename)
 			float imageHeight = float(tileset.getTileheight());
 			string imageName = tileset.getImageSource();
 			Layer layer = getLayerFromString(group.getName());
-			position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
+			//position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
 			TexturesID texID = getTexIdFromString(tileset.getName());
 			string entityType = obj.getType();
 
@@ -130,15 +130,33 @@ void Level::loadMap(string filename)
 
 			if (entityType == "EntitySprite")
 			{
+				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
 				eList.addEntity(new EntitySprite(texID, position), layer);
 			}
 			else if (entityType == "Jar")
 			{
+				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
 				eList.addEntity(new Jar(texID, position), layer);
 			}
 			else if (entityType == "ZidSpawn") 
 			{
-				eList.addEntity(new Zid(position), Layer::Front);
+				eList.addEntity(new Zid(position), Layer::NPC);
+			}
+			else if (entityType == "StaticCollision")
+			{
+				vector<sf::Vector2f> sfPoints;
+
+				cout << "Polylines= ";
+				for (MapPoint p : obj.getPolyline().getPoints())
+				{
+					cout << p.x << "," << p.y << " ";
+					sf::Vector2f sfPoint(float(p.x), float(p.y));
+					sfPoint = sfPoint + position;
+					sfPoints.push_back(sfPoint);
+				}
+				cout << endl;
+
+				eList.addEntity(new StaticLineCollider(sfPoints), layer);
 			}
 		}
 
@@ -171,6 +189,10 @@ Layer Level::getLayerFromString(string strLayer)
 		return Layer::Foreground;
 	else if (strLayer == "Collision")
 		return Layer::Collision;
+	else if (strLayer == "Misc")
+		return Layer::Misc;
+	else if (strLayer == "NPC")
+		return Layer::NPC;
 
 	throw logic_error("Level::getLayerFromString - No Layer with that name.");
 	return Layer::Background;

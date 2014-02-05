@@ -5,9 +5,11 @@
 enum class Layer 
 {
 	Background,
+	NPC,
 	Front,
 	Foreground,
 	Collision,
+	Misc,
 };
 
 class EntityList
@@ -34,6 +36,7 @@ private:
 	entityList listedEntities;
 
 	entityList BackgroundLayerList;
+	entityList NPCLayerList;
 	entityList FrontLayerList;
 	entityList ForegroundLayerList;
 

@@ -3,12 +3,12 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "Map.h"
+
 
 int main()
 {	
 	try
-	{		
+	{	
 		// Creates the window relative to desktop resolution
 		// Temporary, should probably be in fullscreen for release
 		sf::Vector2u windowSize;

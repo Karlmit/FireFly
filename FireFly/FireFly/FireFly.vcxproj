@@ -141,9 +141,10 @@
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapObjectGroup.h" />
     <ClInclude Include="MapObjectProperty.h" />
+    <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="ResourceID.h" />
-    <ClInclude Include="StaticCollider.h" />
+    <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityList.h" />
     <ClInclude Include="EntitySprite.h" />
@@ -213,8 +214,9 @@
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="MapObjectGroup.cpp" />
     <ClCompile Include="MapObjectProperty.cpp" />
+    <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
-    <ClCompile Include="StaticCollider.cpp" />
+    <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityList.cpp" />
     <ClCompile Include="EntitySprite.cpp" />
@@ -228,10 +230,10 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
-    <ClCompile Include="xmltest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="Zid.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Maps\room1.tmx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
