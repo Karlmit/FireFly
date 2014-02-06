@@ -74,8 +74,8 @@ void Mal::movement()
 	else
 	{	//Passive
 		//pushes Mal to a random direction
-		float x = -1 + rand()%3;		
-		float y = -1 + rand()%3;
+		float x = float(-1 + rand()%3);		
+		float y = float(-1 + rand()%3);
 		b2Vec2 force(x, y);
 		force *= 5.f;
 		body->ApplyForceToCenter(force, true);

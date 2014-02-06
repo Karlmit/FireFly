@@ -7,7 +7,13 @@ Loading &Loading::getLoading()
 	return loading;
 }
 
-Loading::~Loading(){}
+Loading::Loading()
+{
+}
+
+Loading::~Loading()
+{
+}
 
 //
 // Get texture based on Textures id

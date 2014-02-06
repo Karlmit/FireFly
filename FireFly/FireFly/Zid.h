@@ -22,11 +22,11 @@ private:
 
 private:
 sf::Sprite		mSprite;
-	Rigidbody		mRigidbody;
+	Rigidbody	mRigidbody;
 	Animation idleAnimation;
-	Animation dashAnimation;
+	//Animation dashAnimation;
 	bool zidDash;
-	unsigned int dashFrameNo;
+	int dashFrameNo;
 };
 
 #endif

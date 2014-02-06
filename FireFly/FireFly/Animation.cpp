@@ -21,7 +21,7 @@ Animation::Animation(TexturesID texture,
 	currentRowNumber(0),
 	top(0),
 	currentRow(0),
-	left(0),
+	left(0)
 {
 	mSprite.setTextureRect(sf::IntRect(0,0, spriteWidth, spriteHeight));
 	mSprite.setOrigin( static_cast<float>(spriteWidth/2), static_cast<float>(spriteHeight/2) );
@@ -60,7 +60,7 @@ void Animation::setPosition(const sf::Vector2f& position)
 
 void Animation::updateAnimation()
 {
-	if(frameClock.getElapsedTime().asMilliseconds() > mTimePerFrame)
+	if(frameClock.getElapsedTime().asMilliseconds() > int(mTimePerFrame))
 	{
 		frameClock.restart();	
 		left = mSpriteWidth * mCurrentFrame;
