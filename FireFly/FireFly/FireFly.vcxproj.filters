@@ -28,6 +28,15 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{b7bc313b-379e-4f5f-9963-59087c4f91ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\LevelEditor">
+      <UniqueIdentifier>{a9662447-027e-410e-abb9-59db324346bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LevelEditor">
+      <UniqueIdentifier>{7cc95daf-e1fc-4703-982c-d9f46f8e2fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Maps">
+      <UniqueIdentifier>{859c5988-98fa-4f88-9448-5968c1a2d83a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntityList.h">
@@ -195,9 +204,6 @@
     <ClInclude Include="Zid.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="StaticCollider.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="LevelBoundryCollider.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -224,6 +230,30 @@
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjectGroup.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObject.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjectProperty.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTileset.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapPolyline.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticLineCollider.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -401,9 +431,6 @@
     <ClCompile Include="Zid.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="StaticCollider.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="EntitySprite.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -419,5 +446,34 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjectProperty.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObject.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjectGroup.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTileset.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapPolyline.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticLineCollider.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Maps\room1.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
   </ItemGroup>
 </Project>

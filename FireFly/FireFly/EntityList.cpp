@@ -28,10 +28,13 @@ void EntityList::draw(sf::RenderWindow& window)
 	// Draw in correct order with the layer lists
 	for (Entity* e : BackgroundLayerList)
 		window.draw(*e);
+	for (Entity* e : NPCLayerList)
+		window.draw(*e);
 	for (Entity* e : FrontLayerList)
 		window.draw(*e);
 	for (Entity* e : ForegroundLayerList)
 		window.draw(*e);
+
 }
 
 void EntityList::addEntity(Entity *entity, Layer layer)
@@ -41,6 +44,8 @@ void EntityList::addEntity(Entity *entity, Layer layer)
 	// Add the entity in a layer list to be used in the draw function
 	if (layer == Layer::Background)
 		BackgroundLayerList.push_back(entity);
+	else if (layer == Layer::NPC)
+		NPCLayerList.push_back(entity);
 	else if (layer == Layer::Front)
 		FrontLayerList.push_back(entity);
 	else if (layer == Layer::Foreground)
@@ -57,7 +62,21 @@ void EntityList::updateList()
 		bool isAlive = (*i)->getAliveStatus();
 		if (!isAlive)
 		{
-			BackgroundLayerList.erase(i++);  // alternatively, i = items.erase(i);
+			BackgroundLayerList.erase(i++); 
+		}
+		else
+		{
+			++i;
+		}
+	}
+	// NPCList
+	i = NPCLayerList.begin();
+	while (i != NPCLayerList.end())
+	{
+		bool isAlive = (*i)->getAliveStatus();
+		if (!isAlive)
+		{
+			NPCLayerList.erase(i++);  
 		}
 		else
 		{
@@ -71,7 +90,7 @@ void EntityList::updateList()
 		bool isAlive = (*i)->getAliveStatus();
 		if (!isAlive)
 		{
-			FrontLayerList.erase(i++);  // alternatively, i = items.erase(i);
+			FrontLayerList.erase(i++); 
 		}
 		else
 		{
@@ -85,7 +104,7 @@ void EntityList::updateList()
 		bool isAlive = (*i)->getAliveStatus();
 		if (!isAlive)
 		{
-			ForegroundLayerList.erase(i++);  // alternatively, i = items.erase(i);
+			ForegroundLayerList.erase(i++);
 		}
 		else
 		{

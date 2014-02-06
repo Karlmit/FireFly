@@ -1,11 +1,12 @@
 #pragma once
 
 #include "Entity.h"
+using namespace std;
 
-class StaticCollider : public Entity 
+class StaticLineCollider : public Entity 
 {
 public:
-	StaticCollider(sf::Vector2f position);
+	StaticLineCollider(vector<sf::Vector2f> points, bool loop = false);
 
 private:
 	virtual void	updateEntity(sf::Time dt);	
