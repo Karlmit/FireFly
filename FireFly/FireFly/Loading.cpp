@@ -66,6 +66,7 @@ void Loading::loadLevel0()
 
 	loadTextureSmooth(TexturesID::ROOM1_Jar, "Resources/Room 1/Firefly_burk.png");
 	loadTextureSmooth(TexturesID::Spider, "Resources/testspide.png");
+	loadTextureSmooth(TexturesID::ZidDash, "Resources/explosionAnim.png");
 
 	mTextureHolder.load(TexturesID::ROOM1_Byra, "Resources/Room 1/Firefly_byra.png");
 

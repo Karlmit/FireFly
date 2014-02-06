@@ -15,7 +15,7 @@ enum class TexturesID
 	ROOM1_Coat5,
 	ROOM1_Jar,
 	Spider,
-	SpiderDash,
+	ZidDash,
 	ROOM1_Byra,
 	SIZE_OF_ENUM,	// Keep last
 };
