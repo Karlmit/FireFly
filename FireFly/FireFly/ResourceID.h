@@ -15,7 +15,7 @@ enum class TexturesID
 	ROOM1_Coat5,
 	ROOM1_Jar,
 	Spider,
-	SpiderDash,
+	ZidDash,
 	ROOM1_Byra,
 	SIZE_OF_ENUM,	// Keep last
 };
@@ -34,7 +34,7 @@ static const char* TexturesIDNames[TexturesID::SIZE_OF_ENUM] =
 	"ROOM1_Coat5",
 	"ROOM1_Jar",
 	"Spider",
-	"SpiderDash",
+	"ZidDash",
 	"ROOM1_Byra",
 };
 
