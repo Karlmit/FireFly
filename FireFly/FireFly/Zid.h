@@ -27,7 +27,7 @@ sf::Sprite		mSprite;
 	Animation dashAnimation;
 	bool zidDash;
 	int dashFrameNo;
-	bool direction;
+	bool mDirLeft;
 };
 
 #endif

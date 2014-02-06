@@ -87,19 +87,19 @@ void Zid::updateEntity(sf::Time dt)
 
 	// Change direction on the sprite based on velocity
 	
-	if (body->GetLinearVelocity().x < 0) 
+	if (body->GetLinearVelocity().x < -0.1f) 
 	{
-		direction = true;
+		mDirLeft = true;
 		mSprite.setScale(-1.f, 1.f);
 	}
-	else if (body->GetLinearVelocity().x > 0)
+	else if (body->GetLinearVelocity().x > 0.1f)
 	{
-		direction = false;
+		mDirLeft = false;
 		mSprite.setScale(1.f, 1.f);
 	}
-	else if(body->GetLinearVelocity().x == 0)
+	else if(body->GetLinearVelocity().x >= -0.1f && 0.1f >= body->GetLinearVelocity().x)
 	{
-		if(direction == true)
+		if(mDirLeft == true)
 		{
 			mSprite.setScale(-1.f, 1.f);
 		}
