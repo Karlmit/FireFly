@@ -1,4 +1,13 @@
 #include "Mal.h"
+#include "Utility.h"
+
+//
+const float MIN_FOLLOW_DISTANCE = 6.f;
+const float DENSITY = 2.f;
+const float FORCE = 5.f;
+
+const float INNER_FOLLOW_RADIUS = 120.f;
+const float OUTER_FOLLOW_RADIUS = 300.f;
 
 Mal::Mal(sf::Vector2f position)
 	: idleAnimation(TexturesID::Moth, 64, 64, 4, 1, 20, 4)
@@ -9,7 +18,7 @@ Mal::Mal(sf::Vector2f position)
 
 	//dynamic circle
 	float colRadius = 24.f;
-	float density = 2.f;
+	float density = DENSITY;
 	mRigidbody.AddDynCircleBody(colRadius, getPosition(), density);
 
 	//damping
@@ -30,14 +39,18 @@ Mal::~Mal(void)
 
 void Mal::updateEntity(sf:: Time timePerFrame)
 {
+	// Updates the animation
 	idleAnimation.updateAnimation();
 
+	// Gets zids position in box2d coords
 	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
+
 	// Box2d physics body
 	b2Body *body = mRigidbody.getBody();
 	
 	//Defines the movement of Mal
 	movement();
+
 	//get position and rotation from Rigidbody
 	mRigidbody.update();
 	setPosition(mRigidbody.getPosition());
@@ -59,17 +72,35 @@ void Mal::movement()
 
 	//counter gravity
 	body->ApplyForce(body->GetMass() * - b2Vec2(0, -10.f), body->GetWorldCenter(), true);
-		
+
+	// Current position in box2d coords
+	b2Vec2 currentPosition = Rigidbody::SfToBoxVec(getPosition());
+
+	// Zid in sf coords
+	sf::Vector2f sfZidPos = Rigidbody::BoxToSfVec(mZidPosition);
+			
 	//Gets the direction from Mal to Zid
-	b2Vec2 direction = mZidPosition - Rigidbody::SfToBoxVec(getPosition());
+	b2Vec2 direction = mZidPosition - currentPosition;
 	float length = direction.Normalize();
 
 	//Depedning on distance to Zid Mal either follows Zid or moves passivly around
-	if(length < 5)
-	{	//Following Zid
+	if(length < MIN_FOLLOW_DISTANCE)
+	{	
+		// Random target behind zid
+		float va = -std::atan2f(getPosition().x - sfZidPos.x, getPosition().y - sfZidPos.y);		
+		b2Vec2 randTargetPos = Rigidbody::SfToBoxVec(Util::randPointInCircle(OUTER_FOLLOW_RADIUS, INNER_FOLLOW_RADIUS, va+3.14f, va)) + mZidPosition;
+
+		b2Vec2 dirRand = randTargetPos - currentPosition;
+		dirRand.Normalize();
+		dirRand *= FORCE;
+		body->ApplyForceToCenter(dirRand, true);
+
+		//Following Zid
+		/*
 		b2Vec2 force(direction.x, direction.y);
 		force *= 5.f;
 		body->ApplyForceToCenter(force, true);
+		*/
 	}
 	else
 	{	//Passive
@@ -77,7 +108,7 @@ void Mal::movement()
 		float x = float(-1 + rand()%3);		
 		float y = float(-1 + rand()%3);
 		b2Vec2 force(x, y);
-		force *= 5.f;
+		force *= FORCE;
 		body->ApplyForceToCenter(force, true);
 	}
 }
