@@ -47,6 +47,12 @@
   <object name="Byra" type="StaticCollision" x="0" y="1259">
    <polyline points="0,0 703,-4 704,41 673,47 673,86 655,111 655,847 634,866 634,897"/>
   </object>
+  <object type="StaticCollision" x="4470" y="0">
+   <polyline points="0,0 4,736 -36,746 -82,786 -130,846 -134,870 -106,892 -96,912 -84,956 -92,1046 -98,1200 -116,1396 -140,1570 -170,1736 -14,1794 -14,1582 520,1576"/>
+  </object>
+  <object type="StaticCollision" x="4470" y="2151">
+   <polyline points="0,0 0,-118 -86,-116 -162,-136 -228,-174 -236,-190 -200,-302 -106,-252 -16,-226 22,-218 524,-220"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="zids spawn" type="ZidSpawn" x="2015" y="536" width="115" height="104">
