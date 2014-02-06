@@ -45,11 +45,41 @@ void Mal::updateEntity(sf:: Time timePerFrame)
 	// Gets zids position in box2d coords
 	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
 
+	// Get the sprite from animation
+	idleAnimation.updateAnimation();
+	mSprite=idleAnimation.getCurrentSprite();
+
+
 	// Box2d physics body
 	b2Body *body = mRigidbody.getBody();
 	
 	//Defines the movement of Mal
 	movement();
+
+
+	// Sets the look direction based on velocity
+	if (body->GetLinearVelocity().x < 0) 
+	{
+		direction = true;
+		mSprite.setScale(-1.f, 1.f);
+	}
+	else if (body->GetLinearVelocity().x > 0)
+	{
+		direction = false;
+		mSprite.setScale(1.f, 1.f);
+	}
+	else if(body->GetLinearVelocity().x == 0)
+	{
+		if(direction == true)
+		{
+			mSprite.setScale(-1.f, 1.f);
+		}
+		else
+		{
+			mSprite.setScale(1.f, 1.f);
+		}
+	}
+
 
 	//get position and rotation from Rigidbody
 	mRigidbody.update();
@@ -60,7 +90,7 @@ void Mal::updateEntity(sf:: Time timePerFrame)
 void  Mal::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
-	target.draw(idleAnimation.getCurrentSprite(), states);
+	target.draw(mSprite, states);
 
 	if(Globals::DEBUG_MODE)
 		mRigidbody.drawDebug(target, states);
@@ -84,6 +114,7 @@ void Mal::movement()
 	float length = direction.Normalize();
 
 	//Depedning on distance to Zid Mal either follows Zid or moves passivly around
+
 	if(length < MIN_FOLLOW_DISTANCE)
 	{	
 		// Random target behind zid
@@ -95,12 +126,6 @@ void Mal::movement()
 		dirRand *= FORCE;
 		body->ApplyForceToCenter(dirRand, true);
 
-		//Following Zid
-		/*
-		b2Vec2 force(direction.x, direction.y);
-		force *= 5.f;
-		body->ApplyForceToCenter(force, true);
-		*/
 	}
 	else
 	{	//Passive
@@ -111,5 +136,6 @@ void Mal::movement()
 		force *= FORCE;
 		body->ApplyForceToCenter(force, true);
 	}
+
 }
 

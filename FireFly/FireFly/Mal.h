@@ -22,6 +22,7 @@ private:
 	Animation  idleAnimation;
 	Entity* mZid;
 	b2Vec2 mZidPosition;
-	
+	sf::Sprite mSprite;
+	bool direction;
 };
 

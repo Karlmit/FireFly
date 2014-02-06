@@ -39,11 +39,10 @@ private:
 		,mNumberOfRows
 		,mCurrentFrame
 		,mSpriteRows
-		,left
-		,currentRowNumber
-		,top
-		,currentRow
-		,totalFrames;
+		,mLeft
+		,mCurrentColumnNumber
+		,mTop
+		,mCurrentRow;
 	bool mEndOfAnimation;
 };
 
