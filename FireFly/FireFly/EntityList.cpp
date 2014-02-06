@@ -146,6 +146,7 @@ Entity* EntityList::getEntity(std::string id)
 		{
 			return e;
 		}
-
 	}
+
+	return nullptr;
 }
