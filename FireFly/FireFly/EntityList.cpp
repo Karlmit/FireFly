@@ -150,3 +150,17 @@ Entity* EntityList::getEntity(std::string id)
 
 	return nullptr;
 }
+
+std::vector<Entity*> EntityList::getEntitys(std::string id)
+{
+	std::vector<Entity*> list;
+	for (Entity* e : listedEntities) 
+	{
+		if(e->getID() == id)
+		{
+			list.push_back(e);
+		}
+	}
+
+	return list;
+}
