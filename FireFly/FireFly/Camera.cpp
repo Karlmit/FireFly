@@ -1,5 +1,6 @@
 
 #include "Camera.h"
+#include "Utility.h"
 
 const float CAMERA_SPEED = 340.f;
 const float ZOOM_SPEED = 1.f;
@@ -21,18 +22,13 @@ Camera::Camera(sf::Window* window)
 	sCurrentCamera = this;
 }
 
-// Helper function for camera update
-sf::Vector2f Lerp(sf::Vector2f from, sf::Vector2f to, float t )
-{
-	return from + (to - from) * t;
-}
 
 void Camera::update(sf::Time dt) {
 
 	// Smooth follow after target position
 	// low damping = slower follow
     float damping = 4.0f;
-	setPosition(Lerp(getPosition(), mFollowTargetPosition, dt.asSeconds() * damping));
+	setPosition(Util::Lerp(getPosition(), mFollowTargetPosition, dt.asSeconds() * damping));
 
 	// Applies the position to the view
 	sf::Vector2f viewSize = sf::Vector2f(float(mWindow->getSize().x),float(mWindow->getSize().y));
@@ -48,7 +44,7 @@ void Camera::update(sf::Time dt) {
 
 	// Smooth zoom
 	float zoomDamping = 3.f;
-	mZoom = mZoom + (mTargetZoom - mZoom) * (dt.asSeconds() * zoomDamping);
+	mZoom = Util::Lerp(mZoom, mTargetZoom, dt.asSeconds() * zoomDamping);
 	mView.zoom(mZoom);
 	
 
