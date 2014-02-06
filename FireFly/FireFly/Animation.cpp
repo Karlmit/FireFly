@@ -18,10 +18,10 @@ Animation::Animation(TexturesID texture,
 	mSprite(Loading::getLoading().getTexture(texture)),
 	mEndOfAnimation(false),
 	mSpriteRows(spriteRow),
-	currentRowNumber(0),
-	top(0),
-	currentRow(0),
-	left(0)
+	mCurrentColumnNumber(0),
+	mTop(0),
+	mCurrentRow(0),
+	mLeft(0)
 {
 	mSprite.setTextureRect(sf::IntRect(0,0, spriteWidth, spriteHeight));
 	mSprite.setOrigin( static_cast<float>(spriteWidth/2), static_cast<float>(spriteHeight/2) );
@@ -63,33 +63,32 @@ void Animation::updateAnimation()
 	if(frameClock.getElapsedTime().asMilliseconds() > int(mTimePerFrame))
 	{
 		frameClock.restart();	
-		left = mSpriteWidth * mCurrentFrame;
-		top = mSpriteHeight * currentRow;
-		mSprite.setTextureRect(sf::IntRect(left, top, mSpriteWidth, mSpriteHeight));
+		mLeft = mSpriteWidth * mCurrentFrame;
+		mTop = mSpriteHeight * mCurrentRow;
+		mSprite.setTextureRect(sf::IntRect(mLeft, mTop, mSpriteWidth, mSpriteHeight));
 		if(mCurrentFrame <= mNumberOfSprites)
 		{
 			++mCurrentFrame;
-			++currentRowNumber;
-			if(currentRowNumber == mSpriteRows)
+			++mCurrentColumnNumber;
+			if(mCurrentColumnNumber == mSpriteRows)
 			{
-				++currentRow;
-				currentRowNumber = 0;
-				if(currentRow == mNumberOfRows)
+				++mCurrentRow;
+				mCurrentColumnNumber = 0;
+				if(mCurrentRow == mNumberOfRows)
 				{
-					currentRow = 0;
+					mCurrentRow = 0;
 					
 				}
 				resetAnimation();
 				
 			}
-	}
+		}
 
 	}		
 }
 
 int Animation::getAnimLength(){
-	totalFrames = mNumberOfSprites * mTimePerFrame;
-	return totalFrames;
+	return mNumberOfSprites;
 }
 
 void Animation::resetAnimation(){

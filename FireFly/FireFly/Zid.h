@@ -24,7 +24,7 @@ private:
 sf::Sprite		mSprite;
 	Rigidbody	mRigidbody;
 	Animation idleAnimation;
-	//Animation dashAnimation;
+	Animation dashAnimation;
 	bool zidDash;
 	int dashFrameNo;
 };
