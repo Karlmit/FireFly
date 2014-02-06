@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "Animation.h"
+#include "EntityList.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -20,5 +21,7 @@ private:
 	void movement();
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
+	Entity* mZid;
+	b2Vec2 mZidPosition;
 };
 
