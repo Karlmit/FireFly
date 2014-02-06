@@ -144,6 +144,7 @@
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="ResourceID.h" />
+    <ClInclude Include="Spider.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityList.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="MapObjectProperty.cpp" />
     <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
+    <ClCompile Include="Spider.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityList.cpp" />

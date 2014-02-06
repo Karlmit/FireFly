@@ -50,6 +50,7 @@ Animation::~Animation(void)
 
 sf::Sprite Animation::getCurrentSprite() const
 {
+	//mSprite.setScale(2, 2);
 	return mSprite;
 }
 

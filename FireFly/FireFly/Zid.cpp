@@ -76,15 +76,36 @@ void Zid::updateEntity(sf::Time dt)
 	// Checks mouse input and apply force on the rigidbody based on that
 	movement();
 	
+	
+//	sf::Vector2f mousePos = Camera::currentCamera().getMousePosition();
+//	b2Vec2 mouse = Rigidbody::SfToBoxVec(mousePos);
+//	b2Vec2 viewDirection = mouse - Rigidbody::SfToBoxVec(getPosition());
+//	//float length = viewDirection.Normalize();
+
 	// Change direction on the sprite based on velocity
-	if (body->GetLinearVelocity().x < -0.1f) 
+	
+	if (body->GetLinearVelocity().x < 0) 
 	{
+		direction = true;
 		mSprite.setScale(-1.f, 1.f);
 	}
-	else if (body->GetLinearVelocity().x > 0.1f)
+	else if (body->GetLinearVelocity().x > 0)
 	{
+		direction = false;
 		mSprite.setScale(1.f, 1.f);
 	}
+	else if(body->GetLinearVelocity().x == 0)
+	{
+		if(direction == true)
+		{
+			mSprite.setScale(-1.f, 1.f);
+		}
+		else
+		{
+			mSprite.setScale(1.f, 1.f);
+		}
+	}
+
 
 	// Set the camera to follow zid
 	Camera::currentCamera().setTargetPosition(getPosition());
