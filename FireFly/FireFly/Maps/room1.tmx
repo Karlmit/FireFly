@@ -42,6 +42,8 @@
   <object name="TableJar" type="Jar" gid="5" x="2876" y="1313"/>
   <object name="TableJar" type="Jar" gid="5" x="2262" y="1841"/>
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
+  <object name="PlastJar" type="Jar" gid="5" x="25" y="1092"/>
+  <object name="PlastJar" type="Jar" gid="5" x="29" y="823"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160"/>
