@@ -64,11 +64,17 @@ void Loading::loadLevel0()
 	mTextureHolder.load(TexturesID::ROOM1_Coat1, "Resources/Room 1/Coat 1.png");
 	mTextureHolder.load(TexturesID::ROOM1_Coat5, "Resources/Room 1/Coat 5.png");
 
-	loadTextureSmooth(TexturesID::ROOM1_Jar, "Resources/Room 1/Firefly_burk.png");
+	mTextureHolder.load(TexturesID::ROOM1_Jar, "Resources/Room 1/burk_1_scale.png");
+	mTextureHolder.load(TexturesID::ROOM1_Byra, "Resources/Room 1/byra_scale.png");
+	mTextureHolder.load(TexturesID::ROOM1_Table, "Resources/Room 1/bord_scale.png");
+	mTextureHolder.load(TexturesID::ROOM1_Microscope, "Resources/Room 1/mikroskop_scale.png");
+	mTextureHolder.load(TexturesID::ROOM1_TestTubes, "Resources/Room 1/provror_scale.png");
+	mTextureHolder.load(TexturesID::ROOM1_Chair, "Resources/Room 1/stol_scale.png");
+
 	loadTextureSmooth(TexturesID::Spider, "Resources/testspide.png");
 	loadTextureSmooth(TexturesID::ZidDash, "Resources/explosionAnim.png");
 
-	mTextureHolder.load(TexturesID::ROOM1_Byra, "Resources/Room 1/Firefly_byra.png");
+	
 
 
 }

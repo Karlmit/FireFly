@@ -3,55 +3,73 @@
  <tileset firstgid="1" name="ROOM1_Background" tilewidth="5000" tileheight="2160">
   <image source="../Resources/Room 1/RUM_1.png" width="5000" height="2160"/>
  </tileset>
- <tileset firstgid="2" name="ROOM1_Byra" tilewidth="1024" tileheight="1024">
-  <image source="../Resources/Room 1/Firefly_byra.png" width="1024" height="1024"/>
- </tileset>
- <tileset firstgid="3" name="ROOM1_Jar" tilewidth="376" tileheight="416">
-  <image source="../Resources/Room 1/Firefly_burk.png" width="376" height="416"/>
- </tileset>
- <tileset firstgid="4" name="ROOM1_Table" tilewidth="1430" tileheight="1341">
-  <image source="../Resources/Room 1/Firefly_bord.png" width="1430" height="1341"/>
- </tileset>
- <tileset firstgid="5" name="ROOM1_Foreground" tilewidth="5000" tileheight="2160">
+ <tileset firstgid="2" name="ROOM1_Foreground" tilewidth="5000" tileheight="2160">
   <image source="../Resources/Room 1/Forgrund.png" width="5000" height="2160"/>
  </tileset>
- <tileset firstgid="6" name="ROOM1_Coat5" tilewidth="5000" tileheight="2160">
+ <tileset firstgid="3" name="ROOM1_Coat5" tilewidth="5000" tileheight="2160">
   <image source="../Resources/Room 1/Coat 5.png" width="5000" height="2160"/>
+ </tileset>
+ <tileset firstgid="4" name="ROOM1_Table" tilewidth="1029" tileheight="1152">
+  <image source="../Resources/Room 1/bord_scale.png" width="1029" height="1152"/>
+ </tileset>
+ <tileset firstgid="5" name="ROOM1_Jar" tilewidth="246" tileheight="271">
+  <image source="../Resources/Room 1/burk_1_scale.png" width="246" height="271"/>
+ </tileset>
+ <tileset firstgid="6" name="ROOM1_Byra" tilewidth="619" tileheight="797">
+  <image source="../Resources/Room 1/byra_scale.png" width="619" height="797"/>
+ </tileset>
+ <tileset firstgid="7" name="ROOM1_Chair" tilewidth="505" tileheight="1401">
+  <image source="../Resources/Room 1/stol_scale.png" width="505" height="1401"/>
+ </tileset>
+ <tileset firstgid="8" name="ROOM1_Microscope" tilewidth="346" tileheight="513">
+  <image source="../Resources/Room 1/mikroskop_scale.png" width="346" height="513"/>
+ </tileset>
+ <tileset firstgid="9" name="ROOM1_TestTubes" tilewidth="413" tileheight="281">
+  <image source="../Resources/Room 1/provror_scale.png" width="413" height="281"/>
  </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
-  <object name="Coat5" type="EntitySprite" gid="6" x="0" y="2160"/>
+  <object name="Coat5" type="EntitySprite" gid="3" x="0" y="2160"/>
+  <object name="Stol" type="EntitySprite" gid="7" x="1300" y="2169"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
-  <object name="ROOM1_Byra" type="EntitySprite" gid="2" x="0" y="2205"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1296" y="1703"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1738" y="1710"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1750" y="1231"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1384" y="776"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1372" y="1255"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1299" y="2082"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1741" y="2088"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="1360" y="419"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="799" y="2110"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="796" y="1731"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="872" y="1282"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="884" y="803"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="50" y="1082"/>
-  <object name="ROOM1_Jar" type="Jar" gid="3" x="66" y="652"/>
+  <object name="Byra" type="EntitySprite" gid="6" x="0" y="2164"/>
+  <object name="PlastJar" type="Jar" gid="5" x="26" y="1363"/>
+  <object name="StartJar" type="Jar" gid="5" x="376" y="1371"/>
+  <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
+  <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
+  <object name="TableJar" type="Jar" gid="5" x="2876" y="1313"/>
+  <object name="TableJar" type="Jar" gid="5" x="2262" y="1841"/>
+  <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
-  <object name="ROOM1_Foreground" type="EntitySprite" gid="5" x="0" y="2160"/>
+  <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160"/>
  </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
-  <object name="Byra" type="StaticCollision" x="0" y="1259">
-   <polyline points="0,0 703,-4 704,41 673,47 673,86 655,111 655,847 634,866 634,897"/>
+  <object name="Byra" type="StaticCollision" x="0" y="1372">
+   <polyline points="0,0 614,0 612,36 588,44 586,76 572,100 572,742 552,784"/>
   </object>
-  <object type="StaticCollision" x="4470" y="0">
-   <polyline points="0,0 4,736 -36,746 -82,786 -130,846 -134,870 -106,892 -96,912 -84,956 -92,1046 -98,1200 -116,1396 -140,1570 -170,1736 -14,1794 -14,1582 520,1576"/>
+  <object name="StolDyna" type="StaticCollisionLoop" x="1385" y="1132">
+   <polyline points="0,0 -30,-80 -64,-174 -82,-262 -82,-304 -70,-334 -34,-358 -14,-360 0,-342 6,-306 14,-244 30,-144 54,-80 66,-42 64,-22 52,-6 34,10 12,12 6,6"/>
   </object>
-  <object type="StaticCollision" x="4470" y="2151">
-   <polyline points="0,0 0,-118 -86,-116 -162,-136 -228,-174 -236,-190 -200,-302 -106,-252 -16,-226 22,-218 524,-220"/>
+  <object name="StolDyna2" type="StaticCollisionLoop" x="1400" y="1324">
+   <polyline points="0,0 4,-16 34,-40 64,-54 86,-56 120,-50 192,-40 276,-40 334,-36 376,-18 400,12 396,28 386,40 364,48 26,38 8,24 -2,8"/>
+  </object>
+  <object name="TableBottom" type="StaticCollisionLoop" x="2175" y="1847">
+   <polyline points="0,0 780,4 780,66 2,62"/>
+  </object>
+  <object name="BordTop" type="StaticCollisionLoop" x="2065" y="1320">
+   <polyline points="0,0 1003,-1 1016,4 1017,33 1009,41 979,43 955,75 940,88 920,89 919,133 95,135 88,128 88,92 67,88 29,44 -9,44 -8,13"/>
+  </object>
+  <object name="Mikroskap" type="StaticCollision" x="2095" y="1315">
+   <polyline points="0,0 13,-31 7,-61 13,-97 28,-121 17,-137 -19,-164 -27,-208 -17,-260 8,-311 47,-344 87,-365 91,-379 125,-383 129,-413 153,-417 157,-432 167,-444 167,-505 193,-505 193,-436 203,-427 203,-309 209,-301 229,-313 229,-295 259,-267 241,-249 213,-281 196,-271 197,-236 172,-233 167,-300 140,-301 147,-287 140,-275 125,-272 109,-281 92,-281 88,-320 68,-311 47,-279 40,-233 48,-201 72,-176 84,-167 113,-177 124,-199 136,-199 136,-189 251,-189 251,-199 261,-199 263,-188 269,-183 269,-165 259,-163 132,-165 116,-137 116,-101 163,-99 188,-125 209,-123 253,-93 249,-80 227,-53 188,-77 123,-73 156,-33 280,-36 324,15"/>
+  </object>
+  <object name="RightWallTop" type="StaticCollision" x="4475" y="0">
+   <polyline points="0,0 3,933 -36,945 -53,987 -69,1188 -108,1657 -119,1748 -99,1760 -17,1787 -17,1581 523,1580"/>
+  </object>
+  <object name="RightWallBot" type="StaticCollision" x="4475" y="2156">
+   <polyline points="0,0 1,-120 -73,-117 -141,-133 -117,-251 -104,-255 7,-224 524,-220"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
@@ -61,7 +79,7 @@
   <object name="mal1" type="Moth" x="3994" y="1612" width="60" height="60">
    <ellipse/>
   </object>
-  <object name="mal1" type="Moth" x="2763" y="163" width="60" height="60">
+  <object name="mal1" type="Moth" x="2973" y="1161" width="60" height="60">
    <ellipse/>
   </object>
   <object name="mal1" type="Moth" x="1921" y="1018" width="60" height="60">

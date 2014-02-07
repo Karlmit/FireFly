@@ -17,6 +17,10 @@ enum class TexturesID
 	Spider,
 	ZidDash,
 	ROOM1_Byra,
+	ROOM1_Microscope,
+	ROOM1_TestTubes,
+	ROOM1_Table,
+	ROOM1_Chair,
 	SIZE_OF_ENUM,	// Keep last
 };
 
@@ -36,6 +40,10 @@ static const char* TexturesIDNames[TexturesID::SIZE_OF_ENUM] =
 	"Spider",
 	"ZidDash",
 	"ROOM1_Byra",
+	"ROOM1_Microscope",
+	"ROOM1_TestTubes",
+	"ROOM1_Table",
+	"ROOM1_Chair",
 };
 
 enum class SoundEffectsID

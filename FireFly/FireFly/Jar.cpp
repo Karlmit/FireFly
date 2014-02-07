@@ -10,8 +10,8 @@ Jar::Jar(TexturesID textureID, sf::Vector2f position)
 
 
 	// Skapar rectanglar för kollision för Burken
-	float glassWidthAdjust = 50.f;
-	float glassHeightAdjust = 50.f;
+	float glassWidthAdjust = 25.f;
+	float glassHeightAdjust = 4.f;
 
 	bounds.left += glassWidthAdjust;
 	bounds.top += glassHeightAdjust;
