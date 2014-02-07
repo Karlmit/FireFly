@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "Animation.h"
+#include "Audio.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -25,6 +26,7 @@ sf::Sprite		mSprite;
 	Rigidbody	mRigidbody;
 	Animation idleAnimation;
 	Animation dashAnimation;
+	Audio dashSound;
 	bool zidDash;
 	int dashFrameNo;
 	bool mDirLeft;

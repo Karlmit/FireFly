@@ -11,6 +11,7 @@ Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getLoading().getTexture(TexturesID::Zid))
 ,idleAnimation(TexturesID::Spider, 128, 128, 150, 15, 10, 10)
 ,dashAnimation(TexturesID::ZidDash, 64, 64, 25, 5, 2, 5)
+,dashSound(SoundEffectsID::Moth)
 ,mRigidbody()
 {
 	// Sätter origin för spriten till mitten
@@ -45,6 +46,10 @@ Zid::Zid(sf::Vector2f position)
 
 void Zid::updateEntity(sf::Time dt) 
 {
+
+	// S?ger att allt ljud som Zid g?r ska h?ras fr?n Zid.
+	sf::Listener::setPosition(getPosition().x, getPosition().y, 1);
+	dashSound.updateSound(getPosition());
 	
 	if(zidDash == true)
 	{
@@ -173,8 +178,9 @@ void Zid::movement()
 			force *= 10.f;
 
 			body->ApplyLinearImpulse(force , body->GetWorldCenter(), true);
-
 			zidDash = true;
+
+			dashSound.playSound();
 		}
 			
 	}
