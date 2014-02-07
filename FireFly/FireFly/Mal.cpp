@@ -58,19 +58,19 @@ void Mal::updateEntity(sf:: Time timePerFrame)
 
 
 	// Sets the look direction based on velocity
-	if (body->GetLinearVelocity().x < 0) 
+	if (body->GetLinearVelocity().x < -0.2f) 
 	{
-		direction = true;
+		mDirLeft = true;
 		mSprite.setScale(-1.f, 1.f);
 	}
-	else if (body->GetLinearVelocity().x > 0)
+	else if (body->GetLinearVelocity().x > 0.2f)
 	{
-		direction = false;
+		mDirLeft = false;
 		mSprite.setScale(1.f, 1.f);
 	}
-	else if(body->GetLinearVelocity().x == 0)
+	else if(body->GetLinearVelocity().x >= -0.2f && 0.2f >= body->GetLinearVelocity().x)
 	{
-		if(direction == true)
+		if(mDirLeft == true)
 		{
 			mSprite.setScale(-1.f, 1.f);
 		}
