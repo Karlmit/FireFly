@@ -109,6 +109,8 @@ void Level::loadMap(string filename)
 	{
 		cout << "First gid=" << tileset.getFirstgid() << " name=" << tileset.getName() 
 			<< "\twidth=" << tileset.getTilewidth() << "\theight=" << tileset.getTileheight() << endl;
+		cout << "src=" << tileset.getImageSource() << endl;
+		cout << endl;
 	}
 	cout << endl;
 
