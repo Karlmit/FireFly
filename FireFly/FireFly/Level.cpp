@@ -27,52 +27,13 @@ Level &Level::getLevel()
 	return level;
 }
 
-void Level::startLevel0()
-{
-	// Creates a box2d world
-	Box2dWorld::newWorld(b2Vec2(0, -10.f));
-
-	// Load the resources for this level
-	Loading::getLoading().loadLevel0();
-
-	// Level boundry
-	sf::FloatRect levelBoundry(-2500, -1080, 5000, 2160);
-
-	// Sets level boundry for the camera
-	Camera::currentCamera().setBounds(levelBoundry);
-
-	// Create the entities for this level 
-	// Should come from a level file later
-	EntityList& eList = EntityList::getEntityList();	
-
-	// Adding some sprites
-	eList.addEntity(new EntitySprite(TexturesID::ROOM1_Background), Layer::Background);
-	eList.addEntity(new EntitySprite(TexturesID::ROOM1_Foreground), Layer::Foreground);
-	eList.addEntity(new EntitySprite(TexturesID::ROOM1_Coat5), Layer::Front);
-
-	// Adding Zid
-	eList.addEntity(new Zid(sf::Vector2f(300, 0)), Layer::Front);
-	
-	// Adds a collider around the entire level
-	eList.addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front);
-
-	// Adds a jar
-	eList.addEntity(new Jar(TexturesID::ROOM1_Jar, sf::Vector2f(0,0)), Layer::Front);
-
-	//Adding Mal
-	eList.addEntity(new Mal(sf::Vector2f(400, 0)), Layer::Front);
-
-}
 
 void Level::startLevel1()
 {
 	// Creates a box2d world
 	Box2dWorld::newWorld(b2Vec2(0, -10.f));
 
-	// Load the resources for this level
-	Loading::getLoading().loadLevel0();
-	
-
+	// Loads the level
 	loadMap("Maps/room1.tmx");
 }
 
@@ -124,10 +85,12 @@ void Level::loadMap(string filename)
 			MapTileset tileset = map.getTileset(obj.getGid());
 			float imageWidth  = float(tileset.getTilewidth());
 			float imageHeight = float(tileset.getTileheight());
-			string imageName = tileset.getImageSource();
 			Layer layer = getLayerFromString(group.getName());
 			//position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
-			TexturesID texID = getTexIdFromString(tileset.getName());
+			//TexturesID texID = getTexIdFromString(tileset.getName());
+			string mapDir = "Maps/";
+			mapDir.append(tileset.getImageSource());
+			string imageSrc = mapDir;
 			string entityType = obj.getType();
 
 			cout << "[" << obj.getType() << "](" << position.x << ", " <<  position.y << ")\t" 
@@ -138,12 +101,12 @@ void Level::loadMap(string filename)
 			if (entityType == "EntitySprite")
 			{
 				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
-				eList.addEntity(new EntitySprite(texID, position), layer);
+				eList.addEntity(new EntitySprite(imageSrc, position), layer);
 			}
 			else if (entityType == "Jar")
 			{
 				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
-				eList.addEntity(new Jar(texID, position), layer);
+				eList.addEntity(new Jar(imageSrc, position), layer);
 			}
 			else if (entityType == "ZidSpawn") 
 			{
@@ -178,18 +141,6 @@ void Level::loadMap(string filename)
 		
 }
 
-TexturesID Level::getTexIdFromString(string strTexId)
-{
-	for (int i = 0; i < int(TexturesID::SIZE_OF_ENUM); i++)
-	{
-		if (strTexId == TexturesIDNames[i])
-			return TexturesID(i);
-	}
-
-	string s = "Level::getTexIdFromString - No texture id with the name \"" +  strTexId +"\"";
-	throw logic_error(s);
-	return TexturesID::SIZE_OF_ENUM;
-}
 
 Layer Level::getLayerFromString(string strLayer)
 {
@@ -206,7 +157,9 @@ Layer Level::getLayerFromString(string strLayer)
 	else if (strLayer == "NPC")
 		return Layer::NPC;
 
-	throw logic_error("Level::getLayerFromString - No Layer with that name.");
+	string ectStr = "Level::getLayerFromString - No Layer with that name: ";
+	ectStr.append(strLayer);
+	throw logic_error(ectStr);
 	return Layer::Background;
 }
 

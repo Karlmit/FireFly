@@ -9,8 +9,6 @@ class Level
 public:
 	static Level &getLevel();
 
-	// Initiates level 0
-	void startLevel0();
 	// Initiates level 1
 	void startLevel1();
 private:
@@ -22,7 +20,6 @@ private:
 private:
 	// Spawn entities from a map file
 	void loadMap(string filename);
-	TexturesID	getTexIdFromString(string strTexId);
-	Layer		getLayerFromString(string strLayer);
+	Layer getLayerFromString(string strLayer);
 };
 

@@ -11,7 +11,7 @@ class Animation
 {
 public:
 	
-	Animation(TexturesID fileName,
+	Animation(string texture,
 				unsigned int spriteWidth,
 				unsigned int spriteHeight,
 				unsigned int numberOfSprites,

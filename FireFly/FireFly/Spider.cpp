@@ -2,7 +2,7 @@
 
 
 Spider::Spider(sf::Vector2f position) :
-idleAnimation(TexturesID::Spider, 128, 128, 150, 15, 10, 10)
+idleAnimation("Resources/testspide.png", 128, 128, 150, 15, 10, 10)
 {
 	setPosition(position);
 

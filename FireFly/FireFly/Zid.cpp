@@ -8,9 +8,9 @@
 #include <iostream>
 
 Zid::Zid(sf::Vector2f position)
-: mSprite(Loading::getLoading().getTexture(TexturesID::Zid))
-,idleAnimation(TexturesID::Spider, 128, 128, 150, 15, 10, 10)
-,dashAnimation(TexturesID::ZidDash, 64, 64, 25, 5, 2, 5)
+: mSprite(Loading::getTexture("Resources/zid.png"))
+,idleAnimation("Resources/testspide.png", 128, 128, 150, 15, 10, 10)
+,dashAnimation("Resources/explosionAnim.png", 64, 64, 25, 5, 2, 5)
 ,mRigidbody()
 {
 	// Sätter origin för spriten till mitten

@@ -1,15 +1,15 @@
 #include "EntitySprite.h"
 
-EntitySprite::EntitySprite(TexturesID textureID) 
-: mSprite(Loading::getLoading().getTexture(textureID))
+EntitySprite::EntitySprite(string textureID) 
+: mSprite(Loading::getTexture(textureID))
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 }
 
-EntitySprite::EntitySprite(TexturesID textureID ,sf::Vector2f position) 
-: mSprite(Loading::getLoading().getTexture(textureID))
+EntitySprite::EntitySprite(string textureID ,sf::Vector2f position) 
+: mSprite(Loading::getTexture(textureID))
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();

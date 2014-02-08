@@ -143,7 +143,6 @@
     <ClInclude Include="MapObjectProperty.h" />
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
-    <ClInclude Include="ResourceID.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />

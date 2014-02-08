@@ -2,7 +2,7 @@
 
 
 
-Animation::Animation(TexturesID texture,
+Animation::Animation(string texture,
 						unsigned int spriteWidth,
 						unsigned int spriteHeight,
 						unsigned int numberOfSprites,
@@ -15,7 +15,7 @@ Animation::Animation(TexturesID texture,
 	mSpriteWidth(spriteWidth),
 	mSpriteHeight(spriteHeight),
 	mCurrentFrame(0),
-	mSprite(Loading::getLoading().getTexture(texture)),
+	mSprite(Loading::getTexture(texture)),
 	mEndOfAnimation(false),
 	mSpriteRows(spriteRow),
 	mCurrentColumnNumber(0),

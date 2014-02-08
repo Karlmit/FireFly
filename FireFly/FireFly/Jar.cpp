@@ -1,8 +1,8 @@
 #include "Jar.h"
 
-Jar::Jar(TexturesID textureID, sf::Vector2f position)
+Jar::Jar(string texture, sf::Vector2f position)
 : mRigidbody()
-, mSprite(Loading::getLoading().getTexture(textureID))
+, mSprite(Loading::getTexture(texture))
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();

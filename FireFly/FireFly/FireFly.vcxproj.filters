@@ -198,9 +198,6 @@
     <ClInclude Include="Globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceID.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Zid.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>

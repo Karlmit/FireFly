@@ -2,11 +2,6 @@
 
 Loading Loading::loading;
 
-Loading &Loading::getLoading()
-{
-	return loading;
-}
-
 Loading::Loading()
 {
 }
@@ -15,66 +10,20 @@ Loading::~Loading()
 {
 }
 
-//
-// Get texture based on Textures id
-//
-const sf::Texture& Loading::getTexture(TexturesID id) const
+// Loads and gets the texture based on filepath
+sf::Texture& Loading::getTexture(string filePath, bool smooth)
 {
-	return mTextureHolder.get(id);
-}
+	loading.mTextureHolder.load(filePath, filePath);
+	if (smooth)
+		loading.mTextureHolder.get(filePath).setSmooth(smooth);
 
-
-// Get texture based on Textures id
-sf::Texture& Loading::getTexture(TexturesID id)
-{
-	return mTextureHolder.get(id);
+	return loading.mTextureHolder.get(filePath);
 }
 
 // Get soundbuffer based on SoundsEffects id
-const sf::SoundBuffer& Loading::getSound(SoundEffectsID id) const
+sf::SoundBuffer& Loading::getSound(string filePath)
 {
-	return mSoundBufferHolder.get(id);
+	loading.mSoundBufferHolder.load(filePath, filePath);
+	return loading.mSoundBufferHolder.get(filePath);
 }
 
-// Get soundbuffer based on SoundsEffects id
-sf::SoundBuffer& Loading::getSound(SoundEffectsID id)
-{
-	return mSoundBufferHolder.get(id);
-}
-
-void Loading::loadTextureSmooth(TexturesID textureId, const std::string& filename)
-{
-	mTextureHolder.load(textureId, filename);
-	getTexture(textureId).setSmooth(true);
-}
-
-
-// Loads the resources for level 0
-void Loading::loadLevel0()
-{
-	// Sounds
-	mSoundBufferHolder.load(SoundEffectsID::Moth, "Resources/canary.wav");
-
-	// Textures
-	loadTextureSmooth(TexturesID::Zid, "Resources/zid.png");
-	loadTextureSmooth(TexturesID::Moth, "Resources/spritesheet_moth1.png");
-
-	mTextureHolder.load(TexturesID::ROOM1_Background, "Resources/Room 1/RUM_1.png");
-	mTextureHolder.load(TexturesID::ROOM1_Foreground, "Resources/Room 1/Forgrund.png");
-	mTextureHolder.load(TexturesID::ROOM1_Coat1, "Resources/Room 1/Coat 1.png");
-	mTextureHolder.load(TexturesID::ROOM1_Coat5, "Resources/Room 1/Coat 5.png");
-
-	mTextureHolder.load(TexturesID::ROOM1_Jar, "Resources/Room 1/burk_1_scale.png");
-	mTextureHolder.load(TexturesID::ROOM1_Byra, "Resources/Room 1/byra_scale.png");
-	mTextureHolder.load(TexturesID::ROOM1_Table, "Resources/Room 1/bord_scale.png");
-	mTextureHolder.load(TexturesID::ROOM1_Microscope, "Resources/Room 1/mikroskop_scale.png");
-	mTextureHolder.load(TexturesID::ROOM1_TestTubes, "Resources/Room 1/provror_scale.png");
-	mTextureHolder.load(TexturesID::ROOM1_Chair, "Resources/Room 1/stol_scale.png");
-
-	loadTextureSmooth(TexturesID::Spider, "Resources/testspide.png");
-	loadTextureSmooth(TexturesID::ZidDash, "Resources/explosionAnim.png");
-
-	
-
-
-}

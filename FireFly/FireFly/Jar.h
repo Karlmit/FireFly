@@ -5,7 +5,7 @@
 class Jar : public Entity 
 {
 public:
-	Jar(TexturesID textureID, sf::Vector2f position);
+	Jar(string texture, sf::Vector2f position);
 
 private:
 	virtual void	updateEntity(sf::Time dt);	

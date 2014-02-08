@@ -7,8 +7,8 @@
 class EntitySprite : public Entity 
 {
 public:
-	EntitySprite(TexturesID textureID);
-	EntitySprite(TexturesID textureID ,sf::Vector2f position);
+	EntitySprite(string textureID);
+	EntitySprite(string textureID ,sf::Vector2f position);
 
 private:
 	virtual void	updateEntity(sf::Time dt);	
