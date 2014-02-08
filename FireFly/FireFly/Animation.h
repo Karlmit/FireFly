@@ -11,7 +11,7 @@ class Animation
 {
 public:
 	
-	Animation(string texture,
+	Animation(const sf::Texture& texture,
 				unsigned int spriteWidth,
 				unsigned int spriteHeight,
 				unsigned int numberOfSprites,

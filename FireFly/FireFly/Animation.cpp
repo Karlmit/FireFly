@@ -2,7 +2,7 @@
 
 
 
-Animation::Animation(string texture,
+Animation::Animation(const sf::Texture& texture,
 						unsigned int spriteWidth,
 						unsigned int spriteHeight,
 						unsigned int numberOfSprites,
@@ -15,7 +15,7 @@ Animation::Animation(string texture,
 	mSpriteWidth(spriteWidth),
 	mSpriteHeight(spriteHeight),
 	mCurrentFrame(0),
-	mSprite(Loading::getTexture(texture)),
+	mSprite(texture),
 	mEndOfAnimation(false),
 	mSpriteRows(spriteRow),
 	mCurrentColumnNumber(0),

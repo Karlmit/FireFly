@@ -81,13 +81,12 @@ void Level::loadMap(string filename)
 		cout << "--[" << group.getName() << "]--" << endl;
 		for (MapObject obj : group.getObjects())
 		{
+			// Gets the data for the object
 			sf::Vector2f position(float(obj.getX()), float(obj.getY()));
 			MapTileset tileset = map.getTileset(obj.getGid());
 			float imageWidth  = float(tileset.getTilewidth());
 			float imageHeight = float(tileset.getTileheight());
 			Layer layer = getLayerFromString(group.getName());
-			//position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
-			//TexturesID texID = getTexIdFromString(tileset.getName());
 			string mapDir = "Maps/";
 			mapDir.append(tileset.getImageSource());
 			string imageSrc = mapDir;
@@ -98,6 +97,7 @@ void Level::loadMap(string filename)
 					<< "gid=" << obj.getGid() << " "
 					<< endl;
 
+			// Spawn the right entity based on type and/or layer
 			if (entityType == "EntitySprite")
 			{
 				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
@@ -116,7 +116,7 @@ void Level::loadMap(string filename)
 			{
 				eList.addEntity(new Mal(position), Layer::NPC);
 			}
-			else if (entityType == "StaticCollision" || entityType == "StaticCollisionLoop")
+			else if (layer == Layer::Collision || entityType == "StaticCollision" || entityType == "StaticCollisionLoop")
 			{
 				bool loop = entityType == "StaticCollisionLoop" ? true : false;
 				vector<sf::Vector2f> sfPoints;
@@ -131,14 +131,13 @@ void Level::loadMap(string filename)
 				}
 				cout << endl;
 
-				eList.addEntity(new StaticLineCollider(sfPoints, loop), Layer::Foreground);
+				if (!sfPoints.empty())
+					eList.addEntity(new StaticLineCollider(sfPoints, loop), Layer::Foreground);
 			}
 		}
 
 		cout << endl;
-	}
-	
-		
+	}		
 }
 
 

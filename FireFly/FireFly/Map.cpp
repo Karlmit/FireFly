@@ -97,7 +97,8 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
 			if (object->Attribute("name") != NULL)
 				obj.setName(object->Attribute("name"));
-            obj.setType(object->Attribute("type"));
+			if (object->Attribute("type") != NULL)
+				obj.setType(object->Attribute("type"));
 			if (object->Attribute("gid") != NULL)
 				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
@@ -142,7 +143,8 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
 			if (object->Attribute("name") != NULL)
 				obj.setName(object->Attribute("name"));
-            obj.setType(object->Attribute("type"));
+			if (object->Attribute("type") != NULL)
+				obj.setType(object->Attribute("type"));
 			if (object->Attribute("gid") != NULL)
 				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
@@ -198,7 +200,8 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
 			if (object->Attribute("name") != NULL)
 				obj.setName(object->Attribute("name"));
-            obj.setType(object->Attribute("type"));
+			if (object->Attribute("type") != NULL)
+				obj.setType(object->Attribute("type"));
 			if (object->Attribute("gid") != NULL)
 				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
@@ -243,7 +246,8 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
 			if (object->Attribute("name") != NULL)
 				obj.setName(object->Attribute("name"));
-            obj.setType(object->Attribute("type"));
+			if (object->Attribute("type") != NULL)
+				obj.setType(object->Attribute("type"));
 			if (object->Attribute("gid") != NULL)
 				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
