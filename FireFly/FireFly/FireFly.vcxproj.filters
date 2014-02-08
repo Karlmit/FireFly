@@ -258,6 +258,9 @@
     <ClInclude Include="Spider.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="WorldContactListener.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -478,6 +481,9 @@
     </ClCompile>
     <ClCompile Include="Spider.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldContactListener.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

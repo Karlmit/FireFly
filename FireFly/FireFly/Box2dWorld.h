@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Box2D\Box2D.h"
+#include "WorldContactListener.h"
 #include <memory>
 
 class Box2dWorld {
@@ -11,4 +12,5 @@ public:
 
 private:
 	static std::unique_ptr<b2World> sWorld;
+	static std::unique_ptr<WorldContactListener> sListener;
 };
