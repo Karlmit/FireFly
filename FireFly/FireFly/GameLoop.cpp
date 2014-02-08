@@ -27,8 +27,8 @@ GameLoop::~GameLoop()
 
 void GameLoop::run()
 {
-	// Load first level
-	Level::getLevel().startLevel1();
+	// Load the level "level1.tmx"
+	Level::getLevel().startLevel("level1.tmx");
 
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -129,5 +129,39 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 
 	if (key == sf::Keyboard::F12 && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
+
+	if (isPressed == false)
+	{
+		switch (key)
+		{	
+			break;
+		case sf::Keyboard::F1:
+			Level::getLevel().startLevel("level1.tmx");
+			break;
+		case sf::Keyboard::F2:
+			Level::getLevel().startLevel("level2.tmx");
+			break;
+		case sf::Keyboard::F3:
+			Level::getLevel().startLevel("level3.tmx");
+			break;
+		case sf::Keyboard::F4:
+			Level::getLevel().startLevel("level4.tmx");
+			break;
+		case sf::Keyboard::F5:
+			Level::getLevel().startLevel("level5.tmx");
+			break;
+		case sf::Keyboard::F6:
+			Level::getLevel().startLevel("level6.tmx");
+			break;
+		case sf::Keyboard::F7:
+			Level::getLevel().startLevel("level7.tmx");
+			break;
+		case sf::Keyboard::F8:
+			Level::getLevel().startLevel("level8.tmx");
+			break;
+		default:
+			break;
+		}
+	}
 }
 

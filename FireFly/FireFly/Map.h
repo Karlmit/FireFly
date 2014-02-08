@@ -20,10 +20,10 @@ private:
     vector<MapObjectGroup> mObjectGroups;
 
 public:
-	Map(string source);
+	Map();
     ~Map();
 
-	void loadMap(string source);
+	bool loadMap(string source);
 	void loadTilesets(tinyxml2::XMLDocument *xmlmap);
 	void loadObjectGroups(tinyxml2::XMLDocument *xmlmap);
 

@@ -10,21 +10,22 @@ int stringToInt(string str)
     return ret;
 }
 
-Map::Map(string source)
+Map::Map()
 {
-	loadMap(source);
+	
 }
 
 Map::~Map()
 {
 }
 
-void Map::loadMap(string source)
+bool Map::loadMap(string source)
 {
 	XMLDocument xmlmap;
 
     if (xmlmap.LoadFile(source.data()) != XMLError::XML_NO_ERROR)
-		throw runtime_error("Map::loadMap - Error loading the xml map file.\n");
+		//throw runtime_error("Map::loadMap - Error loading the xml map file.\n");
+		return false;
 
     XMLElement* map_info = xmlmap.FirstChildElement("map");
 
@@ -39,6 +40,7 @@ void Map::loadMap(string source)
     loadTilesets(&xmlmap);
     loadObjectGroups(&xmlmap);
 
+	return true;
 }
 
 void Map::loadTilesets(XMLDocument *xmlmap)

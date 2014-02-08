@@ -9,8 +9,8 @@ class Level
 public:
 	static Level &getLevel();
 
-	// Initiates level 1
-	void startLevel1();
+	// Start level #
+	void startLevel(string level);
 private:
 	Level();
 	~Level();

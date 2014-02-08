@@ -136,6 +136,12 @@ void EntityList::emptyList()
 	{
 		delete (*i);
 	}
+	listedEntities = entityList();
+
+	BackgroundLayerList = entityList();
+	NPCLayerList = entityList();
+	FrontLayerList = entityList();
+	ForegroundLayerList = entityList();
 }
 
 Entity* EntityList::getEntity(std::string id)
@@ -151,7 +157,7 @@ Entity* EntityList::getEntity(std::string id)
 	return nullptr;
 }
 
-std::vector<Entity*> EntityList::getEntitys(std::string id)
+std::vector<Entity*> EntityList::getEntities(std::string id)
 {
 	std::vector<Entity*> list;
 	for (Entity* e : listedEntities) 

@@ -28,21 +28,32 @@ Level &Level::getLevel()
 }
 
 
-void Level::startLevel1()
+void Level::startLevel(string levelName)
 {
+	// Clear all entities
+	EntityList::getEntityList().emptyList();
+
 	// Creates a box2d world
 	Box2dWorld::newWorld(b2Vec2(0, -10.f));
+	
 
 	// Loads the level
-	loadMap("Maps/room1.tmx");
+	string mapStr = "Maps/";
+	mapStr.append(levelName);
+
+	loadMap(mapStr);
 }
 
 void Level::loadMap(string filename)
 {
-	cout << "Loads level \"" << filename << "\"" << endl;
-
 	// Loads all the map data in to the Map class object
-	Map map(filename);
+	Map map;
+	if (map.loadMap(filename) == false) {
+		cout << endl << "There is no map with the name \"" << filename << "\"" << endl;
+		return;
+	}
+
+	cout << "Loads level \"" << filename << "\"" << endl;
 
 	// Gets the entitylist
 	EntityList& eList = EntityList::getEntityList();
