@@ -1,7 +1,9 @@
 #include "GameLoop.h"
 #include "Box2dWorld.h"
+#include <Windows.h>
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
+void appInFocus(sf::RenderWindow* app);
 
 GameLoop::GameLoop(sf::Vector2u windowSize)
 : mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
@@ -29,7 +31,7 @@ void GameLoop::run()
 {
 	// Load the level "level1.tmx"
 	Level::getLevel().startLevel("level1.tmx");
-
+		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
@@ -57,20 +59,24 @@ void GameLoop::processEvents()
 	{
 		switch (event.type)
 		{
-			case sf::Event::KeyPressed:
-				handlePlayerInput(event.key.code, true);
-				break;
+		case sf::Event::MouseButtonPressed:
+			appInFocus(&mWindow);
+			break;
 
-			case sf::Event::KeyReleased:
-				handlePlayerInput(event.key.code, false);
-				break;
+		case sf::Event::KeyPressed:
+			handlePlayerInput(event.key.code, true);
+			break;
 
-			case sf::Event::Closed:
-				mWindow.close();
-				break;
-			case::sf::Event::MouseWheelMoved:
-				mCamera.changeZoom(event.mouseWheel.delta);
-				break;
+		case sf::Event::KeyReleased:
+			handlePlayerInput(event.key.code, false);
+			break;
+
+		case sf::Event::Closed:
+			mWindow.close();
+			break;
+		case::sf::Event::MouseWheelMoved:
+			mCamera.changeZoom(event.mouseWheel.delta);
+			break;
 
 		}
 	}
@@ -130,6 +136,8 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 	if (key == sf::Keyboard::F12 && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
 
+	
+
 	if (isPressed == false)
 	{
 		switch (key)
@@ -163,5 +171,13 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			break;
 		}
 	}
+}
+
+void appInFocus(sf::RenderWindow* app)
+{ 
+    HWND handle = app->getSystemHandle();
+    
+    SetFocus(handle);
+    SetForegroundWindow(handle);
 }
 
