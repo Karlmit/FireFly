@@ -37,7 +37,7 @@ void EntityList::draw(sf::RenderWindow& window)
 
 }
 
-void EntityList::addEntity(Entity *entity, Layer layer)
+void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 {
 	listedEntities.push_back(entity);
 
@@ -50,6 +50,9 @@ void EntityList::addEntity(Entity *entity, Layer layer)
 		FrontLayerList.push_back(entity);
 	else if (layer == Layer::Foreground)
 		ForegroundLayerList.push_back(entity);
+
+	if (runStart)
+		entity->start();
 }
 
 void EntityList::updateList()
@@ -142,6 +145,14 @@ void EntityList::emptyList()
 	NPCLayerList = entityList();
 	FrontLayerList = entityList();
 	ForegroundLayerList = entityList();
+}
+
+void EntityList::startList()
+{
+	for (Entity* e : listedEntities) 
+	{
+		e->start();
+	}
 }
 
 Entity* EntityList::getEntity(std::string id)

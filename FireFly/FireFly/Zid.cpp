@@ -42,7 +42,6 @@ Zid::Zid(sf::Vector2f position)
 
 
 
-
 void Zid::updateEntity(sf::Time dt) 
 {
 	

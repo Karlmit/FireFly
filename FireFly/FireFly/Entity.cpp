@@ -9,6 +9,11 @@ Entity::Entity()
 Entity::~Entity() {
 }
 
+
+void Entity::start()
+{
+}
+
 void Entity::update(sf::Time dt) 
 {
 	// Called on child classes

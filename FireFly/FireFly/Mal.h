@@ -13,6 +13,7 @@ public:
 	~Mal();
 
 private:
+	virtual void start();
 	virtual void updateEntity(sf::Time dt);
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 	

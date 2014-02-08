@@ -37,8 +37,6 @@
   <object name="Byra" type="EntitySprite" gid="6" x="-7" y="2163"/>
   <object name="PlastJar" type="Jar" gid="5" x="26" y="1363"/>
   <object name="StartJar" type="Jar" gid="5" x="376" y="1371"/>
-  <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
-  <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
   <object name="TableJar" type="Jar" gid="5" x="2876" y="1313"/>
   <object name="TableJar" type="Jar" gid="5" x="2262" y="1841"/>
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
@@ -49,9 +47,12 @@
   <object name="PlastJar" type="Jar" gid="5" x="876" y="822"/>
   <object name="PlastJar" type="Jar" gid="5" x="1285" y="736"/>
   <object name="PlastJar" type="Jar" gid="5" x="1289" y="467"/>
+  <object name="PlastJar" type="Jar" gid="5" x="2171" y="795"/>
+  <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160" visible="0"/>
+  <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
  </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
   <object name="Byra" type="StaticCollision" x="0" y="1372">
@@ -78,14 +79,8 @@
   <object name="RightWallBot" type="StaticCollision" x="4475" y="2156">
    <polyline points="0,0 1,-120 -73,-117 -141,-133 -117,-251 -104,-255 7,-224 524,-220"/>
   </object>
-  <object name="Tavla" type="StaticCollisionLoop" x="2850" y="596">
-   <polyline points="0,0 1044,0 1040,-528 -4,-524 0,-32"/>
-  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="zids spawn" type="ZidSpawn" x="2015" y="536" width="99" height="85">
-   <ellipse/>
-  </object>
   <object name="mal1" type="Moth" x="3994" y="1612" width="60" height="60">
    <ellipse/>
   </object>
@@ -93,6 +88,9 @@
    <ellipse/>
   </object>
   <object name="mal1" type="Moth" x="1921" y="1018" width="60" height="60">
+   <ellipse/>
+  </object>
+  <object name="zids spawn" type="ZidSpawn" x="2015" y="536" width="99" height="85">
    <ellipse/>
   </object>
  </objectgroup>

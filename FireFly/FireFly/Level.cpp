@@ -42,6 +42,9 @@ void Level::startLevel(string levelName)
 	mapStr.append(levelName);
 
 	loadMap(mapStr);
+
+	// Runs start() on all entities
+	EntityList::getEntityList().startList();
 }
 
 void Level::loadMap(string filename)
@@ -70,7 +73,7 @@ void Level::loadMap(string filename)
 	Camera::currentCamera().setBounds(levelBoundry);
 
 	// Adds a collider around the entire level
-	eList.addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front);
+	eList.addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front, false);
 
 	// Adding Zid get that from the object loop
 	//eList.addEntity(new Zid(sf::Vector2f(300, 0)), Layer::Front);
@@ -112,20 +115,20 @@ void Level::loadMap(string filename)
 			if (entityType == "EntitySprite")
 			{
 				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
-				eList.addEntity(new EntitySprite(imageSrc, position), layer);
+				eList.addEntity(new EntitySprite(imageSrc, position), layer, false);
 			}
 			else if (entityType == "Jar")
 			{
 				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
-				eList.addEntity(new Jar(imageSrc, position), layer);
+				eList.addEntity(new Jar(imageSrc, position), layer, false);
 			}
 			else if (entityType == "ZidSpawn") 
 			{
-				eList.addEntity(new Zid(position), Layer::NPC);
+				eList.addEntity(new Zid(position), Layer::NPC, false);
 			}
 			else if (entityType == "Moth") 
 			{
-				eList.addEntity(new Mal(position), Layer::NPC);
+				eList.addEntity(new Mal(position), Layer::NPC, false);
 			}
 			else if (layer == Layer::Collision || entityType == "StaticCollision" || entityType == "StaticCollisionLoop")
 			{
@@ -143,7 +146,7 @@ void Level::loadMap(string filename)
 				cout << endl;
 
 				if (!sfPoints.empty())
-					eList.addEntity(new StaticLineCollider(sfPoints, loop), Layer::Foreground);
+					eList.addEntity(new StaticLineCollider(sfPoints, loop), Layer::Foreground, false);
 			}
 		}
 

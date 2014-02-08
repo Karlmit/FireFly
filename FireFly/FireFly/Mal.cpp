@@ -27,14 +27,18 @@ Mal::Mal(sf::Vector2f position)
 
 	mRigidbody.getBody()->SetBullet(true);
 
-	mID = "Mal";
-	mZid = EntityList::getEntityList().getEntity("Zid");
-	
+	mID = "Mal";	
 }
 
 
 Mal::~Mal(void)
 {
+}
+
+// Get pointers to other entities in start instead of the constructor to make sure the entity is spawned
+void Mal::start()
+{
+	mZid = EntityList::getEntityList().getEntity("Zid");
 }
 
 void Mal::updateEntity(sf:: Time timePerFrame)
