@@ -60,7 +60,7 @@ void GameLoop::processEvents()
 		switch (event.type)
 		{
 		case sf::Event::MouseButtonPressed:
-			appInFocus(&mWindow);
+			appInFocus(&mWindow);	// Fixes window out of focus bug.
 			break;
 
 		case sf::Event::KeyPressed:
