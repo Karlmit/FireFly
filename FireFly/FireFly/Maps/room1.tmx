@@ -34,7 +34,7 @@
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
-  <object name="Byra" type="EntitySprite" gid="6" x="0" y="2164"/>
+  <object name="Byra" type="EntitySprite" gid="6" x="-7" y="2163"/>
   <object name="PlastJar" type="Jar" gid="5" x="26" y="1363"/>
   <object name="StartJar" type="Jar" gid="5" x="376" y="1371"/>
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
@@ -44,6 +44,9 @@
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
   <object name="PlastJar" type="Jar" gid="5" x="25" y="1092"/>
   <object name="PlastJar" type="Jar" gid="5" x="29" y="823"/>
+  <object name="PlastJar" type="Jar" gid="5" x="873" y="1362"/>
+  <object name="PlastJar" type="Jar" gid="5" x="872" y="1091"/>
+  <object name="PlastJar" type="Jar" gid="5" x="876" y="822"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160"/>
