@@ -90,7 +90,7 @@
   <object name="mal1" type="Moth" x="1921" y="1018" width="60" height="60">
    <ellipse/>
   </object>
-  <object name="zids spawn" type="ZidSpawn" x="2015" y="536" width="99" height="85">
+  <object name="zids spawn" type="ZidSpawn" x="452" y="1201" width="99" height="85">
    <ellipse/>
   </object>
  </objectgroup>

@@ -1,4 +1,5 @@
 #include "Jar.h"
+#include <iostream>
 
 Jar::Jar(string texture, sf::Vector2f position)
 : mRigidbody()
@@ -31,6 +32,9 @@ Jar::Jar(string texture, sf::Vector2f position)
 
 	float density = 2.f;
 	mRigidbody.AddDynRectBody(rects, position, density);
+
+	// Adds itself to body data for collision callbacks
+	mRigidbody.getBody()->SetUserData(static_cast<b2ContactListener*>(this));
 }
 
 
@@ -50,4 +54,29 @@ void Jar::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	// Rigidbody debug draw
 	if (Globals::DEBUG_MODE)
 		mRigidbody.drawDebug(target, states);
+}
+
+// Start of AABB boxes overlapping
+void Jar::BeginContact(b2Contact *contact)
+{
+	if (contact->GetFixtureA()->GetBody() == mRigidbody.getBody())
+	{
+		//std::cout << mRigidbody.getBody()->GetLinearVelocity().Length() << " ";
+	}
+	else
+	{
+		//std::cout << mRigidbody.getBody()->GetLinearVelocity().Length() << " ";
+	}
+}
+
+// Post box2d solving col. Checks impulse of strength of impact
+void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse)
+{
+	float imp = max(impulse->normalImpulses[0], impulse->normalImpulses[1]);
+
+	if (imp > 20.f)
+	{
+		cout << imp << " Destroying jar." << endl;
+		killEntity();
+	}
 }
