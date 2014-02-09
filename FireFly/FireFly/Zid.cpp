@@ -9,7 +9,7 @@
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
-,idleAnimation(Loading::getTexture("testspide.png", true), 128, 128, 150, 15, 10, 10)
+,idleAnimation(Loading::getTexture("zid_flying_right_sheet.png", true), 64, 64, 8, 1, 10, 8)
 ,dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 25, 5, 2, 5)
 ,dashSound(Loading::getSound("canary.wav"), true)
 ,mRigidbody()
