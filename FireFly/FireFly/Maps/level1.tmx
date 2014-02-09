@@ -93,5 +93,6 @@
   <object name="zids spawn" type="ZidSpawn" x="452" y="1201" width="99" height="85">
    <ellipse/>
   </object>
+  <object name="TestTrigger" type="Trigger" x="575" y="235" width="265" height="253"/>
  </objectgroup>
 </map>

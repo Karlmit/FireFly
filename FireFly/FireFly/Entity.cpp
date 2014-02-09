@@ -3,6 +3,7 @@
 
 Entity::Entity()
 :mAliveStatus(true)
+,mID("NOID")
 {
 }
 

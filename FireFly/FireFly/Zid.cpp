@@ -37,6 +37,9 @@ Zid::Zid(sf::Vector2f position)
 	// Set zid as bullet to prevent going through stuff
 	mRigidbody.getBody()->SetBullet(true);
 
+	// So zid can be used in callbacks
+	mRigidbody.getBody()->SetUserData(this);
+
 	mID = "Zid";
 	dashFrameNo = 0;
 } 

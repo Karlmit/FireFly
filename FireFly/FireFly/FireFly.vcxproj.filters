@@ -267,6 +267,9 @@
     <ClInclude Include="AudioEntity.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -497,9 +500,12 @@
     <ClCompile Include="AudioEntity.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Maps\room1.tmx">
+    <None Include="Maps\level1.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
   </ItemGroup>

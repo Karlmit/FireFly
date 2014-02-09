@@ -9,6 +9,7 @@
 #include "LevelBoundryCollider.h"
 #include "Jar.h"
 #include "Mal.h"
+#include "Trigger.h"
 
 #include <iostream>
 
@@ -96,6 +97,8 @@ void Level::loadMap(string filename)
 		for (MapObject obj : group.getObjects())
 		{
 			// Gets the data for the object
+			float width = float(obj.getWidth());
+			float height = float(obj.getWidth());
 			sf::Vector2f position(float(obj.getX()), float(obj.getY()));
 			MapTileset tileset = map.getTileset(obj.getGid());
 			float imageWidth  = float(tileset.getTilewidth());
@@ -148,6 +151,15 @@ void Level::loadMap(string filename)
 
 				if (!sfPoints.empty())
 					eList.addEntity(new StaticLineCollider(sfPoints, loop), Layer::Foreground, false);
+			}
+			else if (entityType == "Trigger")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				eList.addEntity(new Trigger(rect), Layer::Foreground, false);
 			}
 		}
 

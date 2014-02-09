@@ -105,8 +105,10 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
             obj.setY(stringToInt(object->Attribute("y")));
-            //obj.setWidth(stringToInt(object->Attribute("width")));
-            //obj.setHeight(stringToInt(object->Attribute("height")));
+			if (object->Attribute("width") != NULL) {
+				obj.setWidth(stringToInt(object->Attribute("width")));
+				obj.setHeight(stringToInt(object->Attribute("height")));
+			}
 
 			if (object->FirstChildElement("properties") != NULL) 
 			{
@@ -151,8 +153,10 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
             obj.setY(stringToInt(object->Attribute("y")));
-            //obj.setWidth(stringToInt(object->Attribute("width")));
-            //obj.setHeight(stringToInt(object->Attribute("height")));
+            if (object->Attribute("width") != NULL) {
+				obj.setWidth(stringToInt(object->Attribute("width")));
+				obj.setHeight(stringToInt(object->Attribute("height")));
+			}
 
 			if (object->FirstChildElement("properties") != NULL) 
 			{
@@ -208,8 +212,10 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
             obj.setY(stringToInt(object->Attribute("y")));
-            //obj.setWidth(stringToInt(object->Attribute("width")));
-            //obj.setHeight(stringToInt(object->Attribute("height")));
+            if (object->Attribute("width") != NULL) {
+				obj.setWidth(stringToInt(object->Attribute("width")));
+				obj.setHeight(stringToInt(object->Attribute("height")));
+			}
 
 			if (object->FirstChildElement("properties") != NULL) 
 			{
@@ -254,8 +260,10 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 				obj.setGid(stringToInt(object->Attribute("gid")));
             obj.setX(stringToInt(object->Attribute("x")));
             obj.setY(stringToInt(object->Attribute("y")));
-            //obj.setWidth(stringToInt(object->Attribute("width")));
-            //obj.setHeight(stringToInt(object->Attribute("height")));
+            if (object->Attribute("width") != NULL) {
+				obj.setWidth(stringToInt(object->Attribute("width")));
+				obj.setHeight(stringToInt(object->Attribute("height")));
+			}
 
 			if (object->FirstChildElement("properties") != NULL) 
 			{

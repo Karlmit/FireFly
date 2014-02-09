@@ -157,6 +157,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="Trigger.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="WorldContactListener.h" />
     <ClInclude Include="Zid.h" />
@@ -237,12 +238,13 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="WorldContactListener.cpp" />
     <ClCompile Include="Zid.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Maps\room1.tmx" />
+    <None Include="Maps\level1.tmx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

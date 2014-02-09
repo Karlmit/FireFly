@@ -200,6 +200,40 @@ void Rigidbody::AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f po
 	}		
 }
 
+void Rigidbody::AddTriggerBoxBody(sf::FloatRect rect)
+{
+	// Define the dynamic body. We set its position and call the body factory.
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_staticBody;
+	bodyDef.position = SfToBoxVec(sf::Vector2f(rect.left+rect.width/2, rect.top+rect.height/2));
+	mBody = mB2World->CreateBody(&bodyDef);
+
+	// Define another box shape for our trigger body.
+	b2PolygonShape dynamicBox;
+	//b2Vec2 center = SfToBoxVec(rect.left+rect.width/2, rect.top+rect.height/2);
+	//dynamicBox.SetAsBox(SfToBoxFloat(rect.width/2) , SfToBoxFloat(rect.height/2), center, 0);
+	dynamicBox.SetAsBox(SfToBoxFloat(rect.width/2) , SfToBoxFloat(rect.height/2));
+	// Define the trigger body fixture.
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &dynamicBox;
+	fixtureDef.isSensor = true;
+
+	// Add to the body
+	mBody->CreateFixture(&fixtureDef);
+
+	// Add debug visual
+	sf::RectangleShape rectShape;
+	rectShape.setSize(sf::Vector2f(rect.width, rect.height));
+	rectShape.setPosition(sf::Vector2f(rect.left, rect.top));
+	sf::Color color;
+	color = sf::Color::Blue;
+	color.a = 60;
+	rectShape.setFillColor(color);
+	rectShape.setOutlineThickness(-4);
+	rectShape.setOutlineColor(sf::Color::Blue);
+	mRectShapes.push_back(rectShape);
+}
+
 
 // Updates the transform on the rigidbody with sfml units
 void Rigidbody::update() 

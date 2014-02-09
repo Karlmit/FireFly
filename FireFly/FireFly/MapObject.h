@@ -15,6 +15,8 @@ private:
 	int mGid;
     int mX;
     int mY;
+	int mWidth;
+	int mHeight;
     vector<MapObjectProperty> mProperties;
 	MapPolyline mPolyline;
 
@@ -28,6 +30,8 @@ public:
 	int getGid() { return mGid; }
     int getX(){ return mX; }
     int getY(){ return mY; }
+	int getWidth(){ return mWidth; }
+    int getHeight(){ return mHeight; }
 	vector<MapObjectProperty> getProperties(int index){ return mProperties; }
 	MapPolyline getPolyline() { return mPolyline; }
 
@@ -38,6 +42,8 @@ public:
 	void setGid(int gid) { mGid = gid; }
     void setX(int x){ mX = x; }
     void setY(int y){ mY = y; }
+	void setWidth(int width){ mWidth = width; }
+    void setHeight(int height){ mHeight = height; }
 
 	void insertProperty(string name, string value);
 	void insertProperty(MapObjectProperty prop);

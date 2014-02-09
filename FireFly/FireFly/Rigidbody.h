@@ -32,6 +32,8 @@ public:
 	void AddDynCircleBody(float radius, sf::Vector2f position, float32 density = 1.f);
 	// Dynamic Rectangles
 	void AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f position, float density = 1.f);
+	// Trigger Box
+	void AddTriggerBoxBody(sf::FloatRect rect);
 
 public:
 	void			update();
