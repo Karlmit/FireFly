@@ -1,21 +1,34 @@
 #include "Audio.h"
 
-Audio::Audio(sf::SoundBuffer& buffer)
-{
-	sound.setBuffer(buffer);
+Audio::Audio(sf::SoundBuffer& buffer, bool global)
+	: mSound(buffer)
+{	
+	mSound.setMinDistance(500.f);
+	mSound.setAttenuation(2.f);
+	mSound.setRelativeToListener(global);
 }
 
 Audio::~Audio()
 {
-
 }
 
-void Audio::playSound()
+void Audio::play()
 {
-	sound.play();
+	mSound.play();
+	
 }
 
-void Audio::updateSound(sf::Vector2f position)
+void Audio::setPosition(sf::Vector2f position)
 {
-	sound.setPosition (position.x, position.y, 1);
+	mSound.setPosition (position.x, 1, position.y);
+}
+
+sf::Sound::Status Audio::getStatus()
+{
+	return mSound.getStatus();
+}
+
+sf::Sound* Audio::getSound()
+{
+	return &mSound;
 }

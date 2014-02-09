@@ -1,10 +1,18 @@
 #include "Jar.h"
 #include <iostream>
+#include "EntityList.h"
+#include "AudioEntity.h"
 
 Jar::Jar(string texture, sf::Vector2f position)
 : mRigidbody()
 , mSprite(Loading::getTexture(texture))
+, mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
+, mBroken(false)
 {
+	// Set sound prop
+	mBreakSound.getSound()->setMinDistance(600.f);
+	mBreakSound.getSound()->setAttenuation(1.f);
+
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
@@ -30,7 +38,7 @@ Jar::Jar(string texture, sf::Vector2f position)
 	//Right
 	rects.push_back(sf::FloatRect(bounds.width/2-width, -bounds.height/2, width, bounds.height));
 
-	float density = 2.f;
+	float density = 4.f;
 	mRigidbody.AddDynRectBody(rects, position, density);
 
 	// Adds itself to body data for collision callbacks
@@ -39,7 +47,8 @@ Jar::Jar(string texture, sf::Vector2f position)
 
 
 void Jar::updateEntity(sf::Time dt) 
-{
+{	
+
 	// Get the position and rotation from the rigidbody
 	mRigidbody.update();				
 	setPosition(mRigidbody.getPosition());
@@ -48,6 +57,7 @@ void Jar::updateEntity(sf::Time dt)
 		
 void Jar::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {	
+
 	states.transform *= getTransform();
 	target.draw(mSprite, states);
 
@@ -59,14 +69,7 @@ void Jar::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 // Start of AABB boxes overlapping
 void Jar::BeginContact(b2Contact *contact)
 {
-	if (contact->GetFixtureA()->GetBody() == mRigidbody.getBody())
-	{
-		//std::cout << mRigidbody.getBody()->GetLinearVelocity().Length() << " ";
-	}
-	else
-	{
-		//std::cout << mRigidbody.getBody()->GetLinearVelocity().Length() << " ";
-	}
+	
 }
 
 // Post box2d solving col. Checks impulse of strength of impact
@@ -76,7 +79,10 @@ void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse)
 
 	if (imp > 20.f)
 	{
-		cout << imp << " Destroying jar." << endl;
 		killEntity();
+		mBreakSound.setPosition(getPosition());
+		// Creates a new entity for playing break after the Jar is dead
+		EntityList::getEntityList().addEntity(new AudioEntity(mBreakSound));
+		
 	}
 }

@@ -4,14 +4,16 @@
 #include <string>
 #include <SFML/Audio.hpp>
 
-class Audio{
+class Audio
+{
 public:
-	Audio(sf::SoundBuffer& buffer);
+	Audio(sf::SoundBuffer& buffer, bool global = false);
 	~Audio();
-	void playSound();
-	void updateSound(sf::Vector2f position);
-	sf::SoundSource::Status checkStatus();
+	void play();
+	void setPosition(sf::Vector2f position);
+	sf::Sound::Status getStatus();
+	sf::Sound* getSound();
+
 private:
-	std::string fileName;
-	sf::Sound sound;
+	sf::Sound mSound;
 };

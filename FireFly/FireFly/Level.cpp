@@ -103,7 +103,8 @@ void Level::loadMap(string filename)
 			Layer layer = getLayerFromString(group.getName());
 			string mapDir = "Maps/";
 			mapDir.append(tileset.getImageSource());
-			string imageSrc = mapDir;
+			//string imageSrc = mapDir;
+			string imageSrc = tileset.getImageSource();
 			string entityType = obj.getType();
 
 			cout << "[" << obj.getType() << "](" << position.x << ", " <<  position.y << ")\t" 

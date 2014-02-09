@@ -8,10 +8,10 @@
 #include <iostream>
 
 Zid::Zid(sf::Vector2f position)
-: mSprite(Loading::getTexture("Resources/zid.png"))
-,idleAnimation(Loading::getTexture("Resources/testspide.png", true), 128, 128, 150, 15, 10, 10)
-,dashAnimation(Loading::getTexture("Resources/explosionAnim.png"), 64, 64, 25, 5, 2, 5)
-,dashSound(Loading::getSound("Resources/canary.wav"))
+: mSprite(Loading::getTexture("zid.png"))
+,idleAnimation(Loading::getTexture("testspide.png", true), 128, 128, 150, 15, 10, 10)
+,dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 25, 5, 2, 5)
+,dashSound(Loading::getSound("canary.wav"), true)
 ,mRigidbody()
 {
 	// Sätter origin för spriten till mitten
@@ -45,10 +45,8 @@ Zid::Zid(sf::Vector2f position)
 
 void Zid::updateEntity(sf::Time dt) 
 {
-
 	// S?ger att allt ljud som Zid g?r ska h?ras fr?n Zid.
-	sf::Listener::setPosition(getPosition().x, getPosition().y, 1);
-	dashSound.updateSound(getPosition());
+	sf::Listener::setPosition(getPosition().x, 1, getPosition().y);
 	
 	if(zidDash == true)
 	{
@@ -179,7 +177,8 @@ void Zid::movement()
 			body->ApplyLinearImpulse(force , body->GetWorldCenter(), true);
 			zidDash = true;
 
-			dashSound.playSound();
+			//Temporary until a real dashsound
+			//dashSound.play();
 		}
 			
 	}

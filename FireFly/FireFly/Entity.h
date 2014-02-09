@@ -3,6 +3,7 @@
 
 #include <SFML\System/Time.hpp>
 #include <SFML\Graphics.hpp>
+#include <SFML\Audio\Sound.hpp>
 #include "Globals.h"
 #include "Loading.h"
 #include "Rigidbody.h"

@@ -1,7 +1,4 @@
 #include "WorldContactListener.h"
-#include <iostream>
-using namespace std;
-#include "Jar.h"
 
 void WorldContactListener::BeginContact(b2Contact *contact)
 {

@@ -21,7 +21,7 @@ public:
 	void update(sf::Time dt);	// Updates all entities
 	void draw(sf::RenderWindow& window);	// Draws all entities
 	
-	void addEntity(Entity *entity, Layer layer, bool runStart = true);	//adds new entities
+	void addEntity(Entity *entity, Layer layer = Layer::Front, bool runStart = true);	//adds new entities
 	void updateList();	//deletes "dead" entities
 	void emptyList();
 	void startList(); // Runs once after levelload

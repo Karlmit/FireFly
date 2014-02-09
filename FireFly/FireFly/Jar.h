@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "Audio.h"
 
 class Jar : public Entity, public b2ContactListener
 {
@@ -14,8 +15,11 @@ private:
 private:
 	Rigidbody mRigidbody;
 	sf::Sprite mSprite;
+	Audio mBreakSound;
+	bool mBroken;
 
 private:
+	// Box2d callback functions
 	virtual void BeginContact(b2Contact *contact); 
 	//virtual void EndContact(b2Contact *contact); 
 	//virtual void PreSolve(b2Contact *contact, const b2Manifold *oldManifold); 

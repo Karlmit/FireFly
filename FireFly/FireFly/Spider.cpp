@@ -2,7 +2,7 @@
 
 
 Spider::Spider(sf::Vector2f position) :
-	idleAnimation(Loading::getTexture("Resources/testspide.png", true), 128, 128, 150, 15, 10, 10)
+	idleAnimation(Loading::getTexture("testspide.png", true), 128, 128, 150, 15, 10, 10)
 {
 	setPosition(position);
 
