@@ -42,7 +42,7 @@ Jar::Jar(string texture, sf::Vector2f position)
 	mRigidbody.AddDynRectBody(rects, position, density);
 
 	// Adds itself to body data for collision callbacks
-	mRigidbody.getBody()->SetUserData(static_cast<b2ContactListener*>(this));
+	mRigidbody.getBody()->SetUserData(this);
 }
 
 

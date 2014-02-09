@@ -9,7 +9,7 @@
 #include "Rigidbody.h"
 #include <memory>
 
-class Entity : public sf::Transformable, public sf::Drawable
+class Entity : public sf::Transformable, public sf::Drawable, public b2ContactListener
 {
 public:
 	Entity();

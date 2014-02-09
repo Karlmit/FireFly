@@ -3,7 +3,7 @@
 #include "Entity.h"
 #include "Audio.h"
 
-class Jar : public Entity, public b2ContactListener
+class Jar : public Entity
 {
 public:
 	Jar(string texture, sf::Vector2f position);
