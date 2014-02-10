@@ -77,3 +77,5 @@ void Spider::movement()
 	b2Body *body = mRigidbody.getBody();
 
 }
+
+
