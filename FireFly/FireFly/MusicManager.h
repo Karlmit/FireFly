@@ -12,12 +12,12 @@ class MusicManager : public sf::NonCopyable
 public:
 	static void newManager();
 	static void update(sf::Time dt);
-	static void addMusic(string filePath, int id);
-	static void play(int id);
+	static void addMusic(string filePath, string id);
+	static void play(string id);
 	static void playAll();
-	static void fadeDown(int id);
-	static void fadeUp(int id);
-	static void fadeToggle(int id);
+	static void fadeDown(string id);
+	static void fadeUp(string id);
+	static void fadeToggle(string id);
 
 private:
 	static unique_ptr<MusicManager> instance;
@@ -30,7 +30,7 @@ private:
 
 
 private:
-	map<int, unique_ptr<sf::Music>> mMusicsMap;
-	map<int, bool> mFadeUpMap;
+	map<string, unique_ptr<sf::Music>> mMusicsMap;
+	map<string, bool> mFadeUpMap;
 
 };

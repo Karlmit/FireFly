@@ -141,9 +141,9 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
 
 	if (key == sf::Keyboard::Num1 && isPressed == false)
-		MusicManager::fadeToggle(1);
+		MusicManager::fadeToggle("slow");
 	if (key == sf::Keyboard::Num2 && isPressed == false)
-		MusicManager::fadeToggle(2);
+		MusicManager::fadeToggle("intensive");
 
 	if (isPressed == false)
 	{

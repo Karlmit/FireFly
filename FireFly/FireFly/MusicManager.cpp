@@ -15,7 +15,7 @@ void MusicManager::update(sf::Time dt)
 	for(auto& iter : instance->mMusicsMap) 
 	{
 		auto& music = (*iter.second);
-		int id = iter.first;
+		string id = iter.first;
 
 		auto foundFade = instance->mFadeUpMap.find(id);
 		bool bfadeUp = foundFade->second;
@@ -33,7 +33,7 @@ void MusicManager::update(sf::Time dt)
 	}
 }
 
-void MusicManager::addMusic(string filePath, int id) 
+void MusicManager::addMusic(string filePath, string id) 
 {
 	// Adding a new musics file
 	sf::Music* music = new sf::Music();
@@ -54,12 +54,12 @@ void MusicManager::addMusic(string filePath, int id)
 	instance->mFadeUpMap.insert(make_pair(id, false));
 }
 
-void MusicManager::play(int id)
+void MusicManager::play(string id)
 {
 	auto found = instance->mMusicsMap.find(id);
 	
 	if (found == instance->mMusicsMap.end())
-		throw std::runtime_error("MusicManager::play - Music with the id=" + to_string(id) + " could not be played");
+		throw std::runtime_error("MusicManager::play - Music with the id=" + id + " could not be played");
 
 	(*found->second).play();	
 }
@@ -72,32 +72,32 @@ void MusicManager::playAll()
 	}
 }
 
-void MusicManager::fadeDown(int id) 
+void MusicManager::fadeDown(string id) 
 {
 	auto found = instance->mFadeUpMap.find(id);
 
 	if (found == instance->mFadeUpMap.end())
-		throw std::runtime_error("MusicManager::fadeDown - Music with the id=" + to_string(id) + " could not be faded");
+		throw std::runtime_error("MusicManager::fadeDown - Music with the id=" + id + " could not be faded");
 
 	found->second = false;
 }
 
-void MusicManager::fadeUp(int id) 
+void MusicManager::fadeUp(string id) 
 {
 	auto found = instance->mFadeUpMap.find(id);
 
 	if (found == instance->mFadeUpMap.end())
-		throw std::runtime_error("MusicManager::fadeUp - Music with the id=" + to_string(id) + " could not be faded");
+		throw std::runtime_error("MusicManager::fadeUp - Music with the id=" + id + " could not be faded");
 
 	found->second = true;
 }
 
-void MusicManager::fadeToggle(int id) 
+void MusicManager::fadeToggle(string id) 
 {
 	auto found = instance->mFadeUpMap.find(id);
 
 	if (found == instance->mFadeUpMap.end())
-		throw std::runtime_error("MusicManager::fadeToggle - Music with the id=" + to_string(id) + " could not be faded");
+		throw std::runtime_error("MusicManager::fadeToggle - Music with the id=" + id + " could not be faded");
 
 	found->second = !found->second;
 }

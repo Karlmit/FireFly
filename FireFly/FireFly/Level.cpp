@@ -40,8 +40,8 @@ void Level::startLevel(string levelName)
 	
 	// Creates a music manager
 	MusicManager::newManager();
-	MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (slow part).ogg", 1);
-	MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (intense part).ogg", 2);
+	MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (slow part).ogg", "slow");
+	MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (intense part).ogg", "intensive");
 	MusicManager::playAll();
 
 
