@@ -9,6 +9,7 @@
 #include "LevelBoundryCollider.h"
 #include "Jar.h"
 #include "Mal.h"
+#include "Wasp.h"
 #include "Trigger.h"
 
 #include <iostream>
@@ -36,13 +37,15 @@ void Level::startLevel(string levelName)
 
 	// Creates a box2d world
 	Box2dWorld::newWorld(b2Vec2(0, -10.f));
-	
 
 	// Loads the level
 	string mapStr = "Maps/";
 	mapStr.append(levelName);
 
 	loadMap(mapStr);
+
+	EntityList& eList = EntityList::getEntityList();
+	eList.addEntity(new Wasp(sf::Vector2f(2383, 1701)), Layer::NPC, false);
 
 	// Runs start() on all entities
 	EntityList::getEntityList().startList();
