@@ -270,6 +270,9 @@
     <ClInclude Include="Trigger.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="MusicManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -502,6 +505,9 @@
     </ClCompile>
     <ClCompile Include="Trigger.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
