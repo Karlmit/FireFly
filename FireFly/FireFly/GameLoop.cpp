@@ -1,6 +1,7 @@
 #include "GameLoop.h"
 #include "Box2dWorld.h"
 #include <Windows.h>
+#include "MusicManager.h"
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
@@ -96,14 +97,17 @@ void GameLoop::draw()
 	mWindow.display();
 }
 
-void GameLoop::update(sf:: Time timePerFrame)
+void GameLoop::update(sf::Time timePerFrame)
 {
 	// Update camera
 	mCamera.update(timePerFrame);
 
+	// Update music manager
+	MusicManager::update(timePerFrame);
+
 	// Update entities
 	EntityList::getEntityList().updateList(); //deletes dead entities
-	EntityList::getEntityList().update(TimePerFrame);	// Updates all entities
+	EntityList::getEntityList().update(timePerFrame);	// Updates all entities
 
 	// Box2d physics step
 	float32 timeStep = 1.0f / 60.0f;
@@ -136,7 +140,10 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 	if (key == sf::Keyboard::P && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
 
-	
+	if (key == sf::Keyboard::Num1 && isPressed == false)
+		MusicManager::fadeToggle(1);
+	if (key == sf::Keyboard::Num2 && isPressed == false)
+		MusicManager::fadeToggle(2);
 
 	if (isPressed == false)
 	{

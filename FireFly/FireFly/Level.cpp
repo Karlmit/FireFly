@@ -2,6 +2,7 @@
 #include "Loading.h"
 #include "Box2dWorld.h"
 #include "Camera.h"
+#include "MusicManager.h"
 
 #include "Zid.h"
 #include "EntitySprite.h"
@@ -37,11 +38,16 @@ void Level::startLevel(string levelName)
 	// Creates a box2d world
 	Box2dWorld::newWorld(b2Vec2(0, -10.f));
 	
+	// Creates a music manager
+	MusicManager::newManager();
+	MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (slow part).ogg", 1);
+	MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (intense part).ogg", 2);
+	MusicManager::playAll();
+
 
 	// Loads the level
 	string mapStr = "Maps/";
 	mapStr.append(levelName);
-
 	loadMap(mapStr);
 
 	// Runs start() on all entities

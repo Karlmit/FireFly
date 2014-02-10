@@ -3,6 +3,7 @@
 Audio::Audio(sf::SoundBuffer& buffer, bool global)
 	: mSound(buffer)
 {	
+	mSound.setVolume(100);
 	mSound.setMinDistance(500.f);
 	mSound.setAttenuation(2.f);
 	mSound.setRelativeToListener(global);
