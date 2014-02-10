@@ -30,6 +30,7 @@
  <objectgroup name="Background" width="1" height="1">
   <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
   <object name="Stol" type="EntitySprite" gid="7" x="1300" y="2169"/>
+  <object name="Coat5" type="EntitySprite" gid="3" x="0" y="2160"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
@@ -78,12 +79,6 @@
   </object>
   <object name="RightWallBot" type="StaticCollision" x="4475" y="2156">
    <polyline points="0,0 1,-120 -73,-117 -141,-133 -117,-251 -104,-255 7,-224 524,-220"/>
-  </object>
-  <object x="4356" y="1902">
-   <polyline points="0,0 -31,-22"/>
-  </object>
-  <object x="4356" y="1750">
-   <polyline points="0,0 -27,24"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
