@@ -1,7 +1,7 @@
 #include "Wasp.h"
 #include "Utility.h"
 
-const float MIN_FOLLOW_DISTANCE = 4.f;
+const float MIN_FOLLOW_DISTANCE = 5.f;
 const float DENSITY = 0.5f;
 const float FORCE = 1.5f;
 
@@ -131,7 +131,7 @@ void Wasp::movement()
 		float x = float(-1 + rand()%3);
 		float y = float(-1 + rand()%3);
 		b2Vec2 force(x, y);
-		force *= FORCE*(0.8f);
+		force *= FORCE*(2.f);
 		body->ApplyForceToCenter(force, true);
 	}
 

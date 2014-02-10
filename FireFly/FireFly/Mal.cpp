@@ -4,7 +4,7 @@
 //
 const float MIN_FOLLOW_DISTANCE = 6.f;
 const float DENSITY = 2.f;
-const float FORCE = 5.f;
+const float FORCE = 4.f;
 
 const float INNER_FOLLOW_RADIUS = 120.f;
 const float OUTER_FOLLOW_RADIUS = 300.f;

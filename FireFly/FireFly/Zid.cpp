@@ -154,7 +154,7 @@ void Zid::movement()
 
 		if (length > 0.5f) {
 			
-			force *= 12.f;
+			force *= 6.f;
 			body->ApplyForceToCenter(force, true);
 		}	
 	}
@@ -174,7 +174,7 @@ void Zid::movement()
 			b2Vec2 mouse = Rigidbody::SfToBoxVec(mousePos);
 			b2Vec2 force = mouse - Rigidbody::SfToBoxVec(getPosition());
 			float length = force.Normalize();
-			force *= 10.f;
+			force *= 5.f;
 
 			body->ApplyLinearImpulse(force , body->GetWorldCenter(), true);
 			zidDash = true;
