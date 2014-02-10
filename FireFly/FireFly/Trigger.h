@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "MapObjectProperty.h"
 
 class Trigger : public Entity
 {
@@ -15,5 +16,5 @@ private:
 	virtual void EndContact(b2Contact *contact); 
 
 private:
-	Rigidbody mRigidbody;
+	Rigidbody mRigidbody; 
 };

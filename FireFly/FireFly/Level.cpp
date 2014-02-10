@@ -40,15 +40,16 @@ void Level::startLevel(string levelName)
 	
 	// Creates a music manager
 	MusicManager::newManager();
-	MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (slow part).ogg", "slow");
-	MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (intense part).ogg", "intensive");
-	MusicManager::playAll();
-
-
+	//MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (slow part).ogg", "slow");
+	//MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (intense part).ogg", "intensive");
+	
 	// Loads the level
 	string mapStr = "Maps/";
 	mapStr.append(levelName);
 	loadMap(mapStr);
+
+	// Plays all the loaded music
+	MusicManager::playAll();
 
 	// Runs start() on all entities
 	EntityList::getEntityList().startList();
@@ -104,7 +105,7 @@ void Level::loadMap(string filename)
 		{
 			// Gets the data for the object
 			float width = float(obj.getWidth());
-			float height = float(obj.getWidth());
+			float height = float(obj.getHeight());
 			sf::Vector2f position(float(obj.getX()), float(obj.getY()));
 			MapTileset tileset = map.getTileset(obj.getGid());
 			float imageWidth  = float(tileset.getTilewidth());
@@ -165,7 +166,20 @@ void Level::loadMap(string filename)
 				rect.top = position.y;
 				rect.width = width;
 				rect.height = height;
-				eList.addEntity(new Trigger(rect), Layer::Foreground, false);
+				Trigger* trigger = new Trigger(rect);
+				for (auto prop : obj.getProperties())
+					cout << "Name=" + prop.getName() << ", Value=" << prop.getValueString() << endl;
+				trigger->setProperties(obj.getProperties());
+				eList.addEntity(trigger, Layer::Foreground, false);
+			}
+			else if (entityType == "MusicManager")
+			{
+				for (auto prop : obj.getProperties()) 
+				{
+					string filepath = prop.getName();
+					string id = prop.getValueString();
+					MusicManager::addMusic(filepath, id);
+				}
 			}
 		}
 

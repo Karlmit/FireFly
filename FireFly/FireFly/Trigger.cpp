@@ -1,5 +1,6 @@
 #include "Trigger.h"
 #include <iostream>
+#include "MusicManager.h"
 
 Trigger::Trigger(sf::FloatRect rect)
 	: mRigidbody()
@@ -25,13 +26,24 @@ void Trigger::BeginContact(b2Contact *contact)
 	Entity* a = static_cast<Entity*> (contact->GetFixtureA()->GetBody()->GetUserData());
 	Entity* b = static_cast<Entity*> (contact->GetFixtureB()->GetBody()->GetUserData());
 
+	vector<Entity*> ab;
 	if (a != nullptr)
-		if (a->getID() == "Zid" )
-			cout << "Zid entered the zone!" << endl;
-	
+		ab.push_back(a);
 	if (b != nullptr)
-		if (b->getID() == "Zid" )
-			cout << "Zid entered the zone!" << endl;
+	ab.push_back(b);
+
+
+	for (Entity* e : ab)
+	{		
+		if (e->getID() == "Zid" )
+		{
+			if (isProperty("MusicFade")) {
+				MusicManager::fadeUp(getProperty("MusicFade"));
+				cout << "Zid entered the " + getProperty("MusicFade")+ " zone!" << endl;
+			}
+		}
+	}	
+			
 }
 
 void Trigger::EndContact(b2Contact *contact)
@@ -39,11 +51,20 @@ void Trigger::EndContact(b2Contact *contact)
 	Entity* a = static_cast<Entity*> (contact->GetFixtureA()->GetBody()->GetUserData());
 	Entity* b = static_cast<Entity*> (contact->GetFixtureB()->GetBody()->GetUserData());
 
+	vector<Entity*> ab;
 	if (a != nullptr)
-		if (a->getID() == "Zid" )
-			cout << "Zid left the zone!" << endl;
-
+		ab.push_back(a);
 	if (b != nullptr)
-		if (b->getID() == "Zid" )
-			cout << "Zid left the zone!" << endl;
+		ab.push_back(b);
+
+	for (Entity* e : ab)
+	{		
+		if (e->getID() == "Zid" )
+		{
+			if (isProperty("MusicFade")) {
+				MusicManager::fadeDown(getProperty("MusicFade"));
+				cout << "Zid had left the " + getProperty("MusicFade")+ " zone!" << endl;
+			}
+		}
+	}
 }

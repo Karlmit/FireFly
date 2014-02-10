@@ -38,7 +38,7 @@
   <object name="PlastJar" type="Jar" gid="5" x="26" y="1363"/>
   <object name="StartJar" type="Jar" gid="5" x="376" y="1371"/>
   <object name="TableJar" type="Jar" gid="5" x="2876" y="1313"/>
-  <object name="TableJar" type="Jar" gid="5" x="2262" y="1841"/>
+  <object name="UnderTableJar" type="Jar" gid="5" x="2260" y="1840"/>
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
   <object name="PlastJar" type="Jar" gid="5" x="25" y="1092"/>
   <object name="PlastJar" type="Jar" gid="5" x="29" y="823"/>
@@ -93,6 +93,17 @@
   <object name="zids spawn" type="ZidSpawn" x="452" y="1201" width="99" height="85">
    <ellipse/>
   </object>
-  <object name="TestTrigger" type="Trigger" x="575" y="235" width="265" height="253"/>
+  <object name="TriggerIntenseMusic" type="Trigger" x="2847" y="72" width="1046" height="513">
+   <properties>
+    <property name="MusicFade" value="intense"/>
+   </properties>
+  </object>
+  <object name="Music" type="MusicManager" x="125" y="52" width="195" height="151">
+   <properties>
+    <property name="Firefly Room 1 TrackVersion 1 (intense part).ogg" value="intense"/>
+    <property name="Firefly Room 1 TrackVersion 1 (slow part).ogg" value="slow"/>
+    <property name="Habla" value="Ha"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

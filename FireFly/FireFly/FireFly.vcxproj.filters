@@ -273,6 +273,9 @@
     <ClInclude Include="MusicManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Properties.h">
+      <Filter>Header Files\LevelEditor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -508,6 +511,9 @@
     </ClCompile>
     <ClCompile Include="MusicManager.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Properties.cpp">
+      <Filter>Source Files\LevelEditor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

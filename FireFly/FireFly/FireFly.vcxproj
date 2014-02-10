@@ -146,6 +146,7 @@
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="Properties.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
@@ -225,6 +226,7 @@
     <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />

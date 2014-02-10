@@ -8,8 +8,9 @@
 #include "Loading.h"
 #include "Rigidbody.h"
 #include <memory>
+#include "Properties.h"
 
-class Entity : public sf::Transformable, public sf::Drawable, public b2ContactListener
+class Entity : public sf::Transformable, public sf::Drawable, public b2ContactListener, public Properties
 {
 public:
 	Entity();

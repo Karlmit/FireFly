@@ -143,7 +143,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 	if (key == sf::Keyboard::Num1 && isPressed == false)
 		MusicManager::fadeToggle("slow");
 	if (key == sf::Keyboard::Num2 && isPressed == false)
-		MusicManager::fadeToggle("intensive");
+		MusicManager::fadeToggle("intense");
 
 	if (isPressed == false)
 	{
