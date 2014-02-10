@@ -16,9 +16,7 @@ private:
 	virtual void start();
 	virtual void updateEntity(sf::Time dt);
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
-	
 	void movement();
-private:
 	Rigidbody mRigidbody;
 	Animation  idleAnimation;
 	Entity* mZid;

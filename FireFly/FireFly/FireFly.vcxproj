@@ -159,6 +159,7 @@
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Utility.h" />
+    <ClInclude Include="Wasp.h" />
     <ClInclude Include="WorldContactListener.h" />
     <ClInclude Include="Zid.h" />
   </ItemGroup>
@@ -240,6 +241,7 @@
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Wasp.cpp" />
     <ClCompile Include="WorldContactListener.cpp" />
     <ClCompile Include="Zid.cpp" />
   </ItemGroup>

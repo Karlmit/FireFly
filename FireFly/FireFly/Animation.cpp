@@ -59,7 +59,7 @@ void Animation::setPosition(const sf::Vector2f& position)
 	mSprite.setPosition(position);
 }
 
-//The function that "animates" a sprite sheet when called upon every physics update.
+//The function that "animates" a sprite sheet when called upon very often.
 void Animation::updateAnimation()
 {
 	//Makes sure that the animation is updated every Xth frame, as defined in the constructor.
