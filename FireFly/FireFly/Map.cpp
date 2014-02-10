@@ -122,7 +122,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 					obj.insertProperty(prop);
 				}
 
-				while((property = object->NextSiblingElement("property")) != NULL)
+				while((property = property->NextSiblingElement("property")) != NULL)
 				{
 					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
@@ -170,7 +170,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 					obj.insertProperty(prop);
 				}
 
-				while((property = object->NextSiblingElement("property")) != NULL)
+				while((property = property->NextSiblingElement("property")) != NULL)
 				{
 					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
@@ -229,7 +229,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 					obj.insertProperty(prop);
 				}
 
-				while((property = object->NextSiblingElement("property")) != NULL)
+				while((property = property->NextSiblingElement("property")) != NULL)
 				{
 					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
@@ -277,7 +277,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 					obj.insertProperty(prop);
 				}
 
-				while((property = object->NextSiblingElement("property")) != NULL)
+				while((property = property->NextSiblingElement("property")) != NULL)
 				{
 					MapObjectProperty prop;// = new TiledMapObjectProperty();
 

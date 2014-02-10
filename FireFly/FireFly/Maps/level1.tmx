@@ -102,7 +102,6 @@
    <properties>
     <property name="Firefly Room 1 TrackVersion 1 (intense part).ogg" value="intense"/>
     <property name="Firefly Room 1 TrackVersion 1 (slow part).ogg" value="slow"/>
-    <property name="Habla" value="Ha"/>
    </properties>
   </object>
  </objectgroup>
