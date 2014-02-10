@@ -10,7 +10,7 @@ const float INNER_FOLLOW_RADIUS = 120.f;
 const float OUTER_FOLLOW_RADIUS = 300.f;
 
 Mal::Mal(sf::Vector2f position)
-	: idleAnimation(Loading::getTexture("spritesheet_moth1.png"), 64, 64, 4, 1, 20, 4)
+	: idleAnimation(Loading::getTexture("spritesheet_moth1.png"), 64, 64, 1, 4, 20)
 	,mRigidbody()
 {
 	//start position

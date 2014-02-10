@@ -8,8 +8,8 @@
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
-,idleAnimation(Loading::getTexture("zidIdleAnim.png", true), 64, 64, 8, 1, 10, 8)
-,dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 25, 5, 2, 5)
+,idleAnimation(Loading::getTexture("zidIdleAnim.png", true), 64, 64, 1, 8, 10)
+,dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 5, 5, 2)
 ,dashSound(Loading::getSound("canary.wav"), true)
 ,mRigidbody()
 {

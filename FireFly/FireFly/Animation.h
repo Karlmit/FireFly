@@ -14,10 +14,9 @@ public:
 	Animation(const sf::Texture& texture,
 				unsigned int spriteWidth,
 				unsigned int spriteHeight,
-				unsigned int numberOfSprites,
 				unsigned int numberOfRows,
-				unsigned int timePerFrame,
-				unsigned int spriteRow);
+				unsigned int numberOfColumns,
+				unsigned int timePerFrame);
 
 	Animation(const Animation& animation);
 
@@ -38,9 +37,9 @@ private:
 		,mTimePerFrame
 		,mNumberOfRows
 		,mCurrentFrame
-		,mSpriteRows
+		,mNumberOfColumns
 		,mLeft
-		,mCurrentColumnNumber
+		,mCurrentColumn
 		,mTop
 		,mCurrentRow;
 	bool mEndOfAnimation;
