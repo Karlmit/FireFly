@@ -49,6 +49,7 @@
   <object name="PlastJar" type="Jar" gid="5" x="1289" y="467"/>
   <object name="PlastJar" type="Jar" gid="5" x="2171" y="795"/>
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
+  <object name="kalles Burk" type="Jar" gid="5" x="371" y="1099"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160" visible="0"/>
