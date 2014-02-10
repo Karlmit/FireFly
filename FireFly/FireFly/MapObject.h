@@ -32,7 +32,15 @@ public:
     int getY(){ return mY; }
 	int getWidth(){ return mWidth; }
     int getHeight(){ return mHeight; }
-	vector<MapObjectProperty> getProperties(int index){ return mProperties; }
+	vector<MapObjectProperty> getProperties(){ return mProperties; }
+	MapObjectProperty getProperty(string name)
+	{ 
+		for (MapObjectProperty prop : mProperties)
+			if (prop.getName() == name)
+				return prop; 
+
+		return MapObjectProperty();
+	}
 	MapPolyline getPolyline() { return mPolyline; }
 
 	void setName(string name){ mName = name; }
