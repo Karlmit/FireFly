@@ -87,19 +87,19 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="mal1" type="Moth" x="3994" y="1612" width="60" height="60">
+  <object name="mal1" type="Moth" x="2952" y="1203" width="60" height="60">
    <ellipse/>
   </object>
   <object name="mal1" type="Moth" x="2973" y="1161" width="60" height="60">
    <ellipse/>
   </object>
-  <object name="mal1" type="Moth" x="1921" y="1018" width="60" height="60">
+  <object name="mal1" type="Moth" x="2924" y="1145" width="60" height="60">
    <ellipse/>
   </object>
   <object name="zids spawn" type="ZidSpawn" x="492" y="1213" width="100" height="84">
    <ellipse/>
   </object>
-  <object name="TriggerIntenseMusic" type="Trigger" x="2768" y="-49" width="1740" height="713">
+  <object name="TriggerIntenseMusic" type="Trigger" x="-30" y="-58" width="4505" height="480">
    <properties>
     <property name="MusicFade" value="intense"/>
    </properties>
