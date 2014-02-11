@@ -32,6 +32,15 @@ public:
     int getY(){ return mY; }
 	int getWidth(){ return mWidth; }
     int getHeight(){ return mHeight; }
+	bool isProperty(string name) 
+	{
+		for (MapObjectProperty prop : mProperties)
+			if (prop.getName() == name)
+				return true; 
+
+		return false;
+	}
+
 	vector<MapObjectProperty> getProperties(){ return mProperties; }
 	MapObjectProperty getProperty(string name)
 	{ 

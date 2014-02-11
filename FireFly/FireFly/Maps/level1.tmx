@@ -36,7 +36,12 @@
  <objectgroup name="Front" width="1" height="1">
   <object name="Byra" type="EntitySprite" gid="6" x="-7" y="2163"/>
   <object name="PlastJar" type="Jar" gid="5" x="26" y="1363"/>
-  <object name="StartJar" type="Jar" gid="5" x="376" y="1371"/>
+  <object name="StartJar" type="Jar" gid="5" x="375" y="1372">
+   <properties>
+    <property name="OnBreakMusicFade" value="slow"/>
+    <property name="density" value="4"/>
+   </properties>
+  </object>
   <object name="TableJar" type="Jar" gid="5" x="2876" y="1313"/>
   <object name="UnderTableJar" type="Jar" gid="5" x="2260" y="1840"/>
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
@@ -93,7 +98,7 @@
   <object name="zids spawn" type="ZidSpawn" x="452" y="1201" width="99" height="85">
    <ellipse/>
   </object>
-  <object name="TriggerIntenseMusic" type="Trigger" x="2847" y="72" width="1046" height="513">
+  <object name="TriggerIntenseMusic" type="Trigger" x="2768" y="-49" width="1740" height="713">
    <properties>
     <property name="MusicFade" value="intense"/>
    </properties>

@@ -123,24 +123,53 @@ void Level::loadMap(string filename)
 					<< endl;
 
 			// Spawn the right entity based on type and/or layer
+			//
+			//	EntitySprite
+			//
 			if (entityType == "EntitySprite")
 			{
 				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
 				eList.addEntity(new EntitySprite(imageSrc, position), layer, false);
 			}
+
+			//
+			//	Jar
+			//
 			else if (entityType == "Jar")
 			{
 				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
-				eList.addEntity(new Jar(imageSrc, position), layer, false);
+				Entity *jar = nullptr;
+				if (obj.isProperty("density"))
+					jar = new Jar(imageSrc, position, obj.getProperty("density").getValueFloat());
+				else
+					jar = new Jar(imageSrc, position);
+				jar->setProperties(obj.getProperties());
+				eList.addEntity(jar , layer, false);
 			}
+
+			//
+			//	ZidSpawn
+			//
 			else if (entityType == "ZidSpawn") 
 			{
-				eList.addEntity(new Zid(position), Layer::NPC, false);
+				Entity* zod = new Zid(position);
+				zod->setProperties(obj.getProperties());
+				eList.addEntity(zod, Layer::NPC, false);
 			}
+
+			//
+			//	Moth
+			//
 			else if (entityType == "Moth") 
 			{
-				eList.addEntity(new Mal(position), Layer::NPC, false);
+				Entity* mal = new Mal(position);
+				mal->setProperties(obj.getProperties());
+				eList.addEntity(mal, Layer::NPC, false);
 			}
+
+			//
+			//	Collision
+			//
 			else if (layer == Layer::Collision || entityType == "StaticCollision" || entityType == "StaticCollisionLoop")
 			{
 				bool loop = entityType == "StaticCollisionLoop" ? true : false;
@@ -159,6 +188,10 @@ void Level::loadMap(string filename)
 				if (!sfPoints.empty())
 					eList.addEntity(new StaticLineCollider(sfPoints, loop), Layer::Foreground, false);
 			}
+
+			//
+			//	Trigger
+			//
 			else if (entityType == "Trigger")
 			{
 				sf::FloatRect rect;
@@ -172,6 +205,10 @@ void Level::loadMap(string filename)
 				trigger->setProperties(obj.getProperties());
 				eList.addEntity(trigger, Layer::Foreground, false);
 			}
+
+			//
+			//	MusicManager
+			//
 			else if (entityType == "MusicManager")
 			{
 				for (auto prop : obj.getProperties()) 

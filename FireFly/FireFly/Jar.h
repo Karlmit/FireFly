@@ -3,10 +3,12 @@
 #include "Entity.h"
 #include "Audio.h"
 
+const float DEF_DENSITY = 4.f;
+
 class Jar : public Entity
 {
 public:
-	Jar(string texture, sf::Vector2f position);
+	Jar(string texture, sf::Vector2f position, float density = DEF_DENSITY);
 
 private:
 	virtual void	updateEntity(sf::Time dt);	

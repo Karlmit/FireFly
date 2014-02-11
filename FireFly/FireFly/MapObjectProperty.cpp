@@ -31,6 +31,14 @@ int MapObjectProperty::getValueInt()
 	return value;
 }
 
+float MapObjectProperty::getValueFloat()
+{
+	stringstream strstream(mValue); 
+	float value; 
+	strstream >> value; 
+	return value;
+}
+
 void MapObjectProperty::setName(string name)
 {
 	mName = name;

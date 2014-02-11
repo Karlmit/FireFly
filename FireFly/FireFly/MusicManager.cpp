@@ -13,7 +13,7 @@ void MusicManager::newManager()
 void MusicManager::update(sf::Time dt)
 {
 	for(auto& iter : instance->mMusicsMap) 
-	{
+	{  
 		auto& music = (*iter.second);
 		string id = iter.first;
 

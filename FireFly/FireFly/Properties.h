@@ -29,6 +29,15 @@ public:
 		return 0;
 	}
 
+	float getPropertyFloat(string name)
+	{ 
+		for (MapObjectProperty prop : mProperties)
+			if (prop.getName() == name)
+				return prop.getValueFloat(); 
+
+		return 0;
+	}
+
 	bool isProperty(string name)
 	{
 		for (MapObjectProperty prop : mProperties)

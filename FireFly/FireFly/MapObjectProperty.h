@@ -17,6 +17,7 @@ public:
 	string getName();
 	string getValueString();
     int getValueInt();    
+	float getValueFloat();  
 
 	void setName(string name);
     void setName(char* name){ mName = name; }

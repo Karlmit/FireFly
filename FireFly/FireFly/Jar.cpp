@@ -2,8 +2,11 @@
 #include <iostream>
 #include "EntityList.h"
 #include "AudioEntity.h"
+#include "MusicManager.h"
 
-Jar::Jar(string texture, sf::Vector2f position)
+
+
+Jar::Jar(string texture, sf::Vector2f position, float density)
 : mRigidbody()
 , mSprite(Loading::getTexture(texture))
 , mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
@@ -38,11 +41,14 @@ Jar::Jar(string texture, sf::Vector2f position)
 	//Right
 	rects.push_back(sf::FloatRect(bounds.width/2-width, -bounds.height/2, width, bounds.height));
 
-	float density = 4.f;
+	
+	
 	mRigidbody.AddDynRectBody(rects, position, density);
 
 	// Adds itself to body data for collision callbacks
 	mRigidbody.getBody()->SetUserData(this);
+
+	
 }
 
 
@@ -83,6 +89,9 @@ void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse)
 		mBreakSound.setPosition(getPosition());
 		// Creates a new entity for playing break after the Jar is dead
 		EntityList::getEntityList().addEntity(new AudioEntity(mBreakSound));
+
+		if (isProperty("OnBreakMusicFade"))
+			MusicManager::fadeUp(getProperty("OnBreakMusicFade"));
 		
 	}
 }
