@@ -24,5 +24,7 @@ private:
 	b2Vec2 mZidPosition;
 	sf::Sprite mSprite;
 	bool mDirLeft;
+	bool bonk;
+	unsigned int bonkFrame;
 };
 

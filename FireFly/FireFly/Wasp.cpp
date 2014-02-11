@@ -28,6 +28,8 @@ Wasp::Wasp(sf::Vector2f position)
 
 	mID = "Wasp";
 
+	bonkFrame = 0;
+	bonk = false;
 }
 
 
@@ -81,7 +83,6 @@ void Wasp::updateEntity(sf::Time timePerFrame)
 			mSprite.setScale(1.f, 1.f);
 		}
 	}
-
 	//Get position and rotation from Rigidbody
 	mRigidbody.update();
 	setPosition(mRigidbody.getPosition());
@@ -113,26 +114,48 @@ void Wasp::movement()
 	b2Vec2 direction = mZidPosition - currentPosition;
 	float length = direction.Normalize();
 
+	
+
 	//Depending on distance to Zid, Wasp either follows Zid or moves passively
 	if(length < MIN_FOLLOW_DISTANCE)
 	{
-		// Random target behind Zid
-		float va = -std::atan2f(getPosition().x - sfZidPos.x, getPosition().y - sfZidPos.y);
-		b2Vec2 randTargetPos = Rigidbody::SfToBoxVec(Util::randPointInCircle(OUTER_FOLLOW_RADIUS, INNER_FOLLOW_RADIUS, va+3.14f, va)) + mZidPosition;
-
-		b2Vec2 dirRand = randTargetPos - currentPosition;
-		dirRand.Normalize();
-		dirRand *= FORCE;
-		body->ApplyForceToCenter(dirRand, true);
+		if(bonk == false)
+		{
+			// Moves slower away from Zid (then proceeds with protocol "bonk")
+			float va = -std::atan2f(getPosition().x - sfZidPos.x, getPosition().y - sfZidPos.y);
+			b2Vec2 dirRand = mZidPosition - currentPosition;
+			dirRand.Normalize();
+			dirRand *= FORCE*-0.3f;
+			body->ApplyForceToCenter(dirRand, true);
+			++bonkFrame;
+			if(bonkFrame >= 60)
+			{
+				bonk = true;
+			}
+		}
+		else if(bonk == true)
+		{
+			// Moves quickly towards Zid (and bumps into the jar)
+			float va = -std::atan2f(getPosition().x - sfZidPos.x, getPosition().y - sfZidPos.y);
+			b2Vec2 dirRand = mZidPosition - currentPosition;
+			dirRand.Normalize();
+			dirRand *= FORCE*2;
+			body->ApplyForceToCenter(dirRand, true);
+			--bonkFrame;
+			if(bonkFrame < 1)
+			{
+				bonk = false;
+			}
+		}
 	}
 	else
 	{
-		//Passive, Wasp is pushed in random directions violently
+		//Passive, wasp is pushed in random directions violently
 		float x = float(-1 + rand()%3);
 		float y = float(-1 + rand()%3);
 		b2Vec2 force(x, y);
 		force *= FORCE*(2.f);
 		body->ApplyForceToCenter(force, true);
+		bonkFrame = 0;
 	}
-
 }
