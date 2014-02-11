@@ -139,12 +139,19 @@ void Level::loadMap(string filename)
 			{
 				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
 				Entity *jar = nullptr;
-				if (obj.isProperty("density"))
+
+				if (obj.isProperty("static"))
+					jar = new Jar(imageSrc, position, 1.f, false);
+				else if (obj.isProperty("density"))
 					jar = new Jar(imageSrc, position, obj.getProperty("density").getValueFloat());
 				else
 					jar = new Jar(imageSrc, position);
 				jar->setProperties(obj.getProperties());
 				eList.addEntity(jar , layer, false);
+
+				for (auto prop : obj.getProperties())
+					cout << "Name=" + prop.getName() << ", Value=" << prop.getValueString() << endl;
+
 			}
 
 			//

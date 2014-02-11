@@ -7,6 +7,10 @@
 
 #include <iostream>
 
+const float DENSITY = 3.f;
+const float FORCE = 6.f;
+const float IMP_FORCE = 8.f;
+
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
 ,idleAnimation(Loading::getTexture("zid_flying_right_sheet.png", true), 64, 64, 8, 1, 10, 8)
@@ -27,7 +31,7 @@ Zid::Zid(sf::Vector2f position)
 
 	// Adds a dynamic circle body to zid
 	float colRadius = 24.f;
-	float density = 3.f;
+	float density = DENSITY;
 	mRigidbody.AddDynCircleBody(colRadius, getPosition(), density);
 
 	// Damping for slowing zid down when not moving
@@ -155,7 +159,7 @@ void Zid::movement()
 
 		if (length > 0.5f) {
 			
-			force *= 12.f;
+			force *= FORCE;
 			body->ApplyForceToCenter(force, true);
 		}	
 	}
@@ -175,7 +179,7 @@ void Zid::movement()
 			b2Vec2 mouse = Rigidbody::SfToBoxVec(mousePos);
 			b2Vec2 force = mouse - Rigidbody::SfToBoxVec(getPosition());
 			float length = force.Normalize();
-			force *= 10.f;
+			force *= IMP_FORCE;
 
 			body->ApplyLinearImpulse(force , body->GetWorldCenter(), true);
 			zidDash = true;

@@ -159,11 +159,14 @@ void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 de
 //
 // Adds dynamic rectangles to a body
 //
-void Rigidbody::AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f position, float density)
+void Rigidbody::AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f position, float density, bool dynamic)
 {
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
+	if (dynamic)
+		bodyDef.type = b2_dynamicBody;
+	else
+		bodyDef.type = b2_staticBody;
 	bodyDef.position = SfToBoxVec(position);
 	mBody = mB2World->CreateBody(&bodyDef);
 		

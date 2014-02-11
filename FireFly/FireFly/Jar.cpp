@@ -6,7 +6,7 @@
 
 
 
-Jar::Jar(string texture, sf::Vector2f position, float density)
+Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
 : mRigidbody()
 , mSprite(Loading::getTexture(texture))
 , mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
@@ -43,7 +43,7 @@ Jar::Jar(string texture, sf::Vector2f position, float density)
 
 	
 	
-	mRigidbody.AddDynRectBody(rects, position, density);
+	mRigidbody.AddDynRectBody(rects, position, density, dynamic);
 
 	// Adds itself to body data for collision callbacks
 	mRigidbody.getBody()->SetUserData(this);
@@ -81,6 +81,9 @@ void Jar::BeginContact(b2Contact *contact)
 // Post box2d solving col. Checks impulse of strength of impact
 void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse)
 {
+	if (isProperty("unbreakable"))
+		return;
+
 	float imp = max(impulse->normalImpulses[0], impulse->normalImpulses[1]);
 
 	if (imp > 40.f)
