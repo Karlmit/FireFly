@@ -29,7 +29,7 @@
  </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
-  <object name="Coat5" type="EntitySprite" gid="3" x="0" y="2160"/>
+  <object name="EdibleCoat" type="Room1_Coat" gid="3" x="0" y="2160"/>
   <object name="Stol" type="EntitySprite" gid="7" x="1300" y="2169"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
@@ -46,7 +46,11 @@
     <property name="density" value="4"/>
    </properties>
   </object>
-  <object name="TableJar" type="Jar" gid="5" x="2876" y="1313"/>
+  <object name="TableJar" type="Jar" gid="5" x="2875" y="1313">
+   <properties>
+    <property name="OnBreakMusicFade" value="intense"/>
+   </properties>
+  </object>
   <object name="UnderTableJar" type="Jar" gid="5" x="2260" y="1840"/>
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
   <object name="PlastJar" type="Jar" gid="5" x="25" y="1093">
@@ -82,32 +86,44 @@
   <object name="RightWallTop" type="StaticCollision" x="4475" y="0">
    <polyline points="0,0 3,933 -36,945 -53,987 -69,1188 -108,1657 -119,1748 -99,1760 -17,1787 -17,1581 523,1580"/>
   </object>
-  <object name="RightWallBot" type="StaticCollision" x="4475" y="2156">
-   <polyline points="0,0 1,-120 -73,-117 -141,-133 -117,-251 -104,-255 7,-224 524,-220"/>
+  <object name="CoatHoleCollision" type="StaticCollision" x="4390" y="1884">
+   <properties>
+    <property name="id" value="CoatHoleCollision"/>
+   </properties>
+   <polyline points="4,9 12,-115"/>
+  </object>
+  <object name="RightWallBottom" type="StaticCollision" x="4475" y="2151">
+   <polyline points="0,0 0,-117 -76,-112 -97,-116 -84,-259 -72,-263 -20,-252 -15,-219 7,-217 520,-213"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="mal1" type="Moth" x="2952" y="1203" width="60" height="60">
    <ellipse/>
   </object>
-  <object name="mal1" type="Moth" x="2973" y="1161" width="60" height="60">
-   <ellipse/>
-  </object>
-  <object name="mal1" type="Moth" x="2924" y="1145" width="60" height="60">
-   <ellipse/>
-  </object>
   <object name="zids spawn" type="ZidSpawn" x="492" y="1213" width="100" height="84">
    <ellipse/>
-  </object>
-  <object name="TriggerIntenseMusic" type="Trigger" x="-30" y="-58" width="4505" height="480">
-   <properties>
-    <property name="MusicFade" value="intense"/>
-   </properties>
   </object>
   <object name="Music" type="MusicManager" x="125" y="52" width="195" height="151">
    <properties>
     <property name="Firefly Room 1 TrackVersion 1 (intense part).ogg" value="intense"/>
     <property name="Firefly Room 1 TrackVersion 1 (slow part).ogg" value="slow"/>
+   </properties>
+  </object>
+  <object name="CoatMalTrigger" type="Trigger" x="3990" y="799" width="545" height="1242">
+   <properties>
+    <property name="TriggerOnce" value="Mal"/>
+    <property name="id" value="Room1_Coat_Zone"/>
+   </properties>
+  </object>
+  <object name="CoatHole" type="Point" x="4345" y="1819" width="45" height="45">
+   <properties>
+    <property name="id" value="CoatHole"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="NextMapTrigger" type="Trigger" x="4740" y="1471" width="390" height="577">
+   <properties>
+    <property name="ChangeMap" value="level2.tmx"/>
    </properties>
   </object>
  </objectgroup>

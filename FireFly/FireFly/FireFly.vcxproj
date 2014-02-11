@@ -136,6 +136,7 @@
     <ClInclude Include="Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ContactListener.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="Properties.h" />
+    <ClInclude Include="Room1_Coat.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
@@ -227,6 +229,7 @@
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="Properties.cpp" />
+    <ClCompile Include="Room1_Coat.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />

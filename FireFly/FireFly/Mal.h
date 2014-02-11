@@ -16,6 +16,11 @@ private:
 	virtual void start();
 	virtual void updateEntity(sf::Time dt);
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
+	virtual void sendMessage(Entity* sender, string message);
+
+private:
+	virtual void BeginContact(b2Contact *contact, Entity* other); 
+	virtual void EndContact(b2Contact *contact, Entity* other); 
 	
 	void movement();
 private:
@@ -25,5 +30,8 @@ private:
 	b2Vec2 mZidPosition;
 	sf::Sprite mSprite;
 	bool mDirLeft;
+
+	bool mEatingCoat;
+	sf::Vector2f mCoatPositon;
 };
 

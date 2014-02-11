@@ -22,8 +22,8 @@ private:
 
 private:
 	// Box2d callback functions
-	virtual void BeginContact(b2Contact *contact); 
+	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	//virtual void EndContact(b2Contact *contact); 
 	//virtual void PreSolve(b2Contact *contact, const b2Manifold *oldManifold); 
-	virtual void PostSolve(b2Contact *contact, const b2ContactImpulse *impulse);
+	virtual void PostSolve(b2Contact *contact, const b2ContactImpulse *impulse, Entity* other);
 };

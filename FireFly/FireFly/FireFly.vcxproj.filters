@@ -276,6 +276,12 @@
     <ClInclude Include="Properties.h">
       <Filter>Header Files\LevelEditor</Filter>
     </ClInclude>
+    <ClInclude Include="Room1_Coat.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactListener.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -514,6 +520,9 @@
     </ClCompile>
     <ClCompile Include="Properties.cpp">
       <Filter>Source Files\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="Room1_Coat.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

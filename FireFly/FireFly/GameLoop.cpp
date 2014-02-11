@@ -114,6 +114,9 @@ void GameLoop::update(sf::Time timePerFrame)
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 	Box2dWorld::instance().Step(timeStep, velocityIterations, positionIterations);
+
+	// Check if change map
+	Level::getLevel().update();
 }
 
 void GameLoop::updateStatistics(sf::Time elapsedTime)

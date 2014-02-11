@@ -11,11 +11,20 @@ public:
 
 	// Start level #
 	void startLevel(string level);
+	void update();
+
 private:
 	Level();
 	~Level();
 	void operator=(const Level &level);
 	static Level level;
+
+public:
+	void changeMap(string filename);
+
+private:
+	bool mChangeMap;
+	string mChangeMapTo;
 
 private:
 	// Spawn entities from a map file

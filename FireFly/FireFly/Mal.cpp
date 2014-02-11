@@ -11,7 +11,9 @@ const float OUTER_FOLLOW_RADIUS = 300.f;
 
 Mal::Mal(sf::Vector2f position)
 	: idleAnimation(Loading::getTexture("spritesheet_moth1.png"), 64, 64, 4, 1, 20, 4)
-	,mRigidbody()
+	, mRigidbody()
+	, mEatingCoat(false)
+	, mCoatPositon()
 {
 	//start position
 	setPosition(position);
@@ -20,6 +22,9 @@ Mal::Mal(sf::Vector2f position)
 	float colRadius = 24.f;
 	float density = DENSITY;
 	mRigidbody.AddDynCircleBody(colRadius, getPosition(), density);
+
+	// box2d callbacks
+	mRigidbody.getBody()->SetUserData(this);
 
 	//damping
 	mRigidbody.getBody()->SetLinearDamping(3.f);
@@ -39,6 +44,10 @@ Mal::~Mal(void)
 void Mal::start()
 {
 	mZid = EntityList::getEntityList().getEntity("Zid");
+
+	Entity* coutHole = EntityList::getEntityList().getEntity("CoatHole");
+	if (coutHole)
+		mCoatPositon = coutHole->getPosition();
 }
 
 void Mal::updateEntity(sf:: Time timePerFrame)
@@ -100,6 +109,13 @@ void  Mal::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 		mRigidbody.drawDebug(target, states);
 }
 
+void Mal::sendMessage(Entity* sender, string message)
+{
+	if (message == "CoatFinished")
+		mEatingCoat = false;
+
+}
+
 void Mal::movement()
 {
 	b2Body *body = mRigidbody.getBody();
@@ -118,8 +134,15 @@ void Mal::movement()
 	float length = direction.Normalize();
 
 	//Depedning on distance to Zid Mal either follows Zid or moves passivly around
-
-	if(length < MIN_FOLLOW_DISTANCE)
+	// or eating coat
+	if (mEatingCoat)
+	{
+		b2Vec2 dirRand = Rigidbody::SfToBoxVec(mCoatPositon) - currentPosition;
+		dirRand.Normalize();
+		dirRand *= FORCE;
+		body->ApplyForceToCenter(dirRand, true);
+	}
+	else if (length < MIN_FOLLOW_DISTANCE)
 	{	
 		// Random target behind zid
 		float va = -std::atan2f(getPosition().x - sfZidPos.x, getPosition().y - sfZidPos.y);		
@@ -140,6 +163,21 @@ void Mal::movement()
 		force *= FORCE;
 		body->ApplyForceToCenter(force, true);
 	}
+
+}
+
+void Mal::BeginContact(b2Contact *contact, Entity* other)
+{
+	if (other->getID() == "Room1_Coat_Zone")
+	{
+		Entity* coat = EntityList::getEntityList().getEntity("Room1_Coat");
+		coat->sendMessage(this, "StartEating");
+		mEatingCoat = true;
+	}
+}
+
+void Mal::EndContact(b2Contact *contact, Entity* other)
+{
 
 }
 

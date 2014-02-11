@@ -11,8 +11,10 @@
 #include "Jar.h"
 #include "Mal.h"
 #include "Trigger.h"
+#include "Room1_Coat.h"
 
 #include <iostream>
+using namespace std;
 
 Level Level::level;
 
@@ -29,6 +31,20 @@ Level &Level::getLevel()
 	return level;
 }
 
+void Level::changeMap(string filename)
+{
+	mChangeMap = true;
+	mChangeMapTo = filename;
+}
+
+void Level::update()
+{
+	if (mChangeMap)
+	{
+		startLevel(mChangeMapTo);
+		mChangeMap = false;
+	}
+}
 
 void Level::startLevel(string levelName)
 {
@@ -110,12 +126,17 @@ void Level::loadMap(string filename)
 			MapTileset tileset = map.getTileset(obj.getGid());
 			float imageWidth  = float(tileset.getTilewidth());
 			float imageHeight = float(tileset.getTileheight());
+			sf::Vector2f positionSprite = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
 			Layer layer = getLayerFromString(group.getName());
 			string mapDir = "Maps/";
 			mapDir.append(tileset.getImageSource());
 			//string imageSrc = mapDir;
 			string imageSrc = tileset.getImageSource();
 			string entityType = obj.getType();
+			string id = "";
+			if (obj.isProperty("id"))
+				id = obj.getProperty("id").getValueString();
+
 
 			cout << "[" << obj.getType() << "](" << position.x << ", " <<  position.y << ")\t" 
 					<< "\"" << obj.getName() << "\"" << "\t"
@@ -128,8 +149,7 @@ void Level::loadMap(string filename)
 			//
 			if (entityType == "EntitySprite")
 			{
-				position = sf::Vector2f(position.x+imageWidth/2, position.y-imageHeight/2);
-				eList.addEntity(new EntitySprite(imageSrc, position), layer, false);
+				eList.addEntity(new EntitySprite(imageSrc, positionSprite), layer, false);
 			}
 
 			//
@@ -182,18 +202,24 @@ void Level::loadMap(string filename)
 				bool loop = entityType == "StaticCollisionLoop" ? true : false;
 				vector<sf::Vector2f> sfPoints;
 
-				cout << "Polylines= ";
+				
+				//cout << "Polylines= ";
 				for (MapPoint p : obj.getPolyline().getPoints())
 				{
-					cout << p.x << "," << p.y << " ";
+					//cout << p.x << "," << p.y << " ";
 					sf::Vector2f sfPoint(float(p.x), float(p.y));
 					sfPoint = sfPoint + position;
 					sfPoints.push_back(sfPoint);
 				}
-				cout << endl;
+				//cout << endl;
+				
 
 				if (!sfPoints.empty())
-					eList.addEntity(new StaticLineCollider(sfPoints, loop), Layer::Foreground, false);
+				{
+					Entity* col = new StaticLineCollider(sfPoints, loop);
+					col->setID(id);
+					eList.addEntity(col, Layer::Foreground, false);
+				}
 			}
 
 			//
@@ -210,6 +236,8 @@ void Level::loadMap(string filename)
 				for (auto prop : obj.getProperties())
 					cout << "Name=" + prop.getName() << ", Value=" << prop.getValueString() << endl;
 				trigger->setProperties(obj.getProperties());
+				
+				trigger->setID(id);
 				eList.addEntity(trigger, Layer::Foreground, false);
 			}
 
@@ -224,6 +252,25 @@ void Level::loadMap(string filename)
 					string id = prop.getValueString();
 					MusicManager::addMusic(filepath, id);
 				}
+			}
+
+			//
+			//	Room1_Coat
+			//
+			else if (entityType == "Room1_Coat")
+			{
+				eList.addEntity(new Room1_Coat(positionSprite), layer, false);
+			}
+
+			//
+			//	Point
+			//
+			else if (entityType == "Point")
+			{
+				Entity* point = new Entity();
+				point->setPosition(position);
+				point->setID(id);
+				eList.addEntity(point, Layer::Foreground, false);
 			}
 		}
 

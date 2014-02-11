@@ -73,13 +73,13 @@ void Jar::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 }
 
 // Start of AABB boxes overlapping
-void Jar::BeginContact(b2Contact *contact)
+void Jar::BeginContact(b2Contact *contact, Entity* other)
 {
 	
 }
 
 // Post box2d solving col. Checks impulse of strength of impact
-void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse)
+void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse, Entity* other)
 {
 	if (isProperty("unbreakable"))
 		return;

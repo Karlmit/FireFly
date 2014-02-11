@@ -1,6 +1,7 @@
 #include "Trigger.h"
 #include <iostream>
 #include "MusicManager.h"
+#include "Level.h"
 
 Trigger::Trigger(sf::FloatRect rect)
 	: mRigidbody()
@@ -21,50 +22,32 @@ void Trigger::drawEntity(sf::RenderTarget& target, sf::RenderStates states) cons
 		mRigidbody.drawDebug(target, states);
 }
 
-void Trigger::BeginContact(b2Contact *contact)
+void Trigger::BeginContact(b2Contact *contact, Entity* other)
 {
-	Entity* a = static_cast<Entity*> (contact->GetFixtureA()->GetBody()->GetUserData());
-	Entity* b = static_cast<Entity*> (contact->GetFixtureB()->GetBody()->GetUserData());
-
-	vector<Entity*> ab;
-	if (a != nullptr)
-		ab.push_back(a);
-	if (b != nullptr)
-	ab.push_back(b);
-
-
-	for (Entity* e : ab)
-	{		
-		if (e->getID() == "Zid" )
+	if (other->getID() == "Zid")
+	{
+		if (isProperty("MusicFade")) 
 		{
-			if (isProperty("MusicFade")) {
-				MusicManager::fadeUp(getProperty("MusicFade"));
-				cout << "Zid entered the " + getProperty("MusicFade")+ " zone!" << endl;
-			}
+			MusicManager::fadeUp(getProperty("MusicFade"));
+			cout << "Zid entered the " + getProperty("MusicFade")+ " zone!" << endl;
 		}
+
+		if (isProperty("ChangeMap"))
+			Level::getLevel().changeMap(getProperty("ChangeMap"));
 	}	
-			
 }
 
-void Trigger::EndContact(b2Contact *contact)
+void Trigger::EndContact(b2Contact *contact, Entity* other)
 {
-	Entity* a = static_cast<Entity*> (contact->GetFixtureA()->GetBody()->GetUserData());
-	Entity* b = static_cast<Entity*> (contact->GetFixtureB()->GetBody()->GetUserData());
-
-	vector<Entity*> ab;
-	if (a != nullptr)
-		ab.push_back(a);
-	if (b != nullptr)
-		ab.push_back(b);
-
-	for (Entity* e : ab)
-	{		
-		if (e->getID() == "Zid" )
+	if (other->getID() == "Zid")
+	{
+		if (isProperty("MusicFade")) 
 		{
-			if (isProperty("MusicFade")) {
-				MusicManager::fadeDown(getProperty("MusicFade"));
-				cout << "Zid had left the " + getProperty("MusicFade")+ " zone!" << endl;
-			}
+			MusicManager::fadeDown(getProperty("MusicFade"));
+			cout << "Zid had left the " + getProperty("MusicFade")+ " zone!" << endl;
 		}
 	}
+
+	if (isProperty("TriggerOnce") && getProperty("TriggerOnce") == other->getID())
+		killEntity();
 }
