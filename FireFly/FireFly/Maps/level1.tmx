@@ -37,7 +37,8 @@
   <object name="Byra" type="EntitySprite" gid="6" x="-7" y="2163"/>
   <object name="PlastJar" type="Jar" gid="5" x="25" y="1363">
    <properties>
-    <property name="static" value=""/>
+    <property name="density" value="100"/>
+    <property name="unbreakable" value=""/>
    </properties>
   </object>
   <object name="StartJar" type="Jar" gid="5" x="420" y="1372">
@@ -54,7 +55,8 @@
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
   <object name="PlastJar" type="Jar" gid="5" x="25" y="1093">
    <properties>
-    <property name="static" value=""/>
+    <property name="density" value="100"/>
+    <property name="unbreakable" value=""/>
    </properties>
   </object>
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
@@ -128,7 +130,7 @@
   <object name="StartSlowMusic" type="Trigger" x="380" y="1039" width="300" height="361">
    <properties>
     <property name="MusicFadeUp" value="slow"/>
-    <property name="TriggerOnce" value=""/>
+    <property name="TriggerOnce" value="Zid"/>
    </properties>
   </object>
  </objectgroup>

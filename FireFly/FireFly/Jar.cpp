@@ -86,7 +86,7 @@ void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse, Entity*
 
 	float imp = max(impulse->normalImpulses[0], impulse->normalImpulses[1]);
 
-	if (imp > 40.f)
+	if (imp > 30.f)
 	{
 		killEntity();
 		mBreakSound.setPosition(getPosition());
