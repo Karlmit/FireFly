@@ -13,6 +13,13 @@
  <objectgroup name="Front" width="1" height="1"/>
  <objectgroup name="Foreground" width="1" height="1">
   <object name="Office_Fan" type="EntitySprite" gid="2" x="2241" y="170"/>
+  <object name="AC Force Zone" type="ForceZone" x="4336" y="148" width="718" height="430">
+   <properties>
+    <property name="id" value="ACForceZone"/>
+    <property name="xForce" value="-12"/>
+    <property name="yForce" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
   <object name="CollVent1" type="StaticCollision" x="724" y="4475">
@@ -24,10 +31,18 @@
   <object name="CollRooms" type="StaticCollision" x="5071" y="4466">
    <polyline points="0,0 -4,-2152 -4344,-2144 -4336,-776 -4684,-776 -4680,-3788 -4352,-3792 -4352,-2300 -4,-2300 0,-4460"/>
   </object>
+  <object type="StaticCollisionLoop" x="2176" y="1421">
+   <polyline points="0,0 2,68 1486,66 1484,2"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="88" y="2136" width="40" height="30">
    <ellipse/>
+  </object>
+  <object name="FanOnButton" type="Trigger" x="788" y="713" width="92" height="90">
+   <properties>
+    <property name="OnEnter" value="ToggleSpriteFanButton"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

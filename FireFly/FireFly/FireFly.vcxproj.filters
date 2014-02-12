@@ -285,7 +285,7 @@
     <ClInclude Include="FadeToBlack.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="OfficeFan.h">
+    <ClInclude Include="ForceZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -533,7 +533,7 @@
     <ClCompile Include="FadeToBlack.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="OfficeFan.cpp">
+    <ClCompile Include="ForceZone.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

@@ -138,6 +138,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ContactListener.h" />
     <ClInclude Include="FadeToBlack.h" />
+    <ClInclude Include="ForceZone.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
@@ -148,7 +149,6 @@
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MusicManager.h" />
-    <ClInclude Include="OfficeFan.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="Room1_Coat.h" />
     <ClInclude Include="Spider.h" />
@@ -221,6 +221,7 @@
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
+    <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
@@ -231,7 +232,6 @@
     <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MusicManager.cpp" />
-    <ClCompile Include="OfficeFan.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />
     <ClCompile Include="Spider.cpp" />

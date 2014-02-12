@@ -13,7 +13,7 @@
 #include "Trigger.h"
 #include "Room1_Coat.h"
 #include "FadeToBlack.h"
-#include "OfficeFan.h"
+#include "ForceZone.h"
 
 #include <iostream>
 using namespace std;
@@ -289,6 +289,22 @@ void Level::loadMap(string filename)
 				point->setPosition(position);
 				point->setID(id);
 				eList.addEntity(point, Layer::Foreground, false);
+			}
+
+			//
+			//	ForceZone
+			//
+			else if (entityType == "ForceZone")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				ForceZone* zone = new ForceZone(rect);
+				zone->setProperties(obj.getProperties());				
+				zone->setID(id);
+				eList.addEntity(zone, Layer::Foreground, false);
 			}
 
 			
