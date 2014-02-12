@@ -31,7 +31,7 @@
   <object name="CollRooms" type="StaticCollision" x="5071" y="4466">
    <polyline points="0,0 -4,-2152 -4344,-2144 -4336,-776 -4684,-776 -4680,-3788 -4352,-3792 -4352,-2300 -4,-2300 0,-4460"/>
   </object>
-  <object type="StaticCollisionLoop" x="2176" y="1421">
+  <object name="TableColl" type="StaticCollisionLoop" x="2176" y="1421">
    <polyline points="0,0 2,68 1486,66 1484,2"/>
   </object>
  </objectgroup>
@@ -42,6 +42,43 @@
   <object name="FanOnButton" type="Trigger" x="788" y="713" width="92" height="90">
    <properties>
     <property name="OnEnter" value="ToggleSpriteFanButton"/>
+   </properties>
+  </object>
+  <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179">
+   <properties>
+    <property name="Firefly Room 2 TrackVersion 1 (Boiler).ogg" value="boiler"/>
+    <property name="Firefly Room 2 TrackVersion 1 (Office).ogg" value="office"/>
+    <property name="Firefly Room 2 TrackVersion 1 (Vent).ogg" value="vent"/>
+   </properties>
+  </object>
+  <object name="MusicEnterOfficeTrigger" type="Trigger" x="724" y="367" width="43" height="318">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="office"/>
+   </properties>
+  </object>
+  <object name="MusicEnterVentTrigger" type="Trigger" x="670" y="368" width="43" height="318">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="vent"/>
+   </properties>
+  </object>
+  <object name="MusicEnterVentTrigger" type="Trigger" x="676" y="3686" width="43" height="318">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="vent"/>
+   </properties>
+  </object>
+  <object name="MusicEnterBoilerTrigger" type="Trigger" x="734" y="3695" width="43" height="318">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="boiler"/>
+   </properties>
+  </object>
+  <object name="MusicEnterVentTrigger" type="Trigger" x="2" y="1914" width="451" height="452">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
  </objectgroup>

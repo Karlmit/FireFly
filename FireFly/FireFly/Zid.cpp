@@ -8,8 +8,8 @@
 #include <iostream>
 
 const float DENSITY = 3.f;
-const float FORCE = 6.f;
-const float IMP_FORCE = 8.f;
+const float FORCE = 5.f;
+const float IMP_FORCE = 7.f;
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))

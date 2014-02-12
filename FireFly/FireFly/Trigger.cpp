@@ -26,10 +26,11 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 {
 	if (other->getID() == "Zid")
 	{
+		if (isProperty("MusicFadeDownAll"))
+			MusicManager::fadeDownAll();
+
 		if (isProperty("MusicFadeUp")) 
-		{
 			MusicManager::fadeUp(getProperty("MusicFadeUp"));
-		}
 
 		if (isProperty("ChangeMap"))
 			Level::getLevel().fadeToBlackChangeLevel(getProperty("ChangeMap"));
