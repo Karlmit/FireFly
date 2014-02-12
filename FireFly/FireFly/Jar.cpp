@@ -8,7 +8,7 @@
 
 Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
 : mRigidbody()
-, mSprite(Loading::getTexture(texture))
+, mSprite(Loading::getTexture(texture, true))
 , mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
 , mBroken(false)
 {
