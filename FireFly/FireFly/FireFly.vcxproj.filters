@@ -282,6 +282,9 @@
     <ClInclude Include="ContactListener.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="FadeToBlack.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -522,6 +525,9 @@
       <Filter>Source Files\LevelEditor</Filter>
     </ClCompile>
     <ClCompile Include="Room1_Coat.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeToBlack.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

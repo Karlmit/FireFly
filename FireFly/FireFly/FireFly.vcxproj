@@ -137,6 +137,7 @@
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ContactListener.h" />
+    <ClInclude Include="FadeToBlack.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />

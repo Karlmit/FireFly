@@ -11,8 +11,8 @@ public:
 	EntitySprite(string textureID ,sf::Vector2f position);
 
 private:
-	virtual void	updateEntity(sf::Time dt);	
-	virtual void	drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
+	virtual void updateEntity(sf::Time dt);	
+	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
 	sf::Sprite mSprite;

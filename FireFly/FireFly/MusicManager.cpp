@@ -82,6 +82,14 @@ void MusicManager::fadeDown(string id)
 	found->second = false;
 }
 
+void MusicManager::fadeDownAll()
+{
+	for(auto& iter : instance->mFadeUpMap) 
+	{
+		iter.second = false;
+	}
+}
+
 void MusicManager::fadeUp(string id) 
 {
 	auto found = instance->mFadeUpMap.find(id);

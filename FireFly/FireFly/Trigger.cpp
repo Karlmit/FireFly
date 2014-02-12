@@ -32,7 +32,7 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 		}
 
 		if (isProperty("ChangeMap"))
-			Level::getLevel().changeMap(getProperty("ChangeMap"));
+			Level::getLevel().fadeToBlackChangeLevel(getProperty("ChangeMap"));
 	}	
 }
 

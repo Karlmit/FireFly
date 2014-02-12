@@ -8,10 +8,11 @@ class Level
 {
 public:
 	static Level &getLevel();
-
-	// Start level #
-	void startLevel(string level);
-	void update();
+	static sf::Vector2f getLevelSize();
+	static void startLevel(string level);
+	static void changeMap(string filename);
+	static void fadeToBlackChangeLevel(string filename);
+	static void update();
 
 private:
 	Level();
@@ -20,11 +21,13 @@ private:
 	static Level level;
 
 public:
-	void changeMap(string filename);
+	
+	
 
 private:
 	bool mChangeMap;
 	string mChangeMapTo;
+	sf::Vector2f mMapSize;
 
 private:
 	// Spawn entities from a map file

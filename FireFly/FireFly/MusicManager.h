@@ -16,6 +16,7 @@ public:
 	static void play(string id);
 	static void playAll();
 	static void fadeDown(string id);
+	static void fadeDownAll();
 	static void fadeUp(string id);
 	static void fadeToggle(string id);
 

@@ -31,7 +31,9 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::getLevel().startLevel("level1.tmx");
+	//Level::getLevel().startLevel("level1.tmx");
+	Level::startLevel("level1.tmx");
+
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -116,7 +118,7 @@ void GameLoop::update(sf::Time timePerFrame)
 	Box2dWorld::instance().Step(timeStep, velocityIterations, positionIterations);
 
 	// Check if change map
-	Level::getLevel().update();
+	Level::update();
 }
 
 void GameLoop::updateStatistics(sf::Time elapsedTime)
@@ -154,28 +156,28 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 		{	
 			break;
 		case sf::Keyboard::F1:
-			Level::getLevel().startLevel("level1.tmx");
+			Level::changeMap("level1.tmx");
 			break;
 		case sf::Keyboard::F2:
-			Level::getLevel().startLevel("level2.tmx");
+			Level::changeMap("level2.tmx");
 			break;
 		case sf::Keyboard::F3:
-			Level::getLevel().startLevel("level3.tmx");
+			Level::changeMap("level3.tmx");
 			break;
 		case sf::Keyboard::F4:
-			Level::getLevel().startLevel("level4.tmx");
+			Level::changeMap("level4.tmx");
 			break;
 		case sf::Keyboard::F5:
-			Level::getLevel().startLevel("level5.tmx");
+			Level::changeMap("level5.tmx");
 			break;
 		case sf::Keyboard::F6:
-			Level::getLevel().startLevel("level6.tmx");
+			Level::changeMap("level6.tmx");
 			break;
 		case sf::Keyboard::F7:
-			Level::getLevel().startLevel("level7.tmx");
+			Level::changeMap("level7.tmx");
 			break;
 		case sf::Keyboard::F8:
-			Level::getLevel().startLevel("level8.tmx");
+			Level::changeMap("level8.tmx");
 			break;
 		default:
 			break;

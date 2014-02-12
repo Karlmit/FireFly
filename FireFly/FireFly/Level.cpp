@@ -12,6 +12,7 @@
 #include "Mal.h"
 #include "Trigger.h"
 #include "Room1_Coat.h"
+#include "FadeToBlack.h"
 
 #include <iostream>
 using namespace std;
@@ -26,23 +27,36 @@ Level::~Level()
 {
 }
 
-Level &Level::getLevel()
+Level& Level::getLevel()
 {
 	return level;
 }
 
+sf::Vector2f Level::getLevelSize()
+{
+	return level.mMapSize;
+}
+void Level::fadeToBlackChangeLevel(string filename)
+{
+	float fadeDelay = 3.f;
+	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, true, filename), Layer::Foreground);
+	MusicManager::fadeDownAll();
+}
+
 void Level::changeMap(string filename)
 {
-	mChangeMap = true;
-	mChangeMapTo = filename;
+
+
+	level.mChangeMap = true;
+	level.mChangeMapTo = filename;
 }
 
 void Level::update()
 {
-	if (mChangeMap)
+	if (level.mChangeMap)
 	{
-		startLevel(mChangeMapTo);
-		mChangeMap = false;
+		level.startLevel(level.mChangeMapTo);
+		level.mChangeMap = false;
 	}
 }
 
@@ -56,19 +70,21 @@ void Level::startLevel(string levelName)
 	
 	// Creates a music manager
 	MusicManager::newManager();
-	//MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (slow part).ogg", "slow");
-	//MusicManager::addMusic("Firefly Room 1 TrackVersion 1 (intense part).ogg", "intensive");
 	
 	// Loads the level
 	string mapStr = "Maps/";
 	mapStr.append(levelName);
-	loadMap(mapStr);
+	level.loadMap(mapStr);
 
 	// Plays all the loaded music
 	MusicManager::playAll();
 
 	// Runs start() on all entities
 	EntityList::getEntityList().startList();
+
+	// Fade from black
+	float fadeDelay = 5.f;
+	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
 }
 
 void Level::loadMap(string filename)
@@ -87,7 +103,8 @@ void Level::loadMap(string filename)
 
 	// Get the map width and height
 	float mapWidth = float(map.getTileWidth());
-	float mapHeight = float(map.getTileHeight());	
+	float mapHeight = float(map.getTileHeight());
+	mMapSize = sf::Vector2f(mapWidth, mapHeight);
 
 	// Level boundry
 	//sf::FloatRect levelBoundry(-mapWidth/2, -mapHeight/2, mapWidth, mapHeight);
