@@ -14,6 +14,7 @@ Mal::Mal(sf::Vector2f position)
 	, mRigidbody()
 	, mEatingCoat(false)
 	, mCoatPositon()
+	, mFinishedEatingCoat(false)
 {
 	//start position
 	setPosition(position);
@@ -45,7 +46,7 @@ void Mal::start()
 {
 	mZid = EntityList::getEntityList().getEntity("Zid");
 
-	Entity* coutHole = EntityList::getEntityList().getEntity("CoatHole");
+	Entity* coutHole = EntityList::getEntityList().getEntity("CoatHolePoint");
 	if (coutHole)
 		mCoatPositon = coutHole->getPosition();
 }
@@ -112,7 +113,10 @@ void  Mal::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 void Mal::sendMessage(Entity* sender, string message)
 {
 	if (message == "CoatFinished")
+	{
 		mEatingCoat = false;
+		mFinishedEatingCoat = true;
+	}
 
 }
 
@@ -142,7 +146,7 @@ void Mal::movement()
 		dirRand *= FORCE;
 		body->ApplyForceToCenter(dirRand, true);
 	}
-	else if (length < MIN_FOLLOW_DISTANCE)
+	else if (length < MIN_FOLLOW_DISTANCE && !mFinishedEatingCoat)
 	{	
 		// Random target behind zid
 		float va = -std::atan2f(getPosition().x - sfZidPos.x, getPosition().y - sfZidPos.y);		

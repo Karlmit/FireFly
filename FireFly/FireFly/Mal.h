@@ -33,5 +33,6 @@ private:
 
 	bool mEatingCoat;
 	sf::Vector2f mCoatPositon;
+	bool mFinishedEatingCoat;
 };
 

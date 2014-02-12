@@ -26,10 +26,9 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 {
 	if (other->getID() == "Zid")
 	{
-		if (isProperty("MusicFade")) 
+		if (isProperty("MusicFadeUp")) 
 		{
-			MusicManager::fadeUp(getProperty("MusicFade"));
-			cout << "Zid entered the " + getProperty("MusicFade")+ " zone!" << endl;
+			MusicManager::fadeUp(getProperty("MusicFadeUp"));
 		}
 
 		if (isProperty("ChangeMap"))
@@ -39,6 +38,7 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 
 void Trigger::EndContact(b2Contact *contact, Entity* other)
 {
+	/*
 	if (other->getID() == "Zid")
 	{
 		if (isProperty("MusicFade")) 
@@ -47,6 +47,7 @@ void Trigger::EndContact(b2Contact *contact, Entity* other)
 			cout << "Zid had left the " + getProperty("MusicFade")+ " zone!" << endl;
 		}
 	}
+	*/
 
 	if (isProperty("TriggerOnce") && getProperty("TriggerOnce") == other->getID())
 		killEntity();

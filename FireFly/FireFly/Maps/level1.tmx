@@ -42,7 +42,6 @@
   </object>
   <object name="StartJar" type="Jar" gid="5" x="420" y="1372">
    <properties>
-    <property name="OnBreakMusicFade" value="slow"/>
     <property name="density" value="4"/>
    </properties>
   </object>
@@ -97,7 +96,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="mal1" type="Moth" x="2952" y="1203" width="60" height="60">
+  <object name="mal1" type="Moth" x="2954" y="1217" width="60" height="60">
    <ellipse/>
   </object>
   <object name="zids spawn" type="ZidSpawn" x="492" y="1213" width="100" height="84">
@@ -115,15 +114,21 @@
     <property name="id" value="Room1_Coat_Zone"/>
    </properties>
   </object>
-  <object name="CoatHole" type="Point" x="4345" y="1819" width="45" height="45">
+  <object name="CoatHolePoint" type="Point" x="4349" y="1815" width="45" height="45">
    <properties>
-    <property name="id" value="CoatHole"/>
+    <property name="id" value="CoatHolePoint"/>
    </properties>
    <ellipse/>
   </object>
   <object name="NextMapTrigger" type="Trigger" x="4740" y="1471" width="390" height="577">
    <properties>
     <property name="ChangeMap" value="level2.tmx"/>
+   </properties>
+  </object>
+  <object name="StartSlowMusic" type="Trigger" x="380" y="1039" width="300" height="361">
+   <properties>
+    <property name="MusicFadeUp" value="slow"/>
+    <property name="TriggerOnce" value=""/>
    </properties>
   </object>
  </objectgroup>
