@@ -3,12 +3,17 @@
  <tileset firstgid="1" name="Room2_Background" tilewidth="5400" tileheight="4484">
   <image source="../Resources/Room 2/Fullscreen.png" width="5400" height="4484"/>
  </tileset>
+ <tileset firstgid="2" name="firefly_takflakt_temp" tilewidth="1200" tileheight="213">
+  <image source="../Resources/Room 2/firefly_takflakt_temp.png" width="1200" height="213"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Background" type="EntitySprite" gid="1" x="0" y="4484"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1"/>
- <objectgroup name="Foreground" width="1" height="1"/>
+ <objectgroup name="Foreground" width="1" height="1">
+  <object name="Office_Fan" type="EntitySprite" gid="2" x="2241" y="170"/>
+ </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
   <object name="CollVent1" type="StaticCollision" x="724" y="4475">
    <polyline points="0,0 4,-470 -684,-470 -688,-2162 -726,-2162"/>

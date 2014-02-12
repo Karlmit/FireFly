@@ -13,6 +13,7 @@
 #include "Trigger.h"
 #include "Room1_Coat.h"
 #include "FadeToBlack.h"
+#include "OfficeFan.h"
 
 #include <iostream>
 using namespace std;
@@ -289,6 +290,8 @@ void Level::loadMap(string filename)
 				point->setID(id);
 				eList.addEntity(point, Layer::Foreground, false);
 			}
+
+			
 		}
 
 		cout << endl;

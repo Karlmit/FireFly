@@ -2,8 +2,6 @@
 
 #include "Entity.h"
 
-#include <SFML\Graphics\Sprite.hpp>
-
 class EntitySprite : public Entity 
 {
 public:
