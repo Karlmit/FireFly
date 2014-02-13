@@ -11,6 +11,7 @@ const float DENSITY = 3.f;
 const float FORCE = 5.f;
 const float IMP_FORCE = 7.f;
 const float DAMPING = 2.f;
+const float SCALE = 1.f;
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
@@ -101,22 +102,22 @@ void Zid::updateEntity(sf::Time dt)
 	if (body->GetLinearVelocity().x < -0.1f) 
 	{
 		mDirLeft = true;
-		mSprite.setScale(-1.f, 1.f);
+		mSprite.setScale(-SCALE, SCALE);
 	}
 	else if (body->GetLinearVelocity().x > 0.1f)
 	{
 		mDirLeft = false;
-		mSprite.setScale(1.f, 1.f);
+		mSprite.setScale(SCALE, SCALE);
 	}
 	else if(body->GetLinearVelocity().x >= -0.1f && 0.1f >= body->GetLinearVelocity().x)
 	{
 		if(mDirLeft == true)
 		{
-			mSprite.setScale(-1.f, 1.f);
+			mSprite.setScale(-SCALE, SCALE);
 		}
 		else
 		{
-			mSprite.setScale(1.f, 1.f);
+			mSprite.setScale(SCALE, SCALE);
 		}
 	}
 
@@ -166,11 +167,18 @@ void Zid::movement()
 		b2Vec2 force = mouse - Rigidbody::SfToBoxVec(getPosition());
 		float length = force.Normalize();
 
+		// If mouse is a certain distance away use full force
+		// and decrease it when mouse is closer to Zid
 		if (length > 0.5f) {
 			
 			force *= FORCE;
 			body->ApplyForceToCenter(force, true);
-		}	
+		}
+		else
+		{
+			force *= FORCE * (length / 0.5f) * 0.5f;
+			body->ApplyForceToCenter(force, true);
+		}
 	}
 
 	// Apply impulse for the right mouse button
