@@ -21,18 +21,26 @@
  <tileset firstgid="7" name="sugarbowltop_scale" tilewidth="105" tileheight="33">
   <image source="../Resources/Room 2/sugarbowltop_scale.png" width="105" height="33"/>
  </tileset>
+ <tileset firstgid="8" name="varmepanna_scale" tilewidth="1182" tileheight="1172">
+  <image source="../Resources/Room 2/varmepanna_scale.png" width="1182" height="1172"/>
+ </tileset>
+ <tileset firstgid="9" name="ventilflakt_scale" tilewidth="287" tileheight="449">
+  <image source="../Resources/Room 2/ventilflakt_scale.png" width="287" height="449"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
  </objectgroup>
  <objectgroup name="Back" width="1" height="1">
   <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
   <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
+  <object name="BoilerSprite" type="EntitySprite" gid="8" x="3382" y="4506"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
   <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167"/>
   <object name="Suger Bowl" type="EntitySprite" gid="6" x="4354" y="1317"/>
   <object name="SugerBow lTop" type="EntitySprite" gid="7" x="4386" y="1218"/>
+  <object name="AC Flakt" type="EntitySprite" gid="9" x="4782" y="599"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
@@ -50,11 +58,11 @@
   <object name="TableColl" type="StaticCollisionLoop" x="2176" y="1421">
    <polyline points="0,0 2,68 1486,66 1484,2"/>
   </object>
-  <object name="Boiler" type="StaticCollision" x="3548" y="4480">
-   <polyline points="0,0 0,-56 -48,-64 -46,-920 898,-922 902,-70 862,-58 862,-12"/>
-  </object>
   <object name="Suger Bowl" type="StaticCollisionLoop" x="4369" y="1314">
    <polyline points="0,0 -10,-12 -14,-36 -8,-59 5,-84 17,-97 18,-87 8,-75 0,-55 -2,-32 21,-25 63,-22 98,-27 127,-30 143,-32 144,-46 136,-63 123,-88 115,-97 121,-101 134,-88 145,-66 154,-43 151,-18 143,-3 137,-2 16,-2"/>
+  </object>
+  <object name="BoilerColl" type="StaticCollision" x="3521" y="4475">
+   <polyline points="0,0 -3,-58 -18,-58 -18,-964 979,-958 982,-58 955,-55 958,0"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
@@ -129,7 +137,7 @@
    <ellipse/>
   </object>
   <object name="FlyTapeStickyZone1" type="StickyZone" x="1859" y="-6" width="15" height="89"/>
-  <object name="AC Force Zone" type="ForceZone" x="4336" y="148" width="718" height="430">
+  <object name="AC Force Zone" type="ForceZone" x="4481" y="151" width="586" height="443">
    <properties>
     <property name="id" value="ACForceZone"/>
     <property name="xForce" value="-12"/>

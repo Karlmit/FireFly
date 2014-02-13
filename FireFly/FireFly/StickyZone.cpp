@@ -29,11 +29,9 @@ void StickyZone::drawEntity(sf::RenderTarget& target, sf::RenderStates states) c
 void StickyZone::BeginContact(b2Contact *contact, Entity* other)
 {
 	// Make anything caught in the sticky zone stick
-	// except zid that handles it himself
+	// except Zid that handles it himself
 	if (other->getID() != "Zid")
 	{
-		cout << "ResA=" << contact->GetFixtureA()->GetBody()->GetLinearDamping() << endl;
-		cout << "ResB=" << contact->GetFixtureB()->GetBody()->GetLinearDamping() << endl;
 		contact->GetFixtureA()->GetBody()->SetLinearDamping(999.f);
 		contact->GetFixtureB()->GetBody()->SetLinearDamping(999.f);
 	}
