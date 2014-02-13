@@ -288,6 +288,9 @@
     <ClInclude Include="ForceZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="StickyZone.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -534,6 +537,9 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="ForceZone.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="StickyZone.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

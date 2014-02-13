@@ -14,6 +14,7 @@
 #include "Room1_Coat.h"
 #include "FadeToBlack.h"
 #include "ForceZone.h"
+#include "StickyZone.h"
 
 #include <iostream>
 using namespace std;
@@ -307,6 +308,22 @@ void Level::loadMap(string filename)
 				eList.addEntity(zone, Layer::Foreground, false);
 			}
 
+			//
+			//	StickyZone
+			//
+			else if (entityType == "StickyZone")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				StickyZone* zone = new StickyZone(rect);
+				zone->setProperties(obj.getProperties());				
+				zone->setID(id);
+				eList.addEntity(zone, Layer::Foreground, false);
+			}
+
 			
 		}
 
@@ -318,6 +335,8 @@ void Level::loadMap(string filename)
 Layer Level::getLayerFromString(string strLayer)
 {
 	if (strLayer == "Background")
+		return Layer::Background;
+	else if (strLayer == "Back")
 		return Layer::Background;
 	else if (strLayer == "Front")
 		return Layer::Front;

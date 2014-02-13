@@ -19,6 +19,9 @@ private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 
+	virtual void BeginContact(b2Contact *contact, Entity* other); 
+	virtual void EndContact(b2Contact *contact, Entity* other); 
+
 	void movement();
 
 private:
@@ -30,6 +33,7 @@ sf::Sprite		mSprite;
 	bool zidDash;
 	int dashFrameNo;
 	bool mDirLeft;
+	bool mInStickyZone;
 };
 
 #endif

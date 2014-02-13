@@ -1,8 +1,5 @@
 #include "ForceZone.h"
 
-#include <iostream>
-#include "MusicManager.h"
-#include "Level.h"
 
 ForceZone::ForceZone(sf::FloatRect rect)
 	: mRigidbody()

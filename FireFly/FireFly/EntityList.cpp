@@ -28,6 +28,8 @@ void EntityList::draw(sf::RenderWindow& window)
 	// Draw in correct order with the layer lists
 	for (Entity* e : BackgroundLayerList)
 		window.draw(*e);
+	for (Entity* e : BackLayerList)
+		window.draw(*e);
 	for (Entity* e : NPCLayerList)
 		window.draw(*e);
 	for (Entity* e : FrontLayerList)
@@ -44,6 +46,8 @@ void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 	// Add the entity in a layer list to be used in the draw function
 	if (layer == Layer::Background)
 		BackgroundLayerList.push_back(entity);
+	if (layer == Layer::Back)
+		BackLayerList.push_back(entity);
 	else if (layer == Layer::NPC)
 		NPCLayerList.push_back(entity);
 	else if (layer == Layer::Front)
@@ -66,6 +70,20 @@ void EntityList::updateList()
 		if (!isAlive)
 		{
 			BackgroundLayerList.erase(i++); 
+		}
+		else
+		{
+			++i;
+		}
+	}
+	// BackList
+	i = BackLayerList.begin();
+	while (i != BackLayerList.end())
+	{
+		bool isAlive = (*i)->getAliveStatus();
+		if (!isAlive)
+		{
+			BackLayerList.erase(i++); 
 		}
 		else
 		{
@@ -142,6 +160,7 @@ void EntityList::emptyList()
 	listedEntities = entityList();
 
 	BackgroundLayerList = entityList();
+	BackLayerList = entityList();
 	NPCLayerList = entityList();
 	FrontLayerList = entityList();
 	ForegroundLayerList = entityList();

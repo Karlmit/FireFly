@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="5400" tileheight="4484">
  <tileset firstgid="1" name="Room2_Background" tilewidth="5400" tileheight="4484">
-  <image source="../Resources/Room 2/Fullscreen.png" width="5400" height="4484"/>
+  <image source="../Resources/Room 2/Rum2.png" width="5400" height="4484"/>
  </tileset>
- <tileset firstgid="2" name="firefly_takflakt_temp" tilewidth="1200" tileheight="213">
-  <image source="../Resources/Room 2/firefly_takflakt_temp.png" width="1200" height="213"/>
+ <tileset firstgid="2" name="Room2_Foreground" tilewidth="5400" tileheight="4484">
+  <image source="../Resources/Room 2/Rum2_forgrund.png" width="5400" height="4484"/>
+ </tileset>
+ <tileset firstgid="3" name="flugfangare_vanster_scale" tilewidth="101" tileheight="761">
+  <image source="../Resources/Room 2/flugfangare_vanster_scale.png" width="101" height="761"/>
+ </tileset>
+ <tileset firstgid="4" name="flugfangare_hoger_scale" tilewidth="110" tileheight="654">
+  <image source="../Resources/Room 2/flugfangare_hoger_scale.png" width="110" height="654"/>
+ </tileset>
+ <tileset firstgid="5" name="serveringsvagn_scale" tilewidth="929" tileheight="1008">
+  <image source="../Resources/Room 2/serveringsvagn_scale.png" width="929" height="1008"/>
+ </tileset>
+ <tileset firstgid="6" name="sugarbowl_scale" tilewidth="170" tileheight="99">
+  <image source="../Resources/Room 2/sugarbowl_scale.png" width="170" height="99"/>
+ </tileset>
+ <tileset firstgid="7" name="sugarbowltop_scale" tilewidth="105" tileheight="33">
+  <image source="../Resources/Room 2/sugarbowltop_scale.png" width="105" height="33"/>
  </tileset>
  <objectgroup name="Background" width="1" height="1">
-  <object name="Background" type="EntitySprite" gid="1" x="0" y="4484"/>
+  <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
+ </objectgroup>
+ <objectgroup name="Back" width="1" height="1">
+  <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
+  <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
- <objectgroup name="Front" width="1" height="1"/>
- <objectgroup name="Foreground" width="1" height="1">
-  <object name="Office_Fan" type="EntitySprite" gid="2" x="2241" y="170"/>
-  <object name="AC Force Zone" type="ForceZone" x="4336" y="148" width="718" height="430">
-   <properties>
-    <property name="id" value="ACForceZone"/>
-    <property name="xForce" value="-12"/>
-    <property name="yForce" value="0"/>
-   </properties>
-  </object>
+ <objectgroup name="Front" width="1" height="1">
+  <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167"/>
+  <object name="Suger Bowl" type="EntitySprite" gid="6" x="4354" y="1317"/>
+  <object name="SugerBow lTop" type="EntitySprite" gid="7" x="4386" y="1218"/>
+ </objectgroup>
+ <objectgroup name="Foreground" width="1" height="1" visible="0">
+  <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
  </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
   <object name="CollVent1" type="StaticCollision" x="724" y="4475">
@@ -33,6 +49,12 @@
   </object>
   <object name="TableColl" type="StaticCollisionLoop" x="2176" y="1421">
    <polyline points="0,0 2,68 1486,66 1484,2"/>
+  </object>
+  <object name="Boiler" type="StaticCollision" x="3548" y="4480">
+   <polyline points="0,0 0,-56 -48,-64 -46,-920 898,-922 902,-70 862,-58 862,-12"/>
+  </object>
+  <object name="Suger Bowl" type="StaticCollisionLoop" x="4369" y="1314">
+   <polyline points="0,0 -10,-12 -14,-36 -8,-59 5,-84 17,-97 18,-87 8,-75 0,-55 -2,-32 21,-25 63,-22 98,-27 127,-30 143,-32 144,-46 136,-63 123,-88 115,-97 121,-101 134,-88 145,-66 154,-43 151,-18 143,-3 137,-2 16,-2"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
@@ -81,5 +103,43 @@
     <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1343" y="-16" width="41" height="546"/>
+  <object name="mothy" type="Moth" x="1274" y="659" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1488" y="701" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1262" y="911" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1476" y="953" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1252" y="1207" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1466" y="1249" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1220" y="1461" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1434" y="1503" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1859" y="-6" width="15" height="89"/>
+  <object name="AC Force Zone" type="ForceZone" x="4336" y="148" width="718" height="430">
+   <properties>
+    <property name="id" value="ACForceZone"/>
+    <property name="xForce" value="-12"/>
+    <property name="yForce" value="0"/>
+   </properties>
+  </object>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1825" y="114" width="15" height="89"/>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1847" y="242" width="11" height="43"/>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1819" y="296" width="13" height="29"/>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1804" y="361" width="13" height="29"/>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1839" y="400" width="13" height="29"/>
  </objectgroup>
 </map>
