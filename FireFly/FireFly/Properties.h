@@ -20,6 +20,17 @@ public:
 		return "";
 	}
 
+	vector<string> getProperties(string name)
+	{ 
+		vector<string> props;
+
+		for (MapObjectProperty prop : mProperties)
+			if (prop.getName() == name)
+				props.push_back(prop.getValueString()); 
+
+		return props;
+	}
+
 	int getPropertyInt(string name)
 	{ 
 		for (MapObjectProperty prop : mProperties)

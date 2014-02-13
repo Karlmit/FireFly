@@ -164,6 +164,7 @@
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="StickyZone.h" />
     <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="ToggleSprite.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="WorldContactListener.h" />
@@ -251,6 +252,7 @@
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="StickyZone.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="ToggleSprite.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="WorldContactListener.cpp" />

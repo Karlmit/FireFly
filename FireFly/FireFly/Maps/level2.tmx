@@ -27,6 +27,9 @@
  <tileset firstgid="9" name="ventilflakt_scale" tilewidth="287" tileheight="449">
   <image source="../Resources/Room 2/ventilflakt_scale.png" width="287" height="449"/>
  </tileset>
+ <tileset firstgid="10" name="takflakt_knapp_off_scale" tilewidth="140" tileheight="140">
+  <image source="../Resources/Room 2/takflakt_knapp_off_scale.png" width="140" height="140"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
  </objectgroup>
@@ -41,6 +44,13 @@
   <object name="Suger Bowl" type="EntitySprite" gid="6" x="4354" y="1317"/>
   <object name="SugerBow lTop" type="EntitySprite" gid="7" x="4386" y="1218"/>
   <object name="AC Flakt" type="EntitySprite" gid="9" x="4782" y="599"/>
+  <object name="FanButton" type="ToggleSprite" gid="10" x="703" y="906">
+   <properties>
+    <property name="ToggleOffTexture" value="Room 2/takflakt_knapp_off_scale.png"/>
+    <property name="ToggleOnTexture" value="Room 2/takflakt_knapp_on_scale.png"/>
+    <property name="id" value="ToggleSpriteFanButton"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
@@ -64,14 +74,17 @@
   <object name="BoilerColl" type="StaticCollision" x="3521" y="4475">
    <polyline points="0,0 -3,-58 -18,-58 -18,-964 979,-958 982,-58 955,-55 958,0"/>
   </object>
+  <object name="FanButtonColl" type="StaticCollisionLoop" x="717" y="895">
+   <polyline points="0,0 28,0 36,-10 36,-110 28,-120 -1,-121"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="88" y="2136" width="40" height="30">
    <ellipse/>
   </object>
-  <object name="FanOnButton" type="Trigger" x="788" y="713" width="92" height="90">
+  <object name="FanOnButton" type="Trigger" x="757" y="793" width="9" height="14">
    <properties>
-    <property name="OnEnter" value="ToggleSpriteFanButton"/>
+    <property name="ToggleOn" value="ToggleSpriteFanButton"/>
    </properties>
   </object>
   <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179">
@@ -149,5 +162,10 @@
   <object name="FlyTapeStickyZone1" type="StickyZone" x="1819" y="296" width="13" height="29"/>
   <object name="FlyTapeStickyZone1" type="StickyZone" x="1804" y="361" width="13" height="29"/>
   <object name="FlyTapeStickyZone1" type="StickyZone" x="1839" y="400" width="13" height="29"/>
+  <object name="FanOnButton" type="Trigger" x="757" y="864" width="8" height="13">
+   <properties>
+    <property name="ToggleOff" value="ToggleSpriteFanButton"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

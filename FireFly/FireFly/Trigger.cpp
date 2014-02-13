@@ -34,21 +34,23 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 
 		if (isProperty("ChangeMap"))
 			Level::getLevel().fadeToBlackChangeLevel(getProperty("ChangeMap"));
+
+		if (isProperty("ToggleOn"))
+			for (string id : getProperties("ToggleOn"))
+				EntityList::getEntityList().getEntity(id)->sendMessage(this, "ToggleOn");
+
+		if (isProperty("ToggleOff"))
+			for (string id : getProperties("ToggleOff"))
+				EntityList::getEntityList().getEntity(id)->sendMessage(this, "ToggleOff");
+
+		if (isProperty("Toggle"))
+			for (string id : getProperties("Toggle"))
+				EntityList::getEntityList().getEntity(id)->sendMessage(this, "Toggle");
 	}	
 }
 
 void Trigger::EndContact(b2Contact *contact, Entity* other)
-{
-	/*
-	if (other->getID() == "Zid")
-	{
-		if (isProperty("MusicFade")) 
-		{
-			MusicManager::fadeDown(getProperty("MusicFade"));
-			cout << "Zid had left the " + getProperty("MusicFade")+ " zone!" << endl;
-		}
-	}
-	*/
+{	
 
 	if (isProperty("TriggerOnce") && getProperty("TriggerOnce") == other->getID())
 		killEntity();

@@ -15,6 +15,7 @@
 #include "FadeToBlack.h"
 #include "ForceZone.h"
 #include "StickyZone.h"
+#include "ToggleSprite.h"
 
 #include <iostream>
 using namespace std;
@@ -322,6 +323,19 @@ void Level::loadMap(string filename)
 				zone->setProperties(obj.getProperties());				
 				zone->setID(id);
 				eList.addEntity(zone, Layer::Foreground, false);
+			}
+
+			//
+			//	ToggleSprite
+			//
+			else if (entityType == "ToggleSprite")
+			{
+				string toggleOnTex = obj.getProperty("ToggleOnTexture").getValueString();
+				string toggleOffTex = obj.getProperty("ToggleOffTexture").getValueString();
+				ToggleSprite* toggle = new ToggleSprite(toggleOnTex, toggleOffTex, false, positionSprite);
+				toggle->setProperties(obj.getProperties());				
+				toggle->setID(id);
+				eList.addEntity(toggle, layer, false);
 			}
 
 			
