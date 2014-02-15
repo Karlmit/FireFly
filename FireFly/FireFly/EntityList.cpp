@@ -39,6 +39,37 @@ void EntityList::draw(sf::RenderWindow& window)
 
 }
 
+void EntityList::drawBackground(sf::RenderWindow& window)
+{
+	for (Entity* e : BackgroundLayerList)
+		window.draw(*e);
+}
+
+void EntityList::drawBack(sf::RenderWindow& window)
+{
+	for (Entity* e : BackLayerList)
+		window.draw(*e);
+}
+
+void EntityList::drawNPC(sf::RenderWindow& window)
+{
+	for (Entity* e : NPCLayerList)
+		window.draw(*e);
+}
+
+void EntityList::drawFront(sf::RenderWindow& window)
+{
+	for (Entity* e : FrontLayerList)
+		window.draw(*e);
+}
+
+void EntityList::drawForeground(sf::RenderWindow& window)
+{
+	for (Entity* e : ForegroundLayerList)
+		window.draw(*e);
+}
+
+
 void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 {
 	listedEntities.push_back(entity);

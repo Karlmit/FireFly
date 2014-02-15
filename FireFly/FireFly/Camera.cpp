@@ -4,6 +4,7 @@
 
 const float CAMERA_SPEED = 340.f;
 const float ZOOM_SPEED = 1.f;
+const float DEF_ZOOM = 1.f;
 
 Camera* Camera::sCurrentCamera = nullptr;
 
@@ -14,8 +15,8 @@ Camera& Camera::currentCamera() {
 Camera::Camera(sf::Window* window) 
 : mWindow(window)
 , mView()
-, mZoom(1.5f)
-, mTargetZoom(1.5f)
+, mZoom(DEF_ZOOM)
+, mTargetZoom(DEF_ZOOM)
 , mFollowTargetPosition()
 , mBounds()
 {
@@ -88,6 +89,12 @@ sf::Vector2f Camera::getMousePosition() {
 
 sf::View Camera::getView() {
 	return mView;
+}
+
+sf::View Camera::getViewZ() {
+	sf::View view(mView);
+	view.zoom(1.f/mZoom);
+	return view;
 }
 
 void Camera::setTargetPosition(sf::Vector2f position)

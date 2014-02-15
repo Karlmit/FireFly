@@ -37,6 +37,15 @@
     <Filter Include="Resource Files\Maps">
       <UniqueIdentifier>{859c5988-98fa-4f88-9448-5968c1a2d83a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\LightManager">
+      <UniqueIdentifier>{1c025385-93a3-46e3-8f6b-ed4e4c488edc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LightManager\LTBL">
+      <UniqueIdentifier>{cc897225-54b5-460e-8e34-d5d0cc2ddb62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LightManager">
+      <UniqueIdentifier>{82c9b6b7-3066-46f2-83cd-d57aaf0a30f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntityList.h">
@@ -294,6 +303,9 @@
     <ClInclude Include="ToggleSprite.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>Header Files\LightManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -547,6 +559,54 @@
     </ClCompile>
     <ClCompile Include="ToggleSprite.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Constructs\AABB.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Constructs\Color3f.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Light\ConvexHull.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Light\EmissiveLight.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Light\Light.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Light\Light_Point.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Light\LightSystem.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Constructs\Point2i.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\QuadTree\QuadTree.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\QuadTree\QuadTreeNode.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\QuadTree\QuadTreeOccupant.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Light\ShadowFin.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\QuadTree\StaticQuadTree.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Utils.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LTBL\Constructs\Vec2f.cpp">
+      <Filter>Source Files\LightManager\LTBL</Filter>
+    </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>Source Files\LightManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

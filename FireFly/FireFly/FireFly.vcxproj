@@ -58,7 +58,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-network-d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\..\SFML-2.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -142,6 +142,7 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
+    <ClInclude Include="LightManager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapObjectGroup.h" />
@@ -227,6 +228,22 @@
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
+    <ClCompile Include="LightManager.cpp" />
+    <ClCompile Include="LTBL\Constructs\AABB.cpp" />
+    <ClCompile Include="LTBL\Constructs\Color3f.cpp" />
+    <ClCompile Include="LTBL\Constructs\Point2i.cpp" />
+    <ClCompile Include="LTBL\Constructs\Vec2f.cpp" />
+    <ClCompile Include="LTBL\Light\ConvexHull.cpp" />
+    <ClCompile Include="LTBL\Light\EmissiveLight.cpp" />
+    <ClCompile Include="LTBL\Light\Light.cpp" />
+    <ClCompile Include="LTBL\Light\LightSystem.cpp" />
+    <ClCompile Include="LTBL\Light\Light_Point.cpp" />
+    <ClCompile Include="LTBL\Light\ShadowFin.cpp" />
+    <ClCompile Include="LTBL\QuadTree\QuadTree.cpp" />
+    <ClCompile Include="LTBL\QuadTree\QuadTreeNode.cpp" />
+    <ClCompile Include="LTBL\QuadTree\QuadTreeOccupant.cpp" />
+    <ClCompile Include="LTBL\QuadTree\StaticQuadTree.cpp" />
+    <ClCompile Include="LTBL\Utils.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="MapObjectGroup.cpp" />

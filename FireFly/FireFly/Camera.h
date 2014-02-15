@@ -18,17 +18,18 @@ public:
 
 	sf::Vector2f	getMousePosition();
 	sf::View		getView();
+	sf::View		getViewZ();
 
 	void setTargetPosition(sf::Vector2f position);
 	void setBounds(sf::FloatRect bounds);
 	void changeZoom(int steps);
-
+	
 private:
 	sf::Window* mWindow;
 	sf::View	mView;
-	float		mZoom;
+	
 	float		mTargetZoom;
-
+	float		mZoom;
 	sf::Vector2f mFollowTargetPosition;
 	sf::FloatRect mBounds;
 

@@ -2,6 +2,7 @@
 #include "Box2dWorld.h"
 #include <Windows.h>
 #include "MusicManager.h"
+#include "LightManager.h"
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
@@ -22,6 +23,7 @@ mStatisticsNumFrames(0)
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
 	
+	LightManager::setWindow(&mWindow);  // Sets up the window to draw light onto
 }
 
 GameLoop::~GameLoop()
@@ -32,7 +34,7 @@ void GameLoop::run()
 {
 	// Load the level "level1.tmx"
 	//Level::getLevel().startLevel("level1.tmx");
-	Level::startLevel("level2.tmx");
+	Level::startLevel("level1.tmx");
 
 		
 	sf::Clock clock;
@@ -91,7 +93,30 @@ void GameLoop::draw()
 	mWindow.clear(sf::Color::Black);
 
 	mWindow.setView(mCamera.getView());
-	EntityList::getEntityList().draw(mWindow);	// Draws all entities
+	//EntityList::getEntityList().draw(mWindow);	// Draws all entities
+
+	EntityList::getEntityList().drawBackground(mWindow);
+	EntityList::getEntityList().drawBack(mWindow);
+	
+
+	
+
+	EntityList::getEntityList().drawNPC(mWindow);
+	EntityList::getEntityList().drawFront(mWindow);
+
+	
+
+	EntityList::getEntityList().drawForeground(mWindow);
+
+	// Set light view
+	LightManager::instance().SetView(mCamera.getViewZ());
+	// Calculate the lights
+	LightManager::instance().RenderLights();
+	// Draw the lights
+	LightManager::instance().RenderLightTexture();
+	
+
+	
 
 	mWindow.setView(mWindow.getDefaultView());
 	mWindow.draw(mStatisticsText);
@@ -144,11 +169,6 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 
 	if (key == sf::Keyboard::P && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
-
-	if (key == sf::Keyboard::Num1 && isPressed == false)
-		MusicManager::fadeToggle("slow");
-	if (key == sf::Keyboard::Num2 && isPressed == false)
-		MusicManager::fadeToggle("intense");
 
 	if (isPressed == false)
 	{

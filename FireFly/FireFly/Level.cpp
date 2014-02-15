@@ -3,6 +3,7 @@
 #include "Box2dWorld.h"
 #include "Camera.h"
 #include "MusicManager.h"
+#include "LightManager.h"
 
 #include "Zid.h"
 #include "EntitySprite.h"
@@ -16,6 +17,7 @@
 #include "ForceZone.h"
 #include "StickyZone.h"
 #include "ToggleSprite.h"
+
 
 #include <iostream>
 using namespace std;
@@ -48,8 +50,6 @@ void Level::fadeToBlackChangeLevel(string filename)
 
 void Level::changeMap(string filename)
 {
-
-
 	level.mChangeMap = true;
 	level.mChangeMapTo = filename;
 }
@@ -73,6 +73,7 @@ void Level::startLevel(string levelName)
 	
 	// Creates a music manager
 	MusicManager::newManager();
+
 	
 	// Loads the level
 	string mapStr = "Maps/";
@@ -110,17 +111,32 @@ void Level::loadMap(string filename)
 	mMapSize = sf::Vector2f(mapWidth, mapHeight);
 
 	// Level boundry
-	//sf::FloatRect levelBoundry(-mapWidth/2, -mapHeight/2, mapWidth, mapHeight);
 	sf::FloatRect levelBoundry(0, 0, mapWidth, mapHeight);
 
 	// Sets level boundry for the camera
 	Camera::currentCamera().setBounds(levelBoundry);
 
+	// Creates and sets the boundry for the light system
+	LightManager::newLightSystem(levelBoundry);
+
+	// Create a light blocker shape
+	// Create a hull by loading it from a file //
+	ltbl::ConvexHull* testHull = new ltbl::ConvexHull();
+	if(!testHull->LoadShape("Resources/Light/testShape.txt"))
+		abort();
+
+	// Pre-calculate certain aspects
+	testHull->CalculateNormals();
+	testHull->CalculateAABB();
+	testHull->SetWorldCenter(Vec2f(300.0f, 300.0f));
+	testHull->m_renderLightOverHull = false;
+	//testHull->m_transparency = 0.5f;
+	LightManager::instance().AddConvexHull(testHull);
+
+
 	// Adds a collider around the entire level
 	eList.addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front, false);
 
-	// Adding Zid get that from the object loop
-	//eList.addEntity(new Zid(sf::Vector2f(300, 0)), Layer::Front);
 
 	// Goes through images used in the map
 	cout << "\n[Image set]\n";
@@ -150,20 +166,19 @@ void Level::loadMap(string filename)
 			Layer layer = getLayerFromString(group.getName());
 			string mapDir = "Maps/";
 			mapDir.append(tileset.getImageSource());
-			//string imageSrc = mapDir;
 			string imageSrc = tileset.getImageSource();
 			string entityType = obj.getType();
 			string id = "";
 			if (obj.isProperty("id"))
 				id = obj.getProperty("id").getValueString();
 
-
+			// Write to console window info about objects loaded from map file
 			cout << "[" << obj.getType() << "](" << position.x << ", " <<  position.y << ")\t" 
 					<< "\"" << obj.getName() << "\"" << "\t"
 					<< "gid=" << obj.getGid() << " "
 					<< endl;
 
-			// Spawn the right entity based on type and/or layer
+			// --------- Spawn the right entity based on type and/or layer ---------- //
 			//
 			//	EntitySprite
 			//
@@ -240,6 +255,49 @@ void Level::loadMap(string filename)
 					col->setID(id);
 					eList.addEntity(col, Layer::Foreground, false);
 				}
+			}
+
+			//
+			//	Light Block
+			//
+			else if (layer == Layer::Light || entityType == "LightBlock")
+			{
+				bool loop = entityType == "StaticCollisionLoop" ? true : false;
+				vector<sf::Vector2f> sfPoints;
+
+				ltbl::ConvexHull* convexHull = new ltbl::ConvexHull();
+	
+
+				convexHull->SetWorldCenter(Vec2f(position.x, position.y));
+
+				
+				
+				//cout << "Polylines= ";
+				for (MapPoint p : obj.getPolyline().getPoints())
+				{
+					//cout << p.x << "," << p.y << " ";
+					/*
+					sf::Vector2f sfPoint(float(p.x), float(p.y));
+					sfPoint = sfPoint + position;
+					sfPoints.push_back(sfPoint);
+					*/
+
+					convexHull->m_vertices.push_back(Vec2f(p.x, p.y));
+				}
+				//cout << endl;
+
+				convexHull->CalculateNormals();
+				convexHull->CalculateAABB();
+				LightManager::instance().AddConvexHull(convexHull);
+				convexHull->m_renderLightOverHull = false;
+
+				/*
+				if (!sfPoints.empty())
+				{
+					Entity* col = new StaticLineCollider(sfPoints, loop);
+					col->setID(id);
+					eList.addEntity(col, Layer::Foreground, false);
+				}*/
 			}
 
 			//
@@ -358,6 +416,8 @@ Layer Level::getLayerFromString(string strLayer)
 		return Layer::Foreground;
 	else if (strLayer == "Collision")
 		return Layer::Collision;
+	else if (strLayer == "Light")
+		return Layer::Light;
 	else if (strLayer == "Misc")
 		return Layer::Misc;
 	else if (strLayer == "NPC")

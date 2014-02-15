@@ -10,6 +10,7 @@ enum class Layer
 	Front,
 	Foreground,
 	Collision,
+	Light,
 	Misc,
 };
 
@@ -21,6 +22,11 @@ public:
 
 	void update(sf::Time dt);	// Updates all entities
 	void draw(sf::RenderWindow& window);	// Draws all entities
+	void drawBackground(sf::RenderWindow& window);
+	void drawBack(sf::RenderWindow& window);
+	void drawNPC(sf::RenderWindow& window);
+	void drawFront(sf::RenderWindow& window);
+	void drawForeground(sf::RenderWindow& window);
 	
 	void addEntity(Entity *entity, Layer layer = Layer::Front, bool runStart = true);	//adds new entities
 	void updateList();	//deletes "dead" entities

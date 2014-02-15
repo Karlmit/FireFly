@@ -65,7 +65,7 @@
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160" visible="0"/>
   <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
  </objectgroup>
- <objectgroup name="Collision" width="1" height="1">
+ <objectgroup name="Collision" width="1" height="1" visible="0">
   <object name="Byra" type="StaticCollision" x="0" y="1372">
    <polyline points="0,0 614,0 612,36 588,44 586,76 572,100 572,742 552,784"/>
   </object>
@@ -95,6 +95,11 @@
   </object>
   <object name="RightWallBottom" type="StaticCollision" x="4475" y="2151">
    <polyline points="0,0 0,-117 -76,-112 -97,-116 -84,-259 -72,-263 -20,-252 -15,-219 7,-217 520,-213"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Light" width="1" height="1">
+  <object name="TopChairLightBlock" type="LightBlock" x="1380" y="1140">
+   <polyline points="0,0 70,-20 -10,-368 -84,-316"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">

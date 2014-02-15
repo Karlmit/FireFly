@@ -8,7 +8,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 
-
+#include "LightManager.h"
 
 class Zid : public Entity
 {
@@ -34,6 +34,7 @@ sf::Sprite		mSprite;
 	int dashFrameNo;
 	bool mDirLeft;
 	bool mInStickyZone;
+	ltbl::Light_Point* mLightPoint;
 };
 
 #endif
