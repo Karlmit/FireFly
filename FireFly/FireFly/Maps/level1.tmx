@@ -27,6 +27,9 @@
  <tileset firstgid="9" name="ROOM1_TestTubes" tilewidth="413" tileheight="281">
   <image source="../Resources/Room 1/provror_scale.png" width="413" height="281"/>
  </tileset>
+ <tileset firstgid="10" name="CoatFront" tilewidth="5000" tileheight="2160">
+  <image source="../Resources/Room 1/CoatFront.png" width="5000" height="2160"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
   <object name="EdibleCoat" type="Room1_Coat" gid="3" x="0" y="2160"/>
@@ -60,6 +63,7 @@
    </properties>
   </object>
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
+  <object name="CoatFrontPatch" type="EntitySprite" gid="10" x="0" y="2160"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160" visible="0"/>
@@ -98,8 +102,53 @@
   </object>
  </objectgroup>
  <objectgroup name="Light" width="1" height="1">
-  <object name="TopChairLightBlock" type="LightBlock" x="1380" y="1140">
+  <object name="ChairTop" type="LightBlock" x="1380" y="1140">
    <polyline points="0,0 70,-20 -10,-368 -84,-316"/>
+  </object>
+  <object name="Byra1" x="544" y="2157">
+   <polyline points="0,0 0,-56 -46,-57 -44,-6"/>
+  </object>
+  <object name="Byra1" x="465" y="2106">
+   <polyline points="0,0 99,8 99,-634 -61,-633"/>
+  </object>
+  <object name="Byra1" x="551" y="1481">
+   <polyline points="0,0 -2,-108 -551,-108 -547,-40"/>
+  </object>
+  <object name="Byra1" x="539" y="1447">
+   <polyline points="0,0 41,1 40,-74 -20,-72"/>
+  </object>
+  <object name="Byra1" x="567" y="1410">
+   <polyline points="0,0 39,-1 38,-37 -4,-37"/>
+  </object>
+  <object name="Byra1" x="529" y="2156">
+   <polyline points="0,0 -33,-780 -526,-777 -527,-14"/>
+  </object>
+  <object name="TableBottom" x="2177" y="1909">
+   <polyline points="-1,1 98,1 99,-64 1,-63"/>
+  </object>
+  <object name="TableBottom" x="2274" y="1909">
+   <polyline points="-1,1 98,1 99,-64 1,-63"/>
+  </object>
+  <object name="TableBottom" x="2369" y="1908">
+   <polyline points="-1,1 98,1 99,-64 1,-63"/>
+  </object>
+  <object name="TableBottom" x="2468" y="1907">
+   <polyline points="-1,1 98,1 99,-64 1,-63"/>
+  </object>
+  <object name="TableBoottom" x="2176" y="1911">
+   <polyline points="0,0 783,-1 783,-65 -1,-65"/>
+  </object>
+  <object name="TableBottom" x="2855" y="1908">
+   <polyline points="-1,1 102,2 102,-62 1,-63"/>
+  </object>
+  <object name="TableBottom" x="2757" y="1909">
+   <polyline points="-1,1 98,1 99,-64 1,-63"/>
+  </object>
+  <object name="TableBottom" x="2565" y="1910">
+   <polyline points="-1,1 98,1 99,-64 1,-63"/>
+  </object>
+  <object name="TableBottom" x="2661" y="1909">
+   <polyline points="-1,1 98,1 99,-64 1,-63"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">

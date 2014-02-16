@@ -569,7 +569,7 @@ namespace ltbl
 		m_currentRenderTexture = cur_lightStatic;
 
 		Vec2f viewCenter(m_viewAABB.GetCenter());
-		Vec2f viewSize(m_viewAABB.GetDims());
+		Vec2f viewSize(m_viewAABB.GetDims() );
 
 		glDisable(GL_TEXTURE_2D);
 
@@ -957,7 +957,7 @@ namespace ltbl
 
 	void LightSystem::RenderLightTexture()
 	{
-		Vec2f viewSize(m_viewAABB.GetDims());
+		Vec2f viewSize(m_viewAABB.GetDims() );
 
 		// Translate by negative camera coordinates. glLoadIdentity will not work, probably
 		// because SFML stores view transformations in the projection matrix

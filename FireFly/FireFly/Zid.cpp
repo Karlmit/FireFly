@@ -55,7 +55,7 @@ Zid::Zid(sf::Vector2f position)
 	mLightPoint = new ltbl::Light_Point();
 	mLightPoint->m_intensity = 2.f;
 	mLightPoint->m_center = Vec2f(200.0f, 200.0f);
-	mLightPoint->m_radius = 500.0f;
+	mLightPoint->m_radius = 400.0f;
 	mLightPoint->m_size = 15.0f;
 	mLightPoint->m_spreadAngle = ltbl::pifTimes2;
 	mLightPoint->m_softSpreadAngle = 0.0f;

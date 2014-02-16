@@ -12,6 +12,8 @@ void LightManager::setWindow(sf::RenderWindow* window)
 
 void LightManager::newLightSystem(sf::FloatRect bounds) 
 {
+	
+
 	mBounds = bounds;
 	Vec2f lowerBound(-bounds.width, -bounds.height);
 	Vec2f upperBound(bounds.width*2, bounds.height*2);
@@ -20,9 +22,10 @@ void LightManager::newLightSystem(sf::FloatRect bounds)
 	std::string lightFin = "Resources/Light/lightFin.png";
 	std::string shader = "Resources/Light/shaders/lightAttenuationShader.frag";
 
-	ltbl::LightSystem* lightSystem = new ltbl::LightSystem(aabb, mWindow, lightFin, shader);
+	ltbl::LightSystem* lightSystem = new ltbl::LightSystem(aabb, mWindow, lightFin, shader);	
 	lightSystem->m_useBloom = true;
 	lightSystem->m_ambientColor = sf::Color(100,100,100,255);
+	
 
 	sLightSystem.reset(lightSystem);
 	

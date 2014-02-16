@@ -97,16 +97,8 @@ void GameLoop::draw()
 
 	EntityList::getEntityList().drawBackground(mWindow);
 	EntityList::getEntityList().drawBack(mWindow);
-	
-
-	
-
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
-
-	
-
-	EntityList::getEntityList().drawForeground(mWindow);
 
 	// Set light view
 	LightManager::instance().SetView(mCamera.getViewZ());
@@ -114,6 +106,13 @@ void GameLoop::draw()
 	LightManager::instance().RenderLights();
 	// Draw the lights
 	LightManager::instance().RenderLightTexture();
+	// Debug render
+	//LightManager::instance().DebugRender();
+	
+
+	EntityList::getEntityList().drawForeground(mWindow);
+
+	
 	
 
 	

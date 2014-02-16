@@ -93,9 +93,13 @@ sf::View Camera::getView() {
 
 sf::View Camera::getViewZ() {
 	sf::View view(mView);
-	view.zoom(1.f/mZoom);
+	//view.setSize(sf::Vector2f(5000, 2160));
+	//view.zoom(1.f/mZoom);
 	return view;
+
+	sf::RenderTexture tex;	
 }
+
 
 void Camera::setTargetPosition(sf::Vector2f position)
 {

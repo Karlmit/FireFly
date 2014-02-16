@@ -122,7 +122,7 @@ void Level::loadMap(string filename)
 	// Create a light blocker shape
 	// Create a hull by loading it from a file //
 	ltbl::ConvexHull* testHull = new ltbl::ConvexHull();
-	if(!testHull->LoadShape("Resources/Light/testShape.txt"))
+	if(!testHull->LoadShape("Resources/Light/rectShape.txt"))
 		abort();
 
 	// Pre-calculate certain aspects
@@ -262,32 +262,31 @@ void Level::loadMap(string filename)
 			//
 			else if (layer == Layer::Light || entityType == "LightBlock")
 			{
-				bool loop = entityType == "StaticCollisionLoop" ? true : false;
+				
 				vector<sf::Vector2f> sfPoints;
 
 				ltbl::ConvexHull* convexHull = new ltbl::ConvexHull();
-	
-
-				convexHull->SetWorldCenter(Vec2f(position.x, position.y));
-
 				
 				
-				//cout << "Polylines= ";
+				cout << "Polylines= ";
 				for (MapPoint p : obj.getPolyline().getPoints())
 				{
-					//cout << p.x << "," << p.y << " ";
+					cout << p.x << "," << p.y << " " << "\t";
 					/*
 					sf::Vector2f sfPoint(float(p.x), float(p.y));
 					sfPoint = sfPoint + position;
 					sfPoints.push_back(sfPoint);
 					*/
 
-					convexHull->m_vertices.push_back(Vec2f(p.x, p.y));
+					convexHull->m_vertices.push_back(Vec2f(float(p.x), -float(p.y)));
 				}
-				//cout << endl;
+				cout << endl;
 
+
+				convexHull->CenterHull();
 				convexHull->CalculateNormals();
 				convexHull->CalculateAABB();
+				convexHull->SetWorldCenter(Vec2f(position.x - convexHull->m_vertices.at(0).x , 864 -position.y - convexHull->m_vertices.at(0).y));
 				LightManager::instance().AddConvexHull(convexHull);
 				convexHull->m_renderLightOverHull = false;
 
