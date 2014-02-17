@@ -58,7 +58,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-network-d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\..\SFML-2.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -136,15 +136,22 @@
     <ClInclude Include="Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ContactListener.h" />
+    <ClInclude Include="FadeToBlack.h" />
+    <ClInclude Include="ForceZone.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
+    <ClInclude Include="LightManager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapObjectGroup.h" />
     <ClInclude Include="MapObjectProperty.h" />
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
+    <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="Properties.h" />
+    <ClInclude Include="Room1_Coat.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
@@ -156,7 +163,9 @@
     <ClInclude Include="Mal.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="StickyZone.h" />
     <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="ToggleSprite.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Wasp.h" />
@@ -215,6 +224,8 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="FadeToBlack.cpp" />
+    <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
@@ -224,6 +235,9 @@
     <ClCompile Include="MapObjectProperty.cpp" />
     <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
+    <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="Properties.cpp" />
+    <ClCompile Include="Room1_Coat.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -238,7 +252,9 @@
     <ClCompile Include="Mal.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="StickyZone.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="ToggleSprite.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wasp.cpp" />

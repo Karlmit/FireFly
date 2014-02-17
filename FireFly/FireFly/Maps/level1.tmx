@@ -27,35 +27,49 @@
  <tileset firstgid="9" name="ROOM1_TestTubes" tilewidth="413" tileheight="281">
   <image source="../Resources/Room 1/provror_scale.png" width="413" height="281"/>
  </tileset>
+ <tileset firstgid="10" name="CoatFront" tilewidth="5000" tileheight="2160">
+  <image source="../Resources/Room 1/CoatFront.png" width="5000" height="2160"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
+  <object name="EdibleCoat" type="Room1_Coat" gid="3" x="0" y="2160"/>
   <object name="Stol" type="EntitySprite" gid="7" x="1300" y="2169"/>
-  <object name="Coat5" type="EntitySprite" gid="3" x="0" y="2160"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
   <object name="Byra" type="EntitySprite" gid="6" x="-7" y="2163"/>
-  <object name="PlastJar" type="Jar" gid="5" x="26" y="1363"/>
-  <object name="StartJar" type="Jar" gid="5" x="376" y="1371"/>
-  <object name="TableJar" type="Jar" gid="5" x="2876" y="1313"/>
-  <object name="TableJar" type="Jar" gid="5" x="2262" y="1841"/>
+  <object name="PlastJar" type="Jar" gid="5" x="25" y="1363">
+   <properties>
+    <property name="density" value="100"/>
+    <property name="unbreakable" value=""/>
+   </properties>
+  </object>
+  <object name="StartJar" type="Jar" gid="5" x="420" y="1372">
+   <properties>
+    <property name="density" value="4"/>
+   </properties>
+  </object>
+  <object name="TableJar" type="Jar" gid="5" x="2875" y="1313">
+   <properties>
+    <property name="OnBreakMusicFade" value="intense"/>
+   </properties>
+  </object>
+  <object name="UnderTableJar" type="Jar" gid="5" x="2260" y="1840"/>
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
-  <object name="PlastJar" type="Jar" gid="5" x="25" y="1092"/>
-  <object name="PlastJar" type="Jar" gid="5" x="29" y="823"/>
-  <object name="PlastJar" type="Jar" gid="5" x="873" y="1362"/>
-  <object name="PlastJar" type="Jar" gid="5" x="872" y="1091"/>
-  <object name="PlastJar" type="Jar" gid="5" x="876" y="822"/>
-  <object name="PlastJar" type="Jar" gid="5" x="1285" y="736"/>
-  <object name="PlastJar" type="Jar" gid="5" x="1289" y="467"/>
-  <object name="PlastJar" type="Jar" gid="5" x="2171" y="795"/>
+  <object name="PlastJar" type="Jar" gid="5" x="25" y="1093">
+   <properties>
+    <property name="density" value="100"/>
+    <property name="unbreakable" value=""/>
+   </properties>
+  </object>
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
-  <object name="kalles Burk" type="Jar" gid="5" x="371" y="1099"/>
+  <object name="CoatFrontPatch" type="EntitySprite" gid="10" x="0" y="2160"/>
+  <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160" visible="0"/>
-  <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
  </objectgroup>
- <objectgroup name="Collision" width="1" height="1">
+ <objectgroup name="Collision" width="1" height="1" visible="0">
   <object name="Byra" type="StaticCollision" x="0" y="1372">
    <polyline points="0,0 614,0 612,36 588,44 586,76 572,100 572,742 552,784"/>
   </object>
@@ -77,26 +91,54 @@
   <object name="RightWallTop" type="StaticCollision" x="4475" y="0">
    <polyline points="0,0 3,933 -36,945 -53,987 -69,1188 -108,1657 -119,1748 -99,1760 -17,1787 -17,1581 523,1580"/>
   </object>
-  <object name="RightWallBot" type="StaticCollision" x="4475" y="2156">
-   <polyline points="0,0 1,-120 -73,-117 -141,-133 -117,-251 -104,-255 7,-224 524,-220"/>
+  <object name="CoatHoleCollision" type="StaticCollision" x="4390" y="1884">
+   <properties>
+    <property name="id" value="CoatHoleCollision"/>
+   </properties>
+   <polyline points="4,9 12,-115"/>
+  </object>
+  <object name="RightWallBottom" type="StaticCollision" x="4475" y="2151">
+   <polyline points="0,0 0,-117 -76,-112 -97,-116 -84,-259 -72,-263 -20,-252 -15,-219 7,-217 520,-213"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="mal1" type="Moth" x="3994" y="1612" width="60" height="60">
+  <object name="mal1" type="Moth" x="2954" y="1217" width="60" height="60">
    <ellipse/>
   </object>
-  <object name="mal1" type="Moth" x="2973" y="1161" width="60" height="60">
+  <object name="zids spawn" type="ZidSpawn" x="492" y="1213" width="100" height="84">
    <ellipse/>
   </object>
-  <object name="mal1" type="Moth" x="1921" y="1018" width="60" height="60">
+  <object name="Music" type="MusicManager" x="125" y="52" width="195" height="151">
+   <properties>
+    <property name="Firefly Room 1 TrackVersion 1 (intense part).ogg" value="intense"/>
+    <property name="Firefly Room 1 TrackVersion 1 (slow part).ogg" value="slow"/>
+   </properties>
+  </object>
+  <object name="CoatMalTrigger" type="Trigger" x="3990" y="799" width="545" height="1242">
+   <properties>
+    <property name="TriggerOnce" value="Mal"/>
+    <property name="id" value="Room1_Coat_Zone"/>
+   </properties>
+  </object>
+  <object name="CoatHolePoint" type="Point" x="4349" y="1815" width="45" height="45">
+   <properties>
+    <property name="id" value="CoatHolePoint"/>
+   </properties>
    <ellipse/>
   </object>
-  <object name="zids spawn" type="ZidSpawn" x="452" y="1201" width="99" height="85">
-   <ellipse/>
+   <object name="CannedWasp" type="WaspTrapped" x="2349" y="1691" width="65" height="59">
+     <ellipse/>
+   </object>
+  <object name="NextMapTrigger" type="Trigger" x="4740" y="1471" width="390" height="577">
+   <properties>
+    <property name="ChangeMap" value="level2.tmx"/>
+   </properties>
   </object>
-  <object name="TestTrigger" type="Trigger" x="575" y="235" width="265" height="253"/>
-  <object name="CannedWasp" type="WaspTrapped" x="2349" y="1691" width="65" height="59">
-   <ellipse/>
+  <object name="StartSlowMusic" type="Trigger" x="380" y="1039" width="300" height="361">
+   <properties>
+    <property name="MusicFadeUp" value="slow"/>
+    <property name="TriggerOnce" value="Zid"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

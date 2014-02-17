@@ -8,8 +8,10 @@
 #include "Loading.h"
 #include "Rigidbody.h"
 #include <memory>
+#include "Properties.h"
+#include "ContactListener.h"
 
-class Entity : public sf::Transformable, public sf::Drawable, public b2ContactListener
+class Entity : public sf::Transformable, public sf::Drawable, public ContactListener, public Properties
 {
 public:
 	Entity();
@@ -22,6 +24,9 @@ public:
 	bool getAliveStatus(){return mAliveStatus;}
 	void killEntity(){mAliveStatus = false;}
 	std::string getID(){return mID;}
+	void setID(string id) { mID = id; }
+
+	virtual void sendMessage(Entity* sender, string message) {}
 protected:
 	std::string mID;
 private:

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="5400" tileheight="4484">
+ <tileset firstgid="1" name="Room2_Background" tilewidth="5400" tileheight="4484">
+  <image source="../Resources/Room 2/Rum2.png" width="5400" height="4484"/>
+ </tileset>
+ <tileset firstgid="2" name="Room2_Foreground" tilewidth="5400" tileheight="4484">
+  <image source="../Resources/Room 2/Rum2_forgrund.png" width="5400" height="4484"/>
+ </tileset>
+ <tileset firstgid="3" name="flugfangare_vanster_scale" tilewidth="101" tileheight="761">
+  <image source="../Resources/Room 2/flugfangare_vanster_scale.png" width="101" height="761"/>
+ </tileset>
+ <tileset firstgid="4" name="flugfangare_hoger_scale" tilewidth="110" tileheight="654">
+  <image source="../Resources/Room 2/flugfangare_hoger_scale.png" width="110" height="654"/>
+ </tileset>
+ <tileset firstgid="5" name="serveringsvagn_scale" tilewidth="929" tileheight="1008">
+  <image source="../Resources/Room 2/serveringsvagn_scale.png" width="929" height="1008"/>
+ </tileset>
+ <tileset firstgid="6" name="sugarbowl_scale" tilewidth="170" tileheight="99">
+  <image source="../Resources/Room 2/sugarbowl_scale.png" width="170" height="99"/>
+ </tileset>
+ <tileset firstgid="7" name="sugarbowltop_scale" tilewidth="105" tileheight="33">
+  <image source="../Resources/Room 2/sugarbowltop_scale.png" width="105" height="33"/>
+ </tileset>
+ <tileset firstgid="8" name="varmepanna_scale" tilewidth="1182" tileheight="1172">
+  <image source="../Resources/Room 2/varmepanna_scale.png" width="1182" height="1172"/>
+ </tileset>
+ <tileset firstgid="9" name="ventilflakt_scale" tilewidth="287" tileheight="449">
+  <image source="../Resources/Room 2/ventilflakt_scale.png" width="287" height="449"/>
+ </tileset>
+ <tileset firstgid="10" name="takflakt_knapp_off_scale" tilewidth="140" tileheight="140">
+  <image source="../Resources/Room 2/takflakt_knapp_off_scale.png" width="140" height="140"/>
+ </tileset>
+ <objectgroup name="Background" width="1" height="1">
+  <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
+ </objectgroup>
+ <objectgroup name="Back" width="1" height="1">
+  <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
+  <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
+  <object name="BoilerSprite" type="EntitySprite" gid="8" x="3382" y="4506"/>
+ </objectgroup>
+ <objectgroup name="NPC" width="1" height="1"/>
+ <objectgroup name="Front" width="1" height="1">
+  <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167"/>
+  <object name="Suger Bowl" type="EntitySprite" gid="6" x="4354" y="1317"/>
+  <object name="SugerBow lTop" type="EntitySprite" gid="7" x="4386" y="1218"/>
+  <object name="AC Flakt" type="EntitySprite" gid="9" x="4782" y="599"/>
+  <object name="FanButton" type="ToggleSprite" gid="10" x="703" y="906">
+   <properties>
+    <property name="ToggleOffTexture" value="Room 2/takflakt_knapp_off_scale.png"/>
+    <property name="ToggleOnTexture" value="Room 2/takflakt_knapp_on_scale.png"/>
+    <property name="id" value="ToggleSpriteFanButton"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Foreground" width="1" height="1" visible="0">
+  <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
+ </objectgroup>
+ <objectgroup name="Collision" width="1" height="1">
+  <object name="CollVent1" type="StaticCollision" x="724" y="4475">
+   <polyline points="0,0 4,-470 -684,-470 -688,-2162 -726,-2162"/>
+  </object>
+  <object name="CollVent2" type="StaticCollision" x="713" y="0">
+   <polyline points="0,0 4,364 -676,362 -674,1966 -710,1966"/>
+  </object>
+  <object name="CollRooms" type="StaticCollision" x="5071" y="4466">
+   <polyline points="0,0 -4,-2152 -4344,-2144 -4336,-776 -4684,-776 -4680,-3788 -4352,-3792 -4352,-2300 -4,-2300 0,-4460"/>
+  </object>
+  <object name="TableColl" type="StaticCollisionLoop" x="2176" y="1421">
+   <polyline points="0,0 2,68 1486,66 1484,2"/>
+  </object>
+  <object name="Suger Bowl" type="StaticCollisionLoop" x="4369" y="1314">
+   <polyline points="0,0 -10,-12 -14,-36 -8,-59 5,-84 17,-97 18,-87 8,-75 0,-55 -2,-32 21,-25 63,-22 98,-27 127,-30 143,-32 144,-46 136,-63 123,-88 115,-97 121,-101 134,-88 145,-66 154,-43 151,-18 143,-3 137,-2 16,-2"/>
+  </object>
+  <object name="BoilerColl" type="StaticCollision" x="3521" y="4475">
+   <polyline points="0,0 -3,-58 -18,-58 -18,-964 979,-958 982,-58 955,-55 958,0"/>
+  </object>
+  <object name="FanButtonColl" type="StaticCollisionLoop" x="717" y="895">
+   <polyline points="0,0 28,0 36,-10 36,-110 28,-120 -1,-121"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="ZidStart" type="ZidSpawn" x="88" y="2136" width="40" height="30">
+   <ellipse/>
+  </object>
+  <object name="FanOnButton" type="Trigger" x="757" y="793" width="9" height="14">
+   <properties>
+    <property name="ToggleOn" value="ToggleSpriteFanButton"/>
+   </properties>
+  </object>
+  <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179">
+   <properties>
+    <property name="Firefly Room 2 TrackVersion 1 (Boiler).ogg" value="boiler"/>
+    <property name="Firefly Room 2 TrackVersion 1 (Office).ogg" value="office"/>
+    <property name="Firefly Room 2 TrackVersion 1 (Vent).ogg" value="vent"/>
+   </properties>
+  </object>
+  <object name="MusicEnterOfficeTrigger" type="Trigger" x="724" y="367" width="43" height="318">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="office"/>
+   </properties>
+  </object>
+  <object name="MusicEnterVentTrigger" type="Trigger" x="670" y="368" width="43" height="318">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="vent"/>
+   </properties>
+  </object>
+  <object name="MusicEnterVentTrigger" type="Trigger" x="676" y="3686" width="43" height="318">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="vent"/>
+   </properties>
+  </object>
+  <object name="MusicEnterBoilerTrigger" type="Trigger" x="734" y="3695" width="43" height="318">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="boiler"/>
+   </properties>
+  </object>
+  <object name="MusicEnterVentTrigger" type="Trigger" x="2" y="1914" width="451" height="452">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="vent"/>
+   </properties>
+  </object>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1343" y="-16" width="41" height="546"/>
+  <object name="mothy" type="Moth" x="1274" y="659" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1488" y="701" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1262" y="911" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1476" y="953" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1252" y="1207" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1466" y="1249" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1220" y="1461" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="mothy" type="Moth" x="1434" y="1503" width="140" height="90">
+   <ellipse/>
+  </object>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1859" y="-6" width="15" height="89"/>
+  <object name="AC Force Zone" type="ForceZone" x="4481" y="151" width="586" height="443">
+   <properties>
+    <property name="id" value="ACForceZone"/>
+    <property name="xForce" value="-12"/>
+    <property name="yForce" value="0"/>
+   </properties>
+  </object>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1825" y="114" width="15" height="89"/>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1847" y="242" width="11" height="43"/>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1819" y="296" width="13" height="29"/>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1804" y="361" width="13" height="29"/>
+  <object name="FlyTapeStickyZone1" type="StickyZone" x="1839" y="400" width="13" height="29"/>
+  <object name="FanOnButton" type="Trigger" x="757" y="864" width="8" height="13">
+   <properties>
+    <property name="ToggleOff" value="ToggleSpriteFanButton"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

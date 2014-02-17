@@ -7,7 +7,7 @@ using namespace std;
 class Loading
 {
 public:
-	static sf::Texture& getTexture(string filePath, bool smooth = false);
+	static sf::Texture& getTexture(string filePath, bool smooth = true);
 	static sf::SoundBuffer& getSound(string filePath);
 
 private:

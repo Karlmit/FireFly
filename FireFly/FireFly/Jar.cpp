@@ -2,10 +2,13 @@
 #include <iostream>
 #include "EntityList.h"
 #include "AudioEntity.h"
+#include "MusicManager.h"
 
-Jar::Jar(string texture, sf::Vector2f position)
+
+
+Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
 : mRigidbody()
-, mSprite(Loading::getTexture(texture))
+, mSprite(Loading::getTexture(texture, true))
 , mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
 , mBroken(false)
 {
@@ -38,11 +41,14 @@ Jar::Jar(string texture, sf::Vector2f position)
 	//Right
 	rects.push_back(sf::FloatRect(bounds.width/2-width, -bounds.height/2, width, bounds.height));
 
-	float density = 4.f;
-	mRigidbody.AddDynRectBody(rects, position, density);
+	
+	
+	mRigidbody.AddDynRectBody(rects, position, density, dynamic);
 
 	// Adds itself to body data for collision callbacks
 	mRigidbody.getBody()->SetUserData(this);
+
+	
 }
 
 
@@ -67,14 +73,17 @@ void Jar::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 }
 
 // Start of AABB boxes overlapping
-void Jar::BeginContact(b2Contact *contact)
+void Jar::BeginContact(b2Contact *contact, Entity* other)
 {
 	
 }
 
 // Post box2d solving col. Checks impulse of strength of impact
-void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse)
+void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse, Entity* other)
 {
+	if (isProperty("unbreakable"))
+		return;
+
 	float imp = max(impulse->normalImpulses[0], impulse->normalImpulses[1]);
 
 	if (imp > 40.f)
@@ -83,6 +92,9 @@ void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse)
 		mBreakSound.setPosition(getPosition());
 		// Creates a new entity for playing break after the Jar is dead
 		EntityList::getEntityList().addEntity(new AudioEntity(mBreakSound));
+
+		if (isProperty("OnBreakMusicFade"))
+			MusicManager::fadeUp(getProperty("OnBreakMusicFade"));
 		
 	}
 }
