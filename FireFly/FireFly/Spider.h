@@ -10,18 +10,33 @@
 class Spider : public Entity
 {
 public:
-	Spider(sf::Vector2f position);
+	Spider(sf::Vector2f position, sf::Vector2f startofRoom, sf::Vector2f sizeofRoom);
 	~Spider(void);
 	
 private:
-	Animation idleAnimation;
-	sf::Sprite mSprite;
 	Rigidbody mRigidbody;
-	bool direction;
-	void movement();
+	Animation dangleAnimation;
+	Animation walkingAnimation;
+	sf::Sprite mSprite;
+	sf::RectangleShape net;
+	void movement(float range);
+	void roofWalking();
+	void mMakeNet(float range);
+	void walkBackToTop();
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 	Entity* mZid;
+	bool RoofDirection;
+	bool spiderman;
+	bool makeNet;
+	bool inRange;
+	bool activateMove;
+	bool walkBack;
+	float length;
 	b2Vec2 mZidPosition;
+	sf::Vector2f startPosition;
+	sf::Vector2f netStart;
+	sf::Vector2f roomSize;
+	sf::Vector2f roomStart;
 };
 

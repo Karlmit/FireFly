@@ -89,6 +89,9 @@ void Level::startLevel(string levelName)
 	// Fade from black
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
+
+	//spoderMan
+	EntityList::getEntityList().addEntity(new Spider(sf::Vector2f(300, 128), sf::Vector2f(0,0), sf::Vector2f(4470, 2160)), Layer::Front);
 }
 
 void Level::loadMap(string filename)
