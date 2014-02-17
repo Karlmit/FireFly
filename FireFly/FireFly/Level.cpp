@@ -3,7 +3,6 @@
 #include "Box2dWorld.h"
 #include "Camera.h"
 #include "MusicManager.h"
-#include "LightManager.h"
 
 #include "Zid.h"
 #include "EntitySprite.h"
@@ -115,25 +114,8 @@ void Level::loadMap(string filename)
 
 	// Sets level boundry for the camera
 	Camera::currentCamera().setBounds(levelBoundry);
-
-	// Creates and sets the boundry for the light system
-	LightManager::newLightSystem(levelBoundry);
-
-	// Create a light blocker shape
-	// Create a hull by loading it from a file //
-	ltbl::ConvexHull* testHull = new ltbl::ConvexHull();
-	if(!testHull->LoadShape("Resources/Light/rectShape.txt"))
-		abort();
-
-	// Pre-calculate certain aspects
-	testHull->CalculateNormals();
-	testHull->CalculateAABB();
-	testHull->SetWorldCenter(Vec2f(300.0f, 300.0f));
-	testHull->m_renderLightOverHull = false;
-	//testHull->m_transparency = 0.5f;
-	LightManager::instance().AddConvexHull(testHull);
-
-
+		
+	
 	// Adds a collider around the entire level
 	eList.addEntity(new LevelBoundryCollider(levelBoundry), Layer::Front, false);
 
@@ -257,48 +239,7 @@ void Level::loadMap(string filename)
 				}
 			}
 
-			//
-			//	Light Block
-			//
-			else if (layer == Layer::Light || entityType == "LightBlock")
-			{
-				
-				vector<sf::Vector2f> sfPoints;
-
-				ltbl::ConvexHull* convexHull = new ltbl::ConvexHull();
-				
-				
-				cout << "Polylines= ";
-				for (MapPoint p : obj.getPolyline().getPoints())
-				{
-					cout << p.x << "," << p.y << " " << "\t";
-					/*
-					sf::Vector2f sfPoint(float(p.x), float(p.y));
-					sfPoint = sfPoint + position;
-					sfPoints.push_back(sfPoint);
-					*/
-
-					convexHull->m_vertices.push_back(Vec2f(float(p.x), -float(p.y)));
-				}
-				cout << endl;
-
-
-				convexHull->CenterHull();
-				convexHull->CalculateNormals();
-				convexHull->CalculateAABB();
-				convexHull->SetWorldCenter(Vec2f(position.x - convexHull->m_vertices.at(0).x , 864 -position.y - convexHull->m_vertices.at(0).y));
-				LightManager::instance().AddConvexHull(convexHull);
-				convexHull->m_renderLightOverHull = false;
-
-				/*
-				if (!sfPoints.empty())
-				{
-					Entity* col = new StaticLineCollider(sfPoints, loop);
-					col->setID(id);
-					eList.addEntity(col, Layer::Foreground, false);
-				}*/
-			}
-
+			
 			//
 			//	Trigger
 			//

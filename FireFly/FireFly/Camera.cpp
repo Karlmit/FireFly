@@ -93,6 +93,8 @@ sf::View Camera::getView() {
 
 sf::View Camera::getViewZ() {
 	sf::View view(mView);
+	//view.setSize(sf::Vector2f(1536, 864));
+	view.setSize(sf::Vector2f(1920, 1080));
 	//view.setSize(sf::Vector2f(5000, 2160));
 	//view.zoom(1.f/mZoom);
 	return view;

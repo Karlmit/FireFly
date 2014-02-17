@@ -20,7 +20,6 @@ Zid::Zid(sf::Vector2f position)
 ,dashSound(Loading::getSound("canary.wav"), true)
 ,mRigidbody()
 , mInStickyZone(false)
-, mLightPoint(new ltbl::Light_Point())
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -51,35 +50,12 @@ Zid::Zid(sf::Vector2f position)
 	mID = "Zid";
 	dashFrameNo = 0;
 
-	// Zids light
-	mLightPoint = new ltbl::Light_Point();
-	mLightPoint->m_intensity = 2.f;
-	mLightPoint->m_center = Vec2f(200.0f, 200.0f);
-	mLightPoint->m_radius = 400.0f;
-	mLightPoint->m_size = 15.0f;
-	mLightPoint->m_spreadAngle = ltbl::pifTimes2;
-	mLightPoint->m_softSpreadAngle = 0.0f;
-	mLightPoint->m_color = Color3f(1.f,1.f,0.8f);
-	mLightPoint->CalculateAABB();
-
-	mLightPoint->m_bleed = 0.0f;
-	mLightPoint->m_linearizeFactor = 0.3f;
-
-	LightManager::instance().AddLight(mLightPoint);
-
-	mLightPoint->SetAlwaysUpdate(true);
 } 
 
 
 
 void Zid::updateEntity(sf::Time dt) 
 {
-	// Updates light position to zids position
-	mLightPoint->SetCenter(LightManager::SfToLightVec(getPosition()));
-	//cout << "Zid=" << getPosition().x << ", " << getPosition().y << endl;
-	//cout << "ZidLight=" << mLightPoint->GetCenter() << endl;
-
-
 	// S?ger att allt ljud som Zid g?r ska h?ras fr?n Zid.
 	sf::Listener::setPosition(getPosition().x, 1, getPosition().y);
 	

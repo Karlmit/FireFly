@@ -2,7 +2,6 @@
 #include "Box2dWorld.h"
 #include <Windows.h>
 #include "MusicManager.h"
-#include "LightManager.h"
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
@@ -23,7 +22,6 @@ mStatisticsNumFrames(0)
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
 	
-	LightManager::setWindow(&mWindow);  // Sets up the window to draw light onto
 }
 
 GameLoop::~GameLoop()
@@ -95,27 +93,13 @@ void GameLoop::draw()
 	mWindow.setView(mCamera.getView());
 	//EntityList::getEntityList().draw(mWindow);	// Draws all entities
 
+	// Draws every layer of entities
 	EntityList::getEntityList().drawBackground(mWindow);
 	EntityList::getEntityList().drawBack(mWindow);
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
-
-	// Set light view
-	LightManager::instance().SetView(mCamera.getViewZ());
-	// Calculate the lights
-	LightManager::instance().RenderLights();
-	// Draw the lights
-	LightManager::instance().RenderLightTexture();
-	// Debug render
-	//LightManager::instance().DebugRender();
-	
-
 	EntityList::getEntityList().drawForeground(mWindow);
 
-	
-	
-
-	
 
 	mWindow.setView(mWindow.getDefaultView());
 	mWindow.draw(mStatisticsText);
