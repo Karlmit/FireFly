@@ -6,12 +6,19 @@
 
 #include <iostream>
 
+const float DENSITY = 3.f;
+const float FORCE = 5.f;
+const float IMP_FORCE = 7.f;
+const float DAMPING = 2.f;
+const float SCALE = 1.f;
+
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
 ,idleAnimation(Loading::getTexture("zidIdleAnim.png", true), 64, 64, 1, 8, 10)
 ,dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 5, 5, 2)
 ,dashSound(Loading::getSound("canary.wav"), true)
 ,mRigidbody()
+, mInStickyZone(false)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -26,11 +33,11 @@ Zid::Zid(sf::Vector2f position)
 
 	// Adds a dynamic circle body to zid
 	float colRadius = 24.f;
-	float density = 3.f;
+	float density = DENSITY;
 	mRigidbody.AddDynCircleBody(colRadius, getPosition(), density);
 
 	// Damping for slowing zid down when not moving
-	mRigidbody.getBody()->SetLinearDamping(2.f);
+	mRigidbody.getBody()->SetLinearDamping(DAMPING);
 	mRigidbody.getBody()->SetFixedRotation(true);
 
 	// Set zid as bullet to prevent going through stuff
@@ -41,6 +48,7 @@ Zid::Zid(sf::Vector2f position)
 
 	mID = "Zid";
 	dashFrameNo = 0;
+
 } 
 
 
@@ -94,22 +102,22 @@ void Zid::updateEntity(sf::Time dt)
 	if (body->GetLinearVelocity().x < -0.1f) 
 	{
 		mDirLeft = true;
-		mSprite.setScale(-1.f, 1.f);
+		mSprite.setScale(-SCALE, SCALE);
 	}
 	else if (body->GetLinearVelocity().x > 0.1f)
 	{
 		mDirLeft = false;
-		mSprite.setScale(1.f, 1.f);
+		mSprite.setScale(SCALE, SCALE);
 	}
 	else if(body->GetLinearVelocity().x >= -0.1f && 0.1f >= body->GetLinearVelocity().x)
 	{
 		if(mDirLeft == true)
 		{
-			mSprite.setScale(-1.f, 1.f);
+			mSprite.setScale(-SCALE, SCALE);
 		}
 		else
 		{
-			mSprite.setScale(1.f, 1.f);
+			mSprite.setScale(SCALE, SCALE);
 		}
 	}
 
@@ -143,6 +151,13 @@ void Zid::movement()
 	// Counter gravity
 	body->ApplyForce(body->GetMass() * - b2Vec2(0,-10.f), body->GetWorldCenter(), true);
 
+	if (mInStickyZone)
+		mRigidbody.getBody()->SetLinearDamping(999.f);
+
+	// Reset the damping if changed due to StickyZone when dashing
+	if (zidDash)
+		mRigidbody.getBody()->SetLinearDamping(DAMPING);
+
 	
 	// Apply force to go to the mouse position when pressing left mouse button
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) == true) {
@@ -152,11 +167,18 @@ void Zid::movement()
 		b2Vec2 force = mouse - Rigidbody::SfToBoxVec(getPosition());
 		float length = force.Normalize();
 
-		if (length > 0.5f) {
-			
-			force *= 6.f;
+		// If mouse is a certain distance away use full force
+		// and decrease it when mouse is closer to Zid
+		if (length > 0.5f) {			
+
+			force *= FORCE;
 			body->ApplyForceToCenter(force, true);
-		}	
+		}
+		else
+		{
+			force *= FORCE * (length / 0.5f) * 0.5f;
+			body->ApplyForceToCenter(force, true);
+		}
 	}
 
 	// Apply impulse for the right mouse button
@@ -167,15 +189,20 @@ void Zid::movement()
 			//mouseRightDownLast = false;
 		}
 		else {
-			mouseRightDownLast = true;
+			mouseRightDownLast = true;			
 
+			// Reset the damping if changed due to StickyZone when dashing
+			mRigidbody.getBody()->SetLinearDamping(DAMPING);
+
+			// Calculate direction and impulse from zids position and mouse position
 			sf::Vector2f mousePos = Camera::currentCamera().getMousePosition();
-
 			b2Vec2 mouse = Rigidbody::SfToBoxVec(mousePos);
 			b2Vec2 force = mouse - Rigidbody::SfToBoxVec(getPosition());
 			float length = force.Normalize();
-			force *= 5.f;
 
+			force *= IMP_FORCE;
+
+			// Apply impulse
 			body->ApplyLinearImpulse(force , body->GetWorldCenter(), true);
 			zidDash = true;
 
@@ -195,4 +222,20 @@ void Zid::movement()
 		body->SetTransform(Rigidbody::SfToBoxVec(Camera::currentCamera().getMousePosition()), 0);
 	}
 
+}
+
+void Zid::BeginContact(b2Contact *contact, Entity* other)
+{
+	if (other->getID() == "StickyZone")
+	{
+		mInStickyZone = true;
+	}
+}
+
+void Zid::EndContact(b2Contact *contact, Entity* other)
+{
+	if (other->getID() == "StickyZone")
+	{
+		mInStickyZone = false;
+	}
 }

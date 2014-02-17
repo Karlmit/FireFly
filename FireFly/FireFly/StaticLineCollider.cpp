@@ -5,6 +5,8 @@ StaticLineCollider::StaticLineCollider(vector<sf::Vector2f> points, bool loop)
 : mRigidbody()
 {
 	mRigidbody.AddStaticLineBody(points, loop);
+	// Add into box2d callbacks
+	mRigidbody.getBody()->SetUserData(this);
 }
 
 void StaticLineCollider::updateEntity(sf::Time dt) 

@@ -11,6 +11,9 @@ LevelBoundryCollider::LevelBoundryCollider(sf::FloatRect rect)
 	listOfPoints.push_back(sf::Vector2f(rect.left+rect.width,	rect.top+rect.height));
 	listOfPoints.push_back(sf::Vector2f(rect.left+rect.width,	rect.top));
 	mRigidbody.AddStaticLineBody(listOfPoints, true);
+
+	// Add into box2d callbacks
+	mRigidbody.getBody()->SetUserData(this);
 }
 
 void LevelBoundryCollider::updateEntity(sf::Time dt) 

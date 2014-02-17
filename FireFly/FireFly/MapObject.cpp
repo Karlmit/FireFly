@@ -10,6 +10,7 @@ MapObject::MapObject(string name, string type, int gid, int x, int y)
 }
 
 MapObject::MapObject()
+	: mGid(-1)
 {
 }
 

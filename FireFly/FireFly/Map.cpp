@@ -122,7 +122,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 					obj.insertProperty(prop);
 				}
 
-				while((property = object->NextSiblingElement("property")) != NULL)
+				while((property = property->NextSiblingElement("property")) != NULL)
 				{
 					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
@@ -141,7 +141,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
             temp.insertObject(obj);
         }
 
-        while((object = object->NextSiblingElement("object")) != NULL)
+        while(object != NULL && (object = object->NextSiblingElement("object")) != NULL)
         {
             MapObject obj;// = new TiledMapObject();
 
@@ -170,7 +170,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 					obj.insertProperty(prop);
 				}
 
-				while((property = object->NextSiblingElement("property")) != NULL)
+				while((property = property->NextSiblingElement("property")) != NULL)
 				{
 					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
@@ -229,7 +229,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 					obj.insertProperty(prop);
 				}
 
-				while((property = object->NextSiblingElement("property")) != NULL)
+				while((property = property->NextSiblingElement("property")) != NULL)
 				{
 					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
@@ -277,7 +277,7 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 					obj.insertProperty(prop);
 				}
 
-				while((property = object->NextSiblingElement("property")) != NULL)
+				while((property = property->NextSiblingElement("property")) != NULL)
 				{
 					MapObjectProperty prop;// = new TiledMapObjectProperty();
 
@@ -308,7 +308,7 @@ MapTileset Map::getTileset(int gid)
 		if (tileset.getFirstgid() == gid)
 			return tileset;
 
-	throw logic_error("Map::getTileset - Finns inget tileset med det gid");
+	//throw logic_error("Map::getTileset - Finns inget tileset med det gid");
 	return MapTileset();
 
 }

@@ -9,7 +9,6 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 
 
-
 class Zid : public Entity
 {
 public:
@@ -18,6 +17,9 @@ public:
 private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
+
+	virtual void BeginContact(b2Contact *contact, Entity* other); 
+	virtual void EndContact(b2Contact *contact, Entity* other); 
 
 	void movement();
 
@@ -30,6 +32,7 @@ sf::Sprite		mSprite;
 	bool zidDash;
 	int dashFrameNo;
 	bool mDirLeft;
+	bool mInStickyZone;
 };
 
 #endif

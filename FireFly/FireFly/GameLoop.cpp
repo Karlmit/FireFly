@@ -1,6 +1,7 @@
 #include "GameLoop.h"
 #include "Box2dWorld.h"
 #include <Windows.h>
+#include "MusicManager.h"
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
@@ -30,7 +31,9 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::getLevel().startLevel("level1.tmx");
+	//Level::getLevel().startLevel("level1.tmx");
+	Level::startLevel("level1.tmx");
+
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -88,7 +91,15 @@ void GameLoop::draw()
 	mWindow.clear(sf::Color::Black);
 
 	mWindow.setView(mCamera.getView());
-	EntityList::getEntityList().draw(mWindow);	// Draws all entities
+	//EntityList::getEntityList().draw(mWindow);	// Draws all entities
+
+	// Draws every layer of entities
+	EntityList::getEntityList().drawBackground(mWindow);
+	EntityList::getEntityList().drawBack(mWindow);
+	EntityList::getEntityList().drawNPC(mWindow);
+	EntityList::getEntityList().drawFront(mWindow);
+	EntityList::getEntityList().drawForeground(mWindow);
+
 
 	mWindow.setView(mWindow.getDefaultView());
 	mWindow.draw(mStatisticsText);
@@ -96,20 +107,26 @@ void GameLoop::draw()
 	mWindow.display();
 }
 
-void GameLoop::update(sf:: Time timePerFrame)
+void GameLoop::update(sf::Time timePerFrame)
 {
 	// Update camera
 	mCamera.update(timePerFrame);
 
+	// Update music manager
+	MusicManager::update(timePerFrame);
+
 	// Update entities
 	EntityList::getEntityList().updateList(); //deletes dead entities
-	EntityList::getEntityList().update(TimePerFrame);	// Updates all entities
+	EntityList::getEntityList().update(timePerFrame);	// Updates all entities
 
 	// Box2d physics step
 	float32 timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 	Box2dWorld::instance().Step(timeStep, velocityIterations, positionIterations);
+
+	// Check if change map
+	Level::update();
 }
 
 void GameLoop::updateStatistics(sf::Time elapsedTime)
@@ -136,36 +153,34 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 	if (key == sf::Keyboard::P && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
 
-	
-
 	if (isPressed == false)
 	{
 		switch (key)
 		{	
 			break;
 		case sf::Keyboard::F1:
-			Level::getLevel().startLevel("level1.tmx");
+			Level::changeMap("level1.tmx");
 			break;
 		case sf::Keyboard::F2:
-			Level::getLevel().startLevel("level2.tmx");
+			Level::changeMap("level2.tmx");
 			break;
 		case sf::Keyboard::F3:
-			Level::getLevel().startLevel("level3.tmx");
+			Level::changeMap("level3.tmx");
 			break;
 		case sf::Keyboard::F4:
-			Level::getLevel().startLevel("level4.tmx");
+			Level::changeMap("level4.tmx");
 			break;
 		case sf::Keyboard::F5:
-			Level::getLevel().startLevel("level5.tmx");
+			Level::changeMap("level5.tmx");
 			break;
 		case sf::Keyboard::F6:
-			Level::getLevel().startLevel("level6.tmx");
+			Level::changeMap("level6.tmx");
 			break;
 		case sf::Keyboard::F7:
-			Level::getLevel().startLevel("level7.tmx");
+			Level::changeMap("level7.tmx");
 			break;
 		case sf::Keyboard::F8:
-			Level::getLevel().startLevel("level8.tmx");
+			Level::changeMap("level8.tmx");
 			break;
 		default:
 			break;

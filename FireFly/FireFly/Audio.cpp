@@ -3,6 +3,7 @@
 Audio::Audio(sf::SoundBuffer& buffer, bool global) //Creates a sound with its own buffer.
 	: mSound(buffer)
 {	
+	mSound.setVolume(100);
 	mSound.setMinDistance(500.f);
 	mSound.setAttenuation(2.f);
 	mSound.setRelativeToListener(global);
