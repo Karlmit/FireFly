@@ -126,9 +126,9 @@
    </properties>
    <ellipse/>
   </object>
-   <object name="CannedWasp" type="WaspTrapped" x="2349" y="1691" width="65" height="59">
-     <ellipse/>
-   </object>
+  <object name="CannedWasp" type="WaspTrapped" x="2349" y="1691" width="65" height="59">
+   <ellipse/>
+  </object>
   <object name="NextMapTrigger" type="Trigger" x="4740" y="1471" width="390" height="577">
    <properties>
     <property name="ChangeMap" value="level2.tmx"/>
@@ -138,6 +138,11 @@
    <properties>
     <property name="MusicFadeUp" value="slow"/>
     <property name="TriggerOnce" value="Zid"/>
+   </properties>
+  </object>
+  <object name="BurkDeathZone" type="Trigger" x="409" y="2152" width="4154" height="137">
+   <properties>
+    <property name="id" value="BurkDeathZone"/>
    </properties>
   </object>
  </objectgroup>

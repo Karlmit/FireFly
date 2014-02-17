@@ -75,18 +75,10 @@ void Jar::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 // Start of AABB boxes overlapping
 void Jar::BeginContact(b2Contact *contact, Entity* other)
 {
-	
-}
-
-// Post box2d solving col. Checks impulse of strength of impact
-void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse, Entity* other)
-{
 	if (isProperty("unbreakable"))
 		return;
 
-	float imp = max(impulse->normalImpulses[0], impulse->normalImpulses[1]);
-
-	if (imp > 40.f)
+	if (other->getID() == "BurkDeathZone")
 	{
 		killEntity();
 		mBreakSound.setPosition(getPosition());
@@ -95,6 +87,6 @@ void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse, Entity*
 
 		if (isProperty("OnBreakMusicFade"))
 			MusicManager::fadeUp(getProperty("OnBreakMusicFade"));
-		
 	}
 }
+
