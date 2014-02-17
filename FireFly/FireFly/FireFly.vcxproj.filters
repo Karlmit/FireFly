@@ -37,9 +37,6 @@
     <Filter Include="Resource Files\Maps">
       <UniqueIdentifier>{859c5988-98fa-4f88-9448-5968c1a2d83a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\LightManager">
-      <UniqueIdentifier>{82c9b6b7-3066-46f2-83cd-d57aaf0a30f9}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntityList.h">
@@ -299,9 +296,6 @@
     </ClInclude>
     <ClInclude Include="ToggleSprite.h">
       <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="LightManager.h">
-      <Filter>Header Files\LightManager</Filter>
     </ClInclude>
     <ClInclude Include="Room2_Fan.h">
       <Filter>Header Files\Entities</Filter>

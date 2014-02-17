@@ -142,7 +142,6 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
-    <ClInclude Include="LightManager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapObjectGroup.h" />
