@@ -46,6 +46,11 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 		if (isProperty("Toggle"))
 			for (string id : getProperties("Toggle"))
 				EntityList::getEntityList().getEntity(id)->sendMessage(this, "Toggle");
+
+		if (isProperty("TurnOn"))
+			EntityList::getEntityList().getEntity(getProperty("TurnOn"))->sendMessage(this, "TurnOn");
+		if (isProperty("TurnOff"))
+			EntityList::getEntityList().getEntity(getProperty("TurnOff"))->sendMessage(this, "TurnOff");
 	}	
 }
 

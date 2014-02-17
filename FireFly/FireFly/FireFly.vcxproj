@@ -152,6 +152,7 @@
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="Room1_Coat.h" />
+    <ClInclude Include="Room2_Fan.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
@@ -238,6 +239,7 @@
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />
+    <ClCompile Include="Room2_Fan.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />

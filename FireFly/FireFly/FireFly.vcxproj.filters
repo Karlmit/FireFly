@@ -303,6 +303,9 @@
     <ClInclude Include="LightManager.h">
       <Filter>Header Files\LightManager</Filter>
     </ClInclude>
+    <ClInclude Include="Room2_Fan.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -558,6 +561,9 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="ToggleSprite.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Room2_Fan.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

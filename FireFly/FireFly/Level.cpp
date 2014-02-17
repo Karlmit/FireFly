@@ -17,6 +17,7 @@
 #include "ForceZone.h"
 #include "StickyZone.h"
 #include "ToggleSprite.h"
+#include "Room2_Fan.h"
 
 
 #include <iostream>
@@ -210,6 +211,7 @@ void Level::loadMap(string filename)
 				mal->setProperties(obj.getProperties());
 				eList.addEntity(mal, Layer::NPC, false);
 			}
+
 			//
 			// Trapped wasp
 			//
@@ -217,6 +219,7 @@ void Level::loadMap(string filename)
 			{
 				eList.addEntity(new Wasp(position), Layer::NPC, false);
 			}
+
 			//
 			//	Collision
 			//
@@ -244,7 +247,6 @@ void Level::loadMap(string filename)
 					eList.addEntity(col, Layer::Foreground, false);
 				}
 			}
-
 			
 			//
 			//	Trigger
@@ -340,6 +342,16 @@ void Level::loadMap(string filename)
 				toggle->setProperties(obj.getProperties());				
 				toggle->setID(id);
 				eList.addEntity(toggle, layer, false);
+			}
+
+			//
+			//	Room2_Fan
+			//
+			else if (entityType == "Room2_Fan")
+			{
+				Room2_Fan* fan = new Room2_Fan(imageSrc, positionSprite);
+				fan->setProperties(obj.getProperties());
+				eList.addEntity(fan, layer, false);
 			}
 
 			
