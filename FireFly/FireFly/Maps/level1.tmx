@@ -95,5 +95,8 @@
    <ellipse/>
   </object>
   <object name="TestTrigger" type="Trigger" x="575" y="235" width="265" height="253"/>
+  <object name="CannedWasp" type="WaspTrapped" x="2349" y="1691" width="65" height="59">
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>

@@ -44,9 +44,6 @@ void Level::startLevel(string levelName)
 
 	loadMap(mapStr);
 
-	EntityList& eList = EntityList::getEntityList();
-	eList.addEntity(new Wasp(sf::Vector2f(2383, 1701)), Layer::NPC, false);
-
 	// Runs start() on all entities
 	EntityList::getEntityList().startList();
 }
@@ -136,6 +133,10 @@ void Level::loadMap(string filename)
 			else if (entityType == "Moth") 
 			{
 				eList.addEntity(new Mal(position), Layer::NPC, false);
+			}
+			else if (entityType == "WaspTrapped")
+			{
+				eList.addEntity(new Wasp(position), Layer::NPC, false);
 			}
 			else if (layer == Layer::Collision || entityType == "StaticCollision" || entityType == "StaticCollisionLoop")
 			{
