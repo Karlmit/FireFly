@@ -185,5 +185,11 @@
     <property name="TurnOn" value="Room2_Fan"/>
    </properties>
   </object>
+  <object name="Spider" type="Spider" x="724" y="2323" width="4342" height="2152">
+   <properties>
+    <property name="x" value="500"/>
+    <property name="y" value="2438"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

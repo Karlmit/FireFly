@@ -63,7 +63,7 @@
    </properties>
   </object>
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
-  <object name="CoatFrontPatch" type="EntitySprite" gid="10" x="0" y="2160"/>
+  <object name="CoatFrontPatch" type="EntitySprite" gid="10" x="3" y="2163"/>
   <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1">
@@ -143,6 +143,12 @@
   <object name="BurkDeathZone" type="Trigger" x="409" y="2152" width="4154" height="137">
    <properties>
     <property name="id" value="BurkDeathZone"/>
+   </properties>
+  </object>
+  <object name="Spider" type="Spider" x="0" y="0" width="4460" height="2160" visible="0">
+   <properties>
+    <property name="x" value="300"/>
+    <property name="y" value="128"/>
    </properties>
   </object>
  </objectgroup>

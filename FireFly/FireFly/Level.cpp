@@ -90,8 +90,7 @@ void Level::startLevel(string levelName)
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
 
-	//spoderMan
-	EntityList::getEntityList().addEntity(new Spider(sf::Vector2f(300, 128), sf::Vector2f(0,0), sf::Vector2f(4470, 2160)), Layer::Front);
+	
 }
 
 void Level::loadMap(string filename)
@@ -357,11 +356,24 @@ void Level::loadMap(string filename)
 				eList.addEntity(fan, layer, false);
 			}
 
+			//spoderMan
+			else if(entityType == "Spider")
+			{
+				int x = obj.getProperty("x").getValueInt();
+				int y = obj.getProperty("y").getValueInt();
+				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
+				eList.addEntity(spider, Layer::Front, false);
+			}
+
+
+
 			
 		}
 
 		cout << endl;
 	}		
+
+
 }
 
 

@@ -12,6 +12,9 @@ Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
 , mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
 , mBroken(false)
 {
+
+
+
 	// Set sound prop
 	mBreakSound.getSound()->setMinDistance(600.f);
 	mBreakSound.getSound()->setAttenuation(1.f);
@@ -84,9 +87,13 @@ void Jar::BeginContact(b2Contact *contact, Entity* other)
 		mBreakSound.setPosition(getPosition());
 		// Creates a new entity for playing break after the Jar is dead
 		EntityList::getEntityList().addEntity(new AudioEntity(mBreakSound));
-
 		if (isProperty("OnBreakMusicFade"))
+		{
 			MusicManager::fadeUp(getProperty("OnBreakMusicFade"));
+			//get spoderMan and activate
+			spoderMan = EntityList::getEntityList().getEntity("spoderMan");
+			spoderMan->sendMessage(this, "activate");
+		}
 	}
 }
 

@@ -13,12 +13,13 @@ public:
 private:
 	virtual void	updateEntity(sf::Time dt);	
 	virtual void	drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
-
+	
 private:
 	Rigidbody mRigidbody;
 	sf::Sprite mSprite;
 	Audio mBreakSound;
 	bool mBroken;
+	Entity* spoderMan;
 
 private:
 	// Box2d callback functions

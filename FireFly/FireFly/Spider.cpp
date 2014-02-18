@@ -2,8 +2,16 @@
 
 Spider::Spider(sf::Vector2f position, sf::Vector2f startofRoom, sf::Vector2f sizeofRoom) :
 dangleAnimation(Loading::getTexture("spiderHanging_sheet256.png"), 256, 256, 5, 10, 10),
-walkingAnimation(Loading::getTexture("spiderwalking1.png"), 256, 256, 2, 8, 70)
+walkingAnimation(Loading::getTexture("spiderwalking1.png"), 256, 256, 2, 8, 65),
+walkSound(Loading::getSound("Spiderlegs.wav"), false)
 {
+
+	//sound
+	walkSound.getSound()->setMinDistance(200);
+	walkSound.getSound()->setLoop(true);
+	walkSound.play();
+
+	activate = false;
 	//sfVector holding starting position
 	setPosition(position);
 	startPosition = position;
@@ -21,7 +29,7 @@ walkingAnimation(Loading::getTexture("spiderwalking1.png"), 256, 256, 2, 8, 70)
 	RoofDirection = false;
 	
 	spiderman = true;
-	mID = "Spider";
+	mID = "spoderMan";
 	mZid = EntityList::getEntityList().getEntity("Zid");
 
 	//spoderMan should begin with walking
@@ -38,61 +46,70 @@ Spider::~Spider(void)
 {
 }
 
+void Spider::sendMessage(Entity* entity, std::string message)
+{
+	activate = true;
+}
+
+
 void Spider::updateEntity(sf::Time dt)
 {
-	dangleAnimation.updateAnimation();
-	walkingAnimation.updateAnimation();
-
-	//Zids Position in cords
-	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
-
-	dangleAnimation.updateAnimation();
-	mSprite = dangleAnimation.getCurrentSprite();
-	// Box2d physics body
-	b2Body *body = mRigidbody.getBody();
-
-
-	//The range span the spider sees from the ceiling
-	float range = mZidPosition.x - Rigidbody::SfToBoxFloat(getPosition().x);
-	range = abs(range);
-	range = Rigidbody::BoxToSfFloat(range);
-
-
-
-	if(activateMove == true)
+	if(activate == true)
 	{
-		//defines movement for spider
-		movement(range);
-	}
-	else if(makeNet == true)
-	{
-		mMakeNet(range);
-	}
-	else if(walkBack == true)
-	{
-		walkBackToTop();
-	}
+		dangleAnimation.updateAnimation();
+		walkingAnimation.updateAnimation();
 
-	//function that prepares the spoderMan to walkBack to the top
-	//Mainly activates walkBackToTop
-	if(getPosition().y >= roomSize.y - 30)
-	{
-		spiderman = true;
-		activateMove = false;
-		makeNet = false;
-		walkBack = true;
-		//Gives spoderman a specific postion due to sprite size
-		body->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat( getPosition().x), Rigidbody::SfToBoxFloat(-2030)), 0);
-		//resets netLength
-		net.setSize(sf::Vector2f(0, 0));
-	}
+		//Zids Position in cords
+		mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
+
+		dangleAnimation.updateAnimation();
+		mSprite = dangleAnimation.getCurrentSprite();
+		// Box2d physics body
+		b2Body *body = mRigidbody.getBody();
+
+
+		//The range span the spider sees from the ceiling
+		float range = mZidPosition.x - Rigidbody::SfToBoxFloat(getPosition().x);
+		range = abs(range);
+		range = Rigidbody::BoxToSfFloat(range);
 
 		
-	mRigidbody.update();
-	setPosition(mRigidbody.getPosition());
-	setRotation(mRigidbody.getRotation());
-	
 
+		if(activateMove == true)
+		{
+			//defines movement for spider
+			movement(range);
+		}
+		else if(makeNet == true)
+		{
+			mMakeNet(range);
+		}
+		else if(walkBack == true)
+		{
+			walkBackToTop();
+		}
+
+		//function that prepares the spoderMan to walkBack to the top
+		//Mainly activates walkBackToTop
+		if(getPosition().y >= roomSize.y - 30)
+		{
+			spiderman = true;
+			activateMove = false;
+			makeNet = false;
+			walkBack = true;
+			//Gives spoderman a specific postion due to sprite size
+			body->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat( getPosition().x), Rigidbody::SfToBoxFloat(-2030)), 0);
+			//resets netLength
+			net.setSize(sf::Vector2f(0, 0));
+		}
+
+			
+		mRigidbody.update();
+		setPosition(mRigidbody.getPosition());
+		setRotation(mRigidbody.getRotation());
+		//sound
+		walkSound.setPosition(getPosition());
+	}
 }
 
 void Spider::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
