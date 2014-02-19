@@ -46,7 +46,10 @@ Zid::Zid(sf::Vector2f position)
 	// So zid can be used in callbacks
 	mRigidbody.getBody()->SetUserData(this);
 
+	//ID
 	mID = "Zid";
+
+	//Is changed when animating Zid
 	dashFrameNo = 0;
 
 } 

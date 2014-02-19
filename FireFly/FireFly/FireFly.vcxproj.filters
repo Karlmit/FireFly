@@ -303,6 +303,9 @@
     <ClInclude Include="LightManager.h">
       <Filter>Header Files\LightManager</Filter>
     </ClInclude>
+    <ClInclude Include="SuCam.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -560,9 +563,15 @@
     <ClCompile Include="ToggleSprite.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="SuCam.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Maps\level1.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Maps\level2.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
   </ItemGroup>

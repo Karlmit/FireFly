@@ -17,6 +17,7 @@
 #include "ForceZone.h"
 #include "StickyZone.h"
 #include "ToggleSprite.h"
+#include "SuCam.h"
 
 
 #include <iostream>
@@ -217,6 +218,22 @@ void Level::loadMap(string filename)
 			{
 				eList.addEntity(new Wasp(position), Layer::NPC, false);
 			}
+			//
+			// SuCam
+			//
+			else if (entityType == "SuCam")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				SuCam* zone = new SuCam(rect);
+				zone->setProperties(obj.getProperties());				
+				zone->setID(id);
+				eList.addEntity(zone, Layer::Back, false);
+			}
+
 			//
 			//	Collision
 			//

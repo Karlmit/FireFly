@@ -45,8 +45,6 @@ void Wasp::start()
 
 void Wasp::updateEntity(sf::Time timePerFrame)
 {
-	// Updates the animation
-	idleAnimation.updateAnimation();
 
 	// Gets Zids position in Box2D coords
 	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
@@ -112,6 +110,8 @@ void Wasp::movement()
 
 	//Gets the direction from Wasp to Zid
 	b2Vec2 direction = mZidPosition - currentPosition;
+
+	//Converts the direction into a distance
 	float length = direction.Normalize();
 
 	

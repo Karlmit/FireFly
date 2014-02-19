@@ -164,6 +164,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="StickyZone.h" />
+    <ClInclude Include="SuCam.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="ToggleSprite.h" />
     <ClInclude Include="Trigger.h" />
@@ -253,6 +254,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="StickyZone.cpp" />
+    <ClCompile Include="SuCam.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="ToggleSprite.cpp" />
     <ClCompile Include="Trigger.cpp" />
@@ -263,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Maps\level1.tmx" />
+    <None Include="Maps\level2.tmx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

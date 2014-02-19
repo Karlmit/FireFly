@@ -1,7 +1,6 @@
 #include "StickyZone.h"
 
 #include <iostream>
-
 StickyZone::StickyZone(sf::FloatRect rect)
 	: mRigidbody()
 {
