@@ -12,6 +12,9 @@ Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
 , mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
 , mBroken(false)
 {
+
+
+
 	// Set sound prop
 	mBreakSound.getSound()->setMinDistance(600.f);
 	mBreakSound.getSound()->setAttenuation(1.f);
@@ -75,26 +78,22 @@ void Jar::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 // Start of AABB boxes overlapping
 void Jar::BeginContact(b2Contact *contact, Entity* other)
 {
-	
-}
-
-// Post box2d solving col. Checks impulse of strength of impact
-void Jar::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse, Entity* other)
-{
 	if (isProperty("unbreakable"))
 		return;
 
-	float imp = max(impulse->normalImpulses[0], impulse->normalImpulses[1]);
-
-	if (imp > 40.f)
+	if (other->getID() == "BurkDeathZone")
 	{
 		killEntity();
 		mBreakSound.setPosition(getPosition());
 		// Creates a new entity for playing break after the Jar is dead
 		EntityList::getEntityList().addEntity(new AudioEntity(mBreakSound));
-
 		if (isProperty("OnBreakMusicFade"))
+		{
 			MusicManager::fadeUp(getProperty("OnBreakMusicFade"));
-		
+			//get spoderMan and activate
+			spoderMan = EntityList::getEntityList().getEntity("spoderMan");
+			spoderMan->sendMessage(this, "activate");
+		}
 	}
 }
+

@@ -30,6 +30,9 @@
  <tileset firstgid="10" name="takflakt_knapp_off_scale" tilewidth="140" tileheight="140">
   <image source="../Resources/Room 2/takflakt_knapp_off_scale.png" width="140" height="140"/>
  </tileset>
+ <tileset firstgid="11" name="takflakt_scale" tilewidth="1525" tileheight="168">
+  <image source="../Resources/Room 2/takflakt_scale.png" width="1525" height="168"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
   <object x="797" y="116" width="269" height="156"/>
@@ -44,7 +47,7 @@
  <objectgroup name="Front" width="1" height="1">
   <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167"/>
   <object name="Suger Bowl" type="EntitySprite" gid="6" x="4354" y="1317"/>
-  <object name="SugerBow lTop" type="EntitySprite" gid="7" x="4386" y="1218"/>
+  <object name="SugerBow lTop" type="EntitySprite" gid="7" x="4529" y="1315"/>
   <object name="AC Flakt" type="EntitySprite" gid="9" x="4782" y="599"/>
   <object name="FanButton" type="ToggleSprite" gid="10" x="703" y="906">
    <properties>
@@ -53,6 +56,7 @@
     <property name="id" value="ToggleSpriteFanButton"/>
    </properties>
   </object>
+  <object name="TakFlakt" type="Room2_Fan" gid="11" x="2133" y="166"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
@@ -79,14 +83,27 @@
   <object name="FanButtonColl" type="StaticCollisionLoop" x="717" y="895">
    <polyline points="0,0 28,0 36,-10 36,-110 28,-120 -1,-121"/>
   </object>
+  <object name="CartTop" type="StaticCollisionLoop" x="4838" y="1327">
+   <polyline points="0,0 -618,0 -640,-4 -661,-20 -672,-50 -672,-70 -667,-92 -662,-120 -665,-147 -681,-159 -688,-153 -683,-141 -687,-122 -700,-114 -717,-116 -728,-135 -725,-153 -708,-166 -687,-168 -666,-157 -653,-130 -655,-101 -664,-64 -661,-41 -649,-24 -624,-15 -604,-15 -598,-39 -587,-40 -583,-33 -579,-15 -84,-16 -80,-31 -77,-39 -70,-40 -64,-34 -59,-17 0,-16"/>
+  </object>
+  <object name="CartBottom" type="StaticCollisionLoop" x="4887" y="1825">
+   <polyline points="0,0 -652,0 -651,-58 0,-59"/>
+  </object>
+  <object name="CartWheel1" type="StaticCollisionLoop" x="4315" y="2063">
+   <polyline points="0,0 -5,7 -1,14 5,14 11,9 7,1"/>
+  </object>
+  <object name="CartWheel2" type="StaticCollisionLoop" x="4768" y="1888">
+   <polyline points="0,0 -12,7 -12,17 -3,27 11,26 17,16 13,3"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="88" y="2136" width="40" height="30">
    <ellipse/>
   </object>
-  <object name="FanOnButton" type="Trigger" x="757" y="793" width="9" height="14">
+  <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">
    <properties>
     <property name="ToggleOn" value="ToggleSpriteFanButton"/>
+    <property name="TurnOff" value="Room2_Fan"/>
    </properties>
   </object>
   <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179">
@@ -167,6 +184,18 @@
   <object name="FanOnButton" type="Trigger" x="757" y="864" width="8" height="13">
    <properties>
     <property name="ToggleOff" value="ToggleSpriteFanButton"/>
+    <property name="TurnOn" value="Room2_Fan"/>
+   </properties>
+  </object>
+  <object name="Spider" type="Spider" x="724" y="2323" width="4342" height="2152">
+   <properties>
+    <property name="x" value="500"/>
+    <property name="y" value="2438"/>
+   </properties>
+  </object>
+  <object name="SugarZone" type="Trigger" x="4387" y="1263" width="104" height="38">
+   <properties>
+    <property name="id" value="Sugar"/>
    </properties>
   </object>
   <object name="SuCamKontor" type="SuCam" x="799" y="118" width="266" height="148"/>

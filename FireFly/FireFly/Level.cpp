@@ -18,6 +18,7 @@
 #include "StickyZone.h"
 #include "ToggleSprite.h"
 #include "SuCam.h"
+#include "Room2_Fan.h"
 
 
 #include <iostream>
@@ -89,6 +90,8 @@ void Level::startLevel(string levelName)
 	// Fade from black
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
+
+	
 }
 
 void Level::loadMap(string filename)
@@ -211,6 +214,7 @@ void Level::loadMap(string filename)
 				mal->setProperties(obj.getProperties());
 				eList.addEntity(mal, Layer::NPC, false);
 			}
+
 			//
 			// Trapped wasp
 			//
@@ -218,6 +222,7 @@ void Level::loadMap(string filename)
 			{
 				eList.addEntity(new Wasp(position), Layer::NPC, false);
 			}
+
 			//
 			// SuCam
 			//
@@ -261,7 +266,6 @@ void Level::loadMap(string filename)
 					eList.addEntity(col, Layer::Foreground, false);
 				}
 			}
-
 			
 			//
 			//	Trigger
@@ -359,11 +363,34 @@ void Level::loadMap(string filename)
 				eList.addEntity(toggle, layer, false);
 			}
 
+			//
+			//	Room2_Fan
+			//
+			else if (entityType == "Room2_Fan")
+			{
+				Room2_Fan* fan = new Room2_Fan(imageSrc, positionSprite);
+				fan->setProperties(obj.getProperties());
+				eList.addEntity(fan, layer, false);
+			}
+
+			//spoderMan
+			else if(entityType == "Spider")
+			{
+				float x = float ( obj.getProperty("x").getValueInt() );
+				float y = float ( obj.getProperty("y").getValueInt() );
+				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
+				eList.addEntity(spider, Layer::Front, false);
+			}
+
+
+
 			
 		}
 
 		cout << endl;
 	}		
+
+
 }
 
 

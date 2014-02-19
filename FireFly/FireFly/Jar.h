@@ -13,17 +13,16 @@ public:
 private:
 	virtual void	updateEntity(sf::Time dt);	
 	virtual void	drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
-
+	
 private:
 	Rigidbody mRigidbody;
 	sf::Sprite mSprite;
 	Audio mBreakSound;
 	bool mBroken;
+	Entity* spoderMan;
 
 private:
 	// Box2d callback functions
 	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	//virtual void EndContact(b2Contact *contact); 
-	//virtual void PreSolve(b2Contact *contact, const b2Manifold *oldManifold); 
-	virtual void PostSolve(b2Contact *contact, const b2ContactImpulse *impulse, Entity* other);
 };

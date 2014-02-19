@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Mal.h"
 #include "Map.h"
+#include "Spider.h"
 
 class Level
 {
