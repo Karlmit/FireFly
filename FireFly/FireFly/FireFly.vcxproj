@@ -53,13 +53,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\SFML-2.1\include;$(SolutionDir)\FireFly\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\SFML-2.1\include;$(SolutionDir)\FireFly\;$(SolutionDir)\FireFly\Thor\include;$(SolutionDir)\FireFly\Thor\extlibs\aurora\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-network-d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\SFML-2.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-main-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-network-d.lib;opengl32.lib;thor-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\SFML-2.1\lib;$(SolutionDir)\Firefly\Thor\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -150,6 +150,7 @@
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="Properties.h" />
+    <ClInclude Include="RayCastCallback.h" />
     <ClInclude Include="Room1_Coat.h" />
     <ClInclude Include="Room2_Fan.h" />
     <ClInclude Include="Spider.h" />
@@ -237,6 +238,7 @@
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="Properties.cpp" />
+    <ClCompile Include="RayCastCallback.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
     <ClCompile Include="Spider.cpp" />

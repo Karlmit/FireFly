@@ -8,6 +8,10 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 
+#include <Thor/Particles.hpp>
+#include <Thor/Animation.hpp>
+#include <Thor/Vectors/PolarVector.hpp>
+#include <Thor/Math/Distributions.hpp>
 
 class Zid : public Entity
 {
@@ -22,9 +26,10 @@ private:
 	virtual void EndContact(b2Contact *contact, Entity* other); 
 
 	void movement();
+	void sugarStuff(sf::Time dt);
 
 private:
-sf::Sprite		mSprite;
+	sf::Sprite	mSprite;
 	Rigidbody	mRigidbody;
 	Animation idleAnimation;
 	Animation dashAnimation;
@@ -33,6 +38,11 @@ sf::Sprite		mSprite;
 	int dashFrameNo;
 	bool mDirLeft;
 	bool mInStickyZone;
+
+	thor::ParticleSystem mParticleSystem;
+	thor::UniversalEmitter mEmitter;
+	bool mSweetZid;
+	sf::Clock mLoseSugarTimer;
 };
 
 #endif

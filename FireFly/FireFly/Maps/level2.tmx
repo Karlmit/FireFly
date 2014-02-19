@@ -185,5 +185,10 @@
     <property name="TurnOn" value="Room2_Fan"/>
    </properties>
   </object>
+  <object name="SugarZone" type="Trigger" x="4387" y="1263" width="104" height="38">
+   <properties>
+    <property name="id" value="Sugar"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
