@@ -191,5 +191,10 @@
     <property name="y" value="2438"/>
    </properties>
   </object>
+  <object name="SugarZone" type="Trigger" x="4387" y="1263" width="104" height="38">
+   <properties>
+    <property name="id" value="Sugar"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -3,6 +3,7 @@
 #include <SFML/Window/Mouse.hpp>
 #include "Box2dWorld.h"
 #include "Camera.h"
+#include "RayCastCallback.h"
 
 #include <iostream>
 
@@ -12,13 +13,23 @@ const float IMP_FORCE = 7.f;
 const float DAMPING = 2.f;
 const float SCALE = 1.f;
 
+// Sugar
+const float EMISSION_RATE = 5.f;
+const float SUGAR_GRAVITY = 120.f;
+const float LOSE_SUGAR_EMISSION = 220.f;
+const float LOSE_SUGAR_TIME = 0.6f;
+
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
-,idleAnimation(Loading::getTexture("zidIdleAnim.png", true), 64, 64, 1, 8, 10)
-,dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 5, 5, 2)
-,dashSound(Loading::getSound("canary.wav"), true)
-,mRigidbody()
+, idleAnimation(Loading::getTexture("zidIdleAnim.png", true), 64, 64, 1, 8, 10)
+, dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 5, 5, 2)
+, dashSound(Loading::getSound("canary.wav"), true)
+, mRigidbody()
 , mInStickyZone(false)
+, mParticleSystem()
+, mEmitter()
+, mSweetZid(false)
+, mLoseSugarTimer()
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -49,12 +60,38 @@ Zid::Zid(sf::Vector2f position)
 	mID = "Zid";
 	dashFrameNo = 0;
 
+	// Set up particle system //
+	// Create emitter
+	mEmitter.setEmissionRate(EMISSION_RATE);
+	mEmitter.setParticleLifetime(sf::seconds(3.f));
+	mEmitter.setParticleScale(sf::Vector2f(0.2f, 0.2f));
+	mEmitter.setParticleColor(sf::Color::White);
+
+	
+
+	// Create particle system, add reference to emitter
+	mParticleSystem.setTexture(Loading::getTexture("particle.png"));
+	mParticleSystem.addEmitter(thor::refEmitter(mEmitter));
+
+	// fade in/out animations
+	thor::FadeAnimation fader(0.09f, 0.1f);
+
+	// Add particle affectors
+	//mParticleSystem.addAffector( thor::AnimationAffector(colorizer) );
+	mParticleSystem.addAffector( thor::AnimationAffector(fader) );
+	mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
+	mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
+
+	
 } 
 
 
 
 void Zid::updateEntity(sf::Time dt) 
 {
+	// SugarStuff
+	sugarStuff(dt);	
+
 	// S?ger att allt ljud som Zid g?r ska h?ras fr?n Zid.
 	sf::Listener::setPosition(getPosition().x, 1, getPosition().y);
 	
@@ -91,11 +128,6 @@ void Zid::updateEntity(sf::Time dt)
 	// Checks mouse input and apply force on the rigidbody based on that
 	movement();
 	
-	
-//	sf::Vector2f mousePos = Camera::currentCamera().getMousePosition();
-//	b2Vec2 mouse = Rigidbody::SfToBoxVec(mousePos);
-//	b2Vec2 viewDirection = mouse - Rigidbody::SfToBoxVec(getPosition());
-//	//float length = viewDirection.Normalize();
 
 	// Change direction on the sprite based on velocity
 	
@@ -136,6 +168,9 @@ void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	states.transform *= getTransform();
 	//target.draw(idleAnimation.getCurrentSprite(), states);
 	target.draw(mSprite, states);
+
+	// Draw particles
+	target.draw(mParticleSystem);
 
 	// Rigidbody debug draw
 	if (Globals::DEBUG_MODE)
@@ -205,6 +240,12 @@ void Zid::movement()
 			// Apply impulse
 			body->ApplyLinearImpulse(force , body->GetWorldCenter(), true);
 			zidDash = true;
+			if (mSweetZid)
+			{
+				mSweetZid = false;
+				mLoseSugarTimer.restart();
+			}
+
 
 			//Temporary until a real dashsound
 			//dashSound.play();
@@ -224,11 +265,66 @@ void Zid::movement()
 
 }
 
+void Zid::sugarStuff(sf::Time dt)
+{
+	if (mSweetZid)
+	{		
+		mEmitter.setParticleVelocity(sf::Vector2f());
+		mEmitter.setParticlePosition( thor::Distributions::circle(getPosition(), 10.f) );
+		mEmitter.setEmissionRate(EMISSION_RATE);
+
+		// Manage lifetime of particle based on distance to the ground
+		RayCastCallback ray;
+		b2Vec2 from = Rigidbody::SfToBoxVec(getPosition());
+		b2Vec2 to = from + b2Vec2(0, -30);
+		Box2dWorld::instance().RayCast(&ray, from, to);
+		if (ray.hit)
+		{
+			float distance = Rigidbody::BoxToSfFloat( (Rigidbody::SfToBoxVec(getPosition()) - ray.point).Length() );
+			float lifetime = sqrtf(2 * distance / SUGAR_GRAVITY);	// Fysik A ftw
+		
+			mEmitter.setParticleLifetime(sf::seconds(lifetime+0.02f));
+		}
+	}
+	else
+	{
+		mEmitter.setEmissionRate(0);
+	}
+
+	if (mLoseSugarTimer.getElapsedTime().asSeconds() < LOSE_SUGAR_TIME)
+	{
+		mEmitter.setParticleVelocity( thor::Distributions::circle(sf::Vector2f(), 100));
+		mEmitter.setParticlePosition( thor::Distributions::circle(getPosition(), 10.f) );
+		mEmitter.setEmissionRate(LOSE_SUGAR_EMISSION);
+
+		// Manage lifetime of particle based on distance to the ground
+		RayCastCallback ray;
+		b2Vec2 from = Rigidbody::SfToBoxVec(getPosition());
+		b2Vec2 to = from + b2Vec2(0, -30);
+		Box2dWorld::instance().RayCast(&ray, from, to);
+		if (ray.hit)
+		{
+			float distance = Rigidbody::BoxToSfFloat( (Rigidbody::SfToBoxVec(getPosition()) - ray.point).Length() );
+			float lifetime = sqrtf(2 * distance / SUGAR_GRAVITY);	// Fysik A ftw
+		
+			mEmitter.setParticleLifetime(sf::seconds(lifetime*0.90f));
+		}
+	}
+
+	// Update particle system
+	mParticleSystem.update(dt);
+}
+
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
 	if (other->getID() == "StickyZone")
 	{
 		mInStickyZone = true;
+	}
+
+	if (other->getID() == "Sugar")
+	{
+		mSweetZid = true;
 	}
 }
 

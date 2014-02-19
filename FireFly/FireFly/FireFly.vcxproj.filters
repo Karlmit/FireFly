@@ -300,6 +300,9 @@
     <ClInclude Include="Room2_Fan.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="RayCastCallback.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -559,6 +562,9 @@
     </ClCompile>
     <ClCompile Include="Room2_Fan.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCastCallback.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
