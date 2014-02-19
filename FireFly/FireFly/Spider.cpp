@@ -174,7 +174,7 @@ void Spider::mMakeNet(float range)
 
 		//moves spiderman down or up depending on Zids y-Position
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.y += direction.y * 0.15;
+		move.y += direction.y * 0.15f;
 		body->SetTransform(move, 0);
 	}
 	else
@@ -226,7 +226,7 @@ void Spider::roofWalking()
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
 		if(RoofDirection)
 		{
-			move.x -= 0.03;
+			move.x -= 0.03f;
 			//scales sprite to the left
 			mSprite.setScale(-1, 1);
 			body->SetTransform(move , 0);
@@ -237,7 +237,7 @@ void Spider::roofWalking()
 		}
 		if(!RoofDirection)
 		{
-			move.x += 0.03;			
+			move.x += 0.03f;			
 			body->SetTransform(move , 0);
 			if(getPosition().x >= roomSize.x)
 			{
@@ -256,7 +256,7 @@ void Spider::walkBackToTop()
 	{
 		mSprite = walkingAnimation.getCurrentSprite();
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.x -= 0.05;
+		move.x -= 0.05f;
 		mSprite.setScale(1, 1);
 		body->SetTransform(move, 0);
 	}
@@ -271,7 +271,7 @@ void Spider::walkBackToTop()
 
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
 		move.x = Rigidbody::SfToBoxFloat(roomStart.x + 132);
-		move.y += 0.05;
+		move.y += 0.05f;
 		body->SetTransform(move, 0);
 	}
 

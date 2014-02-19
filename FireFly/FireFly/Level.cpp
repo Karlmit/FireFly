@@ -359,8 +359,8 @@ void Level::loadMap(string filename)
 			//spoderMan
 			else if(entityType == "Spider")
 			{
-				int x = obj.getProperty("x").getValueInt();
-				int y = obj.getProperty("y").getValueInt();
+				float x = float ( obj.getProperty("x").getValueInt() );
+				float y = float ( obj.getProperty("y").getValueInt() );
 				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
 				eList.addEntity(spider, Layer::Front, false);
 			}
