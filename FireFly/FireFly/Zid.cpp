@@ -29,6 +29,7 @@ Zid::Zid(sf::Vector2f position)
 , mParticleSystem()
 , mEmitter()
 , mSweetZid(false)
+, mLoseSugarTimer()
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -80,6 +81,8 @@ Zid::Zid(sf::Vector2f position)
 	mParticleSystem.addAffector( thor::AnimationAffector(fader) );
 	mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
 	mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
+
+	
 } 
 
 
