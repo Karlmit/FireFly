@@ -18,6 +18,7 @@
 #include "StickyZone.h"
 #include "ToggleSprite.h"
 #include "Room2_Fan.h"
+#include "Myra.h"
 
 
 #include <iostream>
@@ -356,7 +357,9 @@ void Level::loadMap(string filename)
 				eList.addEntity(fan, layer, false);
 			}
 
-			//spoderMan
+			//
+			// SpoderMan
+			//
 			else if(entityType == "Spider")
 			{
 				float x = float ( obj.getProperty("x").getValueInt() );
@@ -365,7 +368,22 @@ void Level::loadMap(string filename)
 				eList.addEntity(spider, Layer::Front, false);
 			}
 
-
+			//
+			// AntPath
+			//
+			else if (entityType == "AntPath")
+			{
+				vector<sf::Vector2f> sfPoints;
+				for (MapPoint p : obj.getPolyline().getPoints())
+				{
+					//cout << p.x << "," << p.y << " ";
+					sf::Vector2f sfPoint(float(p.x), float(p.y));
+					sfPoint = sfPoint + position;
+					sfPoints.push_back(sfPoint);
+				}
+				Myra* myra = new Myra(0.2f, sfPoints);
+				eList.addEntity(myra, Layer::NPC, false);
+			}
 
 			
 		}

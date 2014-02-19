@@ -149,6 +149,7 @@
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="Myra.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="RayCastCallback.h" />
     <ClInclude Include="Room1_Coat.h" />
@@ -237,6 +238,7 @@
     <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="Myra.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="RayCastCallback.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />

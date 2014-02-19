@@ -185,7 +185,7 @@
     <property name="TurnOn" value="Room2_Fan"/>
    </properties>
   </object>
-  <object name="Spider" type="Spider" x="724" y="2323" width="4342" height="2152">
+  <object name="Spider" type="Spider" x="724" y="2323" width="4342" height="2152" visible="0">
    <properties>
     <property name="x" value="500"/>
     <property name="y" value="2438"/>
@@ -195,6 +195,9 @@
    <properties>
     <property name="id" value="Sugar"/>
    </properties>
+  </object>
+  <object name="Ant Path" type="AntPath" x="49" y="2668">
+   <polyline points="0,0 8,684 308,676 308,332 300,-12"/>
   </object>
  </objectgroup>
 </map>
