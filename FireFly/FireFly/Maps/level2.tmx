@@ -35,6 +35,8 @@
  </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
+  <object x="797" y="116" width="269" height="156"/>
+  <object x="797" y="116" width="270" height="155"/>
  </objectgroup>
  <objectgroup name="Back" width="1" height="1">
   <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
@@ -141,32 +143,32 @@
     <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
-  <object name="FlyTapeStickyZone1" type="StickyZone" x="1343" y="-16" width="41" height="546"/>
-  <object name="mothy" type="Moth" x="1274" y="659" width="140" height="90">
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1343" y="-16" width="41" height="546"/>
+  <object name="mothy1" type="Moth" x="1274" y="659" width="140" height="90">
    <ellipse/>
   </object>
-  <object name="mothy" type="Moth" x="1488" y="701" width="140" height="90">
+  <object name="mothy2" type="Moth" x="1488" y="701" width="140" height="90">
    <ellipse/>
   </object>
-  <object name="mothy" type="Moth" x="1262" y="911" width="140" height="90">
+  <object name="mothy3" type="Moth" x="1262" y="911" width="140" height="90">
    <ellipse/>
   </object>
-  <object name="mothy" type="Moth" x="1476" y="953" width="140" height="90">
+  <object name="mothy4" type="Moth" x="1476" y="953" width="140" height="90">
    <ellipse/>
   </object>
-  <object name="mothy" type="Moth" x="1252" y="1207" width="140" height="90">
+  <object name="mothy5" type="Moth" x="1252" y="1207" width="140" height="90">
    <ellipse/>
   </object>
-  <object name="mothy" type="Moth" x="1466" y="1249" width="140" height="90">
+  <object name="mothy6" type="Moth" x="1466" y="1249" width="140" height="90">
    <ellipse/>
   </object>
-  <object name="mothy" type="Moth" x="1220" y="1461" width="140" height="90">
+  <object name="mothy7" type="Moth" x="1220" y="1461" width="140" height="90">
    <ellipse/>
   </object>
-  <object name="mothy" type="Moth" x="1434" y="1503" width="140" height="90">
+  <object name="mothy8" type="Moth" x="1434" y="1503" width="140" height="90">
    <ellipse/>
   </object>
-  <object name="FlyTapeStickyZone1" type="StickyZone" x="1859" y="-6" width="15" height="89"/>
+  <object name="FlyTapeStickyZoneR1" type="StickyZone" x="1859" y="-6" width="15" height="89"/>
   <object name="AC Force Zone" type="ForceZone" x="4481" y="151" width="586" height="443">
    <properties>
     <property name="id" value="ACForceZone"/>
@@ -174,12 +176,12 @@
     <property name="yForce" value="0"/>
    </properties>
   </object>
-  <object name="FlyTapeStickyZone1" type="StickyZone" x="1825" y="114" width="15" height="89"/>
-  <object name="FlyTapeStickyZone1" type="StickyZone" x="1847" y="242" width="11" height="43"/>
-  <object name="FlyTapeStickyZone1" type="StickyZone" x="1819" y="296" width="13" height="29"/>
-  <object name="FlyTapeStickyZone1" type="StickyZone" x="1804" y="361" width="13" height="29"/>
-  <object name="FlyTapeStickyZone1" type="StickyZone" x="1839" y="400" width="13" height="29"/>
-  <object name="FanOnButton" type="Trigger" x="756" y="865" width="5" height="13">
+  <object name="FlyTapeStickyZoneR2" type="StickyZone" x="1825" y="114" width="15" height="89"/>
+  <object name="FlyTapeStickyZoneR3" type="StickyZone" x="1847" y="242" width="11" height="43"/>
+  <object name="FlyTapeStickyZoneR4" type="StickyZone" x="1819" y="296" width="13" height="29"/>
+  <object name="FlyTapeStickyZoneR5" type="StickyZone" x="1804" y="361" width="13" height="29"/>
+  <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1839" y="400" width="13" height="29"/>
+  <object name="FanOnButton" type="Trigger" x="757" y="864" width="8" height="13">
    <properties>
     <property name="ToggleOff" value="ToggleSpriteFanButton"/>
     <property name="TurnOn" value="Room2_Fan"/>
@@ -191,5 +193,12 @@
     <property name="y" value="2438"/>
    </properties>
   </object>
+  <object name="SugarZone" type="Trigger" x="4387" y="1263" width="104" height="38">
+   <properties>
+    <property name="id" value="Sugar"/>
+   </properties>
+  </object>
+  <object name="SuCamKontor" type="SuCam" x="799" y="118" width="266" height="148"/>
+  <object name="SuCamPannrum" type="SuCam" x="2198" y="2623" width="265" height="148"/>
  </objectgroup>
 </map>

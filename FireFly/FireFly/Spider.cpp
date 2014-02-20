@@ -55,7 +55,7 @@ void Spider::sendMessage(Entity* entity, std::string message)
 
 void Spider::updateEntity(sf::Time dt)
 {
-	if(activate == false)
+	if(activate == true)
 	{
 		
 		dangleAnimation.updateAnimation();

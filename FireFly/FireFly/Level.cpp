@@ -17,6 +17,7 @@
 #include "ForceZone.h"
 #include "StickyZone.h"
 #include "ToggleSprite.h"
+#include "SuCam.h"
 #include "Room2_Fan.h"
 
 
@@ -223,6 +224,22 @@ void Level::loadMap(string filename)
 			}
 
 			//
+			// SuCam
+			//
+			else if (entityType == "SuCam")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				SuCam* zone = new SuCam(rect);
+				zone->setProperties(obj.getProperties());				
+				zone->setID(id);
+				eList.addEntity(zone, Layer::Back, false);
+			}
+
+			//
 			//	Collision
 			//
 			else if (layer == Layer::Collision || entityType == "StaticCollision" || entityType == "StaticCollisionLoop")
@@ -359,8 +376,8 @@ void Level::loadMap(string filename)
 			//spoderMan
 			else if(entityType == "Spider")
 			{
-				int x = obj.getProperty("x").getValueInt();
-				int y = obj.getProperty("y").getValueInt();
+				float x = float ( obj.getProperty("x").getValueInt() );
+				float y = float ( obj.getProperty("y").getValueInt() );
 				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
 				eList.addEntity(spider, Layer::Front, false);
 			}

@@ -33,7 +33,7 @@ Mal::Mal(sf::Vector2f position)
 
 	mRigidbody.getBody()->SetBullet(true);
 
-	mID = "Mal";	
+	mID = "Mal";
 }
 
 
@@ -53,9 +53,6 @@ void Mal::start()
 
 void Mal::updateEntity(sf:: Time timePerFrame)
 {
-	// Updates the animation
-	idleAnimation.updateAnimation();
-
 	// Gets zids position in box2d coords
 	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
 
@@ -135,6 +132,8 @@ void Mal::movement()
 			
 	//Gets the direction from Mal to Zid
 	b2Vec2 direction = mZidPosition - currentPosition;
+
+	//Converts the direction into a distance
 	float length = direction.Normalize();
 
 	//Depedning on distance to Zid Mal either follows Zid or moves passivly around
@@ -184,4 +183,3 @@ void Mal::EndContact(b2Contact *contact, Entity* other)
 {
 
 }
-

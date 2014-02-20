@@ -300,6 +300,12 @@
     <ClInclude Include="Room2_Fan.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="RayCastCallback.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="SuCam.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -557,12 +563,21 @@
     <ClCompile Include="ToggleSprite.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="SuCam.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
     <ClCompile Include="Room2_Fan.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCastCallback.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Maps\level1.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Maps\level2.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
   </ItemGroup>
