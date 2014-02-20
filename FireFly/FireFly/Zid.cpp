@@ -23,7 +23,6 @@ Zid::Zid(sf::Vector2f position)
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
-
 	// Sätter startposition
 	setPosition(position);
 
@@ -68,10 +67,10 @@ void Zid::updateEntity(sf::Time dt)
 		}
 		else
 		{
-		dashFrameNo = 0;
-		zidDash = false;
-		idleAnimation.updateAnimation();
-		mSprite = idleAnimation.getCurrentSprite();
+			dashFrameNo = 0;
+			zidDash = false;
+			idleAnimation.updateAnimation();
+			mSprite = idleAnimation.getCurrentSprite();
 		}
 	}
 	else
@@ -129,6 +128,8 @@ void Zid::updateEntity(sf::Time dt)
 	mRigidbody.update();				
 	setPosition(mRigidbody.getPosition());
 	setRotation(mRigidbody.getRotation());
+
+
 }
 		
 void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
@@ -136,7 +137,6 @@ void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	states.transform *= getTransform();
 	//target.draw(idleAnimation.getCurrentSprite(), states);
 	target.draw(mSprite, states);
-
 	// Rigidbody debug draw
 	if (Globals::DEBUG_MODE)
 		mRigidbody.drawDebug(target, states);

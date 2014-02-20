@@ -25,6 +25,7 @@ private:
 	void roofWalking();
 	void mMakeNet(float range);
 	void walkBackToTop();
+	void falltoFloor();
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 	Entity* mZid;
@@ -35,6 +36,7 @@ private:
 	bool inRange;
 	bool activateMove;
 	bool walkBack;
+	bool mRopeisCut;
 	float length;
 	b2Vec2 mZidPosition;
 	sf::Vector2f startPosition;

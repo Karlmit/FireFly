@@ -1,4 +1,5 @@
 #include "Spider.h"
+#include <iostream>
 
 Spider::Spider(sf::Vector2f position, sf::Vector2f startofRoom, sf::Vector2f sizeofRoom) :
 dangleAnimation(Loading::getTexture("spiderHanging_sheet256.png"), 256, 256, 5, 10, 10),
@@ -24,7 +25,6 @@ walkSound(Loading::getSound("Spiderlegs.wav"), false)
 	mRigidbody.getBody()->SetLinearDamping(3.f);
 	mRigidbody.getBody()->SetFixedRotation(true);
 
-
 	//Sets the direction for roofwalking to RIGHT
 	RoofDirection = false;
 	
@@ -39,6 +39,7 @@ walkSound(Loading::getSound("Spiderlegs.wav"), false)
 	net.setFillColor(sf::Color::White);
 	makeNet = false;
 	inRange = true;
+	mRopeisCut = false;
 }
 
 
@@ -54,10 +55,11 @@ void Spider::sendMessage(Entity* entity, std::string message)
 
 void Spider::updateEntity(sf::Time dt)
 {
-	if(activate == true)
+	if(activate == false)
 	{
+		
 		dangleAnimation.updateAnimation();
-		walkingAnimation.updateAnimation();
+		walkingAnimation.updateAnimation()	;
 
 		//Zids Position in cords
 		mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
@@ -73,8 +75,6 @@ void Spider::updateEntity(sf::Time dt)
 		range = abs(range);
 		range = Rigidbody::BoxToSfFloat(range);
 
-		
-
 		if(activateMove == true)
 		{
 			//defines movement for spider
@@ -88,6 +88,11 @@ void Spider::updateEntity(sf::Time dt)
 		{
 			walkBackToTop();
 		}
+		else if(mRopeisCut == true)
+		{
+			falltoFloor();
+		}
+
 
 		//function that prepares the spoderMan to walkBack to the top
 		//Mainly activates walkBackToTop
@@ -101,6 +106,9 @@ void Spider::updateEntity(sf::Time dt)
 			body->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat( getPosition().x), Rigidbody::SfToBoxFloat(-2030)), 0);
 			//resets netLength
 			net.setSize(sf::Vector2f(0, 0));
+
+			//Rope is not cut anymore
+			mRopeisCut = false;
 		}
 
 			
@@ -164,6 +172,19 @@ void Spider::mMakeNet(float range)
 	length = sqrt(direction.x * direction.x + direction.y * direction.y);
 	direction.y /= length;
 
+	//Have Zid cut the rope?
+	float overSpoderMan = mZidPosition.x - Rigidbody::SfToBoxFloat(getPosition().x);
+	sf::Vector2f zid = Rigidbody::BoxToSfVec(mZidPosition);
+	if( zid.y < getPosition().y && range < 40 )
+		{
+			std::cout << "over spoderMan" << std::endl;
+			inRange = false;
+			makeNet = false;
+			mRopeisCut = true;
+		}
+
+
+
 	if(range < 200 && inRange == true)
 	{
 		//MAKE STATIC NET...
@@ -174,10 +195,13 @@ void Spider::mMakeNet(float range)
 
 		//moves spiderman down or up depending on Zids y-Position
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.y += direction.y * 0.15;
+		//move.y += direction.y * 0.15;
+		move.y += -0.7 * 0.15;
 		body->SetTransform(move, 0);
+
+		
 	}
-	else
+	else if(mRopeisCut == false)
 	{
 		inRange = false;
 		//Activates func makeNet();
@@ -192,7 +216,7 @@ void Spider::mMakeNet(float range)
 
 		//moves spiderman down
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.y += direction.y * - 0.1f;
+		move.y += 0.4 * 0.1f;
 		body->SetTransform(move, 0.f);
 		
 
@@ -287,3 +311,15 @@ void Spider::walkBackToTop()
 	}
 
 }
+
+void Spider::falltoFloor()
+{
+	b2Body *body = mRigidbody.getBody();
+	mSprite = dangleAnimation.getCurrentSprite();
+
+	b2Vec2 fallingSpeed = Rigidbody::SfToBoxVec(getPosition());
+	fallingSpeed.y -= Rigidbody::SfToBoxFloat(10);
+	body->SetTransform(fallingSpeed, 0);
+
+}
+
