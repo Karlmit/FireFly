@@ -85,6 +85,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AntPath.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioEntity.h" />
     <ClInclude Include="Box2dWorld.h" />
@@ -176,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AntPath.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioEntity.cpp" />
     <ClCompile Include="Box2dWorld.cpp" />

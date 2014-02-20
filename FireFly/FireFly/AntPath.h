@@ -4,21 +4,23 @@
 #include "Animation.h"
 #include "Audio.h"
 
-class Myra : public Entity
+#include "Myra.h"
+
+
+class AntPath : public Entity
 {
 public:
-	Myra(vector<sf::Vector2f> path, vector<float> lengths, vector<sf::Vector2f> directions);
+	AntPath(vector<sf::Vector2f> path);
 
 private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 
-	void setProcPosition(float p);
 
 private:
-	sf::Sprite mSprite;
 	vector<sf::Vector2f> mPath;
 	vector<float> mLengths;
 	vector<sf::Vector2f> mDirections;
-	float mPos;
+	sf::Sprite mAnt;
+	vector<Myra> mMyroror;
 };

@@ -18,7 +18,7 @@
 #include "StickyZone.h"
 #include "ToggleSprite.h"
 #include "Room2_Fan.h"
-#include "Myra.h"
+#include "AntPath.h"
 
 
 #include <iostream>
@@ -381,8 +381,8 @@ void Level::loadMap(string filename)
 					sfPoint = sfPoint + position;
 					sfPoints.push_back(sfPoint);
 				}
-				Myra* myra = new Myra(0.2f, sfPoints);
-				eList.addEntity(myra, Layer::NPC, false);
+				AntPath* antPath = new AntPath(sfPoints);
+				eList.addEntity(antPath, Layer::NPC, false);
 			}
 
 			

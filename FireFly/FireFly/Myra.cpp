@@ -2,71 +2,27 @@
 #include "Utility.h"
 #include <iostream>
 
-Myra::Myra(float pathPercent ,vector<sf::Vector2f> path)
+const float SPEED = 40.f;
+
+Myra::Myra(vector<sf::Vector2f> path, vector<float> lengths, vector<sf::Vector2f> directions)
 	: mSprite(Loading::getTexture("Ernst.png"))
 	, mPath(path)
-	, mPathNodeProc()
-	, mTotalLength(0)
+	, mLengths(lengths)
+	, mDirections(directions)
 {
-	assert(pathPercent >= 0 ||pathPercent <= 1);
-	assert(path.size() >= 2);
-
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 
 
-	vector<float> pathLengths;
-	mTotalLength= 0;
-	for (vector<sf::Vector2f>::size_type i = 0; i < (path.size()-1); i++)
-	{		
-		if (i == 0)
-		{
-			float length = (path.at(i) - path.at(i+1)).getLength();
-			pathLengths.push_back(length);
-			mTotalLength += length;
-		}
-		else 
-		{
-			float length = (path.at(i) - path.at(i+1)).getLength();
-			pathLengths.push_back(length + pathLengths.at(i-1));
-			mTotalLength += length;
-		}
-	}
-
-	mPathNodeProc.push_back(0);
-	for (float length : pathLengths)
-	{
-		mPathNodeProc.push_back(length/mTotalLength);
-	}	
-	
-
-	setProcPosition(pathPercent);
 
 }
 
-void Myra::setProcPosition(float p)
-{
-	int node = 0;
-	for (vector<sf::Vector2f>::size_type i = 0; i < mPathNodeProc.size(); i++)
-	{	
-		if (p >= mPathNodeProc.at(i))
-			node = i;					
-	}
 
-	if (node == mPath.size()-1)
-	{
-		setPosition(mPath.at(node));
-	}
-	else
-	{
-		float per = (mPath.at(node+1) - mPath.at(node)).getLength() / mTotalLength;
-		setPosition(Util::Lerp(mPath.at(node), mPath.at(node+1), p));
-	}
-}
 
 void Myra::updateEntity(sf::Time dt)
 {
+	/*
 	static int count = 0;
 	if (count == 10)
 	{
@@ -74,6 +30,30 @@ void Myra::updateEntity(sf::Time dt)
 		count = 0;
 	}
 	count++;
+	*/
+	static sf::Vector2f Position;
+	mPos = mPos  + dt.asSeconds() * SPEED;
+	float StagePos = mPos;
+	int StageIndex = 0;
+
+	if (StageIndex != mPath.size()-1 && StagePos >= 0)
+	{
+		StagePos += SPEED * dt.asSeconds();
+		while (StagePos > mLengths[StageIndex])
+		{
+			StagePos -= mLengths[StageIndex]; 
+			StageIndex++;              
+			if (StageIndex == mPath.size()-1) 
+			{
+				Position = mPath[StageIndex];
+				return;
+			}
+		}
+		Position = mPath[StageIndex] + mDirections[StageIndex] * StagePos;
+	}
+
+	setPosition(Position);
+
 }
 
 void Myra::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
