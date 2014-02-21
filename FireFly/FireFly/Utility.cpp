@@ -48,6 +48,11 @@ float Util::randFloat(float low, float high)
 	return low + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(high-low)));
 }
 
+bool Util::randBool()
+{
+	return rand() % 2;
+}
+
 sf::Vector2f Util::Lerp(sf::Vector2f from, sf::Vector2f to, float t )
 {
 	return from + (to - from) * t;
@@ -57,3 +62,4 @@ float Util::Lerp(float from, float to, float t )
 {
 	return from + (to - from) * t;
 }
+

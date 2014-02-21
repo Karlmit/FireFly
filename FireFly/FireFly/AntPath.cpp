@@ -1,5 +1,6 @@
 #include "AntPath.h"
 #include <iostream>
+#include "EntityList.h"
 
 
 const float SPEED = -50.f;
@@ -11,6 +12,7 @@ AntPath::AntPath(vector<sf::Vector2f> path)
 	, mLengths(path.size())
 	, mDirections(path.size())
 	, mAnt(Loading::getTexture("Ernst.png"))
+	, mTotalLength(0)
 {	
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mAnt.getLocalBounds();
@@ -21,68 +23,21 @@ AntPath::AntPath(vector<sf::Vector2f> path)
 	{
 		mDirections.at(i) = mPath.at(i+1) - mPath.at(i);
 		mLengths.at(i) = mDirections.at(i).getLength();
+		mTotalLength += mLengths.at(i);
 		mDirections.at(i).normalize();
 	}
+
+	
+	Entity* myra = new Myra(1000 ,mPath, mLengths, mDirections, mTotalLength);
+	EntityList::getEntityList().addEntity(myra, Layer::NPC);
+	//mMyroror
 
 }
 
 
 void AntPath::updateEntity(sf::Time dt)
 {
-	//mAnt.setPosition
-	/*
-	static float pos = 0.f;
-
-	static sf::Vector2f Position;
-
-    static float mPos = 1000.f;
-	mPos = mPos  + dt.asSeconds() * SPEED;
-	float StagePos = mPos;
-    int StageIndex = 0;
-
- 
-
-	if (StageIndex != mPath.size()-1 && StagePos >= 0)
-	{
-		StagePos += SPEED * dt.asSeconds();
-		while (StagePos > mLengths[StageIndex])
-		{
-			StagePos -= mLengths[StageIndex]; 
-			StageIndex++;              
-			if (StageIndex == mPath.size()-1) 
-			{
-				Position = mPath[StageIndex];
-				return;
-			}
-		}
-		Position = mPath[StageIndex] + mDirections[StageIndex] * StagePos;
-	}
-	*/
-
-	/*
-	else
-	{
-		if (StageIndex < 0)
-		{
-			StagePos += SPEED * dt.asSeconds();
-			while (StagePos > mLengths[StageIndex])
-			{
-				StagePos -= mLengths[StageIndex]; 
-				StageIndex++;              
-				if (StageIndex == mPath.size()-1) 
-				{
-					Position = mPath[StageIndex];
-					return;
-				}
-			}
-			Position = mPath[StageIndex] + mDirections[StageIndex] * StagePos;
-		}
-		else
-			StageIndex = 0
-	}
-	*/
-     
-	//mAnt.setPosition(Position);
+	
 
 
 	 

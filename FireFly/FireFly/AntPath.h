@@ -22,5 +22,6 @@ private:
 	vector<float> mLengths;
 	vector<sf::Vector2f> mDirections;
 	sf::Sprite mAnt;
+	float mTotalLength;
 	vector<Myra> mMyroror;
 };
