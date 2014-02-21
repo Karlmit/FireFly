@@ -65,9 +65,10 @@ void Myra::updateEntity(sf::Time dt)
 
 	
 	if (mIdleMoveForward)
-		mSprite.scale(1, 1);
+		mSprite.setScale(1, 1);
 	else
-		mSprite.scale(-1, 1);
+		mSprite.setScale(-1, 1);
+
 		
 
 
