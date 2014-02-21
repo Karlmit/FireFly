@@ -14,11 +14,13 @@ Animation::Animation(const sf::Texture& texture, //Loads an image from file
 	mSpriteHeight(spriteHeight),
 	mSprite(texture),
 	mEndOfAnimation(false),
+	mLoopOnce(false),
 	mNumberOfColumns(numberOfColumns),
 	mCurrentRow(0), //used in updates
 	mCurrentColumn(0), //used in updates
 	mTop(0), //used in updates
-	mLeft(0) //used in updates
+	mLeft(0), //used in updates
+	mAnimFrame(0) //Used in oneLoop()
 {
 	mSprite.setTextureRect(sf::IntRect(0,0, spriteWidth, spriteHeight));
 	mSprite.setOrigin( static_cast<float>(spriteWidth/2), static_cast<float>(spriteHeight/2) );
@@ -86,20 +88,36 @@ void Animation::updateAnimation()
 	}		
 }
 
-int Animation::getAnimLength(){
+int Animation::getAnimLength()
+{
 	return mNumberOfColumns * mNumberOfRows;
 }
 
+void Animation::oneLoop()
+{
+	mAnimFrame++;
+	updateAnimation();
+
+	if(mEndOfAnimation == true)
+	{
+		resetAnimation();
+		mLoopOnce = false;
+	}
+}
+
 //Currently used to reset the updateAnimation class.
-void Animation::resetAnimation(){
+void Animation::resetAnimation()
+{
 	mCurrentColumn = 0;
 	mCurrentRow = 0;
+	mAnimFrame = 0;
 }
 
 
 //Function to monitor if an animation has ended.
 
-bool Animation::endOfAnimation() const{
+bool Animation::endOfAnimation() const
+{
 	return mEndOfAnimation;
 }
 	

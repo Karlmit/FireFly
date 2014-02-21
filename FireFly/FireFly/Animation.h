@@ -22,12 +22,14 @@ public:
 
 	sf::Sprite getCurrentSprite() const;
 	void setPosition(const sf::Vector2f& position);
-	void resetAnimation();
 	void updateAnimation();
 	int getAnimLength();
+	void oneLoop();
+	void resetAnimation();
 	bool endOfAnimation() const;
-
 	~Animation();
+
+	bool mLoopOnce;
 private:
 	sf::Clock frameClock;
 	sf::Sprite mSprite;
@@ -41,7 +43,8 @@ private:
 		,mLeft
 		,mCurrentColumn
 		,mTop
-		,mCurrentRow;
+		,mCurrentRow,
+		mAnimFrame;
 	bool mEndOfAnimation;
 };
 

@@ -34,12 +34,11 @@ void SuCam::start()
 
 void SuCam::updateEntity(sf::Time timePerFrame)
 {
-	if(zidSensed == true)
+	if(blinkAnimation.mLoopOnce == true)
 	{
-		blink();
+		blinkAnimation.oneLoop();
 	}
 	//Get the sprite from animation
-//	blinkAnimation.updateAnimation();
 	mSprite=blinkAnimation.getCurrentSprite();
 
 	// Gets Zids position in Box2D coords
@@ -56,20 +55,5 @@ void  SuCam::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 
 void SuCam::BeginContact(b2Contact *contact, Entity* other)
 {
-	zidSensed = true;
-}
-
-void SuCam::blink()
-{
-	if(blinkFrame < 10) 
-	{
-		blinkFrame++;
-		blinkAnimation.updateAnimation();
-	}
-	else
-	{
-	blinkFrame = 0;
-	blinkAnimation.resetAnimation();
-	zidSensed = false;
-	}
+	blinkAnimation.mLoopOnce = true;
 }
