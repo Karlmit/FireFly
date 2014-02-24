@@ -13,6 +13,9 @@ Myra::Myra(float pos, vector<sf::Vector2f> path, vector<float> lengths, vector<s
 	, mIdleMoveForward(true)
 	, mIdleMoveTimer()
 	, mIdle(true)
+	, mTweenRotation()
+	, mRotation(0)
+	, mTargetRotation(0)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -29,6 +32,10 @@ Myra::Myra(float pos, vector<sf::Vector2f> path, vector<float> lengths, vector<s
 void Myra::updateEntity(sf::Time dt)
 {
 	
+	//CDBTweener oTweener;
+	//oTweener.addTween(&CDBTweener::TWEQ_CUBIC, CDBTweener::TWEA_INOUT, 2.0f, &fPos, 10.0f);
+	//oTweener.removeTween
+	//(*oTweener.getTweens().begin())->getDurationSec()
 
 	if (mIdle)
 	{
@@ -60,8 +67,18 @@ void Myra::updateEntity(sf::Time dt)
 	}
 
 	float satan =  std::atan2f(mCurrentDirection.y, mCurrentDirection.x);
-	cout << satan << endl;
-	mSprite.setRotation(satan * 180/3.14f);
+	//cout << satan << endl;
+	float newRotation = satan * 180/3.14f;
+	//mSprite.setRotation(satan * 180/3.14f);
+
+	if (abs(mTargetRotation - newRotation) > 0.1f)
+	{
+		mTweenRotation.clearTweens();
+		mTweenRotation.addTween(&CDBTweener::TWEQ_CUBIC, CDBTweener::TWEA_OUT, 1.0f, &mRotation, newRotation);		
+		mTargetRotation = newRotation;
+	}
+
+	mTweenRotation.update(dt);
 
 	
 	if (mIdleMoveForward)

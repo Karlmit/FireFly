@@ -28,8 +28,12 @@ AntPath::AntPath(vector<sf::Vector2f> path)
 	}
 
 	
-	Entity* myra = new Myra(1000 ,mPath, mLengths, mDirections, mTotalLength);
-	EntityList::getEntityList().addEntity(myra, Layer::NPC);
+	for (int i = 0; i < 1; i++)
+	{
+		Entity* myra = new Myra(i*100.f + 300.f ,mPath, mLengths, mDirections, mTotalLength);
+		EntityList::getEntityList().addEntity(myra, Layer::NPC);
+	}
+	
 	//mMyroror
 
 }
@@ -49,8 +53,12 @@ void AntPath::drawEntity(sf::RenderTarget& target, sf::RenderStates states) cons
 	//target.draw(mAnt);
 
 	// Draw Lines	
-	sf::VertexArray lines(sf::LinesStrip, mPath.size());
-	for (std::vector<sf::Vector2f>::size_type i = 0; i < mPath.size(); i++)
-		lines[i].position = mPath.at(i);
-	target.draw(lines);
+
+	if (Globals::DEBUG_MODE)
+	{
+		sf::VertexArray lines(sf::LinesStrip, mPath.size());
+		for (std::vector<sf::Vector2f>::size_type i = 0; i < mPath.size(); i++)
+			lines[i].position = mPath.at(i);
+		target.draw(lines);
+	}
 }

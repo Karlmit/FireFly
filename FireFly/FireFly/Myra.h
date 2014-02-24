@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Animation.h"
 #include "Audio.h"
+#include "Tween.h"
 
 class Myra : public Entity
 {
@@ -26,6 +27,10 @@ private:
 	vector<sf::Vector2f> mDirections;
 	float mTotalLength;
 	float mPos;
+
+	Tween mTweenRotation;
+	float mRotation;
+	float mTargetRotation;
 
 	sf::Vector2f mCurrentDirection;
 

@@ -50,7 +50,10 @@ float Util::randFloat(float low, float high)
 
 bool Util::randBool()
 {
-	return rand() % 2;
+	if (rand() % 2 == 0)
+		return false;
+	else 
+		return true;
 }
 
 sf::Vector2f Util::Lerp(sf::Vector2f from, sf::Vector2f to, float t )

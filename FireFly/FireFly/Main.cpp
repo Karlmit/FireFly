@@ -7,8 +7,7 @@
 
 int main()
 {	
-	srand(time(0));
-	cout << time(0) << endl;
+	srand(unsigned(time(0)));
 	try
 	{	
 		// Creates the window relative to desktop resolution

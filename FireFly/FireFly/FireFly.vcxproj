@@ -170,6 +170,7 @@
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="ToggleSprite.h" />
     <ClInclude Include="Trigger.h" />
+    <ClInclude Include="Tween.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Wasp.h" />
     <ClInclude Include="WorldContactListener.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
@@ -263,6 +265,7 @@
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="ToggleSprite.cpp" />
     <ClCompile Include="Trigger.cpp" />
+    <ClCompile Include="Tween.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wasp.cpp" />
     <ClCompile Include="WorldContactListener.cpp" />
