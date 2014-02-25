@@ -51,6 +51,8 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 			EntityList::getEntityList().getEntity(getProperty("TurnOn"))->sendMessage(this, "TurnOn");
 		if (isProperty("TurnOff"))
 			EntityList::getEntityList().getEntity(getProperty("TurnOff"))->sendMessage(this, "TurnOff");
+		if(isProperty("Spider"))
+			EntityList::getEntityList().getEntity("spoderMan")->sendMessage(this, "spiderisinRoom");
 	}	
 }
 

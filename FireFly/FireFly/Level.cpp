@@ -379,6 +379,7 @@ void Level::loadMap(string filename)
 				float x = float ( obj.getProperty("x").getValueInt() );
 				float y = float ( obj.getProperty("y").getValueInt() );
 				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
+				spider->setProperties(obj.getProperties());
 				eList.addEntity(spider, Layer::Front, false);
 			}
 

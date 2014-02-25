@@ -11,7 +11,7 @@ const float DENSITY = 3.f;
 const float FORCE = 5.f;
 const float IMP_FORCE = 7.f;
 const float DAMPING = 2.f;
-const float SCALE = 1.f;
+const float SCALE = 1.f/2;
 
 // Sugar
 const float EMISSION_RATE = 5.f;
@@ -21,8 +21,8 @@ const float LOSE_SUGAR_TIME = 0.6f;
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
-, idleAnimation(Loading::getTexture("zidIdleAnim.png", true), 64, 64, 1, 8, 10)
-, dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 5, 5, 2)
+, idleAnimation(Loading::getTexture("Zid_flying_128.png", true), 128, 128, 5, 8, 20)
+, dashAnimation(Loading::getTexture("Zid_boosting_128.png"), 128, 128, 5, 5, 2)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
@@ -164,6 +164,17 @@ void Zid::updateEntity(sf::Time dt)
 	setPosition(mRigidbody.getPosition());
 	setRotation(mRigidbody.getRotation());
 
+	//get spoderMan
+	mSpoderMan = EntityList::getEntityList().getEntity("spoderMan");
+	//activates or deactivates the spider for room 2	
+	if(mSweetZid)
+	{
+		mSpoderMan->sendMessage(this, "activate");
+	}
+	else
+	{
+		mSpoderMan->sendMessage(this, "deactivate");
+	}
 
 }
 		
@@ -266,7 +277,7 @@ void Zid::movement()
 	{
 		body->SetTransform(Rigidbody::SfToBoxVec(Camera::currentCamera().getMousePosition()), 0);
 	}
-
+	
 }
 
 void Zid::sugarStuff(sf::Time dt)
@@ -289,6 +300,8 @@ void Zid::sugarStuff(sf::Time dt)
 		
 			mEmitter.setParticleLifetime(sf::seconds(lifetime+0.02f));
 		}
+
+
 	}
 	else
 	{

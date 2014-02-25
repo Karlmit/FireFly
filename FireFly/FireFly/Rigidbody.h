@@ -29,7 +29,7 @@ public:
 	// Static Lines
 	void AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bool loop = false);
 	// Dynamic Circle
-	void AddDynCircleBody(float radius, sf::Vector2f position, float32 density = 1.f);
+	void AddDynCircleBody(float radius, sf::Vector2f position, float32 density = 1.f, bool isSensor = false);
 	// Dynamic Rectangles
 	void AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f position, float density = 1.f, bool dynamic = true);
 	// Trigger Box

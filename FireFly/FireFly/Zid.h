@@ -2,6 +2,7 @@
 #define ZID_H
 
 #include "Entity.h"
+#include "EntityList.h"
 #include "Animation.h"
 #include "Audio.h"
 
@@ -34,6 +35,7 @@ private:
 	Animation idleAnimation;
 	Animation dashAnimation;
 	Audio dashSound;
+	Entity* mSpoderMan;
 	bool zidDash;
 	int dashFrameNo;
 	bool mDirLeft;

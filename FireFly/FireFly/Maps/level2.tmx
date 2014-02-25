@@ -135,6 +135,7 @@
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="boiler"/>
+    <property name="Spider" value="activate"/>
    </properties>
   </object>
   <object name="MusicEnterVentTrigger" type="Trigger" x="2" y="1914" width="451" height="452">
@@ -187,10 +188,11 @@
     <property name="TurnOn" value="Room2_Fan"/>
    </properties>
   </object>
-  <object name="Spider" type="Spider" x="724" y="2323" width="4342" height="2152">
+  <object name="Spider" type="Spider" x="729" y="2332" width="4342" height="2152">
    <properties>
-    <property name="x" value="500"/>
-    <property name="y" value="2438"/>
+    <property name="Sugar" value="true"/>
+    <property name="x" value="800"/>
+    <property name="y" value="2452"/>
    </properties>
   </object>
   <object name="SugarZone" type="Trigger" x="4387" y="1263" width="104" height="38">

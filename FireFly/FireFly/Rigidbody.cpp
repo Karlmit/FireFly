@@ -113,7 +113,7 @@ void Rigidbody::AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bo
 		mLinePointList = pointList;
 }
 
-void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 density )
+void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 density, bool isSensor)
 {
 	if (mBody)
 		throw std::logic_error("Rigidbody::AddDynCircleBody - Tried to add a body more than once.");
@@ -143,6 +143,7 @@ void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 de
 	//
 	fixtureDef.restitution = 0.f;
 	//
+	fixtureDef.isSensor = isSensor;
 
 	// Add the shape to the body.
 	mBody->CreateFixture(&fixtureDef);
