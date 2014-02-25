@@ -138,6 +138,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ContactListener.h" />
     <ClInclude Include="FadeToBlack.h" />
+    <ClInclude Include="FireflyNPC.h" />
     <ClInclude Include="ForceZone.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Jar.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="RayCastCallback.h" />
     <ClInclude Include="Room1_Coat.h" />
     <ClInclude Include="Room2_Fan.h" />
+    <ClInclude Include="SecuMonitor.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
@@ -227,6 +229,7 @@
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
+    <ClCompile Include="FireflyNPC.cpp" />
     <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Jar.cpp" />
@@ -242,6 +245,7 @@
     <ClCompile Include="RayCastCallback.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
+    <ClCompile Include="SecuMonitor.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />

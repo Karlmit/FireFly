@@ -151,5 +151,8 @@
     <property name="y" value="128"/>
    </properties>
   </object>
+  <object name="FireflyNPC" type="FireflyNPC" x="88" y="1214" width="98" height="84">
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>

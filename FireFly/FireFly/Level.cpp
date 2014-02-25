@@ -135,6 +135,8 @@ void Level::loadMap(string filename)
 	}
 	cout << endl;
 
+
+
 	// Goes through all object in the map file						
 	for (MapObjectGroup group : map.getObjectGroups())
 	{		
@@ -382,9 +384,20 @@ void Level::loadMap(string filename)
 				spider->setProperties(obj.getProperties());
 				eList.addEntity(spider, Layer::Front, false);
 			}
+//			else if (entityType == "SecuMonitor")
+//			{
+//				sf::FloatRect rect;
+//				rect.left = position.x;
+//				rect.top = position.y;
+//				rect.width = width;
+//				rect.height = height;
+//				SecuMonitor* secuMonitor = new SecuMonitor(rect);
+//				secuMonitor->setProperties(obj.getProperties());				
+//				secuMonitor->setID(id);
+//				eList.addEntity(secuMonitor, Layer::Foreground, false);
+//			}
 
-
-
+			//Viewport Test
 			
 		}
 

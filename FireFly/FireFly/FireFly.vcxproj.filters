@@ -306,6 +306,12 @@
     <ClInclude Include="SuCam.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="SecuMonitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FireflyNPC.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -571,6 +577,12 @@
     </ClCompile>
     <ClCompile Include="RayCastCallback.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="SecuMonitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FireflyNPC.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
