@@ -87,6 +87,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioEntity.h" />
+    <ClInclude Include="Block.h" />
     <ClInclude Include="Box2dWorld.h" />
     <ClInclude Include="Box2D\Box2D.h" />
     <ClInclude Include="Box2D\Collision\b2BroadPhase.h" />
@@ -140,8 +141,10 @@
     <ClInclude Include="FadeToBlack.h" />
     <ClInclude Include="ForceZone.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Hivemind.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapObjectGroup.h" />
@@ -177,6 +180,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioEntity.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Box2dWorld.cpp" />
     <ClCompile Include="Box2D\Collision\b2BroadPhase.cpp" />
     <ClCompile Include="Box2D\Collision\b2CollideCircle.cpp" />
@@ -228,8 +232,10 @@
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="Hivdemind.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="MapObjectGroup.cpp" />

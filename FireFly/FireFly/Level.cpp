@@ -18,6 +18,8 @@
 #include "StickyZone.h"
 #include "ToggleSprite.h"
 #include "Room2_Fan.h"
+#include "Light.h"
+
 
 
 #include <iostream>
@@ -89,6 +91,9 @@ void Level::startLevel(string levelName)
 	// Fade from black
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
+
+	Light * zidLight = new Light(sf::Color(245,206,75,100), sf::Vector2f(1000,1000), 300, 360, 0, "zidLight");
+	EntityList::getEntityList().addEntity(zidLight, Layer::Light, false);
 
 	
 }
@@ -364,8 +369,6 @@ void Level::loadMap(string filename)
 				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
 				eList.addEntity(spider, Layer::Front, false);
 			}
-
-
 
 			
 		}

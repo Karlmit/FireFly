@@ -20,6 +20,8 @@ public:
 	static float SfToBoxAngle(float degrees);
 	static float BoxToSfAngle(float rads);
 
+	static std::vector<std::vector<sf::Vector2f>> collisionList;
+
 
 public:
 	// Creates nothing. Call AddBody to make it do something

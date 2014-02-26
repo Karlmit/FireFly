@@ -21,6 +21,7 @@ mStatisticsNumFrames(0)
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
+
 	
 }
 
@@ -97,6 +98,7 @@ void GameLoop::draw()
 	EntityList::getEntityList().drawBack(mWindow);
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
+	EntityList::getEntityList().drawLight(mWindow);
 	EntityList::getEntityList().drawForeground(mWindow);
 
 
