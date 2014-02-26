@@ -150,6 +150,7 @@
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="PC.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="RayCastCallback.h" />
     <ClInclude Include="Room1_Coat.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="StickyZone.h" />
     <ClInclude Include="SuCam.h" />
+    <ClInclude Include="SugarBowlTop.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="ToggleSprite.h" />
     <ClInclude Include="Trigger.h" />
@@ -241,6 +243,7 @@
     <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="PC.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="RayCastCallback.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />
@@ -262,6 +265,7 @@
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="StickyZone.cpp" />
     <ClCompile Include="SuCam.cpp" />
+    <ClCompile Include="SugarBowlTop.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="ToggleSprite.cpp" />
     <ClCompile Include="Trigger.cpp" />

@@ -19,7 +19,8 @@
 #include "ToggleSprite.h"
 #include "SuCam.h"
 #include "Room2_Fan.h"
-
+#include "PC.h"
+#include "SugarBowlTop.h"
 
 #include <iostream>
 using namespace std;
@@ -384,6 +385,23 @@ void Level::loadMap(string filename)
 				spider->setProperties(obj.getProperties());
 				eList.addEntity(spider, Layer::Front, false);
 			}
+
+			//Room 2 PC
+			else if(entityType == "PC_Position")
+			{
+				PC *pc = new PC(position);
+				pc->setProperties(obj.getProperties());
+				eList.addEntity(pc, Layer::Back, false);
+			}
+
+			else if(entityType == "SugarBowlTop")
+			{
+				SugarBowlTop *sbt = new SugarBowlTop(imageSrc, position, true);
+				//sbt->setProperties(obj.getProperties());
+				eList.addEntity(sbt, layer, false);
+			}
+
+
 //			else if (entityType == "SecuMonitor")
 //			{
 //				sf::FloatRect rect;

@@ -33,6 +33,12 @@
  <tileset firstgid="11" name="takflakt_scale" tilewidth="1525" tileheight="168">
   <image source="../Resources/Room 2/takflakt_scale.png" width="1525" height="168"/>
  </tileset>
+ <tileset firstgid="12" name="PC_Screen_SCALE" tilewidth="730" tileheight="486">
+  <image source="../Resources/Room 2/PC_Screen_SCALE.png" width="730" height="486"/>
+ </tileset>
+ <tileset firstgid="13" name="tangentbord_scale" tilewidth="672" tileheight="37">
+  <image source="../Resources/Room 2/tangentbord_scale.png" width="672" height="37"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
   <object x="797" y="116" width="269" height="156"/>
@@ -42,12 +48,13 @@
   <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
   <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
   <object name="BoilerSprite" type="EntitySprite" gid="8" x="3382" y="4506"/>
+  <object name="PC_Screen" type="EntitySprite" gid="12" x="2592" y="1421"/>
+  <object name="Keyboard" type="EntitySprite" gid="13" x="2592" y="1421"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
-  <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167"/>
+  <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167" visible="0"/>
   <object name="Suger Bowl" type="EntitySprite" gid="6" x="4354" y="1317"/>
-  <object name="SugerBow lTop" type="EntitySprite" gid="7" x="4529" y="1315"/>
   <object name="AC Flakt" type="EntitySprite" gid="9" x="4782" y="599"/>
   <object name="FanButton" type="ToggleSprite" gid="10" x="703" y="906">
    <properties>
@@ -57,6 +64,7 @@
    </properties>
   </object>
   <object name="TakFlakt" type="Room2_Fan" gid="11" x="2133" y="166"/>
+  <object name="SugarBowlTop" type="SugarBowlTop" gid="7" x="4384" y="1204"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
@@ -75,7 +83,7 @@
    <polyline points="0,0 2,68 1486,66 1484,2"/>
   </object>
   <object name="Suger Bowl" type="StaticCollisionLoop" x="4369" y="1314">
-   <polyline points="0,0 -10,-12 -14,-36 -8,-59 5,-84 17,-97 18,-87 8,-75 0,-55 -2,-32 21,-25 63,-22 98,-27 127,-30 143,-32 144,-46 136,-63 123,-88 115,-97 121,-101 134,-88 145,-66 154,-43 151,-18 143,-3 137,-2 16,-2"/>
+   <polyline points="0,0 -10,-12 -14,-36 -8,-59 5,-84 17,-94 38,-95 8,-75 0,-55 -2,-32 21,-25 63,-22 98,-27 127,-30 143,-32 144,-46 136,-63 123,-88 99,-95 125,-95 134,-88 145,-66 154,-43 151,-18 143,-3 137,-2 16,-2"/>
   </object>
   <object name="BoilerColl" type="StaticCollision" x="3521" y="4475">
    <polyline points="0,0 -3,-58 -18,-58 -18,-964 979,-958 982,-58 955,-55 958,0"/>
@@ -95,9 +103,12 @@
   <object name="CartWheel2" type="StaticCollisionLoop" x="4768" y="1888">
    <polyline points="0,0 -12,7 -12,17 -3,27 11,26 17,16 13,3"/>
   </object>
+  <object name="KeyBoard" type="StaticCollisionLoop" x="2592" y="1395">
+   <polyline points="0,0 5,-3 658,-4 666,-3 669,4 668,19 663,27 6,26 -1,17 -2,1"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="ZidStart" type="ZidSpawn" x="88" y="2136" width="40" height="30">
+  <object name="ZidStart" type="ZidSpawn" x="2218" y="1272" width="40" height="30">
    <ellipse/>
   </object>
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">
@@ -202,5 +213,8 @@
   </object>
   <object name="SuCamKontor" type="SuCam" x="799" y="118" width="266" height="148"/>
   <object name="SuCamPannrum" type="SuCam" x="2198" y="2623" width="265" height="148"/>
+  <object name="PC" type="PC_Position" x="2614" y="955">
+   <polyline points="0,0 0,-1"/>
+  </object>
  </objectgroup>
 </map>

@@ -312,6 +312,12 @@
     <ClInclude Include="FireflyNPC.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="PC.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SugarBowlTop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -582,6 +588,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FireflyNPC.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="PC.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SugarBowlTop.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

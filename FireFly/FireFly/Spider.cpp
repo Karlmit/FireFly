@@ -1,5 +1,4 @@
 #include "Spider.h"
-#include <iostream>
 
 Spider::Spider(sf::Vector2f position, sf::Vector2f startofRoom, sf::Vector2f sizeofRoom) :
 dangleAnimation(Loading::getTexture("spiderHanging_sheet256.png"), 256, 256, 5, 10, 10),
@@ -42,7 +41,7 @@ walkSound(Loading::getSound("Spiderlegs.wav"), false)
 	activateMove = true;
 	mRigidbody.update();
 	setPosition(mRigidbody.getPosition());
-	//std::cout << getPosition().x << std::endl << getPosition().y << std::endl;
+
 	
 }
 
@@ -54,18 +53,18 @@ Spider::~Spider(void)
 void Spider::sendMessage(Entity* entity, std::string message)
 {
 	
-		if(message == "activate")
-		{
-			mSugar = true;
-		}
-if(isProperty("Sugar") == true)
+	if(message == "activate")
+	{
+		mSugar = true;
+	}
+	if(isProperty("Sugar") == true)
 	{
 		if(message == "deactivate")
 		{
 			mSugar = false;
 		}
 	}
-
+	
 	if(message == "spiderisinRoom" && mSugar == true)
 	{
 		activate = true;
@@ -75,14 +74,14 @@ if(isProperty("Sugar") == true)
 	{
 		activate = true;
 	}
-
+	
 
 }
 
 
 void Spider::updateEntity(sf::Time dt)
 {
-	if(activate == true)
+	if(activate == false)
 	{
 
 		dangleAnimation.updateAnimation();
@@ -170,16 +169,15 @@ void Spider::movement(float range)
 	sf::Vector2f zidPosition = Rigidbody::BoxToSfVec(mZidPosition);
 
 	if(range < 50 && spiderman == true && zidPosition.y > roomStart.y)
-	{													 
+	{				
+		
 			netStart = getPosition();
 			net.setPosition(netStart.x + 32, netStart.y - 128);
-			sf::Vector2f spiderManPosition = Rigidbody::BoxToSfVec( mZidPosition);
 			float roofToZid = abs(roomStart.y - zidPosition.y);
+			body->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat(getPosition().x + 32), Rigidbody::SfToBoxFloat(-(getPosition().y - 64))), 0);
 
 			if(roofToZid > 500)//Zid is not close enough to ceiling to see him jump
-			{
-				std::cout << "JUMP!" << std::endl;
-				spiderManPosition.y -= 500;
+			{		
 				body->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat(getPosition().x + 32), mZidPosition.y + Rigidbody::SfToBoxFloat(500)), 0);
 			}
 			spiderman = false; //The spider will scary jump no more. for this time...
@@ -192,7 +190,7 @@ void Spider::movement(float range)
 	{
 		roofWalking();			
 	}
-	//setPosition(mRigidbody.getPosition());
+
 }
 
 void Spider::mMakeNet(float range)
@@ -205,6 +203,8 @@ void Spider::mMakeNet(float range)
 	//Have Zid cut the rope?
 	float overSpoderMan = mZidPosition.x - Rigidbody::SfToBoxFloat(getPosition().x);
 	sf::Vector2f zid = Rigidbody::BoxToSfVec(mZidPosition);
+	
+	//activates func to move spider up the net
 	if(zid.y < getPosition().y && range < 40)
 		{
 			inRange = false;
@@ -218,8 +218,7 @@ void Spider::mMakeNet(float range)
 	{
 		//MAKE STATIC NET...
 		float netLength = abs(netStart.y - getPosition().y);
-		sf::Vector2f netSize(4, netLength + 128);
-
+		sf::Vector2f netSize(4, netLength + 64);
 		net.setSize(netSize);
 
 		//moves spoderman down

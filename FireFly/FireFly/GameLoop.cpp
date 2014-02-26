@@ -3,6 +3,8 @@
 #include <Windows.h>
 #include "MusicManager.h"
 
+#include <iostream>
+
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
 
@@ -79,7 +81,14 @@ void GameLoop::processEvents()
 		case::sf::Event::MouseWheelMoved:
 			mCamera.changeZoom(event.mouseWheel.delta);
 			break;
-
+		case::sf::Event::TextEntered:
+			if (event.text.unicode < 128)
+			{
+				textEntered += static_cast<char>(event.text.unicode);
+				pc = EntityList::getEntityList().getEntity("PC");
+				pc->sendMessage(pc, textEntered);
+			}
+			break;
 		}
 	}
 }
@@ -97,7 +106,7 @@ void GameLoop::draw()
 	EntityList::getEntityList().drawBack(mWindow);
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
-	EntityList::getEntityList().drawForeground(mWindow);
+	//EntityList::getEntityList().drawForeground(mWindow);
 
 
 	mWindow.setView(mWindow.getDefaultView());
