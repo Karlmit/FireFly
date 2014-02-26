@@ -26,6 +26,7 @@ public:
 	void drawBack(sf::RenderWindow& window);
 	void drawNPC(sf::RenderWindow& window);
 	void drawFront(sf::RenderWindow& window);
+	void drawLight(sf::RenderWindow& window);
 	void drawForeground(sf::RenderWindow& window);
 	
 	void addEntity(Entity *entity, Layer layer = Layer::Front, bool runStart = true);	//adds new entities
@@ -42,7 +43,7 @@ private:
 	static EntityList eL;	//singleton
 	typedef std::list <Entity*> tempList; //stores "alive" entities
 	tempList tempEntities;	//used for deleting killed entities
-
+	
 	entityList listedEntities;
 
 	entityList BackgroundLayerList;
@@ -50,6 +51,10 @@ private:
 	entityList NPCLayerList;
 	entityList FrontLayerList;
 	entityList ForegroundLayerList;
+	entityList LightLayerList;
+
+	sf::RenderTexture rLightMap;
+	sf::Sprite sLightMap;
 
 };
 

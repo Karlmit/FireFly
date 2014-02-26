@@ -21,6 +21,9 @@
 #include "Room2_Fan.h"
 #include "PC.h"
 #include "SugarBowlTop.h"
+#include "Light.h"
+
+
 
 #include <iostream>
 using namespace std;
@@ -91,6 +94,9 @@ void Level::startLevel(string levelName)
 	// Fade from black
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
+
+	Light * zidLight = new Light(sf::Color(245,206,75,100), sf::Vector2f(1000,1000), 300, 360, 0, "zidLight");
+	EntityList::getEntityList().addEntity(zidLight, Layer::Light, false);
 
 	
 }
@@ -402,6 +408,8 @@ void Level::loadMap(string filename)
 			}
 
 
+
+
 //			else if (entityType == "SecuMonitor")
 //			{
 //				sf::FloatRect rect;
@@ -416,7 +424,7 @@ void Level::loadMap(string filename)
 //			}
 
 			//Viewport Test
-			
+
 		}
 
 		cout << endl;

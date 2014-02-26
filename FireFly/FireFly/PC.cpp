@@ -22,9 +22,14 @@ PC::~PC()
 {
 }
 
-void PC::sendMessage(Entity* entity, std::string message, sf::String sfMessage)
+void PC::sendMessage(Entity* entity, std::string message)
 {
-	msfString = sfMessage;
+	
+}
+
+void PC::sendSfString(Entity* entity, sf::String message)
+{
+	msfString = message;
 }
 
 

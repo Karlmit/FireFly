@@ -303,6 +303,14 @@
     <ClInclude Include="RayCastCallback.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hivemind.h">
+    </ClInclude>
     <ClInclude Include="SuCam.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -583,6 +591,14 @@
     </ClCompile>
     <ClCompile Include="RayCastCallback.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hivdemind.cpp">
     </ClCompile>
     <ClCompile Include="SecuMonitor.cpp">
       <Filter>Source Files</Filter>

@@ -23,6 +23,7 @@ mStatisticsNumFrames(0)
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
+
 	
 }
 
@@ -82,12 +83,39 @@ void GameLoop::processEvents()
 			mCamera.changeZoom(event.mouseWheel.delta);
 			break;
 		case::sf::Event::TextEntered:
-			if (event.text.unicode < 128)
+			//if (event.type == sf::Event::TextEntered) {
+    if (event.text.unicode < 128)
+	{
+        if (event.text.unicode == '\b') 
+		{
+            if (!textEntered.isEmpty())
 			{
-				textEntered += static_cast<char>(event.text.unicode);
-				pc = EntityList::getEntityList().getEntity("PC");
-				pc->sendMessage(pc, textEntered);
-			}
+                textEntered.erase(textEntered.getSize(), 1);
+           }
+        } 
+		else
+		{
+            textEntered.insert(textEntered.getSize(), event.text.unicode);
+        }
+		pc = EntityList::getEntityList().getEntity("PC");
+        pc->sendSfString(pc, textEntered);
+    }
+	break;
+//}
+
+			//if (event.text.unicode < 128)
+			//{
+			//	textEntered += static_cast<char>(event.text.unicode);
+			//	pc = EntityList::getEntityList().getEntity("PC");
+			//}
+			// if (event.text.unicode == '\b')
+			// {
+			//		if (!textEntered.isEmpty()) 
+			//		{
+			//			textEntered.erase(textEntered.getSize(), 2);
+			//		}
+			// }
+			//pc->sendSfString(pc, textEntered);
 			break;
 		}
 	}
@@ -106,6 +134,7 @@ void GameLoop::draw()
 	EntityList::getEntityList().drawBack(mWindow);
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
+	EntityList::getEntityList().drawLight(mWindow);
 	//EntityList::getEntityList().drawForeground(mWindow);
 
 

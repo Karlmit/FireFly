@@ -14,7 +14,8 @@ class PC : public Entity
 public:
 	PC(sf::Vector2f position);
 	~PC();
-	virtual void sendMessage(Entity* entity, std::string message, sf::String sfMessage);
+	virtual void sendMessage(Entity* entity, std::string message);
+	virtual void sendSfString(Entity* entity, sf::String message);
 	void getTextEntered(std::string text);
 private:
 	virtual void updateEntity(sf::Time dt);	
