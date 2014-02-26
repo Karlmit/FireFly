@@ -389,9 +389,7 @@ void Level::loadMap(string filename)
 				spider->setProperties(obj.getProperties());
 				eList.addEntity(spider, Layer::Front, false);
 			}
-<<<<<<< HEAD
 
-=======
 //			else if (entityType == "SecuMonitor")
 //			{
 //				sf::FloatRect rect;
@@ -406,7 +404,7 @@ void Level::loadMap(string filename)
 //			}
 
 			//Viewport Test
->>>>>>> 4a8394d1a6b8e272158dd1b125aac380c924d54d
+
 			
 		}
 

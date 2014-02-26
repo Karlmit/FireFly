@@ -303,7 +303,7 @@
     <ClInclude Include="RayCastCallback.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
-<<<<<<< HEAD
+
     <ClInclude Include="Light.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -311,7 +311,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Hivemind.h">
-=======
+	</ClInclude>
     <ClInclude Include="SuCam.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -319,7 +319,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FireflyNPC.h">
->>>>>>> 4a8394d1a6b8e272158dd1b125aac380c924d54d
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -588,7 +587,6 @@
     <ClCompile Include="RayCastCallback.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Light.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -596,12 +594,11 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Hivdemind.cpp">
-=======
+	</ClCompile>
     <ClCompile Include="SecuMonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FireflyNPC.cpp">
->>>>>>> 4a8394d1a6b8e272158dd1b125aac380c924d54d
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
