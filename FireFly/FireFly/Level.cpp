@@ -17,6 +17,7 @@
 #include "ForceZone.h"
 #include "StickyZone.h"
 #include "ToggleSprite.h"
+#include "SuCam.h"
 #include "Room2_Fan.h"
 #include "Light.h"
 
@@ -139,6 +140,8 @@ void Level::loadMap(string filename)
 	}
 	cout << endl;
 
+
+
 	// Goes through all object in the map file						
 	for (MapObjectGroup group : map.getObjectGroups())
 	{		
@@ -225,6 +228,22 @@ void Level::loadMap(string filename)
 			else if (entityType == "WaspTrapped")
 			{
 				eList.addEntity(new Wasp(position), Layer::NPC, false);
+			}
+
+			//
+			// SuCam
+			//
+			else if (entityType == "SuCam")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				SuCam* zone = new SuCam(rect);
+				zone->setProperties(obj.getProperties());				
+				zone->setID(id);
+				eList.addEntity(zone, Layer::Back, false);
 			}
 
 			//
@@ -367,9 +386,27 @@ void Level::loadMap(string filename)
 				float x = float ( obj.getProperty("x").getValueInt() );
 				float y = float ( obj.getProperty("y").getValueInt() );
 				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
+				spider->setProperties(obj.getProperties());
 				eList.addEntity(spider, Layer::Front, false);
 			}
+<<<<<<< HEAD
 
+=======
+//			else if (entityType == "SecuMonitor")
+//			{
+//				sf::FloatRect rect;
+//				rect.left = position.x;
+//				rect.top = position.y;
+//				rect.width = width;
+//				rect.height = height;
+//				SecuMonitor* secuMonitor = new SecuMonitor(rect);
+//				secuMonitor->setProperties(obj.getProperties());				
+//				secuMonitor->setID(id);
+//				eList.addEntity(secuMonitor, Layer::Foreground, false);
+//			}
+
+			//Viewport Test
+>>>>>>> 4a8394d1a6b8e272158dd1b125aac380c924d54d
 			
 		}
 

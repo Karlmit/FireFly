@@ -303,6 +303,7 @@
     <ClInclude Include="RayCastCallback.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Light.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -310,6 +311,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Hivemind.h">
+=======
+    <ClInclude Include="SuCam.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SecuMonitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FireflyNPC.h">
+>>>>>>> 4a8394d1a6b8e272158dd1b125aac380c924d54d
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -569,12 +579,16 @@
     <ClCompile Include="ToggleSprite.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="SuCam.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
     <ClCompile Include="Room2_Fan.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="RayCastCallback.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Light.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -582,11 +596,20 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Hivdemind.cpp">
+=======
+    <ClCompile Include="SecuMonitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FireflyNPC.cpp">
+>>>>>>> 4a8394d1a6b8e272158dd1b125aac380c924d54d
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Maps\level1.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Maps\level2.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
   </ItemGroup>
