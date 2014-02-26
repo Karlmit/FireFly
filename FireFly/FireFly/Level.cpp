@@ -409,7 +409,6 @@ void Level::loadMap(string filename)
 
 
 
-
 //			else if (entityType == "SecuMonitor")
 //			{
 //				sf::FloatRect rect;

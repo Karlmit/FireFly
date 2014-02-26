@@ -310,7 +310,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Hivemind.h">
-    </ClInclude>
+	  <Filter>Header Files\Entities</Filter>
+	</ClInclude>
     <ClInclude Include="SuCam.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -599,7 +600,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Hivdemind.cpp">
-    </ClCompile>
+      <Filter>Source Files</Filter>
+	</ClCompile>
     <ClCompile Include="SecuMonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

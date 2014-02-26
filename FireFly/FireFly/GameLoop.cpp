@@ -34,7 +34,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level2.tmx");
+	Level::startLevel("level1.tmx");
 
 		
 	sf::Clock clock;
@@ -83,23 +83,20 @@ void GameLoop::processEvents()
 			mCamera.changeZoom(event.mouseWheel.delta);
 			break;
 		case::sf::Event::TextEntered:
-			//if (event.type == sf::Event::TextEntered) {
-    if (event.text.unicode < 128)
-	{
-        if (event.text.unicode == '\b') 
-		{
-            if (!textEntered.isEmpty())
-			{
-                textEntered.erase(textEntered.getSize(), 1);
-           }
-        } 
-		else
-		{
-            textEntered.insert(textEntered.getSize(), event.text.unicode);
-        }
-		pc = EntityList::getEntityList().getEntity("PC");
-        pc->sendSfString(pc, textEntered);
-    }
+
+		//if(event.text.unicode == 8 && textEntered.end() != textEntered.begin())
+		//	{
+		//		textEntered.erase(textEntered.end(), 1);
+		//	}
+		//	
+		//	else
+		//	{
+		//		textEntered += event.text.Unicode;
+		//	}
+		//
+		//pc = EntityList::getEntityList().getEntity("PC");
+        //pc->sendSfString(pc, textEntered);
+    
 	break;
 //}
 
