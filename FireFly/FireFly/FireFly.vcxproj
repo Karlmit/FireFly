@@ -85,6 +85,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AntPath.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioEntity.h" />
     <ClInclude Include="Block.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="PC.h" />
+    <ClInclude Include="Myra.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="RayCastCallback.h" />
     <ClInclude Include="resource.h" />
@@ -179,6 +181,7 @@
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="ToggleSprite.h" />
     <ClInclude Include="Trigger.h" />
+    <ClInclude Include="Tween.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Wasp.h" />
     <ClInclude Include="WorldContactListener.h" />
@@ -186,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AntPath.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioEntity.cpp" />
     <ClCompile Include="Block.cpp" />
@@ -237,6 +241,7 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="FireflyNPC.cpp" />
     <ClCompile Include="ForceZone.cpp" />
@@ -253,6 +258,7 @@
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="PC.cpp" />
+    <ClCompile Include="Myra.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="RayCastCallback.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />
@@ -278,6 +284,7 @@
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="ToggleSprite.cpp" />
     <ClCompile Include="Trigger.cpp" />
+    <ClCompile Include="Tween.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wasp.cpp" />
     <ClCompile Include="WorldContactListener.cpp" />

@@ -183,7 +183,20 @@ void EntityList::updateList()
 			++i;
 		}
 	}
-
+	// LightLayerList
+	i = LightLayerList.begin();
+	while (i != LightLayerList.end())
+	{
+		bool isAlive = (*i)->getAliveStatus();
+		if (!isAlive)
+		{
+			LightLayerList.erase(i++);
+		}
+		else
+		{
+			++i;
+		}
+	}
 
 	// Removes and deletes entities from the main list listedEntities if dead
 	for(entityList::iterator i = listedEntities.begin(); i != listedEntities.end(); i++)
@@ -215,6 +228,7 @@ void EntityList::emptyList()
 	NPCLayerList = entityList();
 	FrontLayerList = entityList();
 	ForegroundLayerList = entityList();
+	LightLayerList = entityList();
 }
 
 void EntityList::startList()

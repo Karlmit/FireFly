@@ -326,6 +326,15 @@
     </ClInclude>
     <ClInclude Include="SugarBowlTop.h">
       <Filter>Header Files</Filter>
+	</ClInclude>
+    <ClInclude Include="Myra.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="AntPath.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Tween.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
@@ -622,6 +631,18 @@
     </ClCompile>
     <ClCompile Include="SugarBowlTop.cpp">
       <Filter>Source Files\Entities</Filter>
+	</ClCompile>
+    <ClCompile Include="Myra.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="AntPath.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="DBTweener\dbtweener.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Tween.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
