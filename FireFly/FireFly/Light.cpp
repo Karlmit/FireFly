@@ -143,6 +143,26 @@ void Light::createLight()
 
 void Light::updateEntity(sf::Time dt)
 {
+	static float realRadius = radius;
+	static bool growLight = true;
+
+	if(growLight)
+	{
+		radius++;
+	}
+	else
+	{
+		radius--;
+	}
+
+	if(radius >= realRadius+10)
+	{
+		growLight = false;
+	}
+	else if(radius <= realRadius-10)
+	{
+		growLight = true;
+	}
 	createLight();
 
 }

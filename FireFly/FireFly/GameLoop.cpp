@@ -84,18 +84,18 @@ void GameLoop::processEvents()
 			break;
 		case::sf::Event::TextEntered:
 
-		//if(event.text.unicode == 8 && textEntered.end() != textEntered.begin())
-		//	{
-		//		textEntered.erase(textEntered.end(), 1);
-		//	}
-		//	
-		//	else
-		//	{
-		//		textEntered += event.text.Unicode;
-		//	}
-		//
-		//pc = EntityList::getEntityList().getEntity("PC");
-        //pc->sendSfString(pc, textEntered);
+		if(event.text.unicode == '/b' && textEntered.end() != textEntered.begin())
+			{
+				textEntered.erase(textEntered.getSize(), 1);
+			}
+			
+			else
+			{
+				textEntered += event.text.unicode;
+			}
+		
+		pc = EntityList::getEntityList().getEntity("PC");
+        pc->sendSfString(pc, textEntered);
     
 	break;
 //}
@@ -132,7 +132,7 @@ void GameLoop::draw()
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
 	EntityList::getEntityList().drawLight(mWindow);
-	//EntityList::getEntityList().drawForeground(mWindow);
+	EntityList::getEntityList().drawForeground(mWindow);
 
 
 	mWindow.setView(mWindow.getDefaultView());
