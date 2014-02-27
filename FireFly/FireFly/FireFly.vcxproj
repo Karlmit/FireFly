@@ -156,6 +156,9 @@
     <ClInclude Include="PC.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="RayCastCallback.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="Room1_Coat.h" />
     <ClInclude Include="Room2_Fan.h" />
     <ClInclude Include="SecuMonitor.h" />
@@ -283,6 +286,12 @@
   <ItemGroup>
     <None Include="Maps\level1.tmx" />
     <None Include="Maps\level2.tmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FireFly1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\FireFly.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

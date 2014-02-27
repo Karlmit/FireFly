@@ -145,9 +145,10 @@
     <property name="id" value="BurkDeathZone"/>
    </properties>
   </object>
-  <object name="Spider" type="Spider" x="0" y="0" width="4460" height="2160" visible="0">
+  <object name="Spider" type="Spider" x="0" y="0" width="4460" height="2160">
    <properties>
-    <property name="x" value="300"/>
+    <property name="room1" value="true"/>
+    <property name="x" value="4800"/>
     <property name="y" value="128"/>
    </properties>
   </object>

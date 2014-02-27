@@ -70,7 +70,7 @@ void Spider::sendMessage(Entity* entity, std::string message)
 		activate = true;
 	}
 
-	if(isProperty("room1") == true)
+	if(isProperty("room1") == true && message == "activate")
 	{
 		activate = true;
 	}
@@ -81,7 +81,7 @@ void Spider::sendMessage(Entity* entity, std::string message)
 
 void Spider::updateEntity(sf::Time dt)
 {
-	if(activate == false)
+	if(activate == true)
 	{
 
 		dangleAnimation.updateAnimation();
