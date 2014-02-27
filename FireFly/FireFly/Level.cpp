@@ -22,7 +22,7 @@
 #include "PC.h"
 #include "SugarBowlTop.h"
 #include "Light.h"
-
+#include "AntPath.h"
 
 
 #include <iostream>
@@ -382,7 +382,9 @@ void Level::loadMap(string filename)
 				eList.addEntity(fan, layer, false);
 			}
 
-			//spoderMan
+			//
+			// SpoderMan
+			//
 			else if(entityType == "Spider")
 			{
 				float x = float ( obj.getProperty("x").getValueInt() );
@@ -391,6 +393,7 @@ void Level::loadMap(string filename)
 				spider->setProperties(obj.getProperties());
 				eList.addEntity(spider, Layer::Front, false);
 			}
+
 
 			//Room 2 PC
 			else if(entityType == "PC_Position")
@@ -407,6 +410,23 @@ void Level::loadMap(string filename)
 				eList.addEntity(sbt, layer, false);
 			}
 
+
+			//
+			// AntPath
+			//
+			else if (entityType == "AntPath")
+			{
+				vector<sf::Vector2f> sfPoints;
+				for (MapPoint p : obj.getPolyline().getPoints())
+				{
+					//cout << p.x << "," << p.y << " ";
+					sf::Vector2f sfPoint(float(p.x), float(p.y));
+					sfPoint = sfPoint + position;
+					sfPoints.push_back(sfPoint);
+				}
+				AntPath* antPath = new AntPath(sfPoints);
+				eList.addEntity(antPath, Layer::NPC, false);
+			}
 
 
 //			else if (entityType == "SecuMonitor")

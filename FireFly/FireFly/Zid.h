@@ -18,6 +18,8 @@ class Zid : public Entity
 {
 public:
 	Zid(sf::Vector2f position);
+	bool isSweet();
+	sf::Vector2f getDroppedSugar();
 
 private:
 	virtual void updateEntity(sf::Time dt);	
@@ -28,6 +30,7 @@ private:
 
 	void movement();
 	void sugarStuff(sf::Time dt);
+	
 
 private:
 	sf::Sprite	mSprite;
@@ -45,6 +48,7 @@ private:
 	thor::UniversalEmitter mEmitter;
 	bool mSweetZid;
 	sf::Clock mLoseSugarTimer;
+	sf::Vector2f mDroppedSugarPosition;
 };
 
 #endif
