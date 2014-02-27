@@ -30,6 +30,7 @@ Zid::Zid(sf::Vector2f position)
 , mEmitter()
 , mSweetZid(false)
 , mLoseSugarTimer()
+, mDroppedSugarPosition()
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -174,7 +175,15 @@ void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 
 	// Rigidbody debug draw
 	if (Globals::DEBUG_MODE)
+	{
 		mRigidbody.drawDebug(target, states);
+
+		sf::RectangleShape dropSugarRect(sf::Vector2f(50.f, 50.f));
+		dropSugarRect.setPosition(mDroppedSugarPosition + sf::Vector2f(-25, -25) );
+		target.draw(dropSugarRect);
+	}
+
+
 }
 
 void Zid::movement()
@@ -284,6 +293,7 @@ void Zid::sugarStuff(sf::Time dt)
 			float lifetime = sqrtf(2 * distance / SUGAR_GRAVITY);	// Fysik A ftw
 		
 			mEmitter.setParticleLifetime(sf::seconds(lifetime+0.02f));
+ 
 		}
 	}
 	else
@@ -308,11 +318,23 @@ void Zid::sugarStuff(sf::Time dt)
 			float lifetime = sqrtf(2 * distance / SUGAR_GRAVITY);	// Fysik A ftw
 		
 			mEmitter.setParticleLifetime(sf::seconds(lifetime*0.90f));
+
+			mDroppedSugarPosition = Rigidbody::BoxToSfVec(ray.point);
 		}
 	}
 
 	// Update particle system
 	mParticleSystem.update(dt);
+}
+
+bool Zid::isSweet()
+{
+	return mSweetZid;
+}
+
+sf::Vector2f Zid::getDroppedSugar()
+{
+	return mDroppedSugarPosition;
 }
 
 void Zid::BeginContact(b2Contact *contact, Entity* other)

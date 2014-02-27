@@ -11,7 +11,7 @@ Tween::Tween()
 
 void Tween::addTween(CDBTweener::CEquation *pEquation, CDBTweener::EEasing eEasing, float fDuration, float *fpValue, float fTarget)
 {
-	CDBTweener::CTween oTween(pEquation, eEasing, fDuration, fpValue, fTarget);
+	CDBTweener::CTween* oTween = new CDBTweener::CTween(pEquation, eEasing, fDuration, fpValue, fTarget);
 	mTweens.push_back(oTween);
 	mDurations.push_back(fDuration);
 	mTotalTime += fDuration;
@@ -19,7 +19,10 @@ void Tween::addTween(CDBTweener::CEquation *pEquation, CDBTweener::EEasing eEasi
 
 void Tween::clearTweens()
 {
-	mTweens = vector<CDBTweener::CTween>();
+	for (auto tween : mTweens)
+		delete tween;
+
+	mTweens = vector<CDBTweener::CTween*>();
 	mDurations = vector<float>();
 	mTimer.restart();
 	mTotalTime = 0;
@@ -31,17 +34,19 @@ bool Tween::update(sf::Time dt)
 	if (mTimer.getElapsedTime().asSeconds() > mTotalTime)
 		return true;
 
-	/*
-	for (unsigned i = 0; i < mDurations.size(); i++)
+	
+	float duration = 0;
+	for (unsigned i = 0; i < mTweens.size(); i++)
 	{
-		if (mTimer.getElapsedTime().asSeconds() < mDurations[i])
+		duration += mDurations[i];
+		if (mTimer.getElapsedTime().asSeconds() > duration-mDurations[i] &&  mTimer.getElapsedTime().asSeconds() < duration)
 		{
-			mTweens[i].step(dt.asSeconds());
+			mTweens[i]->step(dt.asSeconds());
 		}
 	}
-	*/
+	
 
-	mTweens[0].step(dt.asSeconds());
+	//mTweens[0].step(dt.asSeconds());
 
 	return false;
 }
@@ -49,6 +54,6 @@ bool Tween::update(sf::Time dt)
 void Tween::restart()
 {
 	mTimer.restart();
-	for (CDBTweener::CTween tween : mTweens)
-		tween.setElapsedSec(0);
+	for (CDBTweener::CTween* tween : mTweens)
+		tween->setElapsedSec(0);
 }

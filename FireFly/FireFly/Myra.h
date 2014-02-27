@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "Audio.h"
 #include "Tween.h"
+#include "Zid.h"
 
 class Myra : public Entity
 {
@@ -15,10 +16,13 @@ public:
 		 float totalLength);
 
 private:
+	virtual void start();
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 
+	void idleMovement(sf::Time dt);
 	void setPosition(float x);
+	sf::Vector2f calcPosition(float x);
 
 private:
 	sf::Sprite mSprite;
@@ -26,16 +30,26 @@ private:
 	vector<float> mLengths;
 	vector<sf::Vector2f> mDirections;
 	float mTotalLength;
+	
 	float mPos;
+	float mSpeed;
 
-	Tween mTweenRotation;
+	// Sugar
+	Zid* mZid; 
+	bool mZidIsSweet;
+	bool mZidDroppedSugar;
+	sf::Clock mDroppedSugarZid;
+
+	// Rotation //
+	Tween mSuperTweenRotation;
 	float mRotation;
 	float mTargetRotation;
-
 	sf::Vector2f mCurrentDirection;
-
-	bool mIdleMoveForward;
-	sf::Clock mIdleMoveTimer;
+		
+	// Idle //
 	bool mIdle;
+	bool mMoveForward;
+	sf::Clock mIdleMoveTimer;
+	bool mIdleMove;
 	float mTimeForIdle;
 };

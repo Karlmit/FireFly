@@ -48,6 +48,19 @@ float Util::randFloat(float low, float high)
 	return low + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(high-low)));
 }
 
+float Util::randFloat(float low1, float high1, float low2, float high2)
+{
+	float range = (high1 - low1) + (high2 - low2);
+
+	float randomFloat =  randFloat(0, range);
+
+	if (randomFloat < (high1 - low1))
+		return low1 + randomFloat;
+	else
+		return low2 + randomFloat - (high1 - low1);
+
+}
+
 bool Util::randBool()
 {
 	if (rand() % 2 == 0)

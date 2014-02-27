@@ -196,8 +196,8 @@
     <property name="id" value="Sugar"/>
    </properties>
   </object>
-  <object name="Ant Path" type="AntPath" x="49" y="2668">
-   <polyline points="0,0 8,684 308,676 308,332 300,-12"/>
+  <object name="AntyPAth" type="AntPath" x="583" y="4462">
+   <polyline points="0,0 2900,8 2901,-967 3064,-963 3321,-679"/>
   </object>
  </objectgroup>
 </map>

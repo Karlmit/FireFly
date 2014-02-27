@@ -16,7 +16,7 @@ public:
 	void restart();
 
 private:
-	vector<CDBTweener::CTween> mTweens;
+	vector<CDBTweener::CTween*> mTweens;
 	vector<float> mDurations;
 	float mTotalTime;
 	sf::Clock mTimer;

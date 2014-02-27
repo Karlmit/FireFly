@@ -28,10 +28,10 @@ AntPath::AntPath(vector<sf::Vector2f> path)
 	}
 
 	
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 26; i++)
 	{
-		Entity* myra = new Myra(i*100.f + 300.f ,mPath, mLengths, mDirections, mTotalLength);
-		EntityList::getEntityList().addEntity(myra, Layer::NPC);
+		Entity* myra = new Myra(i*200.f  ,mPath, mLengths, mDirections, mTotalLength);
+		EntityList::getEntityList().addEntity(myra, Layer::Background);
 	}
 	
 	//mMyroror
