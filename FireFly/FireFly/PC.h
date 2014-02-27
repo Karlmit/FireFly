@@ -20,9 +20,30 @@ public:
 private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
+	void loggin();
+	void menu();
+
+
 	sf::RectangleShape mScreen;
 	sf::String msfString;
 	sf::Font mFont;
-	sf::Text mText;
-	sf::Event mEvent;
+	sf::Text mTextEntered;
+	sf::Text mPassword;
+	sf::Text mPassInvalid;
+	sf::Text mMenuText;
+	sf::Text mBulletinText;
+	sf::Text mHintText;
+	sf::Text mWelcomeText;
+	//meny bools
+	bool mHint;
+	bool mLoggin;
+	bool mInvalid;
+	bool mMenu;
+	bool mWelcome;
+	bool mBulletin;
+	//invalid counter
+	int mInvalidCounter;
+	
+	//Clocks and timers
+	sf::Clock mWelcomeClock;
 };
