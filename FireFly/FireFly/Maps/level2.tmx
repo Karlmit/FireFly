@@ -108,7 +108,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="ZidStart" type="ZidSpawn" x="183" y="2092" width="40" height="30">
+  <object name="ZidStart" type="ZidSpawn" x="70" y="2026" width="40" height="30">
    <ellipse/>
   </object>
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">

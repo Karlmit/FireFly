@@ -95,7 +95,10 @@ void GameLoop::processEvents()
 			}
 		
 		pc = EntityList::getEntityList().getEntity("PC");
+		if(pc != nullptr)
+		{
         pc->sendSfString(pc, textEntered);
+		}
     
 	break;
 //}

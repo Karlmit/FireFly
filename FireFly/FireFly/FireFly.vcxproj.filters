@@ -310,8 +310,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Hivemind.h">
-	  <Filter>Header Files\Entities</Filter>
-	</ClInclude>
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
     <ClInclude Include="SuCam.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -335,6 +335,15 @@
     </ClInclude>
     <ClInclude Include="Tween.h">
       <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -610,7 +619,7 @@
     </ClCompile>
     <ClCompile Include="Hivdemind.cpp">
       <Filter>Source Files</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="SecuMonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -643,5 +652,15 @@
     <None Include="Maps\level2.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FireFly1.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\FireFly.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
