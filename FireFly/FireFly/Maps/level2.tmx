@@ -70,12 +70,6 @@
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
  </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
-  <object name="CollVent1" type="StaticCollision" x="724" y="4475">
-   <polyline points="0,0 4,-470 -684,-470 -688,-2162 -726,-2162"/>
-  </object>
-  <object name="CollVent2" type="StaticCollision" x="713" y="0">
-   <polyline points="0,0 4,364 -676,362 -674,1966 -710,1966"/>
-  </object>
   <object name="CollRooms" type="StaticCollision" x="5071" y="4466">
    <polyline points="0,0 -4,-2152 -4344,-2144 -4336,-776 -4684,-776 -4680,-3788 -4352,-3792 -4352,-2300 -4,-2300 0,-4460"/>
   </object>
@@ -106,9 +100,15 @@
   <object name="KeyBoard" type="StaticCollisionLoop" x="2592" y="1395">
    <polyline points="0,0 5,-3 658,-4 666,-3 669,4 668,19 663,27 6,26 -1,17 -2,1"/>
   </object>
+  <object name="CollVent2" type="StaticCollision" x="0" y="1906">
+   <polyline points="0,0 35,1 39,-1541 713,-1540 716,-1902"/>
+  </object>
+  <object name="CollVent1" type="StaticCollision" x="0" y="2161">
+   <polyline points="0,0 36,1 43,1844 730,1843 731,2318"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="ZidStart" type="ZidSpawn" x="2218" y="1272" width="40" height="30">
+  <object name="ZidStart" type="ZidSpawn" x="183" y="2092" width="40" height="30">
    <ellipse/>
   </object>
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">
@@ -130,13 +130,13 @@
     <property name="MusicFadeUp" value="office"/>
    </properties>
   </object>
-  <object name="MusicEnterVentTrigger" type="Trigger" x="670" y="368" width="43" height="318">
+  <object name="MusicEnterVentTrigger" type="Trigger" x="629" y="360" width="43" height="318">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
-  <object name="MusicEnterVentTrigger" type="Trigger" x="676" y="3686" width="43" height="318">
+  <object name="MusicEnterVentTrigger" type="Trigger" x="630" y="3687" width="43" height="318">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="vent"/>

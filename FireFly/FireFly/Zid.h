@@ -47,6 +47,7 @@ private:
 	thor::ParticleSystem mParticleSystem;
 	thor::UniversalEmitter mEmitter;
 	bool mSweetZid;
+	bool mLoseSugar;
 	sf::Clock mLoseSugarTimer;
 	sf::Vector2f mDroppedSugarPosition;
 };
