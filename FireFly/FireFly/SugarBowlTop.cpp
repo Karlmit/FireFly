@@ -28,7 +28,7 @@ SugarBowlTop::~SugarBowlTop(void)
 void SugarBowlTop::updateEntity(sf::Time dt)
 {
 	//hinders lid from falling into the bowl
-	if(getPosition().x > mStartPosition.x + 65)
+	if(getPosition().x > mStartPosition.x + 65 || getPosition().x < mStartPosition.x - 65)
 	{
 		mRigidbody.getBody()->SetFixedRotation(false);
 	}

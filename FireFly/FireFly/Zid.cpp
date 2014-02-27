@@ -29,6 +29,7 @@ Zid::Zid(sf::Vector2f position)
 , mParticleSystem()
 , mEmitter()
 , mSweetZid(false)
+, mLoseSugar(false)
 , mLoseSugarTimer()
 , mDroppedSugarPosition()
 {
@@ -267,6 +268,7 @@ void Zid::movement()
 			if (mSweetZid)
 			{
 				mSweetZid = false;
+				mLoseSugar = true;
 				mLoseSugarTimer.restart();
 			}
 
@@ -318,7 +320,7 @@ void Zid::sugarStuff(sf::Time dt)
 		mEmitter.setEmissionRate(0);
 	}
 
-	if (mLoseSugarTimer.getElapsedTime().asSeconds() < LOSE_SUGAR_TIME)
+	if (mLoseSugar && mLoseSugarTimer.getElapsedTime().asSeconds() < LOSE_SUGAR_TIME)
 	{
 		mEmitter.setParticleVelocity( thor::Distributions::circle(sf::Vector2f(), 100));
 		mEmitter.setParticlePosition( thor::Distributions::circle(getPosition(), 10.f) );
@@ -339,6 +341,8 @@ void Zid::sugarStuff(sf::Time dt)
 			mDroppedSugarPosition = Rigidbody::BoxToSfVec(ray.point);
 		}
 	}
+	else
+		mLoseSugar = false;
 
 	// Update particle system
 	mParticleSystem.update(dt);
