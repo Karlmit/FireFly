@@ -14,6 +14,7 @@ public:
 	sf::Sound::Status getStatus();
 	sf::Sound* getSound();
 
+
 private:
 	sf::Sound mSound;
 };

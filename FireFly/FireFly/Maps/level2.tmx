@@ -108,7 +108,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="ZidStart" type="ZidSpawn" x="70" y="2026" width="40" height="30">
+  <object name="ZidStart" type="ZidSpawn" x="2328" y="1159" width="40" height="30">
    <ellipse/>
   </object>
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">
@@ -216,5 +216,6 @@
   <object name="PC" type="PC_Position" x="2614" y="955">
    <polyline points="0,0 0,-1"/>
   </object>
+  <object name="PC_Text" x="2626" y="965" width="570" height="340"/>
  </objectgroup>
 </map>

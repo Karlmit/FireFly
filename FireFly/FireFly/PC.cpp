@@ -2,34 +2,39 @@
 #include <iostream>
 
 PC::PC(sf::Vector2f position)
+	: mAudioLoggSound(Loading::getSound("canary.wav"), true)
 {
 	mID = "PC";
 	mScreen.setSize(sf::Vector2f(595, 360));
 	mScreen.setFillColor(sf::Color::Black);
 	mScreen.setPosition(position);
+	mTextPosition.x = position.x + 15;
+	mTextPosition.y = position.y + 25;
 
 	mFont.loadFromFile("Resources/PressStart2P.ttf");
 	
 	mTextEntered.setFont(mFont);
-	mTextEntered.setCharacterSize(15);
-	mTextEntered.setColor(sf::Color::Green);
+	mTextEntered.setCharacterSize(13);
+	mTextEntered.setColor(sf::Color::Cyan);
 	mPassword = mTextEntered;
 	mPassInvalid = mTextEntered;
 	mMenuText = mTextEntered;
 	mHintText = mTextEntered;
 	mBulletinText = mTextEntered;
+	mAudioLoggText = mTextEntered;
 
-	mBulletinText.setPosition(position.x + 70, position.y + 70);
-	mBulletinText.setString("Bulletin: Ant problem!\nAnt problem in the boiler room!\nWe have informed the janitor\nabout this, and she said\nthat she wont have time to\ndeal with it until nex t week.\nUntil then she told us not to\nleave any food or sweets around,\nto keep the ants from spreading\nto other rooms.\n//The dean");
-	mHintText.setPosition(position.x + 70, position.y + 200);
+	mAudioLoggText.setPosition(mTextPosition);
+	mBulletinText.setPosition(mTextPosition.x, mTextPosition.y);
+	mBulletinText.setString("Bulletin: Ant problem!\n\nAnt problem in the boiler room!\nWe have informed the janitor\nabout this, and she said that\nshe wont have time to deal\nwith it until next week.\nUntil then she told us not to \nleave any food or sweets around,\nto keep the ants from spreading\nto other rooms.\n//The dean\n\n\n1. Back");
+	mHintText.setPosition(mTextPosition.x, mTextPosition.y + 40);
 	mHintText.setString("Help question: What is the most\nimportant thing in my life?");
-	mMenuText.setPosition(position.x + 100, position.y + 70);
+	mMenuText.setPosition(mTextPosition.x, mTextPosition.y);
 	mMenuText.setString("1. Access Audiolog, 9/9 \n\n2. Bulletin: Ant problem! \n\n3. Shut down");
-	mPassInvalid.setPosition(position.x + 70, position.y + 160);
+	mPassInvalid.setPosition(mTextPosition.x, mTextPosition.y + 20);
 	mPassInvalid.setString("Password invalid");
-	mPassword.setPosition(position.x + 70, position.y + 140);
+	mPassword.setPosition(mTextPosition.x, mTextPosition.y);
 	mPassword.setString("Password: ");
-	mTextEntered.setPosition(position.x + 210, position.y + 140);
+	mTextEntered.setPosition(mTextPosition.x + 120, mTextPosition.y);
 
 	mWelcomeText = mPassword;
 	mWelcomeText.setString("Welcome dr. Locke");
@@ -41,6 +46,7 @@ PC::PC(sf::Vector2f position)
 	mHint = false;
 	mWelcome = false;
 	mBulletin = false;
+	mAudioLogg = false;
 
 	//counter
 	mInvalidCounter = 0;
@@ -93,9 +99,10 @@ void PC::loggin()
 
 void PC::menu()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mMenu == true)
 	{
-
+		mAudioLogg = true;
+		mAudioLoggSound.play();
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 	{
@@ -107,11 +114,36 @@ void PC::menu()
 		mLoggin = true;
 	}
 
+	//INSIDE BULLETIN
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mBulletin == true)
+	{
+		mBulletin = false;
+		mMenu = true;
+	}
+	//INSIDE AUDIOLOGG
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && mAudioLogg == true)
+	{
+		mAudioLogg = false;
+		mMenu = true;
+	}
+
+
 }
 
 
 void PC::updateEntity(sf::Time dt)
 {
+	//oss.clear();
+	//oss << mAudioLoggSound.getSound()->getPlayingOffset().asSeconds();
+	//std::string AudioLogg = to_string(mAudioLoggSound.getSound()->getPlayingOffset().asSeconds());
+	std::stringstream ac;
+	ac.precision(2);
+	ac << "Playing Audiologg 9/9: ";
+	ac << fixed << mAudioLoggSound.getSound()->getPlayingOffset().asSeconds();
+	ac << " / " << mAudioLoggSound.getSound()->getBuffer()->getDuration().asSeconds();
+	ac << "\n\n\n 1. back";
+	mAudioLoggText.setString(ac.str());
+
 	if(mWelcomeClock.getElapsedTime().asSeconds() > 3 && mLoggin == false)
 	{
 		mMenu = true;
@@ -145,7 +177,7 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(mPassInvalid, states);
 	}
-	if(mMenu == true && mBulletin == false)
+	if(mMenu == true && mBulletin == false && mAudioLogg == false)
 	{
 		target.draw(mMenuText, states);
 	}
@@ -161,6 +193,11 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(mBulletinText, states);
 	}
+	if(mAudioLogg == true)
+	{
+		target.draw(mAudioLoggText, states);
+	}
+
 
 
 
