@@ -39,6 +39,7 @@ private:
 	bool mZidIsSweet;
 	bool mZidDroppedSugar;
 	sf::Clock mDroppedSugarZid;
+	bool mDroppedInBoiler;
 
 	// Rotation //
 	Tween mSuperTweenRotation;

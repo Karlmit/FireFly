@@ -23,6 +23,7 @@
 #include "SugarBowlTop.h"
 #include "Light.h"
 #include "AntPath.h"
+#include "Boiler.h"
 
 
 #include <iostream>
@@ -428,6 +429,13 @@ void Level::loadMap(string filename)
 				eList.addEntity(antPath, Layer::NPC, false);
 			}
 
+			//
+			// Boiler
+			//
+			else if (entityType == "Boiler")
+			{
+				eList.addEntity(new Boiler(imageSrc, positionSprite), layer, false);
+			}
 
 //			else if (entityType == "SecuMonitor")
 //			{

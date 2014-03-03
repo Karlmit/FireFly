@@ -47,7 +47,7 @@
  <objectgroup name="Back" width="1" height="1">
   <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
   <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
-  <object name="BoilerSprite" type="EntitySprite" gid="8" x="3382" y="4506"/>
+  <object name="BoilerSprite" type="Boiler" gid="8" x="3380" y="4506"/>
   <object name="PC_Screen" type="EntitySprite" gid="12" x="2592" y="1421"/>
   <object name="Keyboard" type="EntitySprite" gid="13" x="2592" y="1421"/>
  </objectgroup>

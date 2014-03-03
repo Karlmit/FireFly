@@ -118,8 +118,8 @@ void GameLoop::draw()
 	EntityList::getEntityList().drawBack(mWindow);
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
-	//EntityList::getEntityList().drawLight(mWindow);
-	//EntityList::getEntityList().drawForeground(mWindow);
+	EntityList::getEntityList().drawLight(mWindow);
+	EntityList::getEntityList().drawForeground(mWindow);
 
 
 	mWindow.setView(mWindow.getDefaultView());
