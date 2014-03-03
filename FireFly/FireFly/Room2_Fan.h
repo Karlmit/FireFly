@@ -13,9 +13,7 @@ public:
 	virtual void sendMessage(Entity* sender, string message);
 
 private:
-	//Animation mFanAnimation; // Replace sprite with this when anim
-	sf::Sprite mSprite;	// Temp spriteaaaaaaaaaaaa-aaAAaa
-
+	Animation mFanAnimation; // Fläkt animation
+	sf::Sprite mSprite;	// Fläkten avstängd sprite
 	bool mIsOn;
-	float mScale;
 };

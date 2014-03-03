@@ -111,7 +111,6 @@ void GameLoop::draw()
 	mWindow.clear(sf::Color::Black);
 
 	mWindow.setView(mCamera.getView());
-	//EntityList::getEntityList().draw(mWindow);	// Draws all entities
 
 	// Draws every layer of entities
 	EntityList::getEntityList().drawBackground(mWindow);
@@ -123,7 +122,9 @@ void GameLoop::draw()
 
 
 	mWindow.setView(mWindow.getDefaultView());
-	mWindow.draw(mStatisticsText);
+
+	if (Globals::DEBUG_MODE)
+		mWindow.draw(mStatisticsText);
 
 	mWindow.display();
 }

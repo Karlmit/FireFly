@@ -39,6 +39,12 @@
  <tileset firstgid="13" name="tangentbord_scale" tilewidth="672" tileheight="37">
   <image source="../Resources/Room 2/tangentbord_scale.png" width="672" height="37"/>
  </tileset>
+ <tileset firstgid="14" name="takflakt_spritesheet_motionblur" tilewidth="1644" tileheight="320">
+  <image source="../Resources/Room 2/takflakt_spritesheet_motionblur.png" width="6576" height="320"/>
+ </tileset>
+ <tileset firstgid="18" name="takflakt_spritesheet_normal" tilewidth="1644" tileheight="320">
+  <image source="../Resources/Room 2/takflakt_spritesheet_normal.png" width="7200" height="320"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
   <object x="797" y="116" width="269" height="156"/>
@@ -63,8 +69,8 @@
     <property name="id" value="ToggleSpriteFanButton"/>
    </properties>
   </object>
-  <object name="TakFlakt" type="Room2_Fan" gid="11" x="2133" y="166"/>
   <object name="SugarBowlTop" type="SugarBowlTop" gid="7" x="4384" y="1204"/>
+  <object name="TakFlakt" type="Room2_Fan" gid="15" x="2067" y="254"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>

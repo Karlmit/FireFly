@@ -304,9 +304,13 @@ void Map::loadObjectGroups(XMLDocument *xmlmap)
 
 MapTileset Map::getTileset(int gid) 
 {
-	for (MapTileset tileset : mTilesets)
-		if (tileset.getFirstgid() == gid)
-			return tileset;
+	while ( gid > 0)
+	{
+		for (MapTileset tileset : mTilesets)
+			if (tileset.getFirstgid() == gid)
+				return tileset;
+		gid--;
+	}
 
 	//throw logic_error("Map::getTileset - Finns inget tileset med det gid");
 	return MapTileset();
