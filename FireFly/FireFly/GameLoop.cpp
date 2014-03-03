@@ -34,7 +34,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level1.tmx");
+	Level::startLevel("level2.tmx");
 
 		
 	sf::Clock clock;
@@ -87,7 +87,7 @@ void GameLoop::processEvents()
 			{
 				 textEntered.erase(textEntered.getSize() - 1, 1);
 			}
-			else if (event.text.unicode < 128 && event.text.unicode != '\b')
+			else if (event.text.unicode < 128 && event.text.unicode != '\b' && event.KeyPressed != sf::Keyboard::Return)
 			{
 				if(textEntered.getSize() <= 5)//sets a max length
 				{
