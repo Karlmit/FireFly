@@ -326,7 +326,7 @@
     </ClInclude>
     <ClInclude Include="SugarBowlTop.h">
       <Filter>Header Files</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="Myra.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -344,6 +344,9 @@
     </ClInclude>
     <ClInclude Include="resource2.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Boiler.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -631,7 +634,7 @@
     </ClCompile>
     <ClCompile Include="SugarBowlTop.cpp">
       <Filter>Source Files\Entities</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="Myra.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -643,6 +646,9 @@
     </ClCompile>
     <ClCompile Include="Tween.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Boiler.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

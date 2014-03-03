@@ -121,7 +121,7 @@ void PC::menu()
 		mMenu = true;
 	}
 	//INSIDE AUDIOLOGG
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && mAudioLogg == true)
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mAudioLogg == true)
 	{
 		mAudioLogg = false;
 		mMenu = true;
@@ -138,7 +138,7 @@ void PC::updateEntity(sf::Time dt)
 	//std::string AudioLogg = to_string(mAudioLoggSound.getSound()->getPlayingOffset().asSeconds());
 	std::stringstream ac;
 	ac.precision(2);
-	ac << "Playing Audiologg 9/9: ";
+	ac << "Playing Audiologg 9/9... ";
 	ac << fixed << mAudioLoggSound.getSound()->getPlayingOffset().asSeconds();
 	ac << " / " << mAudioLoggSound.getSound()->getBuffer()->getDuration().asSeconds();
 	ac << "\n\n\n 1. back";

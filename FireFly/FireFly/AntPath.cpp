@@ -28,30 +28,21 @@ AntPath::AntPath(vector<sf::Vector2f> path)
 	}
 
 	
-	for (int i = 0; i < 26; i++)
+	// Creates ants
+	for (int i = 0; i < 20; i++)
 	{
 		Entity* myra = new Myra(i*200.f  ,mPath, mLengths, mDirections, mTotalLength);
 		EntityList::getEntityList().addEntity(myra, Layer::Background);
-	}
-	
-	//mMyroror
-
+	}	
 }
 
 
 void AntPath::updateEntity(sf::Time dt)
-{
-	
-
-
-	 
+{	 
 }
 
 void AntPath::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	//states.transform *= getTransform();
-	//target.draw(mAnt);
-
 	// Draw Lines	
 
 	if (Globals::DEBUG_MODE)

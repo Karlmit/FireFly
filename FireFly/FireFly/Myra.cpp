@@ -28,6 +28,8 @@ Myra::Myra(float pos, vector<sf::Vector2f> path, vector<float> lengths, vector<s
 	, mZidIsSweet(false)
 	, mZid(nullptr)
 	, mDroppedSugarZid()
+	, mDroppedInBoiler(false)
+	, mPos(0)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -49,25 +51,93 @@ void Myra::start()
 void Myra::updateEntity(sf::Time dt)
 {
 
-	// Dropped sugar //
-	if (!mZid->isSweet() && mZidIsSweet)
+	// Check if in boiler then destroy self and send a message to the boiler
+	if (mDroppedInBoiler && mPos == mTotalLength)
 	{
-		mZidDroppedSugar = true;
-		mDroppedSugarZid.restart();
+		EntityList::getEntityList().getEntity("Boiler")->sendMessage(this, "Ants!");
+		this->killEntity();
 	}
 
-	if (mZidDroppedSugar && mDroppedSugarZid.getElapsedTime().asSeconds() < TIME_CHECKING_OUT_SUGAR)
+	// If dropped sugar in boiler //
+	if (mDroppedInBoiler)
 	{
+		// Move Right
+		setPosition(mPos + SPEED * dt.asSeconds());
+		mMoveForward = true;
+	}
+	
+	if (!mDroppedInBoiler)
+	{
+		// Dropped sugar //
 
-		// Go towards sugar //
-		float distanceSqr = (mZid->getDroppedSugar() - this->getPosition()).getLengthSqr();
-		if ( distanceSqr > MIN_DISTANCE_TO_SUGAR_SQR)
+		if (!mZid->isSweet() && mZidIsSweet)
 		{
-			const float check_dist_value = 1000.f;
+			mZidDroppedSugar = true;
+			mDroppedSugarZid.restart();
+		}
+
+		if (mZidDroppedSugar && mDroppedSugarZid.getElapsedTime().asSeconds() < TIME_CHECKING_OUT_SUGAR)
+		{
+			// Check if dropped in boiler
+			if (mZid->getDroppedSugar().y > 3000 && 3600 < mZid->getDroppedSugar().x && mZid->getDroppedSugar().x < 4400)
+				mDroppedInBoiler = true;
+
+
+			// Skriv ut cords
+			static int counter = 0;
+			if (counter == 0)
+				cout << "(" << mZid->getDroppedSugar().x << ", " << mZid->getDroppedSugar().y << ")\n";
+			counter = (counter + 1) % 1000;
+
+			// Go towards sugar //
+			float distanceSqr = (mZid->getDroppedSugar() - this->getPosition()).getLengthSqr();
+			if ( distanceSqr > MIN_DISTANCE_TO_SUGAR_SQR)
+			{
+				const float check_dist_value = 1000.f;
+				sf::Vector2f leftPos = calcPosition(mPos - check_dist_value);
+				sf::Vector2f rightPos = calcPosition(mPos + check_dist_value);
+				float leftDistanceSqr = (mZid->getDroppedSugar() - leftPos).getLengthSqr();
+				float rightDistanceSqr = (mZid->getDroppedSugar() - rightPos).getLengthSqr();
+
+				if (leftDistanceSqr < rightDistanceSqr)
+				{
+					// Move left
+					setPosition(mPos - SPEED * dt.asSeconds());
+					mMoveForward = false;
+				}
+				else
+				{
+					// Move right
+					setPosition(mPos + SPEED * dt.asSeconds());
+					mMoveForward = true;
+			
+				}
+
+			}
+		
+		}
+		else
+		{
+			mZidDroppedSugar = false;
+		}
+
+
+
+		mZidIsSweet = mZid->isSweet();
+		// --------- //
+
+
+
+
+		// Go toward sweet zid //
+		float distanceSqr = (mZid->getPosition() - this->getPosition()).getLengthSqr();
+		if (mZid->isSweet() && distanceSqr > MIN_DISTANCE_TO_SWEET_ZID_SQR && distanceSqr < FOLLOW_DISTANCE_ZID_SQR)
+		{
+			const float check_dist_value = 300.f;
 			sf::Vector2f leftPos = calcPosition(mPos - check_dist_value);
 			sf::Vector2f rightPos = calcPosition(mPos + check_dist_value);
-			float leftDistanceSqr = (mZid->getDroppedSugar() - leftPos).getLengthSqr();
-			float rightDistanceSqr = (mZid->getDroppedSugar() - rightPos).getLengthSqr();
+			float leftDistanceSqr = (mZid->getPosition() - leftPos).getLengthSqr();
+			float rightDistanceSqr = (mZid->getPosition() - rightPos).getLengthSqr();
 
 			if (leftDistanceSqr < rightDistanceSqr)
 			{
@@ -84,52 +154,13 @@ void Myra::updateEntity(sf::Time dt)
 			}
 
 		}
-		
+		// ----- //
+
+
+		// else idle //
+		else if (mIdle)
+			idleMovement(dt);
 	}
-	else
-	{
-		mZidDroppedSugar = false;
-	}
-
-
-
-	mZidIsSweet = mZid->isSweet();
-	// --------- //
-
-
-
-
-	// Go toward sweet zid //
-	float distanceSqr = (mZid->getPosition() - this->getPosition()).getLengthSqr();
-	if (mZid->isSweet() && distanceSqr > MIN_DISTANCE_TO_SWEET_ZID_SQR && distanceSqr < FOLLOW_DISTANCE_ZID_SQR)
-	{
-		const float check_dist_value = 300.f;
-		sf::Vector2f leftPos = calcPosition(mPos - check_dist_value);
-		sf::Vector2f rightPos = calcPosition(mPos + check_dist_value);
-		float leftDistanceSqr = (mZid->getPosition() - leftPos).getLengthSqr();
-		float rightDistanceSqr = (mZid->getPosition() - rightPos).getLengthSqr();
-
-		if (leftDistanceSqr < rightDistanceSqr)
-		{
-			// Move left
-			setPosition(mPos - SPEED * dt.asSeconds());
-			mMoveForward = false;
-		}
-		else
-		{
-			// Move right
-			setPosition(mPos + SPEED * dt.asSeconds());
-			mMoveForward = true;
-			
-		}
-
-	}
-	// ----- //
-
-
-	// else idle //
-	else if (mIdle)
-		idleMovement(dt);
 	
 
 	
