@@ -31,7 +31,7 @@
   <image source="../Resources/Room 2/takflakt_knapp_off_scale.png" width="140" height="140"/>
  </tileset>
  <tileset firstgid="11" name="takflakt_scale" tilewidth="1525" tileheight="168">
-  <image source="../Resources/Room 2/takflakt_scale.png" width="1525" height="168"/>
+  <image source="../Resources/Room 2/takflakt_scale.png" width="1596" height="320"/>
  </tileset>
  <tileset firstgid="12" name="PC_Screen_SCALE" tilewidth="730" tileheight="486">
   <image source="../Resources/Room 2/PC_Screen_SCALE.png" width="730" height="486"/>
@@ -42,13 +42,11 @@
  <tileset firstgid="14" name="takflakt_spritesheet_motionblur" tilewidth="1644" tileheight="320">
   <image source="../Resources/Room 2/takflakt_spritesheet_motionblur.png" width="6576" height="320"/>
  </tileset>
- <tileset firstgid="18" name="takflakt_spritesheet_normal" tilewidth="1644" tileheight="320">
-  <image source="../Resources/Room 2/takflakt_spritesheet_normal.png" width="7200" height="320"/>
+ <tileset firstgid="18" name="ventilflakt_spritesheet_band_motionblur" tilewidth="287" tileheight="449">
+  <image source="../Resources/Room 2/ventilflakt_spritesheet_band_motionblur.png" width="2296" height="449"/>
  </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
-  <object x="797" y="116" width="269" height="156"/>
-  <object x="797" y="116" width="270" height="155"/>
  </objectgroup>
  <objectgroup name="Back" width="1" height="1">
   <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
@@ -61,7 +59,6 @@
  <objectgroup name="Front" width="1" height="1">
   <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167" visible="0"/>
   <object name="Suger Bowl" type="EntitySprite" gid="6" x="4354" y="1317"/>
-  <object name="AC Flakt" type="EntitySprite" gid="9" x="4782" y="599"/>
   <object name="FanButton" type="ToggleSprite" gid="10" x="703" y="906">
    <properties>
     <property name="ToggleOffTexture" value="Room 2/takflakt_knapp_off_scale.png"/>
@@ -71,6 +68,7 @@
   </object>
   <object name="SugarBowlTop" type="SugarBowlTop" gid="7" x="4384" y="1204"/>
   <object name="TakFlakt" type="Room2_Fan" gid="15" x="2067" y="254"/>
+  <object name="AC Flakt" type="Room2_AC" gid="18" x="4786" y="592"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
@@ -111,6 +109,12 @@
   </object>
   <object name="CollVent1" type="StaticCollision" x="0" y="2161">
    <polyline points="0,0 36,1 43,1844 730,1843 731,2318"/>
+  </object>
+  <object name="AC_CollTop" type="StaticCollision" x="5071" y="157">
+   <polyline points="0,0 -47,46 -51,73 -52,288 1,294"/>
+  </object>
+  <object name="AC_CollBottom" type="StaticCollision" x="5071" y="587">
+   <polyline points="0,0 -48,-51 -48,-56 1,-55"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
@@ -187,7 +191,7 @@
    <ellipse/>
   </object>
   <object name="FlyTapeStickyZoneR1" type="StickyZone" x="1859" y="-6" width="15" height="89"/>
-  <object name="AC Force Zone" type="ForceZone" x="4481" y="151" width="586" height="443">
+  <object name="AC Force Zone" type="ForceZone" x="4483" y="157" width="587" height="431" visible="0">
    <properties>
     <property name="id" value="ACForceZone"/>
     <property name="xForce" value="-12"/>

@@ -24,6 +24,7 @@
 #include "Light.h"
 #include "AntPath.h"
 #include "Boiler.h"
+#include "Room2_AC.h"
 
 
 #include <iostream>
@@ -379,6 +380,16 @@ void Level::loadMap(string filename)
 			else if (entityType == "Room2_Fan")
 			{
 				Room2_Fan* fan = new Room2_Fan(imageSrc, positionSprite);
+				fan->setProperties(obj.getProperties());
+				eList.addEntity(fan, layer, false);
+			}
+
+			//
+			//	Room2_AC
+			//
+			else if (entityType == "Room2_AC")
+			{
+				Room2_AC* fan = new Room2_AC(imageSrc, positionSprite);
 				fan->setProperties(obj.getProperties());
 				eList.addEntity(fan, layer, false);
 			}

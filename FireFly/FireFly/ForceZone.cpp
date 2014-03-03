@@ -1,10 +1,16 @@
 #include "ForceZone.h"
 
+// Temp hack to decrease force to the left
+// If needed somewhere else than room 2 change this to a more generic one
 
 ForceZone::ForceZone(sf::FloatRect rect)
-	: mRigidbody()
+	: mActivated(true)
+	, mRigidbody()
 	, mBodiesInTheZone()
 	, mForce()
+	, mb2Position(Rigidbody::SfToBoxVec(rect.left, rect.top))
+	, mb2Width(Rigidbody::SfToBoxFloat(rect.width))
+	, mb2Height(Rigidbody::SfToBoxFloat(rect.height))
 {
 	mRigidbody.AddTriggerBoxBody(rect);
 	mRigidbody.getBody()->SetUserData(this);
@@ -17,10 +23,29 @@ void ForceZone::start()
 		mForce = b2Vec2(getPropertyFloat("xForce"), getPropertyFloat("yForce"));
 }
 
+void ForceZone::sendMessage(Entity* sender, string message)
+{
+	if (message == "Activate")
+		mActivated = true;
+	
+	if (message == "Deactivate")
+		mActivated = false;
+}
+
 void ForceZone::updateEntity(sf::Time dt)
 {
+	if (!mActivated)
+		return;
+
 	for (b2Body* body : mBodiesInTheZone)
-		body->ApplyForceToCenter(mForce, true);
+	{
+		//mb2Position
+		float xRatioFromSource = 1.f - (mb2Position.x + mb2Width - body->GetPosition().x ) / mb2Width;
+		
+		
+		//b2Vec2 force = mForce
+		body->ApplyForceToCenter(xRatioFromSource*mForce, true);
+	}
 }
 
 void ForceZone::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const

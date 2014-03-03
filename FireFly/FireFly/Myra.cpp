@@ -65,6 +65,7 @@ void Myra::updateEntity(sf::Time dt)
 		setPosition(mPos + SPEED * dt.asSeconds());
 		mMoveForward = true;
 	}
+
 	
 	if (!mDroppedInBoiler)
 	{
@@ -78,20 +79,17 @@ void Myra::updateEntity(sf::Time dt)
 
 		if (mZidDroppedSugar && mDroppedSugarZid.getElapsedTime().asSeconds() < TIME_CHECKING_OUT_SUGAR)
 		{
+			
+				
+
 			// Check if dropped in boiler
 			if (mZid->getDroppedSugar().y > 3000 && 3600 < mZid->getDroppedSugar().x && mZid->getDroppedSugar().x < 4400)
 				mDroppedInBoiler = true;
-
-
-			// Skriv ut cords
-			static int counter = 0;
-			if (counter == 0)
-				cout << "(" << mZid->getDroppedSugar().x << ", " << mZid->getDroppedSugar().y << ")\n";
-			counter = (counter + 1) % 1000;
+						
 
 			// Go towards sugar //
 			float distanceSqr = (mZid->getDroppedSugar() - this->getPosition()).getLengthSqr();
-			if ( distanceSqr > MIN_DISTANCE_TO_SUGAR_SQR)
+			if ( distanceSqr > MIN_DISTANCE_TO_SUGAR_SQR && mZid->getDroppedSugar().y > 3000 && mZid->getDroppedSugar().x < 4400)
 			{
 				const float check_dist_value = 1000.f;
 				sf::Vector2f leftPos = calcPosition(mPos - check_dist_value);

@@ -163,6 +163,7 @@
     <ClInclude Include="resource1.h" />
     <ClInclude Include="resource2.h" />
     <ClInclude Include="Room1_Coat.h" />
+    <ClInclude Include="Room2_AC.h" />
     <ClInclude Include="Room2_Fan.h" />
     <ClInclude Include="SecuMonitor.h" />
     <ClInclude Include="Spider.h" />
@@ -264,6 +265,7 @@
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="RayCastCallback.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />
+    <ClCompile Include="Room2_AC.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
     <ClCompile Include="SecuMonitor.cpp" />
     <ClCompile Include="Spider.cpp" />

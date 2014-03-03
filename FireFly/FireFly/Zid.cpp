@@ -16,7 +16,7 @@ const float SCALE = 1.f/2;
 // Sugar
 const float EMISSION_RATE = 5.f;
 const float SUGAR_GRAVITY = 120.f;
-const float LOSE_SUGAR_EMISSION = 220.f;
+const float LOSE_SUGAR_EMISSION = 300.f;
 const float LOSE_SUGAR_TIME = 0.6f;
 
 Zid::Zid(sf::Vector2f position)
