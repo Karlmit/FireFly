@@ -3,7 +3,7 @@
 
 const float SHAKE_DISTANCE = 2.f;
 const float DEC_SPEED_SHAKE = 1.f;
-const float DELAY_UNTIL_DEACTIVATE = 4.f;
+const float DELAY_UNTIL_DEACTIVATE = 3.f;
 
 
 Boiler::Boiler(string textureID ,sf::Vector2f position) 

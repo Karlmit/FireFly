@@ -111,19 +111,23 @@ void GameLoop::draw()
 	mWindow.clear(sf::Color::Black);
 
 	mWindow.setView(mCamera.getView());
-	//EntityList::getEntityList().draw(mWindow);	// Draws all entities
 
 	// Draws every layer of entities
 	EntityList::getEntityList().drawBackground(mWindow);
 	EntityList::getEntityList().drawBack(mWindow);
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
-	EntityList::getEntityList().drawLight(mWindow);
+
+	if (Globals::SHOW_LIGHT)
+		EntityList::getEntityList().drawLight(mWindow);
+
 	EntityList::getEntityList().drawForeground(mWindow);
 
 
 	mWindow.setView(mWindow.getDefaultView());
-	mWindow.draw(mStatisticsText);
+
+	if (Globals::DEBUG_MODE || Globals::SHOW_FPS)
+		mWindow.draw(mStatisticsText);
 
 	mWindow.display();
 }
@@ -173,6 +177,10 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 
 	if (key == sf::Keyboard::P && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
+	else if (key == sf::Keyboard::O && isPressed == false)
+		Globals::SHOW_FPS = !Globals::SHOW_FPS;
+	else if (key == sf::Keyboard::I && isPressed == false)
+		Globals::SHOW_LIGHT = !Globals::SHOW_LIGHT;
 
 	if (isPressed == false)
 	{

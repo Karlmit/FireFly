@@ -1,11 +1,14 @@
 #include "Room2_Fan.h"
 
-const float SPEED = 2.f;
+
+const unsigned FRAMES_PER_SECOND = 60;
+const unsigned TIME_PER_FRAME = unsigned( 1000 / FRAMES_PER_SECOND );
+
 
 Room2_Fan::Room2_Fan(string texture, sf::Vector2f position)
-	: mSprite(Loading::getTexture(texture))
+	: mSprite(Loading::getTexture("Room 2/takflakt_scale.png"))
 	, mIsOn(true)
-	, mScale(1)
+	, mFanAnimation(Loading::getTexture(texture), 1644, 320, 1, 4, TIME_PER_FRAME)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -21,30 +24,8 @@ void Room2_Fan::updateEntity(sf::Time dt)
 	if (!mIsOn)
 		return;
 
-	static bool dir = true;
-	
-	if (dir)
-	{
-		mScale += SPEED * dt.asSeconds();
 
-		if (mScale >= 1)
-		{
-			dir = false;			
-			mScale = 1;
-		}		
-	}
-	else
-	{
-		mScale -= SPEED * dt.asSeconds();
-
-		if (mScale <= 0)
-		{
-			dir = true;
-			mScale = 0;
-		}		
-	}
-
-	mSprite.setScale(mScale, 1);	
+	mFanAnimation.updateAnimation();
 }
 
 void Room2_Fan::sendMessage(Entity* sender ,string message)
@@ -58,6 +39,9 @@ void Room2_Fan::sendMessage(Entity* sender ,string message)
 void Room2_Fan::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
-		
-	target.draw(mSprite, states);
+
+	if (mIsOn)	
+		target.draw(mFanAnimation.getCurrentSprite(), states);
+	else
+		target.draw(mSprite, states);
 }
