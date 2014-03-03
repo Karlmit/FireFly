@@ -18,6 +18,7 @@ const float EMISSION_RATE = 5.f;
 const float SUGAR_GRAVITY = 120.f;
 const float LOSE_SUGAR_EMISSION = 300.f;
 const float LOSE_SUGAR_TIME = 0.6f;
+const float AC_ZONE_SUGAR_VEL_X = -200.f;
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
@@ -32,6 +33,7 @@ Zid::Zid(sf::Vector2f position)
 , mLoseSugar(false)
 , mLoseSugarTimer()
 , mDroppedSugarPosition()
+, mInAcZone(false)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -87,7 +89,37 @@ Zid::Zid(sf::Vector2f position)
 	mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
 
 	
+	
 } 
+
+void Zid::sendMessage(Entity* sender, string message)
+{
+	if (message == "InAcZone")
+	{
+		/*
+		mParticleSystem.clearAffectors();
+		// fade in/out animations
+		thor::FadeAnimation fader(0.09f, 0.1f);
+		mParticleSystem.addAffector( thor::AnimationAffector(fader) );
+		mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
+		mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(AC_ZONE_SUGAR_VEL_X, SUGAR_GRAVITY))  );
+		*/
+		mInAcZone = true;
+	}
+	if (message == "OutAcZone")
+	{
+		/*
+		mParticleSystem.clearAffectors();
+		// fade in/out animations
+		thor::FadeAnimation fader(0.09f, 0.1f);
+		mParticleSystem.addAffector( thor::AnimationAffector(fader) );
+		mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
+		mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
+		*/
+		mInAcZone = false;
+	}
+	
+}
 
 
 
@@ -293,9 +325,14 @@ void Zid::movement()
 
 void Zid::sugarStuff(sf::Time dt)
 {
+
 	if (mSweetZid)
 	{		
-		mEmitter.setParticleVelocity(sf::Vector2f());
+		if (mInAcZone)
+			mEmitter.setParticleVelocity(sf::Vector2f() + sf::Vector2f(AC_ZONE_SUGAR_VEL_X, 0));
+		else
+			mEmitter.setParticleVelocity(sf::Vector2f());
+
 		mEmitter.setParticlePosition( thor::Distributions::circle(getPosition(), 10.f) );
 		mEmitter.setEmissionRate(EMISSION_RATE);
 
@@ -309,10 +346,8 @@ void Zid::sugarStuff(sf::Time dt)
 			float distance = Rigidbody::BoxToSfFloat( (Rigidbody::SfToBoxVec(getPosition()) - ray.point).Length() );
 			float lifetime = sqrtf(2 * distance / SUGAR_GRAVITY);	// Fysik A ftw
 		
-			mEmitter.setParticleLifetime(sf::seconds(lifetime+0.02f));
- 
+			mEmitter.setParticleLifetime(sf::seconds(lifetime+0.02f)); 
 		}
-
 
 	}
 	else
@@ -322,7 +357,11 @@ void Zid::sugarStuff(sf::Time dt)
 
 	if (mLoseSugar && mLoseSugarTimer.getElapsedTime().asSeconds() < LOSE_SUGAR_TIME)
 	{
-		mEmitter.setParticleVelocity( thor::Distributions::circle(sf::Vector2f(), 100));
+		if (mInAcZone)			
+			mEmitter.setParticleVelocity(thor::Distributions::deflect(sf::Vector2f(AC_ZONE_SUGAR_VEL_X, 0), 50));
+		else
+			mEmitter.setParticleVelocity( thor::Distributions::circle(sf::Vector2f(), 100));
+
 		mEmitter.setParticlePosition( thor::Distributions::circle(getPosition(), 10.f) );
 		mEmitter.setEmissionRate(LOSE_SUGAR_EMISSION);
 
@@ -369,6 +408,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		mSweetZid = true;
 	}
+
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
