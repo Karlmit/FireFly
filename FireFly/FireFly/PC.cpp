@@ -5,6 +5,11 @@
 
 PC::PC(sf::Vector2f position)
 	: mAudioLoggSound(Loading::getSound("canary.wav"), true),
+	mButton1(Loading::getSound("Room 2/Tangentbord/Tangent1.wav"), true),
+	mButton2(Loading::getSound("Room 2/Tangentbord/Tangent2.wav"), true),
+	mButton3(Loading::getSound("Room 2/Tangentbord/Tangent3.wav"), true),
+	mButton4(Loading::getSound("Room 2/Tangentbord/Tangent4.wav"), true),
+	mButton5(Loading::getSound("Room 2/Tangentbord/TangentSpacebar.wav"), true),
 	mComputerOnSprite(Loading::getTexture("Room 2/datorskarm_gron_scale.png")),
 	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png"))
 {
@@ -85,6 +90,7 @@ void PC::sendMessage(Entity* entity, std::string message)
 
 void PC::sendSfString(Entity* entity, sf::String message)
 {
+	playButtonSound();
 	if(message.getSize() <= 5)
 	{
 		msfString = message;
@@ -278,4 +284,31 @@ void PC::getTextEntered(std::string text)
 bool PC::newPC()
 {
 	return mNewPC;
+}
+
+void PC::playButtonSound()
+{
+	int random = rand()%5;
+	if(random == 0)
+	{
+		mButton1.play();
+	}
+	else if(random == 1)
+	{
+		mButton2.play();
+	}
+	else if(random == 2)
+	{
+		mButton3.play();
+	}
+	else if(random == 3)
+	{
+		mButton4.play();
+	}
+	else if(random == 4)
+	{
+		mButton5.play();
+	}
+
+
 }

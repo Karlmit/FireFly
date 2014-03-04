@@ -3,6 +3,57 @@
  <tileset firstgid="1" name="SCHAKT" tilewidth="5000" tileheight="2160">
   <image source="../Resources/Schakt 1/SCHAKT.png" width="5000" height="2160"/>
  </tileset>
+ <tileset firstgid="2" name="balk1_scale" tilewidth="43" tileheight="146">
+  <image source="../Resources/Schakt 1/balk1_scale.png" width="43" height="146"/>
+ </tileset>
+ <tileset firstgid="3" name="balk2_scale" tilewidth="43" tileheight="146">
+  <image source="../Resources/Schakt 1/balk2_scale.png" width="43" height="146"/>
+ </tileset>
+ <tileset firstgid="4" name="balk4_scale" tilewidth="132" tileheight="135">
+  <image source="../Resources/Schakt 1/balk4_scale.png" width="132" height="135"/>
+ </tileset>
+ <tileset firstgid="5" name="balk5_scale" tilewidth="132" tileheight="135">
+  <image source="../Resources/Schakt 1/balk5_scale.png" width="132" height="135"/>
+ </tileset>
+ <tileset firstgid="6" name="balk6_scale" tilewidth="228" tileheight="78">
+  <image source="../Resources/Schakt 1/balk6_scale.png" width="228" height="78"/>
+ </tileset>
+ <tileset firstgid="7" name="balk7_scale" tilewidth="228" tileheight="78">
+  <image source="../Resources/Schakt 1/balk7_scale.png" width="228" height="78"/>
+ </tileset>
+ <tileset firstgid="8" name="balk1_scale - Copy" tilewidth="146" tileheight="43">
+  <image source="../Resources/Schakt 1/balk1_scale - Copy.png" width="146" height="43"/>
+ </tileset>
+ <tileset firstgid="9" name="balk3_scale" tilewidth="146" tileheight="43">
+  <image source="../Resources/Schakt 1/balk3_scale.png" width="146" height="43"/>
+ </tileset>
+ <tileset firstgid="10" name="balk3_scale - Copy" tilewidth="43" tileheight="146">
+  <image source="../Resources/Schakt 1/balk3_scale - Copy.png" width="43" height="146"/>
+ </tileset>
+ <tileset firstgid="11" name="balk2_scale - Copy" tilewidth="43" tileheight="146">
+  <image source="../Resources/Schakt 1/balk2_scale - Copy.png" width="43" height="146"/>
+ </tileset>
+ <tileset firstgid="12" name="balk2_scale -side" tilewidth="146" tileheight="43">
+  <image source="../Resources/Schakt 1/balk2_scale -side.png" width="146" height="43"/>
+ </tileset>
+ <tileset firstgid="13" name="nat1_scale" tilewidth="118" tileheight="254">
+  <image source="../Resources/Schakt 1/nat1_scale.png" width="118" height="254"/>
+ </tileset>
+ <tileset firstgid="14" name="nat2_scale" tilewidth="96" tileheight="254">
+  <image source="../Resources/Schakt 1/nat2_scale.png" width="96" height="254"/>
+ </tileset>
+ <tileset firstgid="15" name="nat1_scale - Side" tilewidth="254" tileheight="118">
+  <image source="../Resources/Schakt 1/nat1_scale - Side.png" width="254" height="118"/>
+ </tileset>
+ <tileset firstgid="16" name="nat1_scale - Reverse" tilewidth="118" tileheight="254">
+  <image source="../Resources/Schakt 1/nat1_scale - Reverse.png" width="118" height="254"/>
+ </tileset>
+ <tileset firstgid="17" name="spindelnat1_scale" tilewidth="186" tileheight="196">
+  <image source="../Resources/Schakt 1/spindelnat1_scale.png" width="186" height="196"/>
+ </tileset>
+ <tileset firstgid="18" name="spindelnat4_scale" tilewidth="234" tileheight="219">
+  <image source="../Resources/Schakt 1/spindelnat4_scale.png" width="234" height="219"/>
+ </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
    <tile gid="0"/>
@@ -24,11 +75,100 @@
   <object name="wall" type="StaticCollision" x="0" y="728">
    <polyline points="0,0 692,-2"/>
   </object>
+  <object name="Balk" type="StaticCollision" x="2136" y="58">
+   <polyline points="0,0 -2,140 2,142 5,142 8,145 9,147 40,147 41,100 36,91 36,87 39,79 41,74 42,0"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="2276" y="314">
+   <polyline points="0,0 1,-124 25,-147 41,-147 42,-1"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="3457" y="698">
+   <polyline points="0,0 -22,0 -26,7 -33,9 -41,7 -51,7 -69,1 -146,0 -146,11 -142,18 -139,24 -141,30 -140,35 -141,42 1,42"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="3201" y="811">
+   <polyline points="0,0 123,0 132,9 142,22 145,26 146,42 0,41"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="1614" y="1517">
+   <polyline points="0,0 -1,-140 -8,-144 -11,-148 -43,-148 -45,-104 -39,-91 -40,-84 -44,-77 -44,-3"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="1660" y="1197">
+   <polyline points="0,0 -139,1 -144,9 -148,11 -147,42 -146,44 -100,43 -93,40 -90,39 -82,39 -80,42 -77,44 -1,45"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="1397" y="1067">
+   <polyline points="0,0 0,-11 5,-14 5,-24 2,-27 2,-32 5,-40 4,-46 8,-50 10,-54 9,-76 -205,-77 -207,-71 -216,-68 -216,-12 -210,-12 -210,0"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="1125" y="815">
+   <polyline points="0,0 0,72 -4,78 -5,84 -4,88 0,94 0,143 -32,144 -35,140 -38,139 -42,137 -42,135 -42,-2"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="403" y="1137">
+   <polyline points="0,0 125,3 131,8 138,15 146,23 147,43 -1,44"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="658" y="1279">
+   <polyline points="0,0 -23,1 -27,7 -36,8 -46,7 -56,4 -67,-1 -145,0 -146,11 -143,18 -138,24 -139,30 -139,36 -142,42 1,42"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="1121" y="1844">
+   <polyline points="0,0 0,138 5,143 9,143 9,145 11,147 44,147 43,99 40,90 39,82 42,76 43,71 43,-1"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="1628" y="2095">
+   <polyline points="0,0 0,-143 6,-141 13,-142 18,-140 27,-147 31,-147 43,-147 42,-69 38,-55 35,-47 34,-40 34,-33 34,-29 40,-25 43,-20 43,-15 44,-5 43,0"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="2037" y="2095">
+   <polyline points="0,0 -1,-73 4,-81 4,-87 2,-94 -1,-98 0,-146 31,-147 35,-141 40,-140 42,-137 42,2"/>
+  </object>
+  <object name="Balk" type="StaticCollision" x="3309" y="1706">
+   <polyline points="0,0 -1,-126 13,-137 23,-148 40,-148 41,-2"/>
+  </object>
+  <object name="Nat" type="StaticCollision" x="2875" y="439">
+   <polyline points="0,0 11,1 15,11 33,44 55,81 65,95 73,98 86,101 93,101 103,93 107,85"/>
+  </object>
+  <object name="Nat" type="StaticCollision" x="2877" y="689">
+   <polyline points="0,0 3,3 5,1 12,-1 28,-15 38,-35 43,-43 45,-48 57,-57 80,-70 87,-76 97,-78 105,-72 111,-66"/>
+  </object>
+  <object name="Nat" type="StaticCollision" x="897" y="815">
+   <polyline points="0,0 -25,28 -33,40 -37,48 -42,57 -57,64 -69,71 -76,79 -86,83 -98,78 -104,73"/>
+  </object>
+  <object name="Nat" type="StaticCollision" x="896" y="1065">
+   <polyline points="0,0 -8,-19 -14,-31 -29,-50 -37,-62 -46,-86 -53,-92 -62,-95 -76,-99 -84,-97 -93,-87 -97,-82 -97,-78"/>
+  </object>
+  <object name="Nat" type="StaticCollision" x="401" y="1666">
+   <polyline points="0,0 6,5 15,14 34,27 57,44 66,59 79,77 84,88 77,104 74,106"/>
+  </object>
+  <object name="Nat" type="StaticCollision" x="657" y="1667">
+   <polyline points="0,0 -13,8 -29,14 -63,38 -75,42 -95,56 -100,70 -104,78 -100,84 -96,92 -85,98 -82,98"/>
+  </object>
+  <object name="Nat" type="StaticCollision" x="1836" y="1841">
+   <polyline points="0,0 1,12 6,25 6,34 6,47 6,56 10,66 14,91 14,119 15,137 23,144 30,155 43,173 54,182 70,183 85,182"/>
+  </object>
+  <object name="Nat" type="StaticCollision" x="1826" y="2097">
+   <polyline points="0,0 12,-1 22,-6 29,-10"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="90" y="585" width="45" height="37">
    <ellipse/>
   </object>
+  <object name="NetZone" type="NetZone" x="2251" y="1360" width="177" height="163"/>
+  <object name="NetZone" type="NetZone" x="393" y="804" width="163" height="152"/>
  </objectgroup>
- <objectgroup name="Front" width="1" height="1"/>
+ <objectgroup name="Front" width="1" height="1">
+  <object name="Balk" type="EntitySprite" gid="2" x="2277" y="313"/>
+  <object name="Balk" type="EntitySprite" gid="11" x="2135" y="206"/>
+  <object name="Balk" type="EntitySprite" gid="9" x="3310" y="741"/>
+  <object name="Balk" type="EntitySprite" gid="8" x="3200" y="854"/>
+  <object name="Balk" type="EntitySprite" gid="3" x="1570" y="1515"/>
+  <object name="Balk" type="EntitySprite" gid="12" x="1511" y="1242"/>
+  <object name="Balk" type="EntitySprite" gid="7" x="1179" y="1067"/>
+  <object name="Balk" type="EntitySprite" gid="11" x="1082" y="960"/>
+  <object name="Balk" type="EntitySprite" gid="8" x="405" y="1182"/>
+  <object name="Balk" type="EntitySprite" gid="9" x="512" y="1322"/>
+  <object name="Balk" type="EntitySprite" gid="11" x="1122" y="1992"/>
+  <object name="Balk" type="EntitySprite" gid="10" x="1628" y="2093"/>
+  <object name="Balk" type="EntitySprite" gid="3" x="2036" y="2094"/>
+  <object name="Balk" type="EntitySprite" gid="2" x="3308" y="1704"/>
+  <object name="NatGaller" type="EntitySprite" gid="13" x="2875" y="694"/>
+  <object name="NatGaller" type="EntitySprite" gid="14" x="1825" y="2098"/>
+  <object name="NatGaller" type="EntitySprite" gid="15" x="404" y="1776"/>
+  <object name="NatGaller" type="EntitySprite" gid="16" x="790" y="1069"/>
+  <object name="Nat" type="EntitySprite" gid="17" x="404" y="1013"/>
+  <object name="Nat" type="EntitySprite" gid="18" x="2195" y="1522"/>
+ </objectgroup>
 </map>

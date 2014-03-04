@@ -22,7 +22,7 @@ public:
 private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
-
+	void playButtonSound();
 	void loggin();
 	void menu();
 
@@ -69,6 +69,12 @@ private:
 
 	//sounds
 	Audio mAudioLoggSound;
+	Audio mButton1;
+	Audio mButton2;
+	Audio mButton3;
+	Audio mButton4;
+	Audio mButton5;
+	
 	//string stream
 	std::ostringstream oss;
 };
