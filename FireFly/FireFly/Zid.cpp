@@ -16,7 +16,7 @@ const float SCALE = 1.f/2;
 // Sugar
 const float EMISSION_RATE = 5.f;
 const float SUGAR_GRAVITY = 120.f;
-const float LOSE_SUGAR_EMISSION = 300.f;
+const float LOSE_SUGAR_EMISSION = 220.f;
 const float LOSE_SUGAR_TIME = 0.6f;
 
 Zid::Zid(sf::Vector2f position)
@@ -86,9 +86,24 @@ Zid::Zid(sf::Vector2f position)
 	mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
 	mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
 
-	
+	//PC Zone
+	mPC_Zone = false;
+	mJumpUp = false;
 } 
 
+void Zid::sendMessage(Entity* entity, std::string message)
+{
+	if(message == "button_pressed" && mPC_Zone == true)
+	{
+		float xPosition = 2614 + rand()%600;
+		mRigidbody.getBody()->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat(xPosition), Rigidbody::SfToBoxFloat(-getPosition().y)), 0);
+		b2Vec2 force(0, -20);
+		mRigidbody.getBody()->ApplyLinearImpulse(force , mRigidbody.getBody()->GetWorldCenter(), true);
+		mJumpUp = true;
+		PCButton.restart();
+	}
+
+}
 
 
 void Zid::updateEntity(sf::Time dt) 
@@ -157,9 +172,21 @@ void Zid::updateEntity(sf::Time dt)
 		}
 	}
 
+	PC = EntityList::getEntityList().getEntity("PC");
+	if(mPC_Zone == true && PC != nullptr)
+	{
+		PC->sendMessage(this, "in_PC_Zone");
+	}
+	else if(PC != nullptr)
+	{
+		PC->sendMessage(this, "out_of_PC_Zone");
+	}
 
+	if(mPC_Zone == false)
+	{
 	// Set the camera to follow zid
 	Camera::currentCamera().setTargetPosition(getPosition());
+	}
 
 	// Get the position and rotation from the rigidbody
 	mRigidbody.update();				
@@ -169,11 +196,11 @@ void Zid::updateEntity(sf::Time dt)
 	//get spoderMan
 	mSpoderMan = EntityList::getEntityList().getEntity("spoderMan");
 	//activates or deactivates the spider for room 2	
-	if(mSweetZid)
+	if(mSweetZid && mSpoderMan != nullptr)
 	{
 		mSpoderMan->sendMessage(this, "activate");
 	}
-	else
+	else if(mSpoderMan != nullptr)
 	{
 		mSpoderMan->sendMessage(this, "deactivate");
 	}
@@ -206,6 +233,13 @@ void Zid::movement()
 {
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
+
+	if(PCButton.getElapsedTime().asMilliseconds() > 200 && mPC_Zone == true && mJumpUp == true)
+	{
+		b2Vec2 force(0, 4);
+		mRigidbody.getBody()->ApplyLinearImpulse(force , mRigidbody.getBody()->GetWorldCenter(), true);
+		mJumpUp = false;
+	}
 
 
 	// Counter gravity
@@ -364,6 +398,11 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		mInStickyZone = true;
 	}
+	if(other->getID() == "PC_Zone")
+	{
+		mPC_Zone = true;
+	}
+
 
 	if (other->getID() == "Sugar")
 	{
@@ -377,4 +416,10 @@ void Zid::EndContact(b2Contact *contact, Entity* other)
 	{
 		mInStickyZone = false;
 	}
+
+	if(other->getID() == "PC_Zone")
+	{
+		mPC_Zone = false;
+	}
+
 }

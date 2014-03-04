@@ -21,6 +21,7 @@ public:
 private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
+
 	void loggin();
 	void menu();
 
@@ -37,6 +38,7 @@ private:
 	sf::Text mHintText;
 	sf::Text mWelcomeText;
 	sf::Text mAudioLoggText;
+	sf::Text mShuttingDownText;
 
 	//meny bools
 	bool mHint;
@@ -46,13 +48,17 @@ private:
 	bool mWelcome;
 	bool mBulletin;
 	bool mAudioLogg;
+	bool mCamera;
+	bool mOff;
+	bool mShuttingDown;
 	//invalid counter
 	int mInvalidCounter;
 	
 	//Clocks and timers
 	sf::Clock mWelcomeClock;
 	sf::Time mAudioLoggTime;
-	//ADD TIME FOR BUTTONPRESS
+	sf::Clock mButtonClock;
+	sf::Clock mShuttingDownClock;
 
 	//sounds
 	Audio mAudioLoggSound;

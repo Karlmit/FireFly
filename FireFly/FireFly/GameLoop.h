@@ -36,5 +36,6 @@ private:
 	std::size_t	mStatisticsNumFrames;
 	sf::String textEntered;
 	Entity *pc;
+	Entity *zid;
 };
 

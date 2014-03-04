@@ -95,9 +95,11 @@ void GameLoop::processEvents()
 				}
 			}
 			pc = EntityList::getEntityList().getEntity("PC");
-			if(pc != nullptr)
+			zid = EntityList::getEntityList().getEntity("Zid");
+			if(pc != nullptr && zid != nullptr)
 			{
 				 pc->sendSfString(pc, textEntered);
+				 zid->sendMessage(zid, "button_pressed");
 			}
 			break;
 
@@ -121,7 +123,7 @@ void GameLoop::draw()
 	if (Globals::SHOW_LIGHT)
 		EntityList::getEntityList().drawLight(mWindow);
 
-	EntityList::getEntityList().drawForeground(mWindow);
+//	EntityList::getEntityList().drawForeground(mWindow);
 
 
 	mWindow.setView(mWindow.getDefaultView());
@@ -194,7 +196,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("level2.tmx");
 			break;
 		case sf::Keyboard::F3:
-			Level::changeMap("level3.tmx");
+			Level::changeMap("schakt1.tmx");
 			break;
 		case sf::Keyboard::F4:
 			Level::changeMap("level4.tmx");

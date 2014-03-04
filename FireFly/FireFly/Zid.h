@@ -20,6 +20,8 @@ public:
 	Zid(sf::Vector2f position);
 	bool isSweet();
 	sf::Vector2f getDroppedSugar();
+	virtual void sendMessage(Entity* entity, std::string message);
+	
 
 private:
 	virtual void updateEntity(sf::Time dt);	
@@ -43,7 +45,13 @@ private:
 	int dashFrameNo;
 	bool mDirLeft;
 	bool mInStickyZone;
+	//PC stuff
+	Entity* PC;
+	sf::Clock PCButton;
+	bool mPC_Zone;
+	bool mJumpUp;
 
+	//sugar stuff
 	thor::ParticleSystem mParticleSystem;
 	thor::UniversalEmitter mEmitter;
 	bool mSweetZid;

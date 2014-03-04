@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="5000" tileheight="2160">
+ <tileset firstgid="1" name="SCHAKT" tilewidth="5000" tileheight="2160">
+  <image source="../Resources/Schakt 1/SCHAKT.png" width="5000" height="2160"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="1" height="1">
+  <data>
+   <tile gid="0"/>
+  </data>
+ </layer>
+ <objectgroup name="Background" width="1" height="1">
+  <object name="Schakt_1" type="EntitySprite" gid="1" x="0" y="2160"/>
+ </objectgroup>
+ <objectgroup name="Collision" width="1" height="1">
+  <object name="wall" type="StaticCollision" x="690" y="724">
+   <polyline points="0,0 460,0 468,-408 1664,-408 1668,-34 2510,-28 2508,126 1480,130 1474,536 972,536 966,84 -288,90 -292,1366 -292,1370 2620,1374 2620,982 3016,982 3294,982"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="3990" y="1696">
+   <polyline points="0,0 -4,140 474,144 478,10 1006,12"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="5000" y="1445">
+   <polyline points="0,0 -528,4 -528,-132 -1002,-136 -1002,0 -1942,6 -1940,392 -4340,398 -4338,-376 -3596,-374 -3592,70 -2574,76 -2572,-334 -1540,-334 -1540,-1004 -2382,-1006 -2382,-1388 -4094,-1388 -4094,-978 -4996,-972"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="0" y="728">
+   <polyline points="0,0 692,-2"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="ZidStart" type="ZidSpawn" x="90" y="585" width="45" height="37">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

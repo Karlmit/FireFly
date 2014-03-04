@@ -57,7 +57,7 @@
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
-  <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167" visible="0"/>
+  <object name="Serverings Vagn" type="EntitySprite" gid="5" x="4108" y="2167"/>
   <object name="Suger Bowl" type="EntitySprite" gid="6" x="4354" y="1317"/>
   <object name="FanButton" type="ToggleSprite" gid="10" x="703" y="906">
    <properties>
@@ -226,9 +226,14 @@
   <object name="PC" type="PC_Position" x="2614" y="955">
    <polyline points="0,0 0,-1"/>
   </object>
-  <object name="PC_Text" x="2626" y="965" width="570" height="340"/>
+  <object name="PC_Text" x="2626" y="965" width="570" height="340" visible="0"/>
   <object name="AntPath" type="AntPath" x="545" y="4457">
    <polyline points="0,0 2935,9 2939,-963 3094,-959 3352,-686"/>
+  </object>
+  <object name="PC_Zone" type="Trigger" x="2581" y="924" width="648" height="485">
+   <properties>
+    <property name="id" value="PC_Zone"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
