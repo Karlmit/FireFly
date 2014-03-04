@@ -2,11 +2,14 @@
 
 #include "Entity.h"
 #include "Audio.h"
+#include "Animation.h"
+
+
 
 class Telefonsvarare : public Entity
 {
 public:
-	Telefonsvarare(string textureID ,sf::Vector2f position);
+	Telefonsvarare(sf::Vector2f position);
 
 private:
 	virtual void updateEntity(sf::Time dt);	
@@ -17,10 +20,20 @@ private:
 	virtual void EndContact(b2Contact *contact, Entity* other);
 
 private:
-	sf::Sprite mSprite;
-	bool mMessageLeft;
+	enum class State 
+	{
+		Blinking,
+		Repeat,
+		Running
+	};
+
+private:
+	Animation mBlinking;
+	Animation mRepeat;
+	Animation mRunning;
+
 	Audio mAudioMessage;
-	sf::Font mFont;
-	sf::Text mMessageText;
 	Rigidbody mRigidbody;
+
+	State mState;
 };

@@ -38,6 +38,7 @@ Zid::Zid(sf::Vector2f position)
 , mLoseSugarTimer()
 , mDroppedSugarPosition()
 , mInAcZone(false)
+, mAlive(true)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -182,10 +183,16 @@ void Zid::updateEntity(sf::Time dt)
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
 
-	
+	if(mAlive == true)
+	{
 	// Checks mouse input and apply force on the rigidbody based on that
 	movement();
-	
+	}
+	else
+	{
+		body->SetFixedRotation(false);
+	}
+
 
 	// Change direction on the sprite based on velocity
 	
@@ -452,7 +459,15 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	if (other->getID() == "StickyZone")
 		mInStickyZone = true;
 	if(other->getID() == "PC_Zone")
+	{
 		mPC_Zone = true;
+	}
+
+	if(other->getID() == "spoderMan")
+	{
+		mAlive = false;
+	}
+
 	if (other->getID() == "Sugar")
 		mSweetZid = true;
 }

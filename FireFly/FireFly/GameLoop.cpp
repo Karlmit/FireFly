@@ -35,7 +35,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level2.tmx");
+	Level::startLevel("level1.tmx");
 
 		
 	sf::Clock clock;
@@ -134,7 +134,7 @@ void GameLoop::draw()
 	if (Globals::SHOW_LIGHT)
 		EntityList::getEntityList().drawLight(mWindow);
 
-	//EntityList::getEntityList().drawForeground(mWindow);
+	EntityList::getEntityList().drawForeground(mWindow);
 
 
 	mWindow.setView(mWindow.getDefaultView());

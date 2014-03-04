@@ -46,6 +46,7 @@ private:
 	int dashFrameNo;
 	bool mDirLeft;
 	bool mInStickyZone;
+	bool mAlive;
 	bool mInFireflyZone;
 	//PC stuff
 	Entity* PC;

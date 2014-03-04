@@ -497,7 +497,7 @@ void Level::loadMap(string filename)
 			//
 			else if (entityType == "Telefonsvarare")
 			{
-				eList.addEntity(new Telefonsvarare(imageSrc, positionSprite), layer, false);
+				eList.addEntity(new Telefonsvarare(position), layer, false);
 			}
 
 //			else if (entityType == "SecuMonitor")

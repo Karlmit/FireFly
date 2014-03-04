@@ -42,7 +42,7 @@ walkSound(Loading::getSound("Spiderlegs.wav"), false)
 	mRigidbody.update();
 	setPosition(mRigidbody.getPosition());
 
-	
+	mRigidbody.getBody()->SetUserData(this);
 }
 
 
@@ -223,7 +223,7 @@ void Spider::mMakeNet(float range)
 
 		//moves spoderman down
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.y += -0.7 * 0.15;
+		move.y += -0.7f * 0.15f;
 		body->SetTransform(move, 0);
 
 		
@@ -243,7 +243,7 @@ void Spider::mMakeNet(float range)
 
 		//moves spoderman down
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.y += 0.4 * 0.1f;
+		move.y += 0.4f * 0.1f;
 		body->SetTransform(move, 0.f);
 		
 
@@ -277,7 +277,7 @@ void Spider::roofWalking()
 		b2Vec2 move = b2Vec2(Rigidbody::SfToBoxFloat(getPosition().x), Rigidbody::SfToBoxFloat(-startPosition.y));
 		if(RoofDirection)
 		{
-			move.x -= 0.03;
+			move.x -= 0.03f;
 			//scales sprite to the left
 			mSprite.setScale(-1, 1);
 			body->SetTransform(move , 0);
@@ -288,7 +288,7 @@ void Spider::roofWalking()
 		}
 		if(!RoofDirection)
 		{
-			move.x += 0.03;			
+			move.x += 0.03f;			
 			body->SetTransform(move , 0);
 			if(getPosition().x >= roomSize.x)
 			{
@@ -307,7 +307,7 @@ void Spider::walkBackToTop()
 	{
 		mSprite = walkingAnimation.getCurrentSprite();
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.x -= 0.05;
+		move.x -= 0.05f;
 		mSprite.setScale(1, 1);
 		body->SetTransform(move, 0);
 		isonFloor = true;
@@ -323,7 +323,7 @@ void Spider::walkBackToTop()
 
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
 		move.x = Rigidbody::SfToBoxFloat(roomStart.x + 132);
-		move.y += 0.05;
+		move.y += 0.05f;
 		body->SetTransform(move, 0);
 		isonFloor = false;
 	}
