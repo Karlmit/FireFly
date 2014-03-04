@@ -27,13 +27,6 @@ void Room2_AC::start()
 
 void Room2_AC::updateEntity(sf::Time dt)
 {
-	// Temp using keyboard to turn off AC-fan
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		sendMessage(this, "TurnOn");
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
-		sendMessage(this, "TurnOff");
-
-
 	if (!mIsOn)
 		return;
 

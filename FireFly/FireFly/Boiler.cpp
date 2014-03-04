@@ -1,5 +1,6 @@
 #include "Boiler.h"
 #include "Utility.h"
+#include "EntityList.h"
 
 const float SHAKE_DISTANCE = 2.f;
 const float DEC_SPEED_SHAKE = 1.f;
@@ -52,5 +53,7 @@ void Boiler::sendMessage(Entity* sender, string message)
 	{
 		mActive = false;
 		mDelayTimer.restart();
+
+		EntityList::getEntityList().getEntity("Termometer")->sendMessage(this, "BoilerOff");
 	}
 }

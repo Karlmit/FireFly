@@ -25,6 +25,7 @@
 #include "AntPath.h"
 #include "Boiler.h"
 #include "Room2_AC.h"
+#include "Termometer.h"
 
 
 #include <iostream>
@@ -446,6 +447,14 @@ void Level::loadMap(string filename)
 			else if (entityType == "Boiler")
 			{
 				eList.addEntity(new Boiler(imageSrc, positionSprite), layer, false);
+			}
+
+			// 
+			// Termometer
+			//
+			else if (entityType == "Termometer")
+			{
+				eList.addEntity(new Termometer(positionSprite), layer, false);
 			}
 
 //			else if (entityType == "SecuMonitor")
