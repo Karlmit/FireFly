@@ -26,7 +26,7 @@
 #include "Boiler.h"
 #include "Room2_AC.h"
 #include "Termometer.h"
-
+#include "Telefonsvarare.h"
 
 #include <iostream>
 using namespace std;
@@ -455,6 +455,14 @@ void Level::loadMap(string filename)
 			else if (entityType == "Termometer")
 			{
 				eList.addEntity(new Termometer(positionSprite), layer, false);
+			}
+
+			// 
+			// Telefonsvarare
+			//
+			else if (entityType == "Telefonsvarare")
+			{
+				eList.addEntity(new Telefonsvarare(imageSrc, positionSprite), layer, false);
 			}
 
 //			else if (entityType == "SecuMonitor")
