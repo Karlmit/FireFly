@@ -18,6 +18,7 @@ public:
 	virtual void sendMessage(Entity* entity, std::string message);
 	virtual void sendSfString(Entity* entity, sf::String message);
 	void getTextEntered(std::string text);
+	bool newPC();
 private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -56,6 +57,7 @@ private:
 	bool mCamera;
 	bool mOff;
 	bool mShuttingDown;
+	bool mNewPC;
 	//invalid counter
 	int mInvalidCounter;
 	

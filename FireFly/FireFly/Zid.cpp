@@ -466,3 +466,8 @@ void Zid::EndContact(b2Contact *contact, Entity* other)
 	if(other->getID() == "PC_Zone")
 		mPC_Zone = false;
 }
+
+bool Zid::inPCZone()
+{
+	return mPC_Zone;
+}
