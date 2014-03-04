@@ -1,11 +1,14 @@
 #include "Room2_Fan.h"
+#include "EntityList.h"
 
-const float SPEED = 2.f;
+const unsigned FRAMES_PER_SECOND = 60;
+const unsigned TIME_PER_FRAME = unsigned( 1000 / FRAMES_PER_SECOND );
+
 
 Room2_Fan::Room2_Fan(string texture, sf::Vector2f position)
-	: mSprite(Loading::getTexture(texture))
-	, mIsOn(true)
-	, mScale(1)
+	: mSprite(Loading::getTexture("Room 2/takflakt_scale.png"))
+	, mIsOn(false)
+	, mFanAnimation(Loading::getTexture(texture), 1644, 320, 1, 4, TIME_PER_FRAME)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -15,49 +18,41 @@ Room2_Fan::Room2_Fan(string texture, sf::Vector2f position)
 	mID = "Room2_Fan";
 }
 
+void Room2_Fan::start()
+{
+	mTermometer = EntityList::getEntityList().getEntity("Termometer");
+}
+
 
 void Room2_Fan::updateEntity(sf::Time dt)
 {
 	if (!mIsOn)
 		return;
 
-	static bool dir = true;
-	
-	if (dir)
-	{
-		mScale += SPEED * dt.asSeconds();
 
-		if (mScale >= 1)
-		{
-			dir = false;			
-			mScale = 1;
-		}		
-	}
-	else
-	{
-		mScale -= SPEED * dt.asSeconds();
-
-		if (mScale <= 0)
-		{
-			dir = true;
-			mScale = 0;
-		}		
-	}
-
-	mSprite.setScale(mScale, 1);	
+	mFanAnimation.updateAnimation();
 }
 
 void Room2_Fan::sendMessage(Entity* sender ,string message)
 {
 	if (message == "TurnOff")
+	{
 		mIsOn = false;
+		mTermometer->sendMessage(this, "CeilingFanOff");
+	}
 	else if (message == "TurnOn")
+	{
 		mIsOn = true;
+		mTermometer->sendMessage(this, "CeilingFanOn");
+	}
 }
 
 void Room2_Fan::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
-		
-	target.draw(mSprite, states);
+
+	if (mIsOn)	
+		target.draw(mFanAnimation.getCurrentSprite(), states);
+	else
+		target.draw(mSprite, states);
 }

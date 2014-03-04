@@ -23,7 +23,7 @@ public:
 	void setTargetPosition(sf::Vector2f position);
 	void setBounds(sf::FloatRect bounds);
 	void changeZoom(int steps);
-	
+	void setZoom(float zoom);
 	
 private:
 	sf::Window* mWindow;

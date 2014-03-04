@@ -94,7 +94,7 @@ public :
         m_text.setPosition(30, 20);
 
         // Load the shader
-        if (!m_shader.loadFromFile("resources/wave.vert", "resources/blur.frag"))
+        if (!m_shader.loadFromFile("resources/wave.vert"))
             return false;
 
         return true;

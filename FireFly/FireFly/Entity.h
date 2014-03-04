@@ -27,6 +27,8 @@ public:
 	void setID(string id) { mID = id; }
 
 	virtual void sendMessage(Entity* sender, string message) {}
+	virtual void sendSfString(Entity* sender,  sf::String sfMessage) {}
+
 protected:
 	std::string mID;
 private:

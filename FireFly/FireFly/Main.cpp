@@ -3,10 +3,11 @@
 #include <iostream>
 #include <stdexcept>
 
-
+#include <time.h>
 
 int main()
 {	
+	srand(unsigned(time(0)));
 	try
 	{	
 		// Creates the window relative to desktop resolution

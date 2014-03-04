@@ -14,18 +14,19 @@ const float DENSITY = 3.f;
 const float FORCE = 5.f;
 const float IMP_FORCE = 7.f;
 const float DAMPING = 2.f;
-const float SCALE = 1.f;
+const float SCALE = 1.f/2;
 
 // Sugar
 const float EMISSION_RATE = 5.f;
 const float SUGAR_GRAVITY = 120.f;
 const float LOSE_SUGAR_EMISSION = 220.f;
 const float LOSE_SUGAR_TIME = 0.6f;
+const float AC_ZONE_SUGAR_VEL_X = -200.f;
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
-, idleAnimation(Loading::getTexture("zidIdleAnim.png", true), 64, 64, 1, 8, 10)
-, dashAnimation(Loading::getTexture("explosionAnim.png"), 64, 64, 5, 5, 2)
+, idleAnimation(Loading::getTexture("Zid_flying_128.png", true), 128, 128, 5, 8, 20)
+, dashAnimation(Loading::getTexture("Zid_boosting_128.png"), 128, 128, 5, 5, 2)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
@@ -33,7 +34,10 @@ Zid::Zid(sf::Vector2f position)
 , mParticleSystem()
 , mEmitter()
 , mSweetZid(false)
+, mLoseSugar(false)
 , mLoseSugarTimer()
+, mDroppedSugarPosition()
+, mInAcZone(false)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -88,8 +92,56 @@ Zid::Zid(sf::Vector2f position)
 	mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
 	mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
 
-	
+
+	//PC Zone
+	mPC_Zone = false;
+	mJumpUp = false;
 } 
+
+	
+	
+
+
+void Zid::sendMessage(Entity* entity, string message)
+{
+		if(message == "button_pressed" && mPC_Zone == true)
+	{
+		float xPosition = 2614.f + rand()%600;
+		mRigidbody.getBody()->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat(xPosition), Rigidbody::SfToBoxFloat(-getPosition().y)), 0);
+		b2Vec2 force(0, -20);
+		mRigidbody.getBody()->ApplyLinearImpulse(force , mRigidbody.getBody()->GetWorldCenter(), true);
+		mJumpUp = true;
+		PCButton.restart();
+	}
+
+
+	if (message == "InAcZone")
+	{
+		/*
+		mParticleSystem.clearAffectors();
+		// fade in/out animations
+		thor::FadeAnimation fader(0.09f, 0.1f);
+		mParticleSystem.addAffector( thor::AnimationAffector(fader) );
+		mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
+		mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(AC_ZONE_SUGAR_VEL_X, SUGAR_GRAVITY))  );
+		*/
+		mInAcZone = true;
+	}
+	if (message == "OutAcZone")
+	{
+		/*
+		mParticleSystem.clearAffectors();
+		// fade in/out animations
+		thor::FadeAnimation fader(0.09f, 0.1f);
+		mParticleSystem.addAffector( thor::AnimationAffector(fader) );
+		mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
+		mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
+		*/
+		mInAcZone = false;
+	}
+	
+}
+
 
 
 
@@ -159,15 +211,38 @@ void Zid::updateEntity(sf::Time dt)
 		}
 	}
 
+	PC = EntityList::getEntityList().getEntity("PC");
+	if(mPC_Zone == true && PC != nullptr)
+	{
+		PC->sendMessage(this, "in_PC_Zone");
+	}
+	else if(PC != nullptr)
+	{
+		PC->sendMessage(this, "out_of_PC_Zone");
+	}
 
+	if(mPC_Zone == false)
+	{
 	// Set the camera to follow zid
 	Camera::currentCamera().setTargetPosition(getPosition());
+	}
 
 	// Get the position and rotation from the rigidbody
 	mRigidbody.update();				
 	setPosition(mRigidbody.getPosition());
 	setRotation(mRigidbody.getRotation());
 
+	//get spoderMan
+	mSpoderMan = EntityList::getEntityList().getEntity("spoderMan");
+	//activates or deactivates the spider for room 2	
+	if(mSweetZid && mSpoderMan != nullptr)
+	{
+		mSpoderMan->sendMessage(this, "activate");
+	}
+	else if(mSpoderMan != nullptr)
+	{
+		mSpoderMan->sendMessage(this, "deactivate");
+	}
 
 }
 		
@@ -182,13 +257,28 @@ void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 
 	// Rigidbody debug draw
 	if (Globals::DEBUG_MODE)
+	{
 		mRigidbody.drawDebug(target, states);
+
+		sf::RectangleShape dropSugarRect(sf::Vector2f(50.f, 50.f));
+		dropSugarRect.setPosition(mDroppedSugarPosition + sf::Vector2f(-25, -25) );
+		target.draw(dropSugarRect);
+	}
+
+
 }
 
 void Zid::movement()
 {
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
+
+	if(PCButton.getElapsedTime().asMilliseconds() > 200 && mPC_Zone == true && mJumpUp == true)
+	{
+		b2Vec2 force(0, 4);
+		mRigidbody.getBody()->ApplyLinearImpulse(force , mRigidbody.getBody()->GetWorldCenter(), true);
+		mJumpUp = false;
+	}
 
 
 	// Counter gravity
@@ -258,6 +348,7 @@ void Zid::movement()
 			if (mSweetZid)
 			{
 				mSweetZid = false;
+				mLoseSugar = true;
 				mLoseSugarTimer.restart();
 			}
 
@@ -277,14 +368,19 @@ void Zid::movement()
 	{
 		body->SetTransform(Rigidbody::SfToBoxVec(Camera::currentCamera().getMousePosition()), 0);
 	}
-
+	
 }
 
 void Zid::sugarStuff(sf::Time dt)
 {
+
 	if (mSweetZid)
 	{		
-		mEmitter.setParticleVelocity(sf::Vector2f());
+		if (mInAcZone)
+			mEmitter.setParticleVelocity(sf::Vector2f() + sf::Vector2f(AC_ZONE_SUGAR_VEL_X, 0));
+		else
+			mEmitter.setParticleVelocity(sf::Vector2f());
+
 		mEmitter.setParticlePosition( thor::Distributions::circle(getPosition(), 10.f) );
 		mEmitter.setEmissionRate(EMISSION_RATE);
 
@@ -298,17 +394,22 @@ void Zid::sugarStuff(sf::Time dt)
 			float distance = Rigidbody::BoxToSfFloat( (Rigidbody::SfToBoxVec(getPosition()) - ray.point).Length() );
 			float lifetime = sqrtf(2 * distance / SUGAR_GRAVITY);	// Fysik A ftw
 		
-			mEmitter.setParticleLifetime(sf::seconds(lifetime+0.02f));
+			mEmitter.setParticleLifetime(sf::seconds(lifetime+0.02f)); 
 		}
+
 	}
 	else
 	{
 		mEmitter.setEmissionRate(0);
 	}
 
-	if (mLoseSugarTimer.getElapsedTime().asSeconds() < LOSE_SUGAR_TIME)
+	if (mLoseSugar && mLoseSugarTimer.getElapsedTime().asSeconds() < LOSE_SUGAR_TIME)
 	{
-		mEmitter.setParticleVelocity( thor::Distributions::circle(sf::Vector2f(), 100));
+		if (mInAcZone)			
+			mEmitter.setParticleVelocity(thor::Distributions::deflect(sf::Vector2f(AC_ZONE_SUGAR_VEL_X, 0), 50));
+		else
+			mEmitter.setParticleVelocity( thor::Distributions::circle(sf::Vector2f(), 100));
+
 		mEmitter.setParticlePosition( thor::Distributions::circle(getPosition(), 10.f) );
 		mEmitter.setEmissionRate(LOSE_SUGAR_EMISSION);
 
@@ -323,19 +424,35 @@ void Zid::sugarStuff(sf::Time dt)
 			float lifetime = sqrtf(2 * distance / SUGAR_GRAVITY);	// Fysik A ftw
 		
 			mEmitter.setParticleLifetime(sf::seconds(lifetime*0.90f));
+
+			mDroppedSugarPosition = Rigidbody::BoxToSfVec(ray.point);
 		}
 	}
+	else
+		mLoseSugar = false;
 
 	// Update particle system
 	mParticleSystem.update(dt);
 }
 
+bool Zid::isSweet()
+{
+	return mSweetZid;
+}
+
+sf::Vector2f Zid::getDroppedSugar()
+{
+	return mDroppedSugarPosition;
+}
+
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
 	if(other->getID() == "FireflyZone")
-		mInFireflyZone = true;
+//		mInFireflyZone = true;
 	if (other->getID() == "StickyZone")
 		mInStickyZone = true;
+	if(other->getID() == "PC_Zone")
+		mPC_Zone = true;
 	if (other->getID() == "Sugar")
 		mSweetZid = true;
 }
@@ -343,7 +460,9 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
 	if (other->getID() == "FireflyZone")
-		mInFireflyZone = false;
+//		mInFireflyZone = false;
 	if (other->getID() == "StickyZone")
 		mInStickyZone = false;
+	if(other->getID() == "PC_Zone")
+		mPC_Zone = false;
 }

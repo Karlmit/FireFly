@@ -21,7 +21,15 @@
 #include "Room2_Fan.h"
 // #include "FireflyNPC.h"
 // #include "FireflyZone.h"
-
+#include "PC.h"
+#include "SugarBowlTop.h"
+#include "Light.h"
+#include "AntPath.h"
+#include "Boiler.h"
+#include "Room2_AC.h"
+#include "Termometer.h"
+#include "Telefonsvarare.h"
+#include "ParallaxSprite.h"
 
 #include <iostream>
 using namespace std;
@@ -92,6 +100,9 @@ void Level::startLevel(string levelName)
 	// Fade from black
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
+
+	Light * zidLight = new Light(sf::Color(245,206,75,100), sf::Vector2f(1000,1000), 300, 360, 0, "zidLight");
+	EntityList::getEntityList().addEntity(zidLight, Layer::Light, false);
 
 	
 }
@@ -175,6 +186,14 @@ void Level::loadMap(string filename)
 			if (entityType == "EntitySprite")
 			{
 				eList.addEntity(new EntitySprite(imageSrc, positionSprite), layer, false);
+			}
+
+			//
+			//	EntitySprite
+			//
+			if (entityType == "ParallaxSprite")
+			{
+				eList.addEntity(new ParallaxSprite(imageSrc, positionSprite), layer, false);
 			}
 
 			//
@@ -401,14 +420,86 @@ void Level::loadMap(string filename)
 				eList.addEntity(fan, layer, false);
 			}
 
-			//spoderMan
+			//
+			//	Room2_AC
+			//
+			else if (entityType == "Room2_AC")
+			{
+				Room2_AC* fan = new Room2_AC(imageSrc, positionSprite);
+				fan->setProperties(obj.getProperties());
+				eList.addEntity(fan, layer, false);
+			}
+
+			//
+			// SpoderMan
+			//
 			else if(entityType == "Spider")
 			{
 				float x = float ( obj.getProperty("x").getValueInt() );
 				float y = float ( obj.getProperty("y").getValueInt() );
 				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
+				spider->setProperties(obj.getProperties());
 				eList.addEntity(spider, Layer::Front, false);
 			}
+
+
+			//Room 2 PC
+			else if(entityType == "PC_Position")
+			{
+				PC *pc = new PC(position);
+				pc->setProperties(obj.getProperties());
+				eList.addEntity(pc, Layer::Back, false);
+			}
+
+			else if(entityType == "SugarBowlTop")
+			{
+				SugarBowlTop *sbt = new SugarBowlTop(imageSrc, position, true);
+				//sbt->setProperties(obj.getProperties());
+				eList.addEntity(sbt, layer, false);
+			}
+
+
+			//
+			// AntPath
+			//
+			else if (entityType == "AntPath")
+			{
+				vector<sf::Vector2f> sfPoints;
+				for (MapPoint p : obj.getPolyline().getPoints())
+				{
+					//cout << p.x << "," << p.y << " ";
+					sf::Vector2f sfPoint(float(p.x), float(p.y));
+					sfPoint = sfPoint + position;
+					sfPoints.push_back(sfPoint);
+				}
+				AntPath* antPath = new AntPath(sfPoints);
+				eList.addEntity(antPath, Layer::NPC, false);
+			}
+
+			//
+			// Boiler
+			//
+			else if (entityType == "Boiler")
+			{
+				eList.addEntity(new Boiler(imageSrc, positionSprite), layer, false);
+			}
+
+			// 
+			// Termometer
+			//
+			else if (entityType == "Termometer")
+			{
+				eList.addEntity(new Termometer(positionSprite), layer, false);
+			}
+
+			// 
+			// Telefonsvarare
+			//
+			else if (entityType == "Telefonsvarare")
+			{
+				eList.addEntity(new Telefonsvarare(imageSrc, positionSprite), layer, false);
+			}
+
 //			else if (entityType == "SecuMonitor")
 //			{
 //				sf::FloatRect rect;
@@ -423,7 +514,7 @@ void Level::loadMap(string filename)
 //			}
 
 			//Viewport Test
-			
+
 		}
 
 		cout << endl;

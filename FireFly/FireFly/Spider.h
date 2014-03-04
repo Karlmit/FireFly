@@ -33,10 +33,12 @@ private:
 	bool RoofDirection;
 	bool spiderman;
 	bool makeNet;
+	bool isonFloor;
 	bool inRange;
 	bool activateMove;
 	bool walkBack;
 	bool mRopeisCut;
+	bool mSugar;
 	float length;
 	b2Vec2 mZidPosition;
 	sf::Vector2f startPosition;

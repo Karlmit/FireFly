@@ -4,6 +4,8 @@ EntityList EntityList::eL;
 
 EntityList::EntityList()
 {
+	rLightMap.create(5000, 2160); //Måste fixas sEden anpassas efter levelens storlek
+	sLightMap.setPosition(0,0);
 }
 
 EntityList::~EntityList()
@@ -63,6 +65,22 @@ void EntityList::drawFront(sf::RenderWindow& window)
 		window.draw(*e);
 }
 
+void EntityList::drawLight(sf::RenderWindow& window)
+{
+	for (Entity* e : LightLayerList)
+	{
+		if((*e).getID() == "zidLight")
+		{
+			Entity* zid = EntityList::getEntityList().getEntity("Zid");
+			e->setPosition(sf::Vector2f((*zid).getPosition().x, 2160-(*zid).getPosition().y));
+		}
+		rLightMap.clear(sf::Color(0,0,0,240));
+		rLightMap.draw(*e);
+		sLightMap.setTexture(rLightMap.getTexture());
+		window.draw(sLightMap);
+	}
+}
+
 void EntityList::drawForeground(sf::RenderWindow& window)
 {
 	for (Entity* e : ForegroundLayerList)
@@ -73,7 +91,7 @@ void EntityList::drawForeground(sf::RenderWindow& window)
 void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 {
 	listedEntities.push_back(entity);
-
+	
 	// Add the entity in a layer list to be used in the draw function
 	if (layer == Layer::Background)
 		BackgroundLayerList.push_back(entity);
@@ -83,6 +101,8 @@ void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 		NPCLayerList.push_back(entity);
 	else if (layer == Layer::Front)
 		FrontLayerList.push_back(entity);
+	else if (layer == Layer::Light)
+		LightLayerList.push_back(entity);
 	else if (layer == Layer::Foreground)
 		ForegroundLayerList.push_back(entity);
 
@@ -163,7 +183,20 @@ void EntityList::updateList()
 			++i;
 		}
 	}
-
+	// LightLayerList
+	i = LightLayerList.begin();
+	while (i != LightLayerList.end())
+	{
+		bool isAlive = (*i)->getAliveStatus();
+		if (!isAlive)
+		{
+			LightLayerList.erase(i++);
+		}
+		else
+		{
+			++i;
+		}
+	}
 
 	// Removes and deletes entities from the main list listedEntities if dead
 	for(entityList::iterator i = listedEntities.begin(); i != listedEntities.end(); i++)
@@ -195,6 +228,7 @@ void EntityList::emptyList()
 	NPCLayerList = entityList();
 	FrontLayerList = entityList();
 	ForegroundLayerList = entityList();
+	LightLayerList = entityList();
 }
 
 void EntityList::startList()

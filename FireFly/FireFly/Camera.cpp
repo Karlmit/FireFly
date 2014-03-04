@@ -124,3 +124,8 @@ void Camera::changeZoom(int steps)
 	if (mTargetZoom > topLimit)
 		mTargetZoom = topLimit;
 }
+
+void Camera::setZoom(float zoom)
+{
+	mTargetZoom = zoom;
+}

@@ -9,6 +9,7 @@
 // SFML units is in pixels and box2d in meters.
 const float PIXELS_PER_METER = 100.f;
 
+std::vector<std::vector<sf::Vector2f>> Rigidbody::collisionList;
 
 // Conversion functions between sfml units and box2d units
 b2Vec2 Rigidbody::SfToBoxVec(const sf::Vector2f& vec) 
@@ -102,6 +103,7 @@ void Rigidbody::AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bo
 	// Add the chain to the body
 	mBody->CreateFixture(&chain, 0);
 
+	collisionList.push_back(pointList);
 
 	// Debug shape visuals
 	if (loop)
@@ -113,7 +115,7 @@ void Rigidbody::AddStaticLineBody(const std::vector<sf::Vector2f>& pointList, bo
 		mLinePointList = pointList;
 }
 
-void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 density )
+void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 density, bool isSensor)
 {
 	if (mBody)
 		throw std::logic_error("Rigidbody::AddDynCircleBody - Tried to add a body more than once.");
@@ -143,6 +145,7 @@ void Rigidbody::AddDynCircleBody(float radius, sf::Vector2f position, float32 de
 	//
 	fixtureDef.restitution = 0.f;
 	//
+	fixtureDef.isSensor = isSensor;
 
 	// Add the shape to the body.
 	mBody->CreateFixture(&fixtureDef);

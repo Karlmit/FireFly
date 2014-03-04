@@ -11,11 +11,11 @@ public:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void sendMessage(Entity* sender, string message);
+	virtual void start();
 
 private:
-	//Animation mFanAnimation; // Replace sprite with this when anim
-	sf::Sprite mSprite;	// Temp spriteaaaaaaaaaaaa-aaAAaa
-
+	Animation mFanAnimation; // Fläkt animation
+	sf::Sprite mSprite;	// Fläkten avstängd sprite
 	bool mIsOn;
-	float mScale;
+	Entity* mTermometer;
 };

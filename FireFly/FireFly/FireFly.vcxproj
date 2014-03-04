@@ -85,8 +85,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AntPath.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioEntity.h" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Boiler.h" />
     <ClInclude Include="Box2dWorld.h" />
     <ClInclude Include="Box2D\Box2D.h" />
     <ClInclude Include="Box2D\Collision\b2BroadPhase.h" />
@@ -142,8 +145,10 @@
     <ClInclude Include="FireflyZone.h" />
     <ClInclude Include="ForceZone.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Hivemind.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapObjectGroup.h" />
@@ -152,9 +157,16 @@
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MirrorQueue.h" />
     <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="ParallaxSprite.h" />
+    <ClInclude Include="PC.h" />
+    <ClInclude Include="Myra.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="RayCastCallback.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="Room1_Coat.h" />
+    <ClInclude Include="Room2_AC.h" />
     <ClInclude Include="Room2_Fan.h" />
     <ClInclude Include="SecuMonitor.h" />
     <ClInclude Include="Spider.h" />
@@ -170,9 +182,13 @@
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="StickyZone.h" />
     <ClInclude Include="SuCam.h" />
+    <ClInclude Include="SugarBowlTop.h" />
+    <ClInclude Include="Telefonsvarare.h" />
+    <ClInclude Include="Termometer.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="ToggleSprite.h" />
     <ClInclude Include="Trigger.h" />
+    <ClInclude Include="Tween.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Wasp.h" />
     <ClInclude Include="WorldContactListener.h" />
@@ -180,8 +196,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AntPath.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioEntity.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Boiler.cpp" />
     <ClCompile Include="Box2dWorld.cpp" />
     <ClCompile Include="Box2D\Collision\b2BroadPhase.cpp" />
     <ClCompile Include="Box2D\Collision\b2CollideCircle.cpp" />
@@ -230,13 +249,16 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="FireflyNPC.cpp" />
     <ClCompile Include="FireflyZone.cpp" />
     <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="Hivdemind.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="MapObjectGroup.cpp" />
@@ -245,9 +267,13 @@
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MirrorQueue.cpp" />
     <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="ParallaxSprite.cpp" />
+    <ClCompile Include="PC.cpp" />
+    <ClCompile Include="Myra.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="RayCastCallback.cpp" />
     <ClCompile Include="Room1_Coat.cpp" />
+    <ClCompile Include="Room2_AC.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
     <ClCompile Include="SecuMonitor.cpp" />
     <ClCompile Include="Spider.cpp" />
@@ -266,9 +292,13 @@
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="StickyZone.cpp" />
     <ClCompile Include="SuCam.cpp" />
+    <ClCompile Include="SugarBowlTop.cpp" />
+    <ClCompile Include="Telefonsvarare.cpp" />
+    <ClCompile Include="Termometer.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="ToggleSprite.cpp" />
     <ClCompile Include="Trigger.cpp" />
+    <ClCompile Include="Tween.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wasp.cpp" />
     <ClCompile Include="WorldContactListener.cpp" />
@@ -277,6 +307,12 @@
   <ItemGroup>
     <None Include="Maps\level1.tmx" />
     <None Include="Maps\level2.tmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FireFly1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\FireFly.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

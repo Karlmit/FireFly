@@ -3,6 +3,8 @@
 #include <Windows.h>
 #include "MusicManager.h"
 
+#include <iostream>
+
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
 
@@ -21,6 +23,7 @@ mStatisticsNumFrames(0)
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
+
 	
 }
 
@@ -79,6 +82,26 @@ void GameLoop::processEvents()
 		case::sf::Event::MouseWheelMoved:
 			mCamera.changeZoom(event.mouseWheel.delta);
 			break;
+		case::sf::Event::TextEntered:
+			if (event.text.unicode == '\b' && textEntered.end() != textEntered.begin())
+			{
+				 textEntered.erase(textEntered.getSize() - 1, 1);
+			}
+			else if (event.text.unicode < 128 && event.text.unicode != '\b' && event.KeyPressed != sf::Keyboard::Return)
+			{
+				if(textEntered.getSize() <= 5)//sets a max length
+				{
+					textEntered += static_cast<char>(event.text.unicode);
+				}
+			}
+			pc = EntityList::getEntityList().getEntity("PC");
+			zid = EntityList::getEntityList().getEntity("Zid");
+			if(pc != nullptr && zid != nullptr)
+			{
+				 pc->sendSfString(pc, textEntered);
+				 zid->sendMessage(zid, "button_pressed");
+			}
+			break;
 
 		}
 	}
@@ -90,18 +113,23 @@ void GameLoop::draw()
 	mWindow.clear(sf::Color::Black);
 
 	mWindow.setView(mCamera.getView());
-	//EntityList::getEntityList().draw(mWindow);	// Draws all entities
 
 	// Draws every layer of entities
 	EntityList::getEntityList().drawBackground(mWindow);
 	EntityList::getEntityList().drawBack(mWindow);
 	EntityList::getEntityList().drawNPC(mWindow);
 	EntityList::getEntityList().drawFront(mWindow);
-	EntityList::getEntityList().drawForeground(mWindow);
+
+	if (Globals::SHOW_LIGHT)
+		EntityList::getEntityList().drawLight(mWindow);
+
+//	EntityList::getEntityList().drawForeground(mWindow);
 
 
 	mWindow.setView(mWindow.getDefaultView());
-	mWindow.draw(mStatisticsText);
+
+	if (Globals::DEBUG_MODE || Globals::SHOW_FPS)
+		mWindow.draw(mStatisticsText);
 
 	mWindow.display();
 }
@@ -151,6 +179,10 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 
 	if (key == sf::Keyboard::P && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
+	else if (key == sf::Keyboard::O && isPressed == false)
+		Globals::SHOW_FPS = !Globals::SHOW_FPS;
+	else if (key == sf::Keyboard::I && isPressed == false)
+		Globals::SHOW_LIGHT = !Globals::SHOW_LIGHT;
 
 	if (isPressed == false)
 	{
@@ -164,7 +196,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("level2.tmx");
 			break;
 		case sf::Keyboard::F3:
-			Level::changeMap("level3.tmx");
+			Level::changeMap("schakt1.tmx");
 			break;
 		case sf::Keyboard::F4:
 			Level::changeMap("level4.tmx");
