@@ -27,6 +27,7 @@
 #include "Room2_AC.h"
 #include "Termometer.h"
 #include "Telefonsvarare.h"
+#include "ParallaxSprite.h"
 
 #include <iostream>
 using namespace std;
@@ -183,6 +184,14 @@ void Level::loadMap(string filename)
 			if (entityType == "EntitySprite")
 			{
 				eList.addEntity(new EntitySprite(imageSrc, positionSprite), layer, false);
+			}
+
+			//
+			//	EntitySprite
+			//
+			if (entityType == "ParallaxSprite")
+			{
+				eList.addEntity(new ParallaxSprite(imageSrc, positionSprite), layer, false);
 			}
 
 			//
