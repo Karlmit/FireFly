@@ -155,6 +155,7 @@
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
     <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="ParallaxSprite.h" />
     <ClInclude Include="PC.h" />
     <ClInclude Include="Myra.h" />
     <ClInclude Include="Properties.h" />
@@ -262,6 +263,7 @@
     <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
     <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="ParallaxSprite.cpp" />
     <ClCompile Include="PC.cpp" />
     <ClCompile Include="Myra.cpp" />
     <ClCompile Include="Properties.cpp" />
