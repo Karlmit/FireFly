@@ -4,8 +4,11 @@
 #include "Box2dWorld.h"
 #include "Camera.h"
 #include "RayCastCallback.h"
+// #include "FireflyZone.h"
+// #include "MirrorQueue.h"
 
 #include <iostream>
+
 
 const float DENSITY = 3.f;
 const float FORCE = 5.f;
@@ -26,6 +29,7 @@ Zid::Zid(sf::Vector2f position)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
+, mInFireflyZone(false)
 , mParticleSystem()
 , mEmitter()
 , mSweetZid(false)
@@ -218,6 +222,13 @@ void Zid::movement()
 			force *= FORCE * (length / 0.5f) * 0.5f;
 			body->ApplyForceToCenter(force, true);
 		}
+/*		if (mInFireflyZone)
+		{
+			auto q = MirrorQueue::getMirrorQueue().getQueue();
+			if (q->size() > QUEUE_LENGTH)
+				q->pop();
+			q->push(force);
+		} */
 	}
 
 	// Apply impulse for the right mouse button
@@ -321,21 +332,18 @@ void Zid::sugarStuff(sf::Time dt)
 
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
+	if(other->getID() == "FireflyZone")
+		mInFireflyZone = true;
 	if (other->getID() == "StickyZone")
-	{
 		mInStickyZone = true;
-	}
-
 	if (other->getID() == "Sugar")
-	{
 		mSweetZid = true;
-	}
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
+	if (other->getID() == "FireflyZone")
+		mInFireflyZone = false;
 	if (other->getID() == "StickyZone")
-	{
 		mInStickyZone = false;
-	}
 }

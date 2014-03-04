@@ -38,6 +38,7 @@ private:
 	int dashFrameNo;
 	bool mDirLeft;
 	bool mInStickyZone;
+	bool mInFireflyZone;
 
 	thor::ParticleSystem mParticleSystem;
 	thor::UniversalEmitter mEmitter;

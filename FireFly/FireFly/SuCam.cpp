@@ -27,10 +27,10 @@ SuCam::~SuCam()
 {
 }
 
-void SuCam::start()
-{
-	mZid = EntityList::getEntityList().getEntity("Zid");
-}
+// void SuCam::start()
+// {
+//		mZid = EntityList::getEntityList().getEntity("Zid");
+// }
 
 void SuCam::updateEntity(sf::Time timePerFrame)
 {
@@ -42,7 +42,7 @@ void SuCam::updateEntity(sf::Time timePerFrame)
 	mSprite=blinkAnimation.getCurrentSprite();
 
 	// Gets Zids position in Box2D coords
-	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
+//	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
 }
 
 void  SuCam::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const

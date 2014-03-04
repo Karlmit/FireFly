@@ -19,6 +19,8 @@
 #include "ToggleSprite.h"
 #include "SuCam.h"
 #include "Room2_Fan.h"
+// #include "FireflyNPC.h"
+// #include "FireflyZone.h"
 
 
 #include <iostream>
@@ -226,6 +228,14 @@ void Level::loadMap(string filename)
 			}
 
 			//
+			// Firefly NPC
+			//
+		/*	else if (entityType == "FireflyNPC")
+			{
+				eList.addEntity(new FireflyNPC(position), Layer::NPC, false);
+			} */
+
+			//
 			// SuCam
 			//
 			else if (entityType == "SuCam")
@@ -351,6 +361,22 @@ void Level::loadMap(string filename)
 				zone->setID(id);
 				eList.addEntity(zone, Layer::Foreground, false);
 			}
+
+			//
+			//	FireflyZone
+			//
+		/*	else if (entityType == "FireflyZone")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				FireflyZone* Fzone = new FireflyZone(rect);
+				Fzone->setProperties(obj.getProperties());				
+				Fzone->setID(id);
+				eList.addEntity(Fzone, Layer::Foreground, false);
+			} */
 
 			//
 			//	ToggleSprite
