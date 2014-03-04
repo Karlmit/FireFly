@@ -30,6 +30,7 @@
 #include "Termometer.h"
 #include "Telefonsvarare.h"
 #include "ParallaxSprite.h"
+#include "Dust.h"
 
 #include <iostream>
 using namespace std;
@@ -172,6 +173,8 @@ void Level::loadMap(string filename)
 			string id = "";
 			if (obj.isProperty("id"))
 				id = obj.getProperty("id").getValueString();
+			sf::FloatRect rect(position.x, position.y, width, height);
+
 
 			// Write to console window info about objects loaded from map file
 			cout << "[" << obj.getType() << "](" << position.x << ", " <<  position.y << ")\t" 
@@ -498,6 +501,14 @@ void Level::loadMap(string filename)
 			else if (entityType == "Telefonsvarare")
 			{
 				eList.addEntity(new Telefonsvarare(position), layer, false);
+			}
+
+			// 
+			// Dust
+			//
+			else if (entityType == "Dust")
+			{
+				eList.addEntity(new Dust(rect), Layer::Front, false);
 			}
 
 //			else if (entityType == "SecuMonitor")

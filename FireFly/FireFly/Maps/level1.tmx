@@ -159,6 +159,6 @@
   <object name="FireflyNPC" type="FireflyNPC" x="88" y="1214" width="98" height="84">
    <ellipse/>
   </object>
-  <object name="FireflyZone" type="FireflyZone" x="240" y="1124" width="181" height="227"/>
+  <object name="Dusty" type="Dust" x="5" y="9" width="4440" height="2130" visible="0"/>
  </objectgroup>
 </map>

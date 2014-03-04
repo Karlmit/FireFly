@@ -140,6 +140,7 @@
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ContactListener.h" />
+    <ClInclude Include="Dust.h" />
     <ClInclude Include="FadeToBlack.h" />
     <ClInclude Include="FireflyNPC.h" />
     <ClInclude Include="FireflyZone.h" />
@@ -250,6 +251,7 @@
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DBTweener\dbtweener.cpp" />
+    <ClCompile Include="Dust.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="FireflyNPC.cpp" />
     <ClCompile Include="FireflyZone.cpp" />
