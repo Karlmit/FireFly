@@ -134,7 +134,7 @@ void GameLoop::draw()
 	if (Globals::SHOW_LIGHT)
 		EntityList::getEntityList().drawLight(mWindow);
 
-	//EntityList::getEntityList().drawForeground(mWindow);
+	EntityList::getEntityList().drawForeground(mWindow);
 
 
 	mWindow.setView(mWindow.getDefaultView());

@@ -11,7 +11,7 @@ public:
 	SuCam(sf::FloatRect rect);
 	~SuCam();
 private:
-	virtual void start();
+//	virtual void start();
 	virtual void updateEntity(sf::Time dt);
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void BeginContact(b2Contact *contact, Entity* other);
@@ -20,7 +20,7 @@ private:
 	Animation shutAnimation;
 	Animation openAnimation;
 	Rigidbody mRigidbody;
-	Entity* mZid;
+//	Entity* mZid;
 	b2Vec2 mZidPosition;
 	sf::Sprite mSprite;
 	sf::FloatRect mRect;

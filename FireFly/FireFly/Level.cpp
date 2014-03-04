@@ -19,6 +19,8 @@
 #include "ToggleSprite.h"
 #include "SuCam.h"
 #include "Room2_Fan.h"
+// #include "FireflyNPC.h"
+// #include "FireflyZone.h"
 #include "PC.h"
 #include "SugarBowlTop.h"
 #include "Light.h"
@@ -245,6 +247,14 @@ void Level::loadMap(string filename)
 			}
 
 			//
+			// Firefly NPC
+			//
+		/*	else if (entityType == "FireflyNPC")
+			{
+				eList.addEntity(new FireflyNPC(position), Layer::NPC, false);
+			} */
+
+			//
 			// SuCam
 			//
 			else if (entityType == "SuCam")
@@ -372,6 +382,22 @@ void Level::loadMap(string filename)
 			}
 
 			//
+			//	FireflyZone
+			//
+		/*	else if (entityType == "FireflyZone")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				FireflyZone* Fzone = new FireflyZone(rect);
+				Fzone->setProperties(obj.getProperties());				
+				Fzone->setID(id);
+				eList.addEntity(Fzone, Layer::Foreground, false);
+			} */
+
+			//
 			//	ToggleSprite
 			//
 			else if (entityType == "ToggleSprite")
@@ -471,7 +497,7 @@ void Level::loadMap(string filename)
 			//
 			else if (entityType == "Telefonsvarare")
 			{
-				eList.addEntity(new Telefonsvarare(imageSrc, positionSprite), layer, false);
+				eList.addEntity(new Telefonsvarare(position), layer, false);
 			}
 
 //			else if (entityType == "SecuMonitor")

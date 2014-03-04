@@ -4,8 +4,11 @@
 #include "Box2dWorld.h"
 #include "Camera.h"
 #include "RayCastCallback.h"
+// #include "FireflyZone.h"
+// #include "MirrorQueue.h"
 
 #include <iostream>
+
 
 const float DENSITY = 3.f;
 const float FORCE = 5.f;
@@ -27,6 +30,7 @@ Zid::Zid(sf::Vector2f position)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
+, mInFireflyZone(false)
 , mParticleSystem()
 , mEmitter()
 , mSweetZid(false)
@@ -103,7 +107,7 @@ void Zid::sendMessage(Entity* entity, string message)
 {
 		if(message == "button_pressed" && mPC_Zone == true)
 	{
-		float xPosition = 2614 + rand()%600;
+		float xPosition = 2614.f + rand()%600;
 		mRigidbody.getBody()->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat(xPosition), Rigidbody::SfToBoxFloat(-getPosition().y)), 0);
 		b2Vec2 force(0, -20);
 		mRigidbody.getBody()->ApplyLinearImpulse(force , mRigidbody.getBody()->GetWorldCenter(), true);
@@ -315,6 +319,13 @@ void Zid::movement()
 			force *= FORCE * (length / 0.5f) * 0.5f;
 			body->ApplyForceToCenter(force, true);
 		}
+/*		if (mInFireflyZone)
+		{
+			auto q = MirrorQueue::getMirrorQueue().getQueue();
+			if (q->size() > QUEUE_LENGTH)
+				q->pop();
+			q->push(force);
+		} */
 	}
 
 	// Apply impulse for the right mouse button
@@ -443,10 +454,10 @@ sf::Vector2f Zid::getDroppedSugar()
 
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
+	if(other->getID() == "FireflyZone")
+//		mInFireflyZone = true;
 	if (other->getID() == "StickyZone")
-	{
 		mInStickyZone = true;
-	}
 	if(other->getID() == "PC_Zone")
 	{
 		mPC_Zone = true;
@@ -457,26 +468,18 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 		mAlive == false;
 	}
 
-
 	if (other->getID() == "Sugar")
-	{
 		mSweetZid = true;
-	}
-
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
+	if (other->getID() == "FireflyZone")
+//		mInFireflyZone = false;
 	if (other->getID() == "StickyZone")
-	{
 		mInStickyZone = false;
-	}
-
 	if(other->getID() == "PC_Zone")
-	{
 		mPC_Zone = false;
-	}
-
 }
 
 bool Zid::inPCZone()

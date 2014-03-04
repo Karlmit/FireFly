@@ -17,7 +17,7 @@ enum class Layer
 class EntityList
 {
 public:
-	static EntityList &getEntityList(); //singleton
+	static EntityList& getEntityList(); //singleton
 	typedef std::list <Entity*> entityList;
 
 	void update(sf::Time dt);	// Updates all entities

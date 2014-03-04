@@ -47,6 +47,7 @@ private:
 	bool mDirLeft;
 	bool mInStickyZone;
 	bool mAlive;
+	bool mInFireflyZone;
 	//PC stuff
 	Entity* PC;
 	sf::Clock PCButton;
