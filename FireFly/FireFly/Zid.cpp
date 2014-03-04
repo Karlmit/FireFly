@@ -465,7 +465,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 
 	if(other->getID() == "spoderMan")
 	{
-		mAlive == false;
+		mAlive = false;
 	}
 
 	if (other->getID() == "Sugar")

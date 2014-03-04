@@ -27,12 +27,6 @@ Telefonsvarare::Telefonsvarare(sf::Vector2f position)
 
 void Telefonsvarare::updateEntity(sf::Time dt) 
 {	
-
-	if (mAudioMessage.getSound()->getStatus() != sf::SoundSource::Status::Playing)
-	{
-
-	}
-
 	switch (mState)
 	{
 	case Telefonsvarare::State::Blinking:
@@ -50,8 +44,7 @@ void Telefonsvarare::updateEntity(sf::Time dt)
 		break;
 	default:
 		break;
-	}
-	
+	}	
 	
 }
 		
