@@ -42,7 +42,7 @@ walkSound(Loading::getSound("Spiderlegs.wav"), false)
 	mRigidbody.update();
 	setPosition(mRigidbody.getPosition());
 
-	
+	mRigidbody.getBody()->SetUserData(this);
 }
 
 

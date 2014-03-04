@@ -46,6 +46,7 @@ private:
 	int dashFrameNo;
 	bool mDirLeft;
 	bool mInStickyZone;
+	bool mAlive;
 	//PC stuff
 	Entity* PC;
 	sf::Clock PCButton;
