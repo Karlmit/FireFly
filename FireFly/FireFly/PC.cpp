@@ -4,9 +4,13 @@
 #include "Camera.h"
 
 PC::PC(sf::Vector2f position)
-	: mAudioLoggSound(Loading::getSound("canary.wav"), true)
+	: mAudioLoggSound(Loading::getSound("canary.wav"), true),
+	mComputerOnSprite(Loading::getTexture("Room 2/datorskarm_gron_scale.png")),
+	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png"))
 {
 	mID = "PC";
+	mComputerOnSprite.setPosition(2592, 935);
+	mComputerOffSprite.setPosition(2592, 935);
 	mScreen.setSize(sf::Vector2f(595, 360));
 	mScreen.setFillColor(sf::Color::Black);
 	mScreen.setPosition(position);
@@ -161,9 +165,6 @@ void PC::menu()
 
 void PC::updateEntity(sf::Time dt)
 {
-	//oss.clear();
-	//oss << mAudioLoggSound.getSound()->getPlayingOffset().asSeconds();
-	//std::string AudioLogg = to_string(mAudioLoggSound.getSound()->getPlayingOffset().asSeconds());
 	std::stringstream ac;
 	ac.precision(2);
 	ac << "Playing Audiologg 9/9... ";
@@ -190,9 +191,20 @@ void PC::updateEntity(sf::Time dt)
 	//Camera
 	if(mCamera == true)
 	{
-		Camera::currentCamera().setPosition(mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2);
+		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
 		Camera::currentCamera().setZoom(0.8f);
 	}
+
+	termometer = EntityList::getEntityList().getEntity("Termometer");
+	if(mOff == true)
+	{
+		termometer->sendMessage(termometer, "ComputerOff");
+	}
+	else
+	{
+		termometer->sendMessage(termometer, "ComputerOn");
+	}
+
 
 
 
@@ -203,8 +215,10 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	states.transform *= getTransform();
 	if(mOff == false)
 	{
-		target.draw(mScreen, states);
+		target.draw(mComputerOnSprite, states);
 
+		target.draw(mScreen, states);
+	
 		if(mLoggin == true)
 		{
 			target.draw(mTextEntered, states);
@@ -240,6 +254,11 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 		}
 
 	}
+	else
+	{
+		target.draw(mComputerOffSprite, states);
+	}
+
 
 
 

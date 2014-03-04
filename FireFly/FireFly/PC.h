@@ -26,6 +26,11 @@ private:
 	void menu();
 
 	sf::Vector2f mTextPosition;
+	//Sprites
+	sf::Sprite mComputerOnSprite;
+	sf::Sprite mComputerOffSprite;
+	//Entities
+	Entity *termometer;
 
 	sf::RectangleShape mScreen;
 	sf::String msfString;

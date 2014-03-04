@@ -26,6 +26,7 @@ public:
 private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
+	//virtual void sendMessage(Entity* sender, string message);
 
 	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	virtual void EndContact(b2Contact *contact, Entity* other); 
@@ -58,6 +59,7 @@ private:
 	bool mLoseSugar;
 	sf::Clock mLoseSugarTimer;
 	sf::Vector2f mDroppedSugarPosition;
+	bool mInAcZone;
 };
 
 #endif

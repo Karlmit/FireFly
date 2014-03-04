@@ -45,6 +45,15 @@
  <tileset firstgid="18" name="ventilflakt_spritesheet_band_motionblur" tilewidth="287" tileheight="449">
   <image source="../Resources/Room 2/ventilflakt_spritesheet_band_motionblur.png" width="2296" height="449"/>
  </tileset>
+ <tileset firstgid="26" name="termometer_hot" tilewidth="200" tileheight="555">
+  <image source="../Resources/Room 2/termometer_hot.png" width="200" height="555"/>
+ </tileset>
+ <tileset firstgid="27" name="phone_scale" tilewidth="229" tileheight="282">
+  <image source="../Resources/Room 2/phone_scale.png" width="229" height="282"/>
+ </tileset>
+ <tileset firstgid="28" name="dator_scale" tilewidth="313" tileheight="572">
+  <image source="../Resources/Room 2/dator_scale.png" width="313" height="572"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
  </objectgroup>
@@ -52,8 +61,10 @@
   <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
   <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
   <object name="BoilerSprite" type="Boiler" gid="8" x="3380" y="4506"/>
-  <object name="PC_Screen" type="EntitySprite" gid="12" x="2592" y="1421"/>
+  <object name="Termometer" type="Termometer" gid="26" x="1980" y="1225"/>
+  <object name="Telefonsvarare" type="Telefonsvarare" gid="27" x="3413" y="1426"/>
   <object name="Keyboard" type="EntitySprite" gid="13" x="2592" y="1421"/>
+  <object name="PC" type="EntitySprite" gid="28" x="2252" y="1421"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
@@ -124,7 +135,7 @@
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">
    <properties>
     <property name="ToggleOn" value="ToggleSpriteFanButton"/>
-    <property name="TurnOff" value="Room2_Fan"/>
+    <property name="TurnOn" value="Room2_Fan"/>
    </properties>
   </object>
   <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179">
@@ -203,10 +214,10 @@
   <object name="FlyTapeStickyZoneR4" type="StickyZone" x="1819" y="296" width="13" height="29"/>
   <object name="FlyTapeStickyZoneR5" type="StickyZone" x="1804" y="361" width="13" height="29"/>
   <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1839" y="400" width="13" height="29"/>
-  <object name="FanOnButton" type="Trigger" x="757" y="864" width="8" height="13">
+  <object name="FanOffButton" type="Trigger" x="756" y="865" width="5" height="13">
    <properties>
     <property name="ToggleOff" value="ToggleSpriteFanButton"/>
-    <property name="TurnOn" value="Room2_Fan"/>
+    <property name="TurnOff" value="Room2_Fan"/>
    </properties>
   </object>
   <object name="Spider" type="Spider" x="729" y="2332" width="4342" height="2152">
@@ -230,7 +241,7 @@
   <object name="AntPath" type="AntPath" x="545" y="4457">
    <polyline points="0,0 2935,9 2939,-963 3094,-959 3352,-686"/>
   </object>
-  <object name="PC_Zone" type="Trigger" x="2581" y="924" width="648" height="485">
+  <object name="PC_Zone" type="Trigger" x="2581" y="924" width="648" height="485" visible="0">
    <properties>
     <property name="id" value="PC_Zone"/>
    </properties>

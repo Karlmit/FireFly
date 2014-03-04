@@ -180,6 +180,8 @@
     <ClInclude Include="StickyZone.h" />
     <ClInclude Include="SuCam.h" />
     <ClInclude Include="SugarBowlTop.h" />
+    <ClInclude Include="Telefonsvarare.h" />
+    <ClInclude Include="Termometer.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="ToggleSprite.h" />
     <ClInclude Include="Trigger.h" />
@@ -285,6 +287,8 @@
     <ClCompile Include="StickyZone.cpp" />
     <ClCompile Include="SuCam.cpp" />
     <ClCompile Include="SugarBowlTop.cpp" />
+    <ClCompile Include="Telefonsvarare.cpp" />
+    <ClCompile Include="Termometer.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="ToggleSprite.cpp" />
     <ClCompile Include="Trigger.cpp" />
