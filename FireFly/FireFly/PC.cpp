@@ -1,10 +1,16 @@
 #include "PC.h"
 #include <iostream>
 
+#include "Camera.h"
+
 PC::PC(sf::Vector2f position)
-	: mAudioLoggSound(Loading::getSound("canary.wav"), true)
+	: mAudioLoggSound(Loading::getSound("canary.wav"), true),
+	mComputerOnSprite(Loading::getTexture("Room 2/datorskarm_gron_scale.png")),
+	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png"))
 {
 	mID = "PC";
+	mComputerOnSprite.setPosition(2592, 935);
+	mComputerOffSprite.setPosition(2592, 935);
 	mScreen.setSize(sf::Vector2f(595, 360));
 	mScreen.setFillColor(sf::Color::Black);
 	mScreen.setPosition(position);
@@ -22,7 +28,10 @@ PC::PC(sf::Vector2f position)
 	mHintText = mTextEntered;
 	mBulletinText = mTextEntered;
 	mAudioLoggText = mTextEntered;
+	mShuttingDownText = mTextEntered;
 
+	mShuttingDownText.setPosition(mTextPosition);
+	mShuttingDownText.setString("Shutting Down...");
 	mAudioLoggText.setPosition(mTextPosition);
 	mBulletinText.setPosition(mTextPosition.x, mTextPosition.y);
 	mBulletinText.setString("Bulletin: Ant problem!\n\nAnt problem in the boiler room!\nWe have informed the janitor\nabout this, and she said that\nshe wont have time to deal\nwith it until next week.\nUntil then she told us not to \nleave any food or sweets around,\nto keep the ants from spreading\nto other rooms.\n//The dean\n\n\n1. Back");
@@ -47,7 +56,10 @@ PC::PC(sf::Vector2f position)
 	mWelcome = false;
 	mBulletin = false;
 	mAudioLogg = false;
-
+	mCamera = false;
+	mOff = false;
+	mShuttingDown = false;
+	mNewPC = true;
 	//counter
 	mInvalidCounter = 0;
 }
@@ -59,7 +71,16 @@ PC::~PC()
 
 void PC::sendMessage(Entity* entity, std::string message)
 {
-	
+	if(message == "in_PC_Zone")
+	{
+		mCamera = true;
+	}
+	if(message == "out_of_PC_Zone")
+	{
+		mCamera = false;
+	}
+
+
 }
 
 void PC::sendSfString(Entity* entity, sf::String message)
@@ -99,33 +120,45 @@ void PC::loggin()
 
 void PC::menu()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mMenu == true)
+	if(mButtonClock.getElapsedTime().asMilliseconds() > 200)
 	{
-		mAudioLogg = true;
-		mAudioLoggSound.play();
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mMenu == true && mBulletin == false && mShuttingDown == false)
+		{
+			mAudioLogg = !mAudioLogg;
+			if(mAudioLogg == true)
+			{
+			mAudioLoggSound.play();
+			}
+			mButtonClock.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && mBulletin == false && mAudioLogg == false && mShuttingDown == false)
+		{
+			mBulletin = true;
+			mButtonClock.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3) && mBulletin == false && mAudioLogg == false && mShuttingDown == false)
+		{
+			mShuttingDown = true;
+			mShuttingDownClock.restart();
+			mButtonClock.restart();
+		}
+		}
+		if(mButtonClock.getElapsedTime().asMilliseconds() > 200)
+		{
+		//INSIDE BULLETIN
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mBulletin == true)
+		{
+			mBulletin = false;
+			mMenu = true;
+			mButtonClock.restart();
+		}
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-	{
-		mBulletin = true;
-	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
-	{
-		mMenu = false;
-		mLoggin = true;
-	}
-
-	//INSIDE BULLETIN
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mBulletin == true)
-	{
-		mBulletin = false;
-		mMenu = true;
-	}
-	//INSIDE AUDIOLOGG
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mAudioLogg == true)
-	{
-		mAudioLogg = false;
-		mMenu = true;
-	}
+		if(mShuttingDown == true && mShuttingDownClock.getElapsedTime().asSeconds() > 3)
+		{
+			mMenu = false;
+			mLoggin = true;
+			mOff = true;
+		}
 
 
 }
@@ -133,9 +166,6 @@ void PC::menu()
 
 void PC::updateEntity(sf::Time dt)
 {
-	//oss.clear();
-	//oss << mAudioLoggSound.getSound()->getPlayingOffset().asSeconds();
-	//std::string AudioLogg = to_string(mAudioLoggSound.getSound()->getPlayingOffset().asSeconds());
 	std::stringstream ac;
 	ac.precision(2);
 	ac << "Playing Audiologg 9/9... ";
@@ -159,43 +189,75 @@ void PC::updateEntity(sf::Time dt)
 		menu();
 	}
 
+	//Camera
+	if(mCamera == true)
+	{
+		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
+		Camera::currentCamera().setZoom(0.8f);
+	}
 
+	termometer = EntityList::getEntityList().getEntity("Termometer");
+	if(mOff == true)
+	{
+		termometer->sendMessage(termometer, "ComputerOff");
+	}
+	else
+	{
+		termometer->sendMessage(termometer, "ComputerOn");
+	}
+
+
+	mNewPC = false; 
 
 }
 
 void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
-	target.draw(mScreen, states);
+	if(mOff == false)
+	{
+		target.draw(mComputerOnSprite, states);
 
-	if(mLoggin == true)
-	{
-		target.draw(mTextEntered, states);
-		target.draw(mPassword, states);
+		target.draw(mScreen, states);
+	
+		if(mLoggin == true)
+		{
+			target.draw(mTextEntered, states);
+			target.draw(mPassword, states);
+		}
+		if(mInvalid == true)
+		{
+			target.draw(mPassInvalid, states);
+		}
+		if(mMenu == true && mShuttingDown == false && mBulletin == false && mAudioLogg == false)
+		{
+			target.draw(mMenuText, states);
+		}
+		if(mHint == true)
+		{
+			target.draw(mHintText, states);
+		}
+		if(mWelcome == true)
+		{
+			target.draw(mWelcomeText, states);
+		}
+		if(mBulletin == true)
+		{
+			target.draw(mBulletinText, states);
+		}
+		if(mAudioLogg == true)
+		{
+			target.draw(mAudioLoggText, states);
+		}
+		if(mShuttingDown == true)
+		{
+			target.draw(mShuttingDownText, states);
+		}
+
 	}
-	if(mInvalid == true)
+	else
 	{
-		target.draw(mPassInvalid, states);
-	}
-	if(mMenu == true && mBulletin == false && mAudioLogg == false)
-	{
-		target.draw(mMenuText, states);
-	}
-	if(mHint == true)
-	{
-		target.draw(mHintText, states);
-	}
-	if(mWelcome == true)
-	{
-		target.draw(mWelcomeText, states);
-	}
-	if(mBulletin == true)
-	{
-		target.draw(mBulletinText, states);
-	}
-	if(mAudioLogg == true)
-	{
-		target.draw(mAudioLoggText, states);
+		target.draw(mComputerOffSprite, states);
 	}
 
 
@@ -211,4 +273,9 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 void PC::getTextEntered(std::string text)
 {
 	mTextEntered.setString(text);
+}
+
+bool PC::newPC()
+{
+	return mNewPC;
 }

@@ -18,13 +18,20 @@ public:
 	virtual void sendMessage(Entity* entity, std::string message);
 	virtual void sendSfString(Entity* entity, sf::String message);
 	void getTextEntered(std::string text);
+	bool newPC();
 private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
+
 	void loggin();
 	void menu();
 
 	sf::Vector2f mTextPosition;
+	//Sprites
+	sf::Sprite mComputerOnSprite;
+	sf::Sprite mComputerOffSprite;
+	//Entities
+	Entity *termometer;
 
 	sf::RectangleShape mScreen;
 	sf::String msfString;
@@ -37,6 +44,7 @@ private:
 	sf::Text mHintText;
 	sf::Text mWelcomeText;
 	sf::Text mAudioLoggText;
+	sf::Text mShuttingDownText;
 
 	//meny bools
 	bool mHint;
@@ -46,13 +54,18 @@ private:
 	bool mWelcome;
 	bool mBulletin;
 	bool mAudioLogg;
+	bool mCamera;
+	bool mOff;
+	bool mShuttingDown;
+	bool mNewPC;
 	//invalid counter
 	int mInvalidCounter;
 	
 	//Clocks and timers
 	sf::Clock mWelcomeClock;
 	sf::Time mAudioLoggTime;
-	//ADD TIME FOR BUTTONPRESS
+	sf::Clock mButtonClock;
+	sf::Clock mShuttingDownClock;
 
 	//sounds
 	Audio mAudioLoggSound;

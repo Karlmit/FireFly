@@ -116,7 +116,7 @@ void Wasp::movement()
 
 	
 
-	//Depending on distance to Zid, Wasp either follows Zid or moves passively
+	//Depending on distance to Zid, Wasp either charges at Zid or moves passively
 	if(length < MIN_FOLLOW_DISTANCE)
 	{
 		if(bonk == false)

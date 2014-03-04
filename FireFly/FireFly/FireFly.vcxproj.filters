@@ -321,6 +321,12 @@
     <ClInclude Include="FireflyNPC.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="FireflyZone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MirrorQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="PC.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -641,6 +647,12 @@
     <ClCompile Include="FireflyNPC.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="FireflyZone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MirrorQueue.cpp">
+      <Filter>Source Files</Filter>
+	</ClCompile>
     <ClCompile Include="PC.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>

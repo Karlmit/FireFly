@@ -4,8 +4,11 @@
 #include "Box2dWorld.h"
 #include "Camera.h"
 #include "RayCastCallback.h"
+// #include "FireflyZone.h"
+// #include "MirrorQueue.h"
 
 #include <iostream>
+
 
 const float DENSITY = 3.f;
 const float FORCE = 5.f;
@@ -16,7 +19,7 @@ const float SCALE = 1.f/2;
 // Sugar
 const float EMISSION_RATE = 5.f;
 const float SUGAR_GRAVITY = 120.f;
-const float LOSE_SUGAR_EMISSION = 300.f;
+const float LOSE_SUGAR_EMISSION = 220.f;
 const float LOSE_SUGAR_TIME = 0.6f;
 const float AC_ZONE_SUGAR_VEL_X = -200.f;
 
@@ -27,6 +30,7 @@ Zid::Zid(sf::Vector2f position)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
+, mInFireflyZone(false)
 , mParticleSystem()
 , mEmitter()
 , mSweetZid(false)
@@ -88,12 +92,29 @@ Zid::Zid(sf::Vector2f position)
 	mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
 	mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
 
-	
-	
+
+	//PC Zone
+	mPC_Zone = false;
+	mJumpUp = false;
 } 
 
-void Zid::sendMessage(Entity* sender, string message)
+	
+	
+
+
+void Zid::sendMessage(Entity* entity, string message)
 {
+		if(message == "button_pressed" && mPC_Zone == true)
+	{
+		float xPosition = 2614.f + rand()%600;
+		mRigidbody.getBody()->SetTransform(b2Vec2(Rigidbody::SfToBoxFloat(xPosition), Rigidbody::SfToBoxFloat(-getPosition().y)), 0);
+		b2Vec2 force(0, -20);
+		mRigidbody.getBody()->ApplyLinearImpulse(force , mRigidbody.getBody()->GetWorldCenter(), true);
+		mJumpUp = true;
+		PCButton.restart();
+	}
+
+
 	if (message == "InAcZone")
 	{
 		/*
@@ -120,6 +141,7 @@ void Zid::sendMessage(Entity* sender, string message)
 	}
 	
 }
+
 
 
 
@@ -189,9 +211,21 @@ void Zid::updateEntity(sf::Time dt)
 		}
 	}
 
+	PC = EntityList::getEntityList().getEntity("PC");
+	if(mPC_Zone == true && PC != nullptr)
+	{
+		PC->sendMessage(this, "in_PC_Zone");
+	}
+	else if(PC != nullptr)
+	{
+		PC->sendMessage(this, "out_of_PC_Zone");
+	}
 
+	if(mPC_Zone == false)
+	{
 	// Set the camera to follow zid
 	Camera::currentCamera().setTargetPosition(getPosition());
+	}
 
 	// Get the position and rotation from the rigidbody
 	mRigidbody.update();				
@@ -201,11 +235,11 @@ void Zid::updateEntity(sf::Time dt)
 	//get spoderMan
 	mSpoderMan = EntityList::getEntityList().getEntity("spoderMan");
 	//activates or deactivates the spider for room 2	
-	if(mSweetZid)
+	if(mSweetZid && mSpoderMan != nullptr)
 	{
 		mSpoderMan->sendMessage(this, "activate");
 	}
-	else
+	else if(mSpoderMan != nullptr)
 	{
 		mSpoderMan->sendMessage(this, "deactivate");
 	}
@@ -239,6 +273,13 @@ void Zid::movement()
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
 
+	if(PCButton.getElapsedTime().asMilliseconds() > 200 && mPC_Zone == true && mJumpUp == true)
+	{
+		b2Vec2 force(0, 4);
+		mRigidbody.getBody()->ApplyLinearImpulse(force , mRigidbody.getBody()->GetWorldCenter(), true);
+		mJumpUp = false;
+	}
+
 
 	// Counter gravity
 	body->ApplyForce(body->GetMass() * - b2Vec2(0,-10.f), body->GetWorldCenter(), true);
@@ -271,6 +312,13 @@ void Zid::movement()
 			force *= FORCE * (length / 0.5f) * 0.5f;
 			body->ApplyForceToCenter(force, true);
 		}
+/*		if (mInFireflyZone)
+		{
+			auto q = MirrorQueue::getMirrorQueue().getQueue();
+			if (q->size() > QUEUE_LENGTH)
+				q->pop();
+			q->push(force);
+		} */
 	}
 
 	// Apply impulse for the right mouse button
@@ -399,22 +447,27 @@ sf::Vector2f Zid::getDroppedSugar()
 
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
+	if(other->getID() == "FireflyZone")
+//		mInFireflyZone = true;
 	if (other->getID() == "StickyZone")
-	{
 		mInStickyZone = true;
-	}
-
+	if(other->getID() == "PC_Zone")
+		mPC_Zone = true;
 	if (other->getID() == "Sugar")
-	{
 		mSweetZid = true;
-	}
-
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
+	if (other->getID() == "FireflyZone")
+//		mInFireflyZone = false;
 	if (other->getID() == "StickyZone")
-	{
 		mInStickyZone = false;
-	}
+	if(other->getID() == "PC_Zone")
+		mPC_Zone = false;
+}
+
+bool Zid::inPCZone()
+{
+	return mPC_Zone;
 }

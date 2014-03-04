@@ -25,6 +25,7 @@ mStatisticsNumFrames(0)
 	mStatisticsText.setCharacterSize(12);
 
 	
+	
 }
 
 GameLoop::~GameLoop()
@@ -83,21 +84,33 @@ void GameLoop::processEvents()
 			mCamera.changeZoom(event.mouseWheel.delta);
 			break;
 		case::sf::Event::TextEntered:
-			if (event.text.unicode == '\b' && textEntered.end() != textEntered.begin())
+			Zid* zidCast = static_cast<Zid*>(zid);
+			if(zidCast->inPCZone() == true)
 			{
-				 textEntered.erase(textEntered.getSize() - 1, 1);
-			}
-			else if (event.text.unicode < 128 && event.text.unicode != '\b' && event.KeyPressed != sf::Keyboard::Return)
-			{
-				if(textEntered.getSize() <= 5)//sets a max length
+
+				if (event.text.unicode == '\b' && textEntered.end() != textEntered.begin())
 				{
-					textEntered += static_cast<char>(event.text.unicode);
+					 textEntered.erase(textEntered.getSize() - 1, 1);	//deletes one character from string
 				}
-			}
-			pc = EntityList::getEntityList().getEntity("PC");
-			if(pc != nullptr)
-			{
-				 pc->sendSfString(pc, textEntered);
+				else if (event.text.unicode < 128 && event.text.unicode != '\b' && event.text.unicode != '\r') //Dont add to string if enter or backspace was pressed
+				{
+					if(textEntered.getSize() <= 5)//sets a max length for string
+					{
+						textEntered += static_cast<char>(event.text.unicode);
+					}
+				}
+
+				if(pc != nullptr && zid != nullptr)
+				{
+					 pc->sendSfString(pc, textEntered);
+					 zid->sendMessage(zid, "button_pressed");
+				}
+
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+				{
+					textEntered.clear();	//Clears string if enter is pressed
+				}
+
 			}
 			break;
 
@@ -152,6 +165,18 @@ void GameLoop::update(sf::Time timePerFrame)
 
 	// Check if change map
 	Level::update();
+
+	//pointers for event
+	pc = EntityList::getEntityList().getEntity("PC");
+	zid = EntityList::getEntityList().getEntity("Zid");
+	//clears text
+	PC* pcCast = static_cast<PC*>(pc);
+	if(pcCast != nullptr) 
+	{
+		if(pcCast->newPC() == true)
+		textEntered.clear();
+	}
+
 }
 
 void GameLoop::updateStatistics(sf::Time elapsedTime)
@@ -194,7 +219,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("level2.tmx");
 			break;
 		case sf::Keyboard::F3:
-			Level::changeMap("level3.tmx");
+			Level::changeMap("schakt1.tmx");
 			break;
 		case sf::Keyboard::F4:
 			Level::changeMap("level4.tmx");

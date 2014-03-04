@@ -142,6 +142,7 @@
     <ClInclude Include="ContactListener.h" />
     <ClInclude Include="FadeToBlack.h" />
     <ClInclude Include="FireflyNPC.h" />
+    <ClInclude Include="FireflyZone.h" />
     <ClInclude Include="ForceZone.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Hivemind.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="MapObjectProperty.h" />
     <ClInclude Include="MapPolyline.h" />
     <ClInclude Include="MapTileset.h" />
+    <ClInclude Include="MirrorQueue.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="ParallaxSprite.h" />
     <ClInclude Include="PC.h" />
@@ -250,6 +252,7 @@
     <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="FireflyNPC.cpp" />
+    <ClCompile Include="FireflyZone.cpp" />
     <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Hivdemind.cpp" />
@@ -262,6 +265,7 @@
     <ClCompile Include="MapObjectProperty.cpp" />
     <ClCompile Include="MapPolyline.cpp" />
     <ClCompile Include="MapTileset.cpp" />
+    <ClCompile Include="MirrorQueue.cpp" />
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="ParallaxSprite.cpp" />
     <ClCompile Include="PC.cpp" />

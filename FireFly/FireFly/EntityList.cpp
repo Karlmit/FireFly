@@ -4,7 +4,7 @@ EntityList EntityList::eL;
 
 EntityList::EntityList()
 {
-	rLightMap.create(5000, 2160); //Måste fixas så den anpassas efter levelens storlek
+	rLightMap.create(5000, 2160); //Måste fixas sEden anpassas efter levelens storlek
 	sLightMap.setPosition(0,0);
 }
 

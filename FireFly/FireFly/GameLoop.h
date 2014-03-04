@@ -7,6 +7,9 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "PC.h"
+#include "Zid.h"
+
 #include "Camera.h"
 #include <Box2D\Box2D.h>
 
@@ -36,5 +39,6 @@ private:
 	std::size_t	mStatisticsNumFrames;
 	sf::String textEntered;
 	Entity *pc;
+	Entity *zid;
 };
 
