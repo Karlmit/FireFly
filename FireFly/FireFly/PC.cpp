@@ -59,6 +59,7 @@ PC::PC(sf::Vector2f position)
 	mCamera = false;
 	mOff = false;
 	mShuttingDown = false;
+	mNewPC = true;
 	//counter
 	mInvalidCounter = 0;
 }
@@ -121,7 +122,7 @@ void PC::menu()
 {
 	if(mButtonClock.getElapsedTime().asMilliseconds() > 200)
 	{
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mMenu == true && mBulletin == false)
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mMenu == true && mBulletin == false && mShuttingDown == false)
 		{
 			mAudioLogg = !mAudioLogg;
 			if(mAudioLogg == true)
@@ -130,12 +131,12 @@ void PC::menu()
 			}
 			mButtonClock.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && mBulletin == false && mAudioLogg == false)
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && mBulletin == false && mAudioLogg == false && mShuttingDown == false)
 		{
 			mBulletin = true;
 			mButtonClock.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3) && mBulletin == false && mAudioLogg == false)
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3) && mBulletin == false && mAudioLogg == false && mShuttingDown == false)
 		{
 			mShuttingDown = true;
 			mShuttingDownClock.restart();
@@ -152,7 +153,7 @@ void PC::menu()
 			mButtonClock.restart();
 		}
 	}
-		if(mShuttingDown == true && mShuttingDownClock.getElapsedTime().asSeconds() > 4)
+		if(mShuttingDown == true && mShuttingDownClock.getElapsedTime().asSeconds() > 3)
 		{
 			mMenu = false;
 			mLoggin = true;
@@ -206,7 +207,7 @@ void PC::updateEntity(sf::Time dt)
 	}
 
 
-
+	mNewPC = false; 
 
 }
 
@@ -274,3 +275,7 @@ void PC::getTextEntered(std::string text)
 	mTextEntered.setString(text);
 }
 
+bool PC::newPC()
+{
+	return mNewPC;
+}

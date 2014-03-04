@@ -466,3 +466,8 @@ void Zid::EndContact(b2Contact *contact, Entity* other)
 	}
 
 }
+
+bool Zid::inPCZone()
+{
+	return mPC_Zone;
+}
