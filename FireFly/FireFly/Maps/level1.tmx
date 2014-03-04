@@ -11,6 +11,9 @@
  </tileset>
  <tileset firstgid="4" name="ROOM1_Table" tilewidth="1029" tileheight="1152">
   <image source="../Resources/Room 1/bord_scale.png" width="1029" height="1152"/>
+  <terraintypes>
+   <terrain name="New Terrain" tile="-1"/>
+  </terraintypes>
  </tileset>
  <tileset firstgid="5" name="ROOM1_Jar" tilewidth="246" tileheight="271">
   <image source="../Resources/Room 1/burk_1_scale.png" width="246" height="271"/>
@@ -67,7 +70,7 @@
    </properties>
   </object>
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
-  <object name="CoatFrontPatch" type="EntitySprite" gid="10" x="3" y="2163"/>
+  <object name="CoatFrontPatch" type="EntitySprite" gid="10" x="3" y="2163" visible="0"/>
   <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1">
@@ -149,7 +152,7 @@
     <property name="id" value="BurkDeathZone"/>
    </properties>
   </object>
-  <object name="Spider" type="Spider" x="0" y="0" width="4460" height="2160">
+  <object name="Spider" type="Spider" x="0" y="0" width="4460" height="2160" visible="0">
    <properties>
     <property name="room1" value="true"/>
     <property name="x" value="4800"/>
