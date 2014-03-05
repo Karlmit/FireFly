@@ -298,7 +298,10 @@ void Level::loadMap(string filename)
 				if (!sfPoints.empty())
 				{
 					Entity* col = new StaticLineCollider(sfPoints, loop);
-					col->setID(id);
+					if (id != "")
+						col->setID(id);
+					else
+						col->setID("StaticCollider");
 					eList.addEntity(col, Layer::Foreground, false);
 				}
 			}
