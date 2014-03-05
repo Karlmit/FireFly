@@ -31,6 +31,7 @@ private:
 	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	virtual void EndContact(b2Contact *contact, Entity* other); 
 
+	void animation();
 	void movement();
 	void sugarStuff(sf::Time dt);
 

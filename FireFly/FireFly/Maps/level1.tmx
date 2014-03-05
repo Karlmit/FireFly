@@ -133,7 +133,10 @@
    </properties>
    <ellipse/>
   </object>
-  <object name="CannedWasp" type="WaspTrapped" x="2349" y="1691" width="65" height="59">
+  <object name="CannedWaspp" type="Wasp" x="2350" y="1691" width="65" height="58">
+   <properties>
+    <property name="hunting" value="true"/>
+   </properties>
    <ellipse/>
   </object>
   <object name="NextMapTrigger" type="Trigger" x="4740" y="1471" width="390" height="577">

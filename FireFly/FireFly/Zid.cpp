@@ -140,75 +140,26 @@ void Zid::updateEntity(sf::Time dt)
 	// S?ger att allt ljud som Zid g?r ska h?ras fr?n Zid.
 	sf::Listener::setPosition(getPosition().x, 1, getPosition().y);
 	
-	if(zidDash == true)
-	{
-		if(dashFrameNo < dashAnimation.getAnimLength())
-		{
-			dashFrameNo++;
-			if (mLoseSugar)
-			{
-				dashSugarAnimation.updateAnimation();
-				mSprite = dashSugarAnimation.getCurrentSprite();
-			}
-			else
-			{
-				dashAnimation.updateAnimation();
-				mSprite = dashAnimation.getCurrentSprite();
-			}
-		}
-		else
-		{
-			dashFrameNo = 0;
-			zidDash = false;
-			
-			if (mSweetZid)
-			{
-				idleSugarAnimation.updateAnimation();
-				mSprite = idleSugarAnimation.getCurrentSprite();
-			}
-			else
-			{
-				idleAnimation.updateAnimation();
-				mSprite = idleAnimation.getCurrentSprite();
-			}
-		}
-	}
-	else
-	{
-		dashFrameNo = 0;
-		zidDash = false;
-
-		if (mSweetZid)
-		{
-			idleSugarAnimation.updateAnimation();
-			mSprite = idleSugarAnimation.getCurrentSprite();
-		}
-		else
-		{
-			idleAnimation.updateAnimation();
-			mSprite = idleAnimation.getCurrentSprite();
-		}
-		
-	}
-
+	// Animation
+	if (mAlive)
+		animation();
 	
+
 
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
 
 	if(mAlive == true)
 	{
-	// Checks mouse input and apply force on the rigidbody based on that
-	movement();
+		// Checks mouse input and apply force on the rigidbody based on that
+		movement();
 	}
 	else
 	{
 		body->SetFixedRotation(false);
 	}
 
-
-	// Change direction on the sprite based on velocity
-	
+	// Change direction on the sprite based on velocity	
 	if (body->GetLinearVelocity().x < -0.1f) 
 	{
 		mDirLeft = true;
@@ -286,6 +237,60 @@ void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	}
 
 
+}
+
+void Zid::animation()
+{
+	if(zidDash == true)
+	{
+		if(dashFrameNo < dashAnimation.getAnimLength())
+		{
+			dashFrameNo++;
+			if (mLoseSugar)
+			{
+				dashSugarAnimation.updateAnimation();
+				mSprite = dashSugarAnimation.getCurrentSprite();
+			}
+			else
+			{
+				dashAnimation.updateAnimation();
+				mSprite = dashAnimation.getCurrentSprite();
+			}
+		}
+		else
+		{
+			dashFrameNo = 0;
+			zidDash = false;
+			
+			if (mSweetZid)
+			{
+				idleSugarAnimation.updateAnimation();
+				mSprite = idleSugarAnimation.getCurrentSprite();
+			}
+			else
+			{
+				idleAnimation.updateAnimation();
+				mSprite = idleAnimation.getCurrentSprite();
+			}
+		}
+	}
+	else
+	{
+		dashFrameNo = 0;
+		zidDash = false;
+
+		if (mSweetZid)
+		{
+			idleSugarAnimation.updateAnimation();
+			mSprite = idleSugarAnimation.getCurrentSprite();
+		}
+		else
+		{
+			idleAnimation.updateAnimation();
+			mSprite = idleAnimation.getCurrentSprite();
+		}
+		
+	}
 }
 
 void Zid::movement()
@@ -370,6 +375,7 @@ void Zid::movement()
 				mSweetZid = false;
 				mLoseSugar = true;
 				mLoseSugarTimer.restart();
+				EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StopHunting");
 			}
 
 
@@ -467,7 +473,7 @@ sf::Vector2f Zid::getDroppedSugar()
 
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
-	if(other->getID() == "FireflyZone")
+//	if(other->getID() == "FireflyZone")
 //		mInFireflyZone = true;
 	if (other->getID() == "StickyZone")
 		mInStickyZone = true;
@@ -482,12 +488,20 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	}
 
 	if (other->getID() == "Sugar")
+	{
 		mSweetZid = true;
+		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
+	}
+
+	if (other->getID() == "Wasp")
+	{
+		mAlive = false;
+	}
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
-	if (other->getID() == "FireflyZone")
+//	if (other->getID() == "FireflyZone")
 //		mInFireflyZone = false;
 	if (other->getID() == "StickyZone")
 		mInStickyZone = false;

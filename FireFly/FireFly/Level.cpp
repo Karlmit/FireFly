@@ -242,11 +242,13 @@ void Level::loadMap(string filename)
 			}
 
 			//
-			// Trapped wasp
+			// Wasp
 			//
-			else if (entityType == "WaspTrapped")
+			else if (entityType == "Wasp")
 			{
-				eList.addEntity(new Wasp(position), Layer::NPC, false);
+				Entity* wasp = new Wasp(position);
+				wasp->setProperties(obj.getProperties());
+				eList.addEntity(wasp, Layer::NPC, false);
 			}
 
 			//

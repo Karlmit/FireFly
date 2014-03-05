@@ -36,13 +36,6 @@ Termometer::Termometer(sf::Vector2f position)
 
 void Termometer::updateEntity(sf::Time dt)
 {
-	// Temp pc controll
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-		sendMessage(this, "ComputerOn");
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		sendMessage(this, "ComputerOff");
-
-
 	mCurrentSprite = 0;
 	mCurrentSprite += mBoilerOn ? 1 : 0;
 	mCurrentSprite += mCeilingFanOff ? 1 : 0;
