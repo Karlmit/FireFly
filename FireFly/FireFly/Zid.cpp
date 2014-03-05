@@ -27,6 +27,8 @@ Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
 , idleAnimation(Loading::getTexture("Zid_flying_128.png", true), 128, 128, 5, 8, 20)
 , dashAnimation(Loading::getTexture("Zid_boosting_128.png"), 128, 128, 5, 5, 2)
+, idleSugarAnimation(Loading::getTexture("Zid_flygande_socker_spritesheet.png", true), 128, 128, 5, 8, 20)
+, dashSugarAnimation(Loading::getTexture("Zid_spurt_socker_spritesheet.png"), 128, 128, 5, 5, 2)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
@@ -118,26 +120,10 @@ void Zid::sendMessage(Entity* entity, string message)
 
 	if (message == "InAcZone")
 	{
-		/*
-		mParticleSystem.clearAffectors();
-		// fade in/out animations
-		thor::FadeAnimation fader(0.09f, 0.1f);
-		mParticleSystem.addAffector( thor::AnimationAffector(fader) );
-		mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
-		mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(AC_ZONE_SUGAR_VEL_X, SUGAR_GRAVITY))  );
-		*/
 		mInAcZone = true;
 	}
 	if (message == "OutAcZone")
 	{
-		/*
-		mParticleSystem.clearAffectors();
-		// fade in/out animations
-		thor::FadeAnimation fader(0.09f, 0.1f);
-		mParticleSystem.addAffector( thor::AnimationAffector(fader) );
-		mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
-		mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
-		*/
 		mInAcZone = false;
 	}
 	
@@ -159,23 +145,50 @@ void Zid::updateEntity(sf::Time dt)
 		if(dashFrameNo < dashAnimation.getAnimLength())
 		{
 			dashFrameNo++;
-			dashAnimation.updateAnimation();
-			mSprite = dashAnimation.getCurrentSprite();
+			if (mLoseSugar)
+			{
+				dashSugarAnimation.updateAnimation();
+				mSprite = dashSugarAnimation.getCurrentSprite();
+			}
+			else
+			{
+				dashAnimation.updateAnimation();
+				mSprite = dashAnimation.getCurrentSprite();
+			}
 		}
 		else
 		{
 			dashFrameNo = 0;
 			zidDash = false;
-			idleAnimation.updateAnimation();
-			mSprite = idleAnimation.getCurrentSprite();
+			
+			if (mSweetZid)
+			{
+				idleSugarAnimation.updateAnimation();
+				mSprite = idleSugarAnimation.getCurrentSprite();
+			}
+			else
+			{
+				idleAnimation.updateAnimation();
+				mSprite = idleAnimation.getCurrentSprite();
+			}
 		}
 	}
 	else
 	{
 		dashFrameNo = 0;
 		zidDash = false;
-		idleAnimation.updateAnimation();
-		mSprite = idleAnimation.getCurrentSprite();
+
+		if (mSweetZid)
+		{
+			idleSugarAnimation.updateAnimation();
+			mSprite = idleSugarAnimation.getCurrentSprite();
+		}
+		else
+		{
+			idleAnimation.updateAnimation();
+			mSprite = idleAnimation.getCurrentSprite();
+		}
+		
 	}
 
 	
@@ -262,7 +275,7 @@ void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	// Draw particles
 	target.draw(mParticleSystem);
 
-	// Rigidbody debug draw
+	// Debug draw
 	if (Globals::DEBUG_MODE)
 	{
 		mRigidbody.drawDebug(target, states);

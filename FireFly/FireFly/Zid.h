@@ -40,6 +40,8 @@ private:
 	Rigidbody	mRigidbody;
 	Animation idleAnimation;
 	Animation dashAnimation;
+	Animation idleSugarAnimation;
+	Animation dashSugarAnimation;
 	Audio dashSound;
 	Entity* mSpoderMan;
 	bool zidDash;
