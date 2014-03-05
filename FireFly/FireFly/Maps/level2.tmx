@@ -62,7 +62,7 @@
   <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
   <object name="BoilerSprite" type="Boiler" gid="8" x="3380" y="4506"/>
   <object name="Termometer" type="Termometer" gid="26" x="1980" y="1225"/>
-  <object name="Telefonsvarare" type="Telefonsvarare" gid="27" x="3413" y="1426"/>
+  <object name="Telefonsvarare" type="Telefonsvarare" x="3353" y="1229" width="259" height="193"/>
   <object name="Keyboard" type="EntitySprite" gid="13" x="2592" y="1421"/>
   <object name="PC" type="EntitySprite" gid="28" x="2252" y="1421"/>
  </objectgroup>
@@ -127,9 +127,12 @@
   <object name="AC_CollBottom" type="StaticCollision" x="5071" y="587">
    <polyline points="0,0 -48,-51 -48,-56 1,-55"/>
   </object>
+  <object name="TelefonColl" type="StaticCollisionLoop" x="3353" y="1421">
+   <polyline points="0,0 1,-194 5,-197 230,-198 234,-195 235,-169 261,-167 261,0"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="ZidStart" type="ZidSpawn" x="16" y="2023" width="40" height="30">
+  <object name="ZidStart" type="ZidSpawn" x="2328" y="1159" width="40" height="30">
    <ellipse/>
   </object>
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">
