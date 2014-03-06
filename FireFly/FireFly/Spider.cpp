@@ -15,7 +15,6 @@ walkSound(Loading::getSound("Spiderlegs.wav"), false)
 	float density = 4.f;
 	mRigidbody.AddDynCircleBody(colRadius, getPosition(), density, true);
 
-
 	//sound
 	walkSound.getSound()->setMinDistance(200);
 	walkSound.getSound()->setLoop(true);

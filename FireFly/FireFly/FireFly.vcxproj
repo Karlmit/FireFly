@@ -138,6 +138,7 @@
     <ClInclude Include="Box2D\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
+    <ClInclude Include="BrokenJar.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ContactListener.h" />
     <ClInclude Include="Dust.h" />
@@ -252,6 +253,7 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
+    <ClCompile Include="BrokenJar.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="Dust.cpp" />
