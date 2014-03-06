@@ -505,6 +505,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	if (other->getID() == "Sugar")
 	{
 		mSweetZid = true;
+	}
 	if(other->getID() == "SpiderWeb")
 	{
 		slooowDooown = true;
