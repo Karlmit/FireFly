@@ -31,6 +31,8 @@
 #include "Telefonsvarare.h"
 #include "ParallaxSprite.h"
 #include "Dust.h"
+#include "SpiderPath.h"
+#include "Sparks.h"
 
 #include <iostream>
 using namespace std;
@@ -448,6 +450,7 @@ void Level::loadMap(string filename)
 				Spider * spider = new Spider(sf::Vector2f(x, y), position, sf::Vector2f(width, height));
 				spider->setProperties(obj.getProperties());
 				eList.addEntity(spider, Layer::Front, false);
+				
 			}
 
 
@@ -483,6 +486,43 @@ void Level::loadMap(string filename)
 				AntPath* antPath = new AntPath(sfPoints);
 				eList.addEntity(antPath, Layer::NPC, false);
 			}
+
+			// spiderPath
+			else if(entityType =="SpiderPath")
+			{
+				vector<sf::Vector2f> sfPoints;
+				for (MapPoint p : obj.getPolyline().getPoints())
+				{
+					sf::Vector2f sfPoint(float(p.x), float(p.y));
+					sfPoint = sfPoint + position;
+					sfPoints.push_back(sfPoint);
+				}
+				//add to elist
+				SpiderPath* spiderpath = new SpiderPath(sfPoints);
+				eList.addEntity(spiderpath, Layer::NPC, false);
+
+			}
+
+			else if(entityType == "Spark_Position1")
+			{
+				Sparks* spark1 = new Sparks("Schakt 1/elsprak1_spritesheet.png", 246.f/3, 52.f, position, 3);
+				spark1->setProperties(obj.getProperties());
+				eList.addEntity(spark1, Layer::Front, false);
+			}
+			else if(entityType == "Spark_Position2")
+			{
+				Sparks* spark2 = new Sparks("Schakt 1/elsprak2_spritesheet.png", 165.f/3, 69.f, position, 3);
+				spark2->setProperties(obj.getProperties());
+				eList.addEntity(spark2, Layer::Front, false);
+			}
+			else if(entityType == "Spark_Position3")
+			{
+				Sparks* spark3 = new Sparks("Schakt 1/elsprak3_spritesheet.png", 273.f/3, 84.f, position, 3);
+				spark3->setProperties(obj.getProperties());
+				eList.addEntity(spark3, Layer::Front, false);
+			}
+
+
 
 			//
 			// Boiler

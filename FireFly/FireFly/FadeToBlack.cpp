@@ -10,6 +10,7 @@ FadeToBlack::FadeToBlack(float delay, bool fadeTo, string nextMap)
 	, mColor()
 	, mNextMap(nextMap)
 {
+	mID = "fade";
 	mColor = sf::Color::Black;
 	if (fadeTo)
 		mColor.a = 0;
@@ -20,6 +21,16 @@ FadeToBlack::FadeToBlack(float delay, bool fadeTo, string nextMap)
 
 	mTimer.restart();
 }
+
+void FadeToBlack::sendMessage(Entity* entity, std::string message)
+{
+	if(message == "activate")
+	{
+		mFadeTo = true;
+	}
+
+}
+
 
 void FadeToBlack::updateEntity(sf::Time dt) 
 {
@@ -60,3 +71,14 @@ void FadeToBlack::drawEntity(sf::RenderTarget& target, sf::RenderStates states) 
 	states.transform *= getTransform();
 	target.draw(mRectShape, states);
 }
+
+void FadeToBlack::activate(bool activate)
+{
+	mFadeTo = activate;
+}
+
+void FadeToBlack::setNextLevel(std::string level)
+{
+	mNextMap = level;
+}
+

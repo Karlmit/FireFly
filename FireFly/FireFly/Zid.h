@@ -57,6 +57,9 @@ private:
 	bool mPC_Zone;
 	bool mJumpUp;
 
+	//schakt 1
+	Entity* jaktspindel;
+
 	//sugar stuff
 	thor::ParticleSystem mParticleSystem;
 	thor::UniversalEmitter mEmitter;
@@ -65,6 +68,7 @@ private:
 	sf::Clock mLoseSugarTimer;
 	sf::Vector2f mDroppedSugarPosition;
 	bool mInAcZone;
+	bool slooowDooown;
 };
 
 #endif

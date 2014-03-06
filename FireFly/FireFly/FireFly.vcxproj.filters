@@ -330,9 +330,6 @@
     <ClInclude Include="PC.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="SugarBowlTop.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Myra.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -369,6 +366,21 @@
     <ClInclude Include="Dust.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="SpiderPath.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Sparks.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SugarBowlTop.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="BrokenJar.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="JaktSpindel.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -381,9 +393,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
@@ -692,12 +701,30 @@
     <ClCompile Include="Dust.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="BrokenJar.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="JaktSpindel.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Sparks.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SpiderPath.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoop.cpp">
+      <Filter>Header Files\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Maps\level1.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
     <None Include="Maps\level2.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Maps\schakt1.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
   </ItemGroup>

@@ -20,6 +20,7 @@ private:
 	Audio mBreakSound;
 	bool mBroken;
 	Entity* spoderMan;
+	Entity* mbrokeJar;
 
 private:
 	// Box2d callback functions

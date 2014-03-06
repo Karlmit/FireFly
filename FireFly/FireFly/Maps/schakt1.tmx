@@ -54,6 +54,30 @@
  <tileset firstgid="18" name="spindelnat4_scale" tilewidth="234" tileheight="219">
   <image source="../Resources/Schakt 1/spindelnat4_scale.png" width="234" height="219"/>
  </tileset>
+ <tileset firstgid="19" name="sladd1_scale" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd1_scale.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="20" name="sladd2_scale" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd2_scale.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="21" name="sladd3_scale" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd3_scale.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="22" name="sladd2_scale - Copy" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd2_scale - Copy.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="23" name="sladd3_scale - Copy" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd3_scale - Copy.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="24" name="dodinsekt1_scale2" tilewidth="49" tileheight="171">
+  <image source="../Resources/Schakt 1/dodinsekt1_scale2.png" width="49" height="171"/>
+ </tileset>
+ <tileset firstgid="25" name="dodinsekt2_scale2" tilewidth="62" tileheight="147">
+  <image source="../Resources/Schakt 1/dodinsekt2_scale2.png" width="62" height="147"/>
+ </tileset>
+ <tileset firstgid="26" name="dodinsekt3_scale2" tilewidth="234" tileheight="135">
+  <image source="../Resources/Schakt 1/dodinsekt3_scale2.png" width="234" height="135"/>
+ </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
    <tile gid="0"/>
@@ -141,13 +165,75 @@
   <object name="Nat" type="StaticCollision" x="1826" y="2097">
    <polyline points="0,0 12,-1 22,-6 29,-10"/>
   </object>
+  <object name="insket" type="StaticCollision" x="2228" y="1939">
+   <polyline points="0,0 6,4 13,7 27,11 35,13 45,13 55,12 64,11 73,11 85,14 89,16 89,19 82,21 81,25 73,31 63,34 51,37 32,32 23,27 8,23 4,21 1,18 -7,18 -17,12 -18,9 -7,1 -1,0"/>
+  </object>
+  <object name="insket" type="StaticCollision" x="3018" y="969">
+   <polyline points="0,0 3,3 8,2 12,2 14,6 22,6 26,5 32,8 39,15 40,20 36,28 30,30 23,31 14,29 12,26 12,23 11,20 3,16 -2,16 -6,18 -10,20 -12,16 -11,11 -10,4 -9,-1 -7,-2 0,0"/>
+  </object>
+  <object name="insket" type="StaticCollision" x="2701" y="990">
+   <polyline points="0,0 0,-6 2,-11 7,-13 10,-9 12,-7 12,-3 10,1 9,1 9,6 7,15 6,22 3,26 -2,31 -7,32 -9,33 -13,30 -12,28 -11,21 -9,15 -4,6 -1,0"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="90" y="585" width="45" height="37">
    <ellipse/>
   </object>
-  <object name="NetZone" type="NetZone" x="2251" y="1360" width="177" height="163"/>
-  <object name="NetZone" type="NetZone" x="393" y="804" width="163" height="152"/>
+  <object name="NetZone1" type="NetZone" x="2250" y="1361" width="175" height="162">
+   <properties>
+    <property name="zidKiller" value=""/>
+   </properties>
+  </object>
+  <object name="NetZone2" type="NetZone" x="395" y="804" width="165" height="151">
+   <properties>
+    <property name="zidKiller" value=""/>
+   </properties>
+  </object>
+  <object name="SpiderStart" type="Trigger" x="1155" y="58" width="65" height="255">
+   <properties>
+    <property name="id" value="SpiderStart"/>
+   </properties>
+  </object>
+  <object name="SpiderPath" type="SpiderPath" x="929" y="83">
+   <polyline points="16,103 1560,102 1563,475 2395,479 2395,905 1358,906 1357,1314 609,1310 606,864 -391,866 -392,1882 2234,1892 2236,1502 2911,1496"/>
+  </object>
+  <object name="Electric" type="Trigger" x="3160" y="1896" width="30" height="24">
+   <properties>
+    <property name="id" value="Electric"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="Electric" type="Trigger" x="2840" y="978" width="30" height="26">
+   <properties>
+    <property name="id" value="Electric"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="Electric" type="Trigger" x="1210" y="1963" width="20" height="22">
+   <properties>
+    <property name="id" value="Electric"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="Spark" type="Spark_Position1" x="2855" y="992">
+   <polyline points="0,0 2,-1"/>
+  </object>
+  <object name="Spark" type="Spark_Position2" x="3173" y="1907">
+   <polyline points="0,0 1,0"/>
+  </object>
+  <object name="Spark" type="Spark_Position3" x="1219" y="1976">
+   <polyline points="0,0 -1,1"/>
+  </object>
+  <object name="netInsect" type="StickyZone" x="3025" y="852" width="5" height="120"/>
+  <object name="netInsect" type="StickyZone" x="2697" y="850" width="4" height="138"/>
+  <object name="netInsect" type="StickyZone" x="2163" y="1846" width="13" height="35"/>
+  <object name="netInsect" type="StickyZone" x="2179" y="1885" width="9" height="17"/>
+  <object name="netInsect" type="StickyZone" x="2190" y="1907" width="11" height="17"/>
+  <object name="netInsect" type="StickyZone" x="2203" y="1934" width="10" height="8"/>
+  <object name="netInsect" type="StickyZone" x="2316" y="1932" width="9" height="14"/>
+  <object name="netInsect" type="StickyZone" x="2335" y="1907" width="5" height="17"/>
+  <object name="netInsect" type="StickyZone" x="2348" y="1879" width="5" height="21"/>
+  <object name="netInsect" type="StickyZone" x="2356" y="1855" width="7" height="11"/>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
   <object name="Balk" type="EntitySprite" gid="2" x="2277" y="313"/>
@@ -168,7 +254,29 @@
   <object name="NatGaller" type="EntitySprite" gid="14" x="1825" y="2098"/>
   <object name="NatGaller" type="EntitySprite" gid="15" x="404" y="1776"/>
   <object name="NatGaller" type="EntitySprite" gid="16" x="790" y="1069"/>
-  <object name="Nat" type="EntitySprite" gid="17" x="404" y="1013"/>
-  <object name="Nat" type="EntitySprite" gid="18" x="2195" y="1522"/>
+  <object name="Nat1" type="EntitySprite" gid="17" x="404" y="1013"/>
+  <object name="Nat2" type="EntitySprite" gid="18" x="2195" y="1522"/>
+  <object name="Flakt1 ForceZone" type="ForceZone" x="2170" y="851" width="255" height="981">
+   <properties>
+    <property name="Direction" value="Down"/>
+    <property name="id" value="F1ForceZone"/>
+    <property name="xForce" value="0"/>
+    <property name="yForce" value="-12"/>
+   </properties>
+  </object>
+  <object name="Flakt2 ForceZone" type="ForceZone" x="408" y="810" width="1253" height="253">
+   <properties>
+    <property name="Direction" value="Left"/>
+    <property name="id" value="F2ForceZone"/>
+    <property name="xForce" value="-12"/>
+    <property name="yForce" value="0"/>
+   </properties>
+  </object>
+  <object name="Kabel" type="EntitySprite" gid="19" x="2820" y="1109"/>
+  <object name="Kabel" type="EntitySprite" gid="23" x="1192" y="1989"/>
+  <object name="Kabel" type="EntitySprite" gid="22" x="3167" y="1951"/>
+  <object name="insekt" type="EntitySprite" gid="24" x="2678" y="1024"/>
+  <object name="insekt" type="EntitySprite" gid="25" x="2996" y="1000"/>
+  <object name="insekt" type="EntitySprite" gid="26" x="2146" y="1976"/>
  </objectgroup>
 </map>
