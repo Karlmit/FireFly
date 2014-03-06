@@ -140,7 +140,11 @@ void Zid::sendMessage(Entity* entity, string message)
 		*/
 		mInAcZone = false;
 	}
-	
+	if(message == "kill")
+	{
+		mAlive = false;
+	}
+
 }
 
 
@@ -454,8 +458,10 @@ sf::Vector2f Zid::getDroppedSugar()
 
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
-	if(other->getID() == "FireflyZone")
+	//if(other->getID() == "FireflyZone")
 //		mInFireflyZone = true;
+
+
 	if (other->getID() == "StickyZone")
 		mInStickyZone = true;
 	if(other->getID() == "PC_Zone")
@@ -468,14 +474,27 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 		mAlive = false;
 	}
 
+	if(other->getID() == "SpiderStart")
+	{
+		jaktspindel = EntityList::getEntityList().getEntity("JaktSpindel");
+		jaktspindel->sendMessage(jaktspindel, "Activate");
+	}
+	if(other->getID() == "Electric")
+	{
+		mAlive = false;
+	}
+
 	if (other->getID() == "Sugar")
 		mSweetZid = true;
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
-	if (other->getID() == "FireflyZone")
+	
+	//if (other->getID() == "FireflyZone")
 //		mInFireflyZone = false;
+
+
 	if (other->getID() == "StickyZone")
 		mInStickyZone = false;
 	if(other->getID() == "PC_Zone")

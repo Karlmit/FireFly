@@ -147,6 +147,7 @@
     <ClInclude Include="ForceZone.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Hivemind.h" />
+    <ClInclude Include="JaktSpindel.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
     <ClInclude Include="Light.h" />
@@ -170,7 +171,9 @@
     <ClInclude Include="Room2_AC.h" />
     <ClInclude Include="Room2_Fan.h" />
     <ClInclude Include="SecuMonitor.h" />
+    <ClInclude Include="Sparks.h" />
     <ClInclude Include="Spider.h" />
+    <ClInclude Include="SpiderPath.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityList.h" />
@@ -258,6 +261,7 @@
     <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Hivdemind.cpp" />
+    <ClCompile Include="JaktSpindel.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
     <ClCompile Include="Light.cpp" />
@@ -278,7 +282,9 @@
     <ClCompile Include="Room2_AC.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
     <ClCompile Include="SecuMonitor.cpp" />
+    <ClCompile Include="Sparks.cpp" />
     <ClCompile Include="Spider.cpp" />
+    <ClCompile Include="SpiderPath.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityList.cpp" />

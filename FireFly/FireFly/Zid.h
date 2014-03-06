@@ -54,6 +54,9 @@ private:
 	bool mPC_Zone;
 	bool mJumpUp;
 
+	//schakt 1
+	Entity* jaktspindel;
+
 	//sugar stuff
 	thor::ParticleSystem mParticleSystem;
 	thor::UniversalEmitter mEmitter;

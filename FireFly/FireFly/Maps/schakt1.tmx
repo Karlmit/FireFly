@@ -54,6 +54,21 @@
  <tileset firstgid="18" name="spindelnat4_scale" tilewidth="234" tileheight="219">
   <image source="../Resources/Schakt 1/spindelnat4_scale.png" width="234" height="219"/>
  </tileset>
+ <tileset firstgid="19" name="sladd1_scale" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd1_scale.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="20" name="sladd2_scale" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd2_scale.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="21" name="sladd3_scale" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd3_scale.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="22" name="sladd2_scale - Copy" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd2_scale - Copy.png" width="144" height="144"/>
+ </tileset>
+ <tileset firstgid="23" name="sladd3_scale - Copy" tilewidth="144" tileheight="144">
+  <image source="../Resources/Schakt 1/sladd3_scale - Copy.png" width="144" height="144"/>
+ </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
    <tile gid="0"/>
@@ -148,6 +163,41 @@
   </object>
   <object name="NetZone" type="NetZone" x="2251" y="1360" width="177" height="163"/>
   <object name="NetZone" type="NetZone" x="393" y="804" width="163" height="152"/>
+  <object name="SpiderStart" type="Trigger" x="1155" y="58" width="65" height="255">
+   <properties>
+    <property name="id" value="SpiderStart"/>
+   </properties>
+  </object>
+  <object name="SpiderPath" type="SpiderPath" x="929" y="83">
+   <polyline points="16,103 1560,102 1563,475 2395,479 2395,905 1358,906 1357,1314 609,1310 606,864 -391,866 -392,1882 2234,1892 2236,1502 2911,1496"/>
+  </object>
+  <object name="Electric" type="Trigger" x="3160" y="1896" width="30" height="24">
+   <properties>
+    <property name="id" value="Electric"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="Electric" type="Trigger" x="2840" y="978" width="30" height="26">
+   <properties>
+    <property name="id" value="Electric"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="Electric" type="Trigger" x="1210" y="1963" width="20" height="22">
+   <properties>
+    <property name="id" value="Electric"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="Spark" type="Spark_Position1" x="2855" y="992">
+   <polyline points="0,0 2,-1"/>
+  </object>
+  <object name="Spark" type="Spark_Position2" x="3173" y="1907">
+   <polyline points="0,0 1,0"/>
+  </object>
+  <object name="Spark" type="Spark_Position3" x="1219" y="1976">
+   <polyline points="0,0 -1,1"/>
+  </object>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
   <object name="Balk" type="EntitySprite" gid="2" x="2277" y="313"/>
@@ -170,5 +220,8 @@
   <object name="NatGaller" type="EntitySprite" gid="16" x="790" y="1069"/>
   <object name="Nat" type="EntitySprite" gid="17" x="404" y="1013"/>
   <object name="Nat" type="EntitySprite" gid="18" x="2195" y="1522"/>
+  <object name="Kabel" type="EntitySprite" gid="19" x="2820" y="1109"/>
+  <object name="Kabel" type="EntitySprite" gid="23" x="1192" y="1989"/>
+  <object name="Kabel" type="EntitySprite" gid="22" x="3167" y="1951"/>
  </objectgroup>
 </map>

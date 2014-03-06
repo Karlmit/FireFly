@@ -199,11 +199,10 @@ void Spider::mMakeNet(float range)
 
 	mSprite = dangleAnimation.getCurrentSprite();
 	mSprite.setRotation(0);
-
-	//Have Zid cut the rope?
-	float overSpoderMan = mZidPosition.x - Rigidbody::SfToBoxFloat(getPosition().x);
-	sf::Vector2f zid = Rigidbody::BoxToSfVec(mZidPosition);
 	
+	sf::Vector2f zid = Rigidbody::BoxToSfVec(mZidPosition);
+
+	float overSpoderMan = getPosition().y - zid.y;
 	//activates func to move spider up the net
 	if(zid.y < getPosition().y && range < 40)
 		{
@@ -212,7 +211,11 @@ void Spider::mMakeNet(float range)
 			mRopeisCut = true;
 		}
 
-
+	//Checks if Zid is to far away from spider
+	if(overSpoderMan > 200)
+	{
+		inRange = false;
+	}
 
 	if(range < 200 && inRange == true)
 	{
@@ -243,7 +246,7 @@ void Spider::mMakeNet(float range)
 
 		//moves spoderman down
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.y += 0.4f * 0.1f;
+		move.y += 0.45f * 0.1f;
 		body->SetTransform(move, 0.f);
 		
 
