@@ -23,11 +23,7 @@ private:
 	float angle;								// Where the light is pointing 
 	bool dynamic;
 
-	sf::RenderTexture rLightMap;
-	sf::Sprite sLightMap;
-	sf::Texture tLightMap;
 	void createLightMap();
-	sf::Vector2f getCenter(sf::FloatRect &refRect);
 
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void updateEntity(sf::Time dt);		//Virtual update function derived from entity			
@@ -36,15 +32,7 @@ private:
 
 	sf::VertexArray fanLight;
 	sf::VertexArray fanColor;
-	struct findShortestDistance																			// A struct for finding the shortest intersection between a light and a block.
-	{
-		findShortestDistance();																			
-		float shortest;
-		bool lightHitsBlock(Light * pLight, Block *pBlock, const float currrentAngle, float &refLength);	// Function checking whether a light and block intersects
-		bool start;																						// To get the first distance to refer off of.
-	};
+	sf::VertexArray outlineLight;
+	sf::VertexArray outLineColor;
 	
-	std::list<Block*> blockList; //not included in final project
-	
-	findShortestDistance findDistance;
 };

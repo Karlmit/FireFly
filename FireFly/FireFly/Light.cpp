@@ -1,7 +1,8 @@
 //Light.cpp - Firely
 
 #include "Light.h"
-
+#include "Box2dWorld.h"
+#include "RayCastCallback.h"
 #include <iostream>
 
 Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSpread, float angle, std::string mID) // Constructor, creates a light with the attributes given to it.
@@ -16,8 +17,6 @@ Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSp
 	if(angleSpread > 360)
 		angleSpread = 360;
 	this->mID = mID;
-	Block * block = new Block(sf::FloatRect(1000,1000,20,20), true);
-	blockList.push_back(block);
 	
 	createLight();
 }
@@ -38,46 +37,6 @@ float Light::getDistance(sf::Vector2f Point1, sf::Vector2f Point2)
 }
 
 
-sf::Vector2f Light::getCenter(sf::FloatRect &refRect)
-{
-	return sf::Vector2f(refRect.left + (refRect.width /2), refRect.top + (refRect.height /2));
-}
-
-bool Light::findShortestDistance::lightHitsBlock(Light * pLight, Block * pBlock, const float currentAngle, float &refLength)
-{
-	if(pBlock->allowBlock)
-	{
-		float distance = pLight->getDistance(pLight->getPosition(), pLight->getCenter(pBlock->blockArea));
-
-		if(pLight->radius >= distance)
-		{
-			float radians = currentAngle * (3.14f /180);
-
-			sf::Vector2f pointPosition = pLight->getPosition();
-			pointPosition.x += cos(radians) * distance;
-			pointPosition.y += sin(radians) * distance;
-
-			if((*pBlock).blockArea.contains(pointPosition))
-			{
-				if(start || distance < shortest)
-				{
-					start = false;
-					shortest = distance;
-					refLength = distance;
-				}
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-Light::findShortestDistance::findShortestDistance() 
-{
-	start = false;
-	shortest = 0;
-}
-
 void Light::createLightMap()
 {
 	
@@ -87,6 +46,8 @@ void Light::createLight()
 {
 	sf::VertexArray triangleFan(sf::TrianglesFan);
 	sf::VertexArray triangleFan2(sf::TrianglesFan);
+	sf::VertexArray circleOutline(sf::TrianglesStrip);
+	sf::VertexArray circleOutline2(sf::TrianglesStrip);
 	sf::Vertex currentVertex;
 	
 	currentVertex.position = getPosition();
@@ -100,44 +61,79 @@ void Light::createLight()
 	
 	float currentAngle = angle - (angleSpread / 2);
 	float dynamicLength;
-	float addTo = 5.0f / radius;
+	float addTo = 20.0f / radius;
+
     
 	for (currentAngle; currentAngle < angle + (angleSpread / 2); 
 		currentAngle += addTo * (180/3.1415926f))
 	{ 
 		dynamicLength = radius;
-		findDistance.start = true;
-		findDistance.shortest = 0;
-	
-		
-		if(dynamic)
-		{
-			//add collision code 
-		}
         
 		float radians = currentAngle * (3.1415926f/180);
+
+		if(dynamic)
+		{
+			RayCastCallback ray;
+			b2Vec2 from = Rigidbody::SfToBoxVec(getPosition());
+			b2Vec2 to = from + Rigidbody::SfToBoxVec(cos(radians) * radius, sin(radians) * radius);
+			Box2dWorld::instance().RayCast(&ray, from, to);
+			 
+			if (ray.hit)
+			{
+				dynamicLength = Rigidbody::BoxToSfFloat( (Rigidbody::SfToBoxVec(getPosition()) - ray.point).Length() );
+			}
+		}
 	
 		sf::Vector2f end = getPosition();
 		end.x += cos(radians) * dynamicLength;
 		end.y += sin(radians) * dynamicLength;
 		 
         currentVertex.position = end;
-		currentVertex.color = sf::Color(color.r, color.g, color.b, 255*(dynamicLength/radius));
+		currentVertex.color = sf::Color(255, 255, 255, 255*(dynamicLength/radius));
 		
         triangleFan.append(currentVertex);
+		circleOutline.append(currentVertex);
+		
 
 		currentVertex.color = sf::Color(color.r, color.g, color.b, color.a*(1-(dynamicLength/radius)));
+
 		triangleFan2.append(currentVertex);
+
+		circleOutline2.append(currentVertex);
+
+		if(dynamicLength != radius)
+		{
+			end.x += cos(radians) * 50;
+			end.y += sin(radians) * 50;
+
+			currentVertex.position = end;
+
+			currentVertex.color = sf::Color(color.r, color.g, color.b, 255);
+		
+			circleOutline.append(currentVertex);
+
+			currentVertex.color = sf::Color(color.r, color.g, color.b, 0);
+
+			circleOutline2.append(currentVertex);
+		}
 	}
 	
 	if(angleSpread >= 360)
 	{
 		triangleFan.append(triangleFan[1]);
 		triangleFan2.append(triangleFan2[1]);
+
+		circleOutline.append(circleOutline[0]);
+		circleOutline.append(circleOutline[1]);
+
+		circleOutline2.append(circleOutline2[0]);
+		circleOutline2.append(circleOutline2[1]);
 	}
 
 	fanColor = triangleFan2;
 	fanLight = triangleFan;
+	outLineColor = circleOutline2;
+	outlineLight = circleOutline;
 }
 
 
@@ -145,7 +141,7 @@ void Light::updateEntity(sf::Time dt)
 {
 	static float realRadius = radius;
 	static bool growLight = true;
-
+	
 	if(growLight)
 	{
 		radius++;
@@ -154,7 +150,7 @@ void Light::updateEntity(sf::Time dt)
 	{
 		radius--;
 	}
-
+	
 	if(radius >= realRadius+10)
 	{
 		growLight = false;
@@ -170,7 +166,9 @@ void Light::updateEntity(sf::Time dt)
 void Light::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 { 
 	target.draw(fanLight, sf::BlendMultiply);
-	target.draw(fanColor, sf::BlendAlpha);
+	target.draw(fanColor, sf::BlendAdd);
+	target.draw(outlineLight, sf::BlendMultiply);
+	target.draw(outLineColor, sf::BlendAdd);
 }
 
 
