@@ -27,6 +27,8 @@ Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
 , idleAnimation(Loading::getTexture("Zid_flying_128.png", true), 128, 128, 5, 8, 20)
 , dashAnimation(Loading::getTexture("Zid_boosting_128.png"), 128, 128, 5, 5, 2)
+, idleSugarAnimation(Loading::getTexture("Zid_flygande_socker_spritesheet.png", true), 128, 128, 5, 8, 20)
+, dashSugarAnimation(Loading::getTexture("Zid_spurt_socker_spritesheet.png"), 128, 128, 5, 5, 2)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
@@ -118,26 +120,10 @@ void Zid::sendMessage(Entity* entity, string message)
 
 	if (message == "InAcZone")
 	{
-		/*
-		mParticleSystem.clearAffectors();
-		// fade in/out animations
-		thor::FadeAnimation fader(0.09f, 0.1f);
-		mParticleSystem.addAffector( thor::AnimationAffector(fader) );
-		mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
-		mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(AC_ZONE_SUGAR_VEL_X, SUGAR_GRAVITY))  );
-		*/
 		mInAcZone = true;
 	}
 	if (message == "OutAcZone")
 	{
-		/*
-		mParticleSystem.clearAffectors();
-		// fade in/out animations
-		thor::FadeAnimation fader(0.09f, 0.1f);
-		mParticleSystem.addAffector( thor::AnimationAffector(fader) );
-		mParticleSystem.addAffector( thor::TorqueAffector(100.f) );
-		mParticleSystem.addAffector( thor::ForceAffector(sf::Vector2f(0.f, SUGAR_GRAVITY))  );
-		*/
 		mInAcZone = false;
 	}
 	if(message == "kill")
@@ -158,48 +144,26 @@ void Zid::updateEntity(sf::Time dt)
 	// S?ger att allt ljud som Zid g?r ska h?ras fr?n Zid.
 	sf::Listener::setPosition(getPosition().x, 1, getPosition().y);
 	
-	if(zidDash == true)
-	{
-		if(dashFrameNo < dashAnimation.getAnimLength())
-		{
-			dashFrameNo++;
-			dashAnimation.updateAnimation();
-			mSprite = dashAnimation.getCurrentSprite();
-		}
-		else
-		{
-			dashFrameNo = 0;
-			zidDash = false;
-			idleAnimation.updateAnimation();
-			mSprite = idleAnimation.getCurrentSprite();
-		}
-	}
-	else
-	{
-		dashFrameNo = 0;
-		zidDash = false;
-		idleAnimation.updateAnimation();
-		mSprite = idleAnimation.getCurrentSprite();
-	}
-
+	// Animation
+	if (mAlive)
+		animation();
 	
+
 
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
 
 	if(mAlive == true)
 	{
-	// Checks mouse input and apply force on the rigidbody based on that
-	movement();
+		// Checks mouse input and apply force on the rigidbody based on that
+		movement();
 	}
 	else
 	{
 		body->SetFixedRotation(false);
 	}
 
-
-	// Change direction on the sprite based on velocity
-	
+	// Change direction on the sprite based on velocity	
 	if (body->GetLinearVelocity().x < -0.1f) 
 	{
 		mDirLeft = true;
@@ -266,7 +230,7 @@ void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	// Draw particles
 	target.draw(mParticleSystem);
 
-	// Rigidbody debug draw
+	// Debug draw
 	if (Globals::DEBUG_MODE)
 	{
 		mRigidbody.drawDebug(target, states);
@@ -277,6 +241,60 @@ void Zid::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	}
 
 
+}
+
+void Zid::animation()
+{
+	if(zidDash == true)
+	{
+		if(dashFrameNo < dashAnimation.getAnimLength())
+		{
+			dashFrameNo++;
+			if (mLoseSugar)
+			{
+				dashSugarAnimation.updateAnimation();
+				mSprite = dashSugarAnimation.getCurrentSprite();
+			}
+			else
+			{
+				dashAnimation.updateAnimation();
+				mSprite = dashAnimation.getCurrentSprite();
+			}
+		}
+		else
+		{
+			dashFrameNo = 0;
+			zidDash = false;
+			
+			if (mSweetZid)
+			{
+				idleSugarAnimation.updateAnimation();
+				mSprite = idleSugarAnimation.getCurrentSprite();
+			}
+			else
+			{
+				idleAnimation.updateAnimation();
+				mSprite = idleAnimation.getCurrentSprite();
+			}
+		}
+	}
+	else
+	{
+		dashFrameNo = 0;
+		zidDash = false;
+
+		if (mSweetZid)
+		{
+			idleSugarAnimation.updateAnimation();
+			mSprite = idleSugarAnimation.getCurrentSprite();
+		}
+		else
+		{
+			idleAnimation.updateAnimation();
+			mSprite = idleAnimation.getCurrentSprite();
+		}
+		
+	}
 }
 
 void Zid::movement()
@@ -361,6 +379,7 @@ void Zid::movement()
 				mSweetZid = false;
 				mLoseSugar = true;
 				mLoseSugarTimer.restart();
+				EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StopHunting");
 			}
 
 
@@ -459,6 +478,7 @@ sf::Vector2f Zid::getDroppedSugar()
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
 	//if(other->getID() == "FireflyZone")
+//	if(other->getID() == "FireflyZone")
 //		mInFireflyZone = true;
 
 
@@ -485,13 +505,23 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	}
 
 	if (other->getID() == "Sugar")
+	{
 		mSweetZid = true;
+		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
+	}
+
+	if (other->getID() == "Wasp")
+	{
+		mAlive = false;
+	}
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
 	
 	//if (other->getID() == "FireflyZone")
+//	if (other->getID() == "FireflyZone")
+
 //		mInFireflyZone = false;
 
 

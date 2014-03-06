@@ -11,21 +11,27 @@ class Wasp : public Entity
 {
 public:
 	Wasp(sf::Vector2f position);
-	~Wasp(void);
 
 private:
 	virtual void start();
 	virtual void updateEntity(sf::Time dt);
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
-	void movement();
+	virtual void sendMessage(Entity* sender, string message);
 
+	void movement();
+	
+
+private:
 	Rigidbody mRigidbody;
 	Animation idleAnimation;
+	Animation attackAnimation;
 	Entity* mZid;
 	b2Vec2 mZidPosition;
 	sf::Sprite mSprite;
 	bool mDirLeft;
 	bool bonk;
 	unsigned int bonkFrame;
+
+	bool mHunting;
 };
 

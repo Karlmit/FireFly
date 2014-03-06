@@ -3,15 +3,15 @@
 
 const float MIN_FOLLOW_DISTANCE = 5.f;
 const float DENSITY = 0.5f;
-const float FORCE = 1.5f;
+const float FORCE = 0.8f;
 
-const float INNER_FOLLOW_RADIUS = 0.f;
-const float OUTER_FOLLOW_RADIUS = 30.f;
-
+const float SCALE = 0.8f;
 
 Wasp::Wasp(sf::Vector2f position)
-	: idleAnimation(Loading::getTexture("placeholderAnimation.png"), 60, 60, 6, 5, 5)
-	,mRigidbody()
+	: idleAnimation(Loading::getTexture("balgeting_flygande_spritesheet.png"), 128, 128, 6, 6, 20)
+	, attackAnimation(Loading::getTexture("balgeting_attack_spritesheet.png"), 128, 128, 6, 6, 20)
+	, mRigidbody()
+	, mHunting(false)
 {
 	//start position
 	setPosition(position);
@@ -25,33 +25,48 @@ Wasp::Wasp(sf::Vector2f position)
 	mRigidbody.getBody()->SetLinearDamping(3.f);
 	mRigidbody.getBody()->SetFixedRotation(true);
 	mRigidbody.getBody()->SetBullet(true);
+	mRigidbody.getBody()->SetUserData(this);
 
 	mID = "Wasp";
 
 	bonkFrame = 0;
-	bonk = false;
+	bonk = false;	
 }
 
-
-Wasp::~Wasp(void)
-{
-}
 
 // Get pointers to other entities in start instead of the constructor to make sure the entity is spawned
 void Wasp::start()
 {
 	mZid = EntityList::getEntityList().getEntity("Zid");
+
+	if (isProperty("hunting"))
+		mHunting = getProperty("hunting") == "true";
+}
+
+void Wasp::sendMessage(Entity* sender, string message)
+{
+	if (message == "StartHunting")
+		mHunting = true;
+	else if (message == "StopHunting")
+		mHunting = false;
 }
 
 void Wasp::updateEntity(sf::Time timePerFrame)
 {
-
 	// Gets Zids position in Box2D coords
 	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
 
 	//Get the sprite from animation
-	idleAnimation.updateAnimation();
-	mSprite=idleAnimation.getCurrentSprite();
+	if (bonk)
+	{
+		attackAnimation.updateAnimation();
+		mSprite = attackAnimation.getCurrentSprite();
+	}
+	else
+	{
+		idleAnimation.updateAnimation();
+		mSprite = idleAnimation.getCurrentSprite();	
+	}
 
 	//Box2D physics body
 	b2Body *body = mRigidbody.getBody();
@@ -63,22 +78,22 @@ void Wasp::updateEntity(sf::Time timePerFrame)
 	if (body->GetLinearVelocity().x < -0.2f)
 	{
 		mDirLeft = true;
-		mSprite.setScale(-1.f, 1.f);
+		mSprite.setScale(-SCALE, SCALE);
 	}
 	else if (body->GetLinearVelocity().x > 0.2f)
 	{
 		mDirLeft = false;
-		mSprite.setScale(1.f, 1.f);
+		mSprite.setScale(SCALE, SCALE);
 	}
 	else if(body->GetLinearVelocity().x >= -0.2f && 0.2f >= body->GetLinearVelocity().x)
 	{
 		if(mDirLeft == true)
 		{
-			mSprite.setScale(-1.f, 1.f);
+			mSprite.setScale(-SCALE, SCALE);
 		}
 		else
 		{
-			mSprite.setScale(1.f, 1.f);
+			mSprite.setScale(SCALE, SCALE);
 		}
 	}
 	//Get position and rotation from Rigidbody
@@ -117,7 +132,7 @@ void Wasp::movement()
 	
 
 	//Depending on distance to Zid, Wasp either charges at Zid or moves passively
-	if(length < MIN_FOLLOW_DISTANCE)
+	if(length < MIN_FOLLOW_DISTANCE && mHunting)
 	{
 		if(bonk == false)
 		{
@@ -131,6 +146,7 @@ void Wasp::movement()
 			if(bonkFrame >= 60)
 			{
 				bonk = true;
+				attackAnimation.resetAnimation();
 			}
 		}
 		else if(bonk == true)
@@ -157,5 +173,6 @@ void Wasp::movement()
 		force *= FORCE*(2.f);
 		body->ApplyForceToCenter(force, true);
 		bonkFrame = 0;
+		bonk = false;
 	}
 }
