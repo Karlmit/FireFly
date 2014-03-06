@@ -78,6 +78,12 @@
  <tileset firstgid="26" name="dodinsekt3_scale2" tilewidth="234" tileheight="135">
   <image source="../Resources/Schakt 1/dodinsekt3_scale2.png" width="234" height="135"/>
  </tileset>
+ <tileset firstgid="27" name="kokong1" tilewidth="30" tileheight="166">
+  <image source="../Resources/Schakt 1/kokong1.png" width="30" height="166"/>
+ </tileset>
+ <tileset firstgid="28" name="kokong2" tilewidth="30" tileheight="166">
+  <image source="../Resources/Schakt 1/kokong2.png" width="30" height="166"/>
+ </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
    <tile gid="0"/>
@@ -174,6 +180,12 @@
   <object name="insket" type="StaticCollision" x="2701" y="990">
    <polyline points="0,0 0,-6 2,-11 7,-13 10,-9 12,-7 12,-3 10,1 9,1 9,6 7,15 6,22 3,26 -2,31 -7,32 -9,33 -13,30 -12,28 -11,21 -9,15 -4,6 -1,0"/>
   </object>
+  <object name="insket" type="StaticCollision" x="3489" y="1589">
+   <polyline points="0,0 7,2 11,7 18,12 21,18 21,22 19,25 15,26 10,25 6,21 -1,15 -5,12 -7,8 -7,5 -6,1 -2,0"/>
+  </object>
+  <object name="insket" type="StaticCollision" x="1911" y="1405">
+   <polyline points="0,0 2,2 3,6 1,11 -2,17 -6,23 -11,26 -16,26 -18,24 -20,19 -18,15 -14,7 -9,2 -6,0 -2,0 0,0"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="90" y="585" width="45" height="37">
@@ -226,6 +238,8 @@
   <object name="netInsect" type="StickyZone" x="2335" y="1907" width="5" height="17"/>
   <object name="netInsect" type="StickyZone" x="2348" y="1879" width="5" height="21"/>
   <object name="netInsect" type="StickyZone" x="2356" y="1855" width="7" height="11"/>
+  <object name="netInsect" type="StickyZone" x="1901" y="1265" width="4" height="136"/>
+  <object name="netInsect" type="StickyZone" x="3488" y="1449" width="15" height="137"/>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
   <object name="Balk" type="EntitySprite" gid="2" x="2277" y="313"/>
@@ -254,5 +268,7 @@
   <object name="insekt" type="EntitySprite" gid="24" x="2678" y="1024"/>
   <object name="insekt" type="EntitySprite" gid="25" x="2996" y="1000"/>
   <object name="insekt" type="EntitySprite" gid="26" x="2146" y="1976"/>
+  <object name="Kukong" type="EntitySprite" gid="27" x="1890" y="1432"/>
+  <object name="Kukong" type="EntitySprite" gid="28" x="3482" y="1618"/>
  </objectgroup>
 </map>
