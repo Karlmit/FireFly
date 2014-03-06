@@ -62,7 +62,7 @@
   <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
   <object name="BoilerSprite" type="Boiler" gid="8" x="3380" y="4506"/>
   <object name="Termometer" type="Termometer" gid="26" x="1980" y="1225"/>
-  <object name="Telefonsvarare" type="Telefonsvarare" gid="27" x="3413" y="1426"/>
+  <object name="Telefonsvarare" type="Telefonsvarare" x="3353" y="1229" width="259" height="193"/>
   <object name="Keyboard" type="EntitySprite" gid="13" x="2592" y="1421"/>
   <object name="PC" type="EntitySprite" gid="28" x="2252" y="1421"/>
  </objectgroup>
@@ -127,9 +127,12 @@
   <object name="AC_CollBottom" type="StaticCollision" x="5071" y="587">
    <polyline points="0,0 -48,-51 -48,-56 1,-55"/>
   </object>
+  <object name="TelefonColl" type="StaticCollisionLoop" x="3353" y="1421">
+   <polyline points="0,0 1,-194 5,-197 230,-198 234,-195 235,-169 261,-167 261,0"/>
+  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="ZidStart" type="ZidSpawn" x="16" y="2023" width="40" height="30">
+  <object name="ZidStart" type="ZidSpawn" x="2328" y="1159" width="40" height="30">
    <ellipse/>
   </object>
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">
@@ -176,31 +179,7 @@
     <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
-  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1343" y="-16" width="41" height="546"/>
-  <object name="mothy1" type="Moth" x="1274" y="659" width="140" height="90">
-   <ellipse/>
-  </object>
-  <object name="mothy2" type="Moth" x="1488" y="701" width="140" height="90">
-   <ellipse/>
-  </object>
-  <object name="mothy3" type="Moth" x="1262" y="911" width="140" height="90">
-   <ellipse/>
-  </object>
-  <object name="mothy4" type="Moth" x="1476" y="953" width="140" height="90">
-   <ellipse/>
-  </object>
-  <object name="mothy5" type="Moth" x="1252" y="1207" width="140" height="90">
-   <ellipse/>
-  </object>
-  <object name="mothy6" type="Moth" x="1466" y="1249" width="140" height="90">
-   <ellipse/>
-  </object>
-  <object name="mothy7" type="Moth" x="1220" y="1461" width="140" height="90">
-   <ellipse/>
-  </object>
-  <object name="mothy8" type="Moth" x="1434" y="1503" width="140" height="90">
-   <ellipse/>
-  </object>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1342" y="-5" width="16" height="46"/>
   <object name="FlyTapeStickyZoneR1" type="StickyZone" x="1859" y="-6" width="15" height="89"/>
   <object name="AC Force Zone" type="ForceZone" x="4482" y="157" width="589" height="430">
    <properties>
@@ -214,7 +193,7 @@
   <object name="FlyTapeStickyZoneR3" type="StickyZone" x="1847" y="242" width="11" height="43"/>
   <object name="FlyTapeStickyZoneR4" type="StickyZone" x="1819" y="296" width="13" height="29"/>
   <object name="FlyTapeStickyZoneR5" type="StickyZone" x="1804" y="361" width="13" height="29"/>
-  <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1839" y="400" width="13" height="29"/>
+  <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1839" y="391" width="9" height="29"/>
   <object name="FanOffButton" type="Trigger" x="756" y="865" width="5" height="13">
    <properties>
     <property name="ToggleOff" value="ToggleSpriteFanButton"/>
@@ -247,5 +226,22 @@
     <property name="id" value="PC_Zone"/>
    </properties>
   </object>
+  <object name="Wasp" type="Wasp" x="1345" y="1161" width="81" height="81">
+   <properties>
+    <property name="hunting" value="false"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1334" y="68" width="15" height="20"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1358" y="106" width="16" height="28"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1381" y="154" width="8" height="25"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1364" y="199" width="13" height="36"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1340" y="240" width="8" height="62"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1356" y="327" width="22" height="13"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1384" y="365" width="8" height="39"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1364" y="424" width="8" height="33"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1342" y="460" width="8" height="55"/>
+  <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1362" y="522" width="12" height="16"/>
+  <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1836" y="440" width="7" height="14"/>
  </objectgroup>
 </map>

@@ -31,6 +31,7 @@ private:
 	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	virtual void EndContact(b2Contact *contact, Entity* other); 
 
+	void animation();
 	void movement();
 	void sugarStuff(sf::Time dt);
 
@@ -40,6 +41,8 @@ private:
 	Rigidbody	mRigidbody;
 	Animation idleAnimation;
 	Animation dashAnimation;
+	Animation idleSugarAnimation;
+	Animation dashSugarAnimation;
 	Audio dashSound;
 	Entity* mSpoderMan;
 	bool zidDash;
@@ -53,6 +56,9 @@ private:
 	sf::Clock PCButton;
 	bool mPC_Zone;
 	bool mJumpUp;
+
+	//schakt 1
+	Entity* jaktspindel;
 
 	//sugar stuff
 	thor::ParticleSystem mParticleSystem;

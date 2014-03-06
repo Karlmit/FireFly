@@ -138,6 +138,7 @@
     <ClInclude Include="Box2D\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
+    <ClInclude Include="BrokenJar.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ContactListener.h" />
     <ClInclude Include="Dust.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="ForceZone.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Hivemind.h" />
+    <ClInclude Include="JaktSpindel.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
     <ClInclude Include="Light.h" />
@@ -170,7 +172,9 @@
     <ClInclude Include="Room2_AC.h" />
     <ClInclude Include="Room2_Fan.h" />
     <ClInclude Include="SecuMonitor.h" />
+    <ClInclude Include="Sparks.h" />
     <ClInclude Include="Spider.h" />
+    <ClInclude Include="SpiderPath.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityList.h" />
@@ -249,6 +253,7 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
+    <ClCompile Include="BrokenJar.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="Dust.cpp" />
@@ -258,6 +263,7 @@
     <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Hivdemind.cpp" />
+    <ClCompile Include="JaktSpindel.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
     <ClCompile Include="Light.cpp" />
@@ -278,7 +284,9 @@
     <ClCompile Include="Room2_AC.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
     <ClCompile Include="SecuMonitor.cpp" />
+    <ClCompile Include="Sparks.cpp" />
     <ClCompile Include="Spider.cpp" />
+    <ClCompile Include="SpiderPath.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityList.cpp" />

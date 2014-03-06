@@ -3,7 +3,7 @@
 #include "EntityList.h"
 #include "AudioEntity.h"
 #include "MusicManager.h"
-
+#include "BrokenJar.h"
 
 
 Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
@@ -12,7 +12,9 @@ Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
 , mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
 , mBroken(false)
 {
-
+	Entity* brokenjar = new BrokenJar(getPosition());
+	mbrokeJar = brokenjar;
+	EntityList::getEntityList().addEntity(brokenjar);
 
 
 	// Set sound prop
@@ -84,7 +86,8 @@ void Jar::BeginContact(b2Contact *contact, Entity* other)
 	if (other->getID() == "BurkDeathZone")
 	{
 		killEntity();
-		mBreakSound.setPosition(getPosition());
+		mbrokeJar->setPosition(getPosition().x, 2065);
+		mbrokeJar->sendMessage(mbrokeJar, "Activate");
 		// Creates a new entity for playing break after the Jar is dead
 		EntityList::getEntityList().addEntity(new AudioEntity(mBreakSound));
 		if (isProperty("OnBreakMusicFade"))
