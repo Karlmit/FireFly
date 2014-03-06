@@ -202,8 +202,9 @@
    <ellipse/>
   </object>
   <object name="FlyTapeStickyZoneR1" type="StickyZone" x="1859" y="-6" width="15" height="89"/>
-  <object name="AC Force Zone" type="ForceZone" x="4483" y="157" width="587" height="431" visible="0">
+  <object name="AC Force Zone" type="ForceZone" x="4482" y="157" width="589" height="430">
    <properties>
+    <property name="Direction" value="Left"/>
     <property name="id" value="ACForceZone"/>
     <property name="xForce" value="-12"/>
     <property name="yForce" value="0"/>

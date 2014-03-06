@@ -146,8 +146,16 @@
   <object name="ZidStart" type="ZidSpawn" x="90" y="585" width="45" height="37">
    <ellipse/>
   </object>
-  <object name="NetZone" type="NetZone" x="2251" y="1360" width="177" height="163"/>
-  <object name="NetZone" type="NetZone" x="393" y="804" width="163" height="152"/>
+  <object name="NetZone1" type="NetZone" x="2250" y="1361" width="175" height="162">
+   <properties>
+    <property name="zidKiller" value=""/>
+   </properties>
+  </object>
+  <object name="NetZone2" type="NetZone" x="395" y="804" width="165" height="151">
+   <properties>
+    <property name="zidKiller" value=""/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
   <object name="Balk" type="EntitySprite" gid="2" x="2277" y="313"/>
@@ -168,7 +176,23 @@
   <object name="NatGaller" type="EntitySprite" gid="14" x="1825" y="2098"/>
   <object name="NatGaller" type="EntitySprite" gid="15" x="404" y="1776"/>
   <object name="NatGaller" type="EntitySprite" gid="16" x="790" y="1069"/>
-  <object name="Nat" type="EntitySprite" gid="17" x="404" y="1013"/>
-  <object name="Nat" type="EntitySprite" gid="18" x="2195" y="1522"/>
+  <object name="Nat1" type="EntitySprite" gid="17" x="404" y="1013"/>
+  <object name="Nat2" type="EntitySprite" gid="18" x="2195" y="1522"/>
+  <object name="Flakt1 ForceZone" type="ForceZone" x="2170" y="851" width="255" height="981">
+   <properties>
+    <property name="Direction" value="Down"/>
+    <property name="id" value="F1ForceZone"/>
+    <property name="xForce" value="0"/>
+    <property name="yForce" value="-12"/>
+   </properties>
+  </object>
+  <object name="Flakt2 ForceZone" type="ForceZone" x="408" y="810" width="1253" height="253">
+   <properties>
+    <property name="Direction" value="Left"/>
+    <property name="id" value="F2ForceZone"/>
+    <property name="xForce" value="-12"/>
+    <property name="yForce" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

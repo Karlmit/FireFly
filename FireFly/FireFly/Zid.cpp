@@ -462,14 +462,16 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		mPC_Zone = true;
 	}
-
 	if(other->getID() == "spoderMan")
 	{
 		mAlive = false;
 	}
-
 	if (other->getID() == "Sugar")
 		mSweetZid = true;
+	if(other->getID() == "SpiderWeb")
+	{
+		slooowDooown = true;
+	}
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
