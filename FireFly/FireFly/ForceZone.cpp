@@ -37,11 +37,40 @@ void ForceZone::updateEntity(sf::Time dt)
 	if (!mActivated)
 		return;
 
+	//
+	//	Applies force depending on proximity and value of "Direction".
+	//
 	for (b2Body* body : mBodiesInTheZone)
 	{
-		float xRatioFromSource = 1.f - (mb2Position.x + mb2Width - body->GetPosition().x ) / mb2Width;
 
-		body->ApplyForceToCenter(xRatioFromSource*mForce, true);
+		if(isProperty("Direction") == true)
+		{
+			if(getProperty("Direction") == "Left")
+			{
+				xRatioFromSource = 1.f - (mb2Position.x + mb2Width - body->GetPosition().x ) / mb2Width;
+				body->ApplyForceToCenter(xRatioFromSource*mForce, true);
+			}
+			else if(getProperty("Direction") == "Right")
+			{
+				xRatioFromSource = 1.f - (1.f - (mb2Position.x + mb2Width - body->GetPosition().x ) / mb2Width);
+				body->ApplyForceToCenter(xRatioFromSource*mForce, true);
+			}
+			else if(getProperty("Direction") == "Up")
+			{
+				yRatioFromSource = ((mb2Position.y + mb2Height - body->GetPosition().y ) / mb2Height) - 1.f;
+				body->ApplyForceToCenter(yRatioFromSource*mForce, true);
+			}
+			else if(getProperty("Direction") == "Down")
+			{
+				yRatioFromSource = 1.f + (1.f - (mb2Position.y + mb2Height - body->GetPosition().y ) / mb2Height);
+				body->ApplyForceToCenter(yRatioFromSource*mForce, true);
+			}
+		}
+		else
+		{
+			xRatioFromSource = 1.f;
+			body->ApplyForceToCenter(xRatioFromSource*mForce, true);
+		}
 	}
 }
 

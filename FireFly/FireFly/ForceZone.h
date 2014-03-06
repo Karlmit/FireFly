@@ -22,6 +22,9 @@ private:
 	set<b2Body*> mBodiesInTheZone;
 	b2Vec2 mForce;
 	b2Vec2 mb2Position;
+	float xRatioFromSource;
+	float yRatioFromSource;
 	float mb2Width;
 	float mb2Height;
+
 };

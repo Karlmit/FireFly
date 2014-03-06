@@ -68,6 +68,7 @@ private:
 	sf::Clock mLoseSugarTimer;
 	sf::Vector2f mDroppedSugarPosition;
 	bool mInAcZone;
+	bool slooowDooown;
 };
 
 #endif

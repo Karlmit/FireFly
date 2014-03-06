@@ -724,6 +724,9 @@
     <None Include="Maps\level2.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
+    <None Include="Maps\schakt1.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FireFly1.rc">

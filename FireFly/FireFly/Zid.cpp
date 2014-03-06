@@ -488,7 +488,6 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		mPC_Zone = true;
 	}
-
 	if(other->getID() == "spoderMan")
 	{
 		mAlive = false;
@@ -503,10 +502,13 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		mAlive = false;
 	}
-
 	if (other->getID() == "Sugar")
 	{
 		mSweetZid = true;
+	}
+	if(other->getID() == "SpiderWeb")
+	{
+		slooowDooown = true;
 		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
 	}
 

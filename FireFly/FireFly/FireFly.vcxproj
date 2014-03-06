@@ -317,6 +317,7 @@
   <ItemGroup>
     <None Include="Maps\level1.tmx" />
     <None Include="Maps\level2.tmx" />
+    <None Include="Maps\schakt1.tmx" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FireFly1.rc" />
