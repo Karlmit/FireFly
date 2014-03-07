@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="3478" tileheight="1120">
+ <tileset firstgid="1" name="Meny_utan_text (CAKE)" tilewidth="3478" tileheight="1120">
+  <image source="../Resources/Meny/Meny_utan_text (CAKE).png" width="3748" height="1120"/>
+ </tileset>
+ <objectgroup name="Background" width="1" height="1">
+  <object name="Background" type="EntitySprite" gid="1" x="0" y="1120"/>
+ </objectgroup>
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="NextMapTrigger" type="Trigger" x="1416" y="134" width="438" height="225">
+   <properties>
+    <property name="ChangeMap" value="level1.tmx"/>
+   </properties>
+  </object>
+  <object name="NextMapTrigger" type="Trigger" x="2191" y="245" width="421" height="283">
+   <properties>
+    <property name="ChangeMap" value="level1.tmx"/>
+   </properties>
+  </object>
+  <object name="NextMapTrigger" type="Trigger" x="2188" y="700" width="421" height="283">
+   <properties>
+    <property name="ChangeMap" value="schakt1.tmx"/>
+   </properties>
+  </object>
+  <object name="NextMapTrigger" type="Trigger" x="2901" y="243" width="417" height="293">
+   <properties>
+    <property name="ChangeMap" value="level2.tmx"/>
+   </properties>
+  </object>
+  <object name="ZidStart" type="ZidSpawn" x="627" y="180" width="31" height="19">
+   <ellipse/>
+  </object>
+  <object name="Exit" type="Trigger" x="0" y="836" width="38" height="111">
+   <properties>
+    <property name="id" value="exit"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Collision" width="1" height="1">
+  <object name="walls " type="StaticCollision" x="0" y="0">
+   <polyline points="0,0 3476,0 3484,1108 3476,1120 0,1116 -4,4 0,-4"/>
+  </object>
+  <object name="walls " type="StaticCollision" x="1302" y="0">
+   <polyline points="0,0 4,126 570,132 570,0"/>
+  </object>
+  <object name="walls " type="StaticCollision" x="1302" y="424">
+   <polyline points="0,0 0,-60 572,-64 574,298 0,298 0,228 574,232"/>
+  </object>
+  <object name="walls " type="StaticCollision" x="1302" y="418">
+   <polyline points="0,0 570,8 572,-290"/>
+  </object>
+  <object name="walls " type="StaticCollision" x="1304" y="1110">
+   <polyline points="0,0 2,-154 568,-154 572,6"/>
+  </object>
+  <object name="Continue" type="StaticCollision" x="1302" y="418">
+   <polyline points="0,0 0,228"/>
+  </object>
+ </objectgroup>
+</map>

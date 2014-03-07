@@ -4,16 +4,18 @@
 #include "Camera.h"
 
 PC::PC(sf::Vector2f position)
-	: mAudioLoggSound(Loading::getSound("canary.wav"), true),
+	: mAudioLoggSound(Loading::getSound("Room 2/AudioLogg.wav"), true),
 	mButton1(Loading::getSound("Room 2/Tangentbord/Tangent1.wav"), true),
 	mButton2(Loading::getSound("Room 2/Tangentbord/Tangent2.wav"), true),
 	mButton3(Loading::getSound("Room 2/Tangentbord/Tangent3.wav"), true),
 	mButton4(Loading::getSound("Room 2/Tangentbord/Tangent4.wav"), true),
 	mButton5(Loading::getSound("Room 2/Tangentbord/TangentSpacebar.wav"), true),
 	mComputerOnSprite(Loading::getTexture("Room 2/datorskarm_gron_scale.png")),
-	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png"))
+	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png")),
+	sucu(Loading::getTexture("Room 2/SuCu_computereye_spritesheet.png"), 600, 361, 1, 9, 100)
 {
 	mID = "PC";
+	mPosition = position;
 	mComputerOnSprite.setPosition(2592, 935);
 	mComputerOffSprite.setPosition(2592, 935);
 	mScreen.setSize(sf::Vector2f(595, 360));
@@ -34,7 +36,9 @@ PC::PC(sf::Vector2f position)
 	mBulletinText = mTextEntered;
 	mAudioLoggText = mTextEntered;
 	mShuttingDownText = mTextEntered;
+	mSucuText = mTextEntered;
 
+	mSucuText.setPosition(mTextPosition.x, mTextPosition.y + 240);
 	mShuttingDownText.setPosition(mTextPosition);
 	mShuttingDownText.setString("Shutting Down...");
 	mAudioLoggText.setPosition(mTextPosition);
@@ -65,8 +69,18 @@ PC::PC(sf::Vector2f position)
 	mOff = false;
 	mShuttingDown = false;
 	mNewPC = true;
+	mAnimation = false;
+	mSucu = false;
 	//counter
 	mInvalidCounter = 0;
+
+	//animation
+	sucu.mLoopOnce = true;
+	sucu.setPosition(position);
+	mSucuMessage = "Hello object Zid. I have monitored your\nprogress and believe we can help each other.\nYou may visit me in the server room at your\nearliest convinience.\n\n 1. Continue";
+	mMessage = "";
+	mMaxChar = mSucuMessage.size() - 1;
+	currentChar = 0;
 }
 
 
@@ -159,11 +173,46 @@ void PC::menu()
 			mButtonClock.restart();
 		}
 	}
-		if(mShuttingDown == true && mShuttingDownClock.getElapsedTime().asSeconds() > 3)
+		if(mShuttingDown == true)	// && mShuttingDownClock.getElapsedTime().asSeconds() > 3)
 		{
-			mMenu = false;
-			mLoggin = true;
-			mOff = true;
+			//Display shutting down text before sucu animation
+			if(mShuttingDownClock.getElapsedTime().asSeconds() > 3)
+			{
+				mAnimation = true;
+			}
+
+			if(mAnimation == true)
+			{
+				if(sucu.mLoopOnce == true)
+				{
+					sucu.oneLoop();
+				}
+				mSprite = sucu.getCurrentSprite();
+				mSprite.setOrigin(0, 0);
+			}
+
+			if(sucu.endOfAnimation() == true)
+			{
+				mSucu = true;
+				if(mMessageClock.getElapsedTime().asMilliseconds() > 20)
+				{
+					if(currentChar <= mMaxChar)
+					{
+						mMessage += mSucuMessage.at(currentChar);
+						currentChar++;
+					}
+					mSucuText.setString(mMessage);
+					mMessageClock.restart();
+				}
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+			{
+				mMenu = false;
+				mLoggin = true;
+				mOff = true;
+				mSucu = false;
+				mAnimation = false;
+			}
 		}
 
 
@@ -235,7 +284,7 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 		{
 			target.draw(mPassInvalid, states);
 		}
-		if(mMenu == true && mShuttingDown == false && mBulletin == false && mAudioLogg == false)
+		if(mMenu == true && mShuttingDown == false && mBulletin == false && mAudioLogg == false && mAnimation == false)
 		{
 			target.draw(mMenuText, states);
 		}
@@ -255,10 +304,19 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 		{
 			target.draw(mAudioLoggText, states);
 		}
-		if(mShuttingDown == true)
+		if(mShuttingDown == true && mAnimation == false)
 		{
 			target.draw(mShuttingDownText, states);
 		}
+		if(mAnimation == true)
+		{
+			target.draw(mSprite, states);
+		}
+		if(mSucu == true)
+		{
+			target.draw(mSucuText, states);
+		}
+
 
 	}
 	else
