@@ -46,8 +46,10 @@ void Light::createLight()
 {
 	sf::VertexArray triangleFan(sf::TrianglesFan);
 	sf::VertexArray triangleFan2(sf::TrianglesFan);
+
 	sf::VertexArray circleOutline(sf::TrianglesStrip);
 	sf::VertexArray circleOutline2(sf::TrianglesStrip);
+
 	sf::Vertex currentVertex;
 	
 	currentVertex.position = getPosition();
@@ -61,7 +63,7 @@ void Light::createLight()
 	
 	float currentAngle = angle - (angleSpread / 2);
 	float dynamicLength;
-	float addTo = 20.0f / radius;
+	float addTo = 15.0f / radius;
 
     
 	for (currentAngle; currentAngle < angle + (angleSpread / 2); 
@@ -144,18 +146,18 @@ void Light::updateEntity(sf::Time dt)
 	
 	if(growLight)
 	{
-		radius++;
+		radius += 0.5;
 	}
 	else
 	{
-		radius--;
+		radius -= 0.5;
 	}
 	
-	if(radius >= realRadius+10)
+	if(radius >= realRadius+5)
 	{
 		growLight = false;
 	}
-	else if(radius <= realRadius-10)
+	else if(radius <= realRadius-5)
 	{
 		growLight = true;
 	}
