@@ -88,6 +88,7 @@
     <ClInclude Include="AntPath.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioEntity.h" />
+    <ClInclude Include="BalkPort.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Boiler.h" />
     <ClInclude Include="Box2dWorld.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Sparks.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="SpiderPath.h" />
+    <ClInclude Include="spiderWeb.h" />
     <ClInclude Include="StaticLineCollider.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityList.h" />
@@ -204,6 +206,7 @@
     <ClCompile Include="AntPath.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioEntity.cpp" />
+    <ClCompile Include="BalkPort.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Boiler.cpp" />
     <ClCompile Include="Box2dWorld.cpp" />
@@ -287,6 +290,7 @@
     <ClCompile Include="Sparks.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="SpiderPath.cpp" />
+    <ClCompile Include="spiderWeb.cpp" />
     <ClCompile Include="StaticLineCollider.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityList.cpp" />
@@ -317,7 +321,9 @@
   <ItemGroup>
     <None Include="Maps\level1.tmx" />
     <None Include="Maps\level2.tmx" />
-    <None Include="Maps\schakt1.tmx" />
+    <None Include="Maps\schakt1.tmx">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FireFly1.rc" />

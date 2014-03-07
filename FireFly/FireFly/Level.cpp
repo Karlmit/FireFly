@@ -19,6 +19,7 @@
 #include "ToggleSprite.h"
 #include "SuCam.h"
 #include "Room2_Fan.h"
+#include "BalkPort.h"
 // #include "FireflyNPC.h"
 // #include "FireflyZone.h"
 #include "PC.h"
@@ -33,6 +34,7 @@
 #include "Dust.h"
 #include "SpiderPath.h"
 #include "Sparks.h"
+#include "spiderWeb.h"
 
 #include <iostream>
 using namespace std;
@@ -408,6 +410,22 @@ void Level::loadMap(string filename)
 			} */
 
 			//
+			//	SpiderWeb
+			//
+			else if (entityType == "NetZone")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				spiderWeb* web = new spiderWeb(rect);
+				web->setProperties(obj.getProperties());				
+				web->setID(id);
+				eList.addEntity(web, Layer::Foreground, false);
+			}
+
+			//
 			//	ToggleSprite
 			//
 			else if (entityType == "ToggleSprite")
@@ -522,6 +540,13 @@ void Level::loadMap(string filename)
 				eList.addEntity(spark3, Layer::Front, false);
 			}
 
+			//BalkPort
+			else if(entityType == "BalkPort")
+			{
+				BalkPort* balkport = new BalkPort(imageSrc, position, imageWidth, imageHeight);
+				balkport->setProperties(obj.getProperties());
+				eList.addEntity(balkport, Layer::Front, false);
+			}
 
 
 			//
