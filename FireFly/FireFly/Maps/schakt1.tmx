@@ -171,8 +171,6 @@
   <object name="Nat" type="StaticCollision" x="1826" y="2097">
    <polyline points="0,0 12,-1 22,-6 29,-10"/>
   </object>
-<<<<<<< HEAD
-=======
   <object name="insket" type="StaticCollision" x="2228" y="1939">
    <polyline points="0,0 6,4 13,7 27,11 35,13 45,13 55,12 64,11 73,11 85,14 89,16 89,19 82,21 81,25 73,31 63,34 51,37 32,32 23,27 8,23 4,21 1,18 -7,18 -17,12 -18,9 -7,1 -1,0"/>
   </object>
@@ -188,7 +186,6 @@
   <object name="insket" type="StaticCollision" x="1911" y="1405">
    <polyline points="0,0 2,2 3,6 1,11 -2,17 -6,23 -11,26 -16,26 -18,24 -20,19 -18,15 -14,7 -9,2 -6,0 -2,0 0,0"/>
   </object>
->>>>>>> 42e166a8417d2e3e417228e370bea23298402d42
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="90" y="585" width="45" height="37">
@@ -204,8 +201,6 @@
     <property name="zidKiller" value=""/>
    </properties>
   </object>
-<<<<<<< HEAD
-=======
   <object name="SpiderStart" type="Trigger" x="1155" y="58" width="65" height="255">
    <properties>
     <property name="id" value="SpiderStart"/>
@@ -253,7 +248,6 @@
   <object name="netInsect" type="StickyZone" x="2356" y="1855" width="7" height="11"/>
   <object name="netInsect" type="StickyZone" x="1901" y="1265" width="4" height="136"/>
   <object name="netInsect" type="StickyZone" x="3488" y="1449" width="15" height="137"/>
->>>>>>> 42e166a8417d2e3e417228e370bea23298402d42
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
   <object name="Balk" type="EntitySprite" gid="2" x="2277" y="313"/>
@@ -292,8 +286,6 @@
     <property name="yForce" value="0"/>
    </properties>
   </object>
-<<<<<<< HEAD
-=======
   <object name="Kabel" type="EntitySprite" gid="19" x="2820" y="1109"/>
   <object name="Kabel" type="EntitySprite" gid="23" x="1192" y="1989"/>
   <object name="Kabel" type="EntitySprite" gid="22" x="3167" y="1951"/>
@@ -302,6 +294,5 @@
   <object name="insekt" type="EntitySprite" gid="26" x="2146" y="1976"/>
   <object name="Kukong" type="EntitySprite" gid="27" x="1890" y="1432"/>
   <object name="Kukong" type="EntitySprite" gid="28" x="3482" y="1618"/>
->>>>>>> 42e166a8417d2e3e417228e370bea23298402d42
  </objectgroup>
 </map>
