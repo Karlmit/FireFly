@@ -18,13 +18,15 @@ mStatisticsText(),
 mStatisticsUpdateTime(),
 mStatisticsNumFrames(0)
 {
+	mWindow.setMouseCursorVisible(true);
 	mWindow.setVerticalSyncEnabled(true);
 	mFont.loadFromFile("Resources/Sansation.ttf");
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
 
-	
+    cursorTexture.loadFromFile("Resources/PEKARE_LITENARE.png");
+    sf::Sprite cursorSprite(cursorTexture);
 	
 }
 
@@ -42,6 +44,9 @@ void GameLoop::run()
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
 	{
+		// Set cursor position        
+		cursorSprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(mWindow)));
+
 		sf::Time elapsedTime = clock.restart();
 		timeSinceLastUpdate += elapsedTime;
 		while (timeSinceLastUpdate > TimePerFrame)
@@ -138,6 +143,7 @@ void GameLoop::draw()
 
 
 	mWindow.setView(mWindow.getDefaultView());
+	mWindow.draw(cursorSprite);
 
 	if (Globals::DEBUG_MODE || Globals::SHOW_FPS)
 		mWindow.draw(mStatisticsText);
