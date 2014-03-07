@@ -139,9 +139,9 @@
    </properties>
    <ellipse/>
   </object>
-  <object name="NextMapTrigger" type="Trigger" x="4740" y="1471" width="390" height="577">
+  <object name="NextMapTrigger" type="Trigger" x="4740" y="1475" width="390" height="577">
    <properties>
-    <property name="ChangeMap" value="level2.tmx"/>
+    <property name="ChangeMap" value="schakt1.tmx"/>
    </properties>
   </object>
   <object name="StartSlowMusic" type="Trigger" x="380" y="1039" width="300" height="361">

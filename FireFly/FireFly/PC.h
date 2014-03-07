@@ -4,6 +4,8 @@
 #include "EntityList.h"
 #include "Audio.h"
 
+#include <iostream>
+
 #include <sstream>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -26,6 +28,7 @@ private:
 	void loggin();
 	void menu();
 
+	sf::Vector2f mPosition;
 	sf::Vector2f mTextPosition;
 	//Sprites
 	sf::Sprite mComputerOnSprite;
@@ -45,6 +48,11 @@ private:
 	sf::Text mWelcomeText;
 	sf::Text mAudioLoggText;
 	sf::Text mShuttingDownText;
+	sf::Text mSucuText;
+	std::string mSucuMessage;
+	std::string mMessage;
+	int currentChar;
+	int mMaxChar;
 
 	//meny bools
 	bool mHint;
@@ -58,6 +66,8 @@ private:
 	bool mOff;
 	bool mShuttingDown;
 	bool mNewPC;
+	bool mAnimation;
+	bool mSucu;
 	//invalid counter
 	int mInvalidCounter;
 	
@@ -66,6 +76,7 @@ private:
 	sf::Time mAudioLoggTime;
 	sf::Clock mButtonClock;
 	sf::Clock mShuttingDownClock;
+	sf::Clock mMessageClock;
 
 	//sounds
 	Audio mAudioLoggSound;
@@ -77,4 +88,7 @@ private:
 	
 	//string stream
 	std::ostringstream oss;
+	//animation
+	Animation sucu;
+	sf::Sprite mSprite;
 };

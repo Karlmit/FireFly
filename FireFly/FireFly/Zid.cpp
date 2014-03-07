@@ -516,6 +516,11 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		mAlive = false;
 	}
+
+	if(other->getID() == "exit")
+	{
+	}
+
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
