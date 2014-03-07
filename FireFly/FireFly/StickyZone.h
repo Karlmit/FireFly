@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Entity.h"
 
 
@@ -16,6 +15,5 @@ private:
 	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	virtual void EndContact(b2Contact *contact, Entity* other);
 
-private:
 	Rigidbody mRigidbody;
 };

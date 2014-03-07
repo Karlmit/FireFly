@@ -381,6 +381,9 @@
     <ClInclude Include="JaktSpindel.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="spiderWeb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -714,7 +717,10 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="GameLoop.cpp">
-      <Filter>Header Files\Entities</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="spiderWeb.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

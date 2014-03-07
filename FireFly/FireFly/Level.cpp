@@ -33,6 +33,7 @@
 #include "Dust.h"
 #include "SpiderPath.h"
 #include "Sparks.h"
+#include "spiderWeb.h"
 
 #include <iostream>
 using namespace std;
@@ -406,6 +407,22 @@ void Level::loadMap(string filename)
 				Fzone->setID(id);
 				eList.addEntity(Fzone, Layer::Foreground, false);
 			} */
+
+			//
+			//	SpiderWeb
+			//
+			else if (entityType == "NetZone")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				spiderWeb* web = new spiderWeb(rect);
+				web->setProperties(obj.getProperties());				
+				web->setID(id);
+				eList.addEntity(web, Layer::Foreground, false);
+			}
 
 			//
 			//	ToggleSprite
