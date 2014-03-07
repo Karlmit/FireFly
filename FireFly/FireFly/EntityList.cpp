@@ -4,8 +4,9 @@ EntityList EntityList::eL;
 
 EntityList::EntityList()
 {
-	rLightMap.create(5000, 2160); //Måste fixas sEden anpassas efter levelens storlek
-	sLightMap.setPosition(0,0);
+	rLightMap.create(6000, 6000); //Måste fixas sEden anpassas efter levelens storlek
+	sLightMap.setPosition(0,6000);
+	sLightMap.scale(1, -1);
 }
 
 EntityList::~EntityList()
@@ -72,12 +73,12 @@ void EntityList::drawLight(sf::RenderWindow& window)
 		if((*e).getID() == "zidLight")
 		{
 			Entity* zid = EntityList::getEntityList().getEntity("Zid");
-			e->setPosition(sf::Vector2f((*zid).getPosition().x, 2160-(*zid).getPosition().y));
+			e->setPosition(sf::Vector2f((*zid).getPosition().x, (*zid).getPosition().y));
 		}
-		rLightMap.clear(sf::Color(0,0,0,240));
+		rLightMap.clear(sf::Color(15,15,20,240));
 		rLightMap.draw(*e);
 		sLightMap.setTexture(rLightMap.getTexture());
-		window.draw(sLightMap);
+		window.draw(sLightMap, sf::BlendMultiply);
 	}
 }
 
