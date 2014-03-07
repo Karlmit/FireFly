@@ -139,7 +139,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="ZidStart" type="ZidSpawn" x="2180" y="1295" width="40" height="30">
+  <object name="ZidStart" type="ZidSpawn" x="110" y="2031" width="40" height="30">
    <ellipse/>
   </object>
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">

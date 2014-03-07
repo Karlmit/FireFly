@@ -528,8 +528,10 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 		mAlive = false;
 	}
 
-	if(other->getID() == "exit")
+	if(other->getID() == "BalkPortZone")
 	{
+		Entity* balkport = EntityList::getEntityList().getEntity("BalkPort");
+		balkport->sendMessage(balkport, "Activate");
 	}
 
 }

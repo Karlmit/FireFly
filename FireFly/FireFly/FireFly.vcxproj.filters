@@ -384,6 +384,9 @@
     <ClInclude Include="spiderWeb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BalkPort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -720,6 +723,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="spiderWeb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalkPort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

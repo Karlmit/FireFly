@@ -19,6 +19,7 @@
 #include "ToggleSprite.h"
 #include "SuCam.h"
 #include "Room2_Fan.h"
+#include "BalkPort.h"
 // #include "FireflyNPC.h"
 // #include "FireflyZone.h"
 #include "PC.h"
@@ -539,6 +540,13 @@ void Level::loadMap(string filename)
 				eList.addEntity(spark3, Layer::Front, false);
 			}
 
+			//BalkPort
+			else if(entityType == "BalkPort")
+			{
+				BalkPort* balkport = new BalkPort(imageSrc, position, imageWidth, imageHeight);
+				balkport->setProperties(obj.getProperties());
+				eList.addEntity(balkport, Layer::Front, false);
+			}
 
 
 			//
