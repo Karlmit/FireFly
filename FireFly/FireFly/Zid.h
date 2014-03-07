@@ -67,8 +67,9 @@ private:
 	bool mLoseSugar;
 	sf::Clock mLoseSugarTimer;
 	sf::Vector2f mDroppedSugarPosition;
+	float mSlooowDooown;
 	bool mInAcZone;
-	bool slooowDooown;
+	bool webContact;
 };
 
 #endif

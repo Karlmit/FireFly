@@ -41,6 +41,8 @@ Zid::Zid(sf::Vector2f position)
 , mDroppedSugarPosition()
 , mInAcZone(false)
 , mAlive(true)
+, webContact(false)
+, mSlooowDooown(0)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -144,19 +146,27 @@ void Zid::updateEntity(sf::Time dt)
 	// S?ger att allt ljud som Zid g?r ska h?ras fr?n Zid.
 	sf::Listener::setPosition(getPosition().x, 1, getPosition().y);
 	
-	// Animation
-	if (mAlive)
-		animation();
-	
+	//Checks for contact with spider web
+	if(webContact == true)
+	{
+		mSlooowDooown += 3.f;
+		mRigidbody.getBody()->SetLinearDamping(mSlooowDooown);
+		//Kills Zid
+		mAlive = false;
+		//Applies a slowing effect. Currently cannot be reversed.
 
+	}
 
 	// Box2d physics body
 	b2Body* body = mRigidbody.getBody();
 
+	//Checks if Zid is able to move
 	if(mAlive == true)
 	{
 		// Checks mouse input and apply force on the rigidbody based on that
 		movement();
+		// Animation
+		animation();
 	}
 	else
 	{
@@ -484,6 +494,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 
 	if (other->getID() == "StickyZone")
 		mInStickyZone = true;
+
 	if(other->getID() == "PC_Zone")
 	{
 		mPC_Zone = true;
@@ -505,11 +516,11 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	if (other->getID() == "Sugar")
 	{
 		mSweetZid = true;
+		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
 	}
 	if(other->getID() == "SpiderWeb")
 	{
-		slooowDooown = true;
-		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
+		webContact = true;
 	}
 
 	if (other->getID() == "Wasp")
