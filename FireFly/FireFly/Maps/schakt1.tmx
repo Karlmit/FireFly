@@ -87,6 +87,9 @@
  <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
   <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
  </tileset>
+ <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
+  <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
+ </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
    <tile gid="0"/>
@@ -208,6 +211,7 @@
   </object>
   <object name="NetZone1" type="NetZone" x="2250" y="1361" width="175" height="162">
    <properties>
+    <property name="id" value="SpiderWeb"/>
     <property name="zidKiller" value=""/>
    </properties>
   </object>
@@ -320,5 +324,15 @@
   <object name="Kukong" type="EntitySprite" gid="27" x="1890" y="1432"/>
   <object name="Kukong" type="EntitySprite" gid="28" x="3482" y="1618"/>
   <object name="BalkPort" type="BalkPort" gid="29" x="3915" y="1311"/>
+  <object name="Fan1" type="EntitySprite" gid="30" x="2170" y="892">
+   <properties>
+    <property name="id" value="SchaktFan"/>
+   </properties>
+  </object>
+  <object name="Fan2" type="EntitySprite" gid="29" x="1621" y="1064">
+   <properties>
+    <property name="id" value="SchaktFan"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

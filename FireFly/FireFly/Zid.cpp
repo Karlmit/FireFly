@@ -149,11 +149,11 @@ void Zid::updateEntity(sf::Time dt)
 	//Checks for contact with spider web
 	if(webContact == true)
 	{
+		//Gradually puts Zid to a halt. Might need a Zid animation for "webbed Zid" with this function. Is never reversed.
 		mSlooowDooown += 3.f;
 		mRigidbody.getBody()->SetLinearDamping(mSlooowDooown);
 		//Kills Zid
 		mAlive = false;
-		//Applies a slowing effect. Currently cannot be reversed.
 
 	}
 

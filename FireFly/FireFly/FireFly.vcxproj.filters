@@ -381,11 +381,16 @@
     <ClInclude Include="JaktSpindel.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="spiderWeb.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BalkPort.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="spiderWeb.h">
+      <Filter>Header Files\Entities</Filter>
+=======
+    <ClInclude Include="BalkPort.h">
+      <Filter>Header Files</Filter>
+>>>>>>> 58a8372127eea101d10eba5c27bf2a3dd10fd9e1
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -722,11 +727,16 @@
     <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="spiderWeb.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BalkPort.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="spiderWeb.cpp">
+      <Filter>Source Files\Entities</Filter>
+=======
+    <ClCompile Include="BalkPort.cpp">
+      <Filter>Source Files</Filter>
+>>>>>>> 58a8372127eea101d10eba5c27bf2a3dd10fd9e1
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
