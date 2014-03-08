@@ -263,7 +263,7 @@
   <object name="netInsect" type="StickyZone" x="2356" y="1855" width="7" height="11"/>
   <object name="netInsect" type="StickyZone" x="1901" y="1265" width="4" height="136"/>
   <object name="netInsect" type="StickyZone" x="3488" y="1449" width="15" height="137"/>
-  <object name="NextMapTrigger" type="Trigger" x="4708" y="1355" width="315" height="451">
+  <object name="NextMapTrigger" type="Trigger" x="4710" y="1354" width="315" height="451">
    <properties>
     <property name="ChangeMap" value="level2.tmx"/>
    </properties>
