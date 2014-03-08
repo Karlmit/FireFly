@@ -84,11 +84,8 @@
  <tileset firstgid="28" name="kokong2" tilewidth="30" tileheight="166">
   <image source="../Resources/Schakt 1/kokong2.png" width="30" height="166"/>
  </tileset>
- <tileset firstgid="29" name="ventilflakt_hel_scale" tilewidth="37" tileheight="253">
-  <image source="../Resources/Schakt 1/ventilflakt_hel_scale.png" width="37" height="253"/>
- </tileset>
- <tileset firstgid="30" name="ventilflakt_hel_scale_up" tilewidth="253" tileheight="37">
-  <image source="../Resources/Schakt 1/ventilflakt_hel_scale_up.png" width="253" height="37"/>
+ <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
+  <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
  </tileset>
  <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
   <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
@@ -214,13 +211,12 @@
   </object>
   <object name="NetZone1" type="NetZone" x="2250" y="1361" width="175" height="162">
    <properties>
-     <property name="id" value="SpiderWeb"/>
+    <property name="id" value="SpiderWeb"/>
     <property name="zidKiller" value=""/>
    </properties>
   </object>
   <object name="NetZone2" type="NetZone" x="395" y="804" width="165" height="151">
    <properties>
-    <property name="id" value="SpiderWeb"/>
     <property name="zidKiller" value=""/>
    </properties>
   </object>
