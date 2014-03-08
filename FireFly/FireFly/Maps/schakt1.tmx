@@ -87,8 +87,14 @@
  <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
   <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
  </tileset>
- <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
+ <tileset firstgid="30" name="balkport_scale2" tilewidth="76" tileheight="254">
   <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
+ </tileset>
+ <tileset firstgid="31" name="ventilflakt_hel_scale" tilewidth="37" tileheight="253">
+  <image source="../Resources/Schakt 1/ventilflakt_hel_scale.png" width="37" height="253"/>
+ </tileset>
+ <tileset firstgid="32" name="ventilflakt_hel_scale_up" tilewidth="253" tileheight="37">
+  <image source="../Resources/Schakt 1/ventilflakt_hel_scale_up.png" width="253" height="37"/>
  </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
@@ -217,6 +223,7 @@
   </object>
   <object name="NetZone2" type="NetZone" x="395" y="804" width="165" height="151">
    <properties>
+    <property name="id" value="SpiderWeb"/>
     <property name="zidKiller" value=""/>
    </properties>
   </object>
@@ -323,13 +330,13 @@
   <object name="insekt" type="EntitySprite" gid="26" x="2146" y="1976"/>
   <object name="Kukong" type="EntitySprite" gid="27" x="1890" y="1432"/>
   <object name="Kukong" type="EntitySprite" gid="28" x="3482" y="1618"/>
-  <object name="BalkPort" type="BalkPort" gid="29" x="3915" y="1311"/>
-  <object name="Fan1" type="EntitySprite" gid="30" x="2170" y="892">
+  <object name="BalkPort" type="BalkPort" gid="30" x="3915" y="1311"/>
+  <object name="Fan2" type="EntitySprite" gid="31" x="1625" y="1065">
    <properties>
     <property name="id" value="SchaktFan"/>
    </properties>
   </object>
-  <object name="Fan2" type="EntitySprite" gid="29" x="1621" y="1064">
+  <object name="Fan1" type="EntitySprite" gid="32" x="2170" y="890">
    <properties>
     <property name="id" value="SchaktFan"/>
    </properties>

@@ -18,7 +18,7 @@ mStatisticsText(),
 mStatisticsUpdateTime(),
 mStatisticsNumFrames(0)
 {
-	mWindow.setMouseCursorVisible(true);
+//	mWindow.setMouseCursorVisible(true);
 	mWindow.setVerticalSyncEnabled(true);
 	mFont.loadFromFile("Resources/Sansation.ttf");
 	mStatisticsText.setFont(mFont);
