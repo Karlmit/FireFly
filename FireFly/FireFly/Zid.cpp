@@ -149,11 +149,11 @@ void Zid::updateEntity(sf::Time dt)
 	//Checks for contact with spider web
 	if(webContact == true)
 	{
+		//Gradually puts Zid to a halt. Might need a Zid animation for "webbed Zid" with this function. Is never reversed.
 		mSlooowDooown += 3.f;
 		mRigidbody.getBody()->SetLinearDamping(mSlooowDooown);
 		//Kills Zid
 		mAlive = false;
-		//Applies a slowing effect. Currently cannot be reversed.
 
 	}
 
@@ -527,6 +527,13 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		mAlive = false;
 	}
+
+	if(other->getID() == "BalkPortZone")
+	{
+		Entity* balkport = EntityList::getEntityList().getEntity("BalkPort");
+		balkport->sendMessage(balkport, "Activate");
+	}
+
 }
 
 void Zid::EndContact(b2Contact *contact, Entity* other)

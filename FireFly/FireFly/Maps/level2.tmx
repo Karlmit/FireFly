@@ -54,8 +54,14 @@
  <tileset firstgid="28" name="dator_scale" tilewidth="313" tileheight="572">
   <image source="../Resources/Room 2/dator_scale.png" width="313" height="572"/>
  </tileset>
+ <tileset firstgid="29" name="tavlor" tilewidth="406" tileheight="158">
+  <image source="../Resources/Room 2/tavlor.png" width="406" height="158"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room2 Background" type="EntitySprite" gid="1" x="0" y="4484"/>
+  <object name="PC" type="PC_Position" x="2614" y="955">
+   <polyline points="0,0 0,-1"/>
+  </object>
  </objectgroup>
  <objectgroup name="Back" width="1" height="1">
   <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
@@ -80,6 +86,7 @@
   <object name="SugarBowlTop" type="SugarBowlTop" gid="7" x="4384" y="1204"/>
   <object name="TakFlakt" type="Room2_Fan" gid="15" x="2067" y="254"/>
   <object name="AC Flakt" type="Room2_AC" gid="18" x="4786" y="592"/>
+  <object name="Tavlor" type="EntitySprite" gid="29" x="2182" y="1423"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
@@ -132,7 +139,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="ZidStart" type="ZidSpawn" x="2328" y="1159" width="40" height="30">
+  <object name="ZidStart" type="ZidSpawn" x="110" y="2031" width="40" height="30">
    <ellipse/>
   </object>
   <object name="FanOnButton" type="Trigger" x="756" y="794" width="11" height="13">
@@ -214,9 +221,6 @@
   </object>
   <object name="SuCamKontor" type="SuCam" x="799" y="118" width="266" height="148"/>
   <object name="SuCamPannrum" type="SuCam" x="2198" y="2623" width="265" height="148"/>
-  <object name="PC" type="PC_Position" x="2614" y="955">
-   <polyline points="0,0 0,-1"/>
-  </object>
   <object name="PC_Text" x="2626" y="965" width="570" height="340" visible="0"/>
   <object name="AntPath" type="AntPath" x="545" y="4457">
    <polyline points="0,0 2935,9 2939,-963 3094,-959 3352,-686"/>
