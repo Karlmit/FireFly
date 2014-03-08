@@ -2,7 +2,7 @@
 
 unique_ptr<MusicManager> MusicManager::instance = nullptr;
 
-const float MAX_VOLUME = 30;
+const float MAX_VOLUME = 14;
 const float FADE_SPEED = 20;
 
 void MusicManager::newManager()
