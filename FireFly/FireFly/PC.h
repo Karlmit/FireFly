@@ -85,6 +85,8 @@ private:
 	Audio mButton3;
 	Audio mButton4;
 	Audio mButton5;
+	Audio mBlip1;
+	Audio mBlip2;
 	
 	//string stream
 	std::ostringstream oss;

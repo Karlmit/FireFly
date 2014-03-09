@@ -10,6 +10,8 @@ PC::PC(sf::Vector2f position)
 	mButton3(Loading::getSound("Room 2/Tangentbord/Tangent3.wav"), true),
 	mButton4(Loading::getSound("Room 2/Tangentbord/Tangent4.wav"), true),
 	mButton5(Loading::getSound("Room 2/Tangentbord/TangentSpacebar.wav"), true),
+	mBlip1(Loading::getSound("Room 2/Datorblips/Blip1.wav"), true),
+	mBlip2(Loading::getSound("Room 2/Datorblips/Blip2.wav"), true),
 	mComputerOnSprite(Loading::getTexture("Room 2/datorskarm_gron_scale.png")),
 	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png")),
 	sucu(Loading::getTexture("Room 2/SuCu_computereye_spritesheet.png"), 600, 361, 1, 9, 100)
@@ -122,6 +124,7 @@ void PC::loggin()
 		mHint = false;
 		mWelcome = true;
 		mWelcomeClock.restart();
+		mBlip1.play();
 	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mLoggin == true)
 	{
@@ -212,6 +215,8 @@ void PC::menu()
 				mOff = true;
 				mSucu = false;
 				mAnimation = false;
+				mBlip2.play();
+				
 			}
 		}
 

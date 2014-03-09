@@ -87,15 +87,6 @@
  <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
   <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
  </tileset>
- <tileset firstgid="30" name="balkport_scale2" tilewidth="76" tileheight="254">
-  <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
- </tileset>
- <tileset firstgid="31" name="ventilflakt_hel_scale" tilewidth="37" tileheight="253">
-  <image source="../Resources/Schakt 1/ventilflakt_hel_scale.png" width="37" height="253"/>
- </tileset>
- <tileset firstgid="32" name="ventilflakt_hel_scale_up" tilewidth="253" tileheight="37">
-  <image source="../Resources/Schakt 1/ventilflakt_hel_scale_up.png" width="253" height="37"/>
- </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
    <tile gid="0"/>
@@ -207,7 +198,7 @@
   <object name="MusicEnterOfficeTrigger" type="Trigger" x="115" y="460" width="175" height="274">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
-    <property name="MusicFadeUp" value="Office"/>
+    <property name="MusicFadeUp" value="Intense"/>
    </properties>
   </object>
  </objectgroup>
@@ -217,13 +208,11 @@
   </object>
   <object name="NetZone1" type="NetZone" x="2250" y="1361" width="175" height="162">
    <properties>
-    <property name="id" value="SpiderWeb"/>
     <property name="zidKiller" value=""/>
    </properties>
   </object>
   <object name="NetZone2" type="NetZone" x="395" y="804" width="165" height="151">
    <properties>
-    <property name="id" value="SpiderWeb"/>
     <property name="zidKiller" value=""/>
    </properties>
   </object>
@@ -284,6 +273,11 @@
     <property name="id" value="BalkPortZone"/>
    </properties>
   </object>
+  <object name="Music" type="MusicManager" x="440" y="145" width="195" height="151">
+   <properties>
+    <property name="Firefly Room 1 TrackVersion 1 (intense part).ogg" value="intense"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
   <object name="Balk" type="EntitySprite" gid="2" x="2277" y="313"/>
@@ -330,16 +324,6 @@
   <object name="insekt" type="EntitySprite" gid="26" x="2146" y="1976"/>
   <object name="Kukong" type="EntitySprite" gid="27" x="1890" y="1432"/>
   <object name="Kukong" type="EntitySprite" gid="28" x="3482" y="1618"/>
-  <object name="BalkPort" type="BalkPort" gid="30" x="3915" y="1311"/>
-  <object name="Fan2" type="EntitySprite" gid="31" x="1625" y="1065">
-   <properties>
-    <property name="id" value="SchaktFan"/>
-   </properties>
-  </object>
-  <object name="Fan1" type="EntitySprite" gid="32" x="2170" y="890">
-   <properties>
-    <property name="id" value="SchaktFan"/>
-   </properties>
-  </object>
+  <object name="BalkPort" type="BalkPort" gid="29" x="3915" y="1311"/>
  </objectgroup>
 </map>

@@ -106,7 +106,7 @@ void Level::startLevel(string levelName)
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
 
-	Light * zidLight = new Light(sf::Color(245,226,175,255), sf::Vector2f(1000,1000), 220, 360, 0, "zidLight");
+	Light * zidLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), 260, 360, 0, "zidLight");
 	EntityList::getEntityList().addEntity(zidLight, Layer::Light, false);
 
 	
