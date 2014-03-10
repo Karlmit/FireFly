@@ -53,6 +53,8 @@ void Light::createLightMap()
 
 void Light::createLight()
 {
+	
+
 	sf::VertexArray triangleFan(sf::TrianglesFan);
 	sf::VertexArray triangleFan2(sf::TrianglesFan);
 
@@ -170,16 +172,20 @@ void Light::updateEntity(sf::Time dt)
 	//{
 	//	growLight = true;
 	//}
-	createLight();
+	if (radius > 50)
+		createLight();
 
 }
 
 void Light::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 { 
-	target.draw(fanLight, sf::BlendMultiply);
-	target.draw(fanColor, sf::BlendAdd);
-	target.draw(outlineLight, sf::BlendMultiply);
-	target.draw(outLineColor, sf::BlendAdd);
+	if (radius > 50)
+	{
+		target.draw(fanLight, sf::BlendMultiply);
+		target.draw(fanColor, sf::BlendAdd);
+		target.draw(outlineLight, sf::BlendMultiply);
+		target.draw(outLineColor, sf::BlendAdd);
+	}
 }
 
 
