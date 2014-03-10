@@ -34,15 +34,17 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
+
 	Level::startLevel("level1.tmx");
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
 	{
-		// Set cursor position        
-		//cursorSprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(mWindow)));
-		cursorSprite.setPosition(sf::Mouse::getPosition(mWindow).x, sf::Mouse::getPosition(mWindow).y);                                                                                                                                                                                                                                                                                                                                                                                                                                             
+		// Set cursor position and correction scale       
+		cursorSprite.setPosition(mCamera.getWindowMousePosition());
+		cursorSprite.setScale(mCamera.getMouseScale());
+	
 		sf::Time elapsedTime = clock.restart();
 		timeSinceLastUpdate += elapsedTime;
 		while (timeSinceLastUpdate > TimePerFrame)
