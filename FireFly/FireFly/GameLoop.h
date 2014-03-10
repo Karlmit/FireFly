@@ -40,7 +40,8 @@ private:
 	sf::String textEntered;
 	Entity *pc;
 	Entity *zid;
-	sf::Texture cursorTexture;
 	sf::Sprite cursorSprite;
+	
+
 };
 
