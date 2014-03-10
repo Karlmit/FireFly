@@ -2,6 +2,7 @@
 #include "Box2dWorld.h"
 #include <Windows.h>
 #include "MusicManager.h"
+#include "Log.h"
 
 #include <iostream>
 
@@ -34,7 +35,6 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-
 	Level::startLevel("level1.tmx");
 		
 	sf::Clock clock;

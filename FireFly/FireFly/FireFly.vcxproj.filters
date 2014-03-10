@@ -390,6 +390,9 @@
     <ClInclude Include="BalkPort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -732,6 +735,9 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="BalkPort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

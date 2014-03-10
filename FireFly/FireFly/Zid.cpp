@@ -6,6 +6,7 @@
 #include "RayCastCallback.h"
 // #include "FireflyZone.h"
 // #include "MirrorQueue.h"
+#include "Log.h"
 
 #include <iostream>
 
@@ -131,6 +132,7 @@ void Zid::sendMessage(Entity* entity, string message)
 	if(message == "kill")
 	{
 		mAlive = false;
+		Log::write("Zid died.");
 	}
 
 }
@@ -154,6 +156,7 @@ void Zid::updateEntity(sf::Time dt)
 		mRigidbody.getBody()->SetLinearDamping(mSlooowDooown);
 		//Kills Zid
 		mAlive = false;
+		Log::write("Zid died from webContact.");
 
 	}
 
@@ -502,6 +505,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	if(other->getID() == "spoderMan")
 	{
 		mAlive = false;
+		Log::write("Zid died from spoderMan.");
 	}
 
 	if(other->getID() == "SpiderStart")
@@ -512,6 +516,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	if(other->getID() == "Electric")
 	{
 		mAlive = false;
+		Log::write("Zid died from electric.");
 	}
 	if (other->getID() == "Sugar")
 	{
@@ -525,6 +530,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 
 	if (other->getID() == "Wasp")
 	{
+		Log::write("Zid died from wasp.");
 		mAlive = false;
 	}
 
