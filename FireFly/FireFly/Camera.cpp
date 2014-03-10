@@ -91,8 +91,8 @@ sf::Vector2f Camera::getMousePosition() {
 sf::Vector2f Camera::getWindowMousePosition()
 {
 	sf::Vector2f pos;
-	pos.x = sf::Mouse::getPosition(*mWindow).x * (mInitial_Size.x / mView.getSize().x);
-	pos.y = sf::Mouse::getPosition(*mWindow).y * (mInitial_Size.y / mView.getSize().y);
+	pos.x = sf::Mouse::getPosition(*mWindow).x * (mInitial_Size.x / (mView.getSize().x/mZoom));
+	pos.y = sf::Mouse::getPosition(*mWindow).y * (mInitial_Size.y / (mView.getSize().y/mZoom));
 
 	return pos;
 }

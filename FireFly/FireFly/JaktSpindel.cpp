@@ -104,7 +104,17 @@ void JaktSpindel::updateEntity(sf::Time dt)
 		float satan =  std::atan2f(mCurrentDirection.y, mCurrentDirection.x);
 		float newRotation = satan * 180/3.14f;
 
-		if(abs(mTargetRotation - newRotation) > 0.1f)
+		cout << abs(mRotation - newRotation) << endl;
+
+		if (abs(mRotation - newRotation)  > 180)
+		{
+			if (newRotation > mRotation)
+				newRotation -= 360;
+			else
+				newRotation += 360;
+		}
+
+		if(abs(mRotation - newRotation) > 0.1f)
 		{
 			mSuperTweenRotation.clearTweens();
 			mSuperTweenRotation.addTween(&CDBTweener::TWEQ_CUBIC, CDBTweener::TWEA_OUT, 1.0f, &mRotation, newRotation);		

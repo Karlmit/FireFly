@@ -38,7 +38,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level1.tmx");
+	Level::startLevel("schakt1.tmx");
 
 		
 	sf::Clock clock;
