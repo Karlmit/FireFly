@@ -153,6 +153,7 @@
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapObjectGroup.h" />
@@ -270,6 +271,7 @@
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="MapObjectGroup.cpp" />

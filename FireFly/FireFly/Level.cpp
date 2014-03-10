@@ -3,6 +3,7 @@
 #include "Box2dWorld.h"
 #include "Camera.h"
 #include "MusicManager.h"
+#include "Log.h"
 
 #include "Zid.h"
 #include "EntitySprite.h"
@@ -82,6 +83,8 @@ void Level::update()
 
 void Level::startLevel(string levelName)
 {
+	Log::write("Starts loading level \"" + levelName + "\"");
+
 	// Clear all entities
 	EntityList::getEntityList().emptyList();
 
@@ -109,7 +112,7 @@ void Level::startLevel(string levelName)
 	Light * zidLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), 260, 360, 0, "zidLight");
 	EntityList::getEntityList().addEntity(zidLight, Layer::Light, false);
 
-	
+	Log::write("Finished loading level \"" + levelName + "\"");
 }
 
 void Level::loadMap(string filename)

@@ -104,8 +104,6 @@ void JaktSpindel::updateEntity(sf::Time dt)
 		float satan =  std::atan2f(mCurrentDirection.y, mCurrentDirection.x);
 		float newRotation = satan * 180/3.14f;
 
-		cout << abs(mRotation - newRotation) << endl;
-
 		if (abs(mRotation - newRotation)  > 180)
 		{
 			if (newRotation > mRotation)
