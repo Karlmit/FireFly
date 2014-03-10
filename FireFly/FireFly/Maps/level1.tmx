@@ -166,6 +166,5 @@
    <ellipse/>
   </object>
   <object name="Dusty" type="Dust" x="5" y="9" width="4440" height="2130" visible="0"/>
-  <object name="ViewPort" type="ViewPort" x="2850" y="67" width="420" height="534"/>
  </objectgroup>
 </map>
