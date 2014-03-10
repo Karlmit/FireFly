@@ -2,11 +2,15 @@
 #include "GameLoop.h"
 #include <iostream>
 #include <stdexcept>
+#include "Log.h"
 
 #include <time.h>
 
 int main()
 {	
+	Log::init();
+	Log::write("Starting game!");
+
 	srand(unsigned(time(0)));
 	try
 	{	

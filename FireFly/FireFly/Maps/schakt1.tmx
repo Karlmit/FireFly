@@ -225,12 +225,6 @@
    </properties>
    <polyline points="0,0 87,4"/>
   </object>
-  <object name="MusicEnterOfficeTrigger" type="Trigger" x="115" y="460" width="175" height="274">
-   <properties>
-    <property name="MusicFadeDownAll" value=""/>
-    <property name="MusicFadeUp" value="Intense"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="182" y="597" width="45" height="37">
@@ -248,7 +242,7 @@
     <property name="zidKiller" value=""/>
    </properties>
   </object>
-  <object name="SpiderStart" type="Trigger" x="1155" y="58" width="65" height="255">
+  <object name="SpiderStart" type="Trigger" x="1412" y="66" width="65" height="255">
    <properties>
     <property name="id" value="SpiderStart"/>
    </properties>
@@ -256,7 +250,7 @@
   <object name="SpiderPath" type="SpiderPath" x="929" y="83">
    <polyline points="16,103 1560,102 1563,475 2395,479 2395,905 1358,906 1357,1314 609,1310 606,864 -391,866 -392,1882 2234,1892 2236,1502 2911,1496"/>
   </object>
-  <object name="Electric" type="Trigger" x="3160" y="1896" width="30" height="24">
+  <object name="Electric" type="Trigger" x="2821" y="1925" width="30" height="24">
    <properties>
     <property name="id" value="Electric"/>
    </properties>
@@ -277,7 +271,7 @@
   <object name="Spark" type="Spark_Position1" x="2855" y="992">
    <polyline points="0,0 2,-1"/>
   </object>
-  <object name="Spark" type="Spark_Position2" x="3173" y="1907">
+  <object name="Spark" type="Spark_Position2" x="2833" y="1934">
    <polyline points="0,0 1,0"/>
   </object>
   <object name="Spark" type="Spark_Position3" x="1219" y="1976">
@@ -308,6 +302,13 @@
   <object name="Music" type="MusicManager" x="440" y="145" width="195" height="151">
    <properties>
     <property name="Firefly Room 1 TrackVersion 1 (intense part).ogg" value="intense"/>
+   </properties>
+  </object>
+  <object name="SuCamKontor" type="SuCam" x="4171" y="1364" width="246" height="71"/>
+  <object name="StartSlowMusic" type="Trigger" x="115" y="460" width="175" height="274">
+   <properties>
+    <property name="MusicFadeUp" value="intense"/>
+    <property name="TriggerOnce" value="Zid"/>
    </properties>
   </object>
  </objectgroup>
@@ -350,7 +351,7 @@
   </object>
   <object name="Kabel" type="EntitySprite" gid="19" x="2820" y="1109"/>
   <object name="Kabel" type="EntitySprite" gid="23" x="1192" y="1989"/>
-  <object name="Kabel" type="EntitySprite" gid="22" x="3167" y="1951"/>
+  <object name="Kabel" type="EntitySprite" gid="22" x="2827" y="1983"/>
   <object name="insekt" type="EntitySprite" gid="24" x="2678" y="1024"/>
   <object name="insekt" type="EntitySprite" gid="25" x="2996" y="1000"/>
   <object name="insekt" type="EntitySprite" gid="26" x="2146" y="1976"/>
