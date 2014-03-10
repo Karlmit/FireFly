@@ -21,6 +21,7 @@ Camera::Camera(sf::Window* window)
 , mBounds()
 {
 	sCurrentCamera = this;
+	mInitial_Size = window->getSize();
 }
 
 
@@ -85,6 +86,25 @@ sf::Vector2f Camera::getMousePosition() {
 	pos.y = sf::Mouse::getPosition(*mWindow).y*mZoom + mView.getCenter().y - mView.getSize().y/2;
 
 	return pos;
+}
+
+sf::Vector2f Camera::getWindowMousePosition()
+{
+	sf::Vector2f pos;
+	pos.x = sf::Mouse::getPosition(*mWindow).x * (mInitial_Size.x / mView.getSize().x);
+	pos.y = sf::Mouse::getPosition(*mWindow).y * (mInitial_Size.y / mView.getSize().y);
+
+	return pos;
+}
+
+sf::Vector2f Camera::getMouseScale()
+{
+
+	sf::Vector2f scale;
+	scale.x = mInitial_Size.x / mView.getSize().x;
+	scale.y = mInitial_Size.y / mView.getSize().y;
+	return scale;
+
 }
 
 sf::View Camera::getView() {

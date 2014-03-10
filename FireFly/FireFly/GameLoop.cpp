@@ -45,8 +45,11 @@ void GameLoop::run()
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
 	{
-		// Set cursor position        
-		cursorSprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(mWindow)));
+		// Set cursor position and correction scale       
+		cursorSprite.setPosition(mCamera.getWindowMousePosition());
+		cursorSprite.setScale(mCamera.getMouseScale());
+		
+
 
 		sf::Time elapsedTime = clock.restart();
 		timeSinceLastUpdate += elapsedTime;

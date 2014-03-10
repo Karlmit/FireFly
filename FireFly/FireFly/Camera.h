@@ -17,6 +17,9 @@ public:
 	void update(sf::Time dt);
 
 	sf::Vector2f	getMousePosition();
+	sf::Vector2f getWindowMousePosition();
+	sf::Vector2f getMouseScale();
+
 	sf::View		getView();
 	sf::View		getViewZ();
 
@@ -33,5 +36,7 @@ private:
 	float		mZoom;
 	sf::Vector2f mFollowTargetPosition;
 	sf::FloatRect mBounds;
+
+	sf::Vector2u mInitial_Size;
 
 };
