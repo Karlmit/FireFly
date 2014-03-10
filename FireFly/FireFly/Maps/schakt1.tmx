@@ -87,6 +87,12 @@
  <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
   <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
  </tileset>
+ <tileset firstgid="30" name="ventilflakt_hel_scale" tilewidth="37" tileheight="253">
+  <image source="../Resources/Schakt 1/ventilflakt_hel_scale.png" width="37" height="253"/>
+ </tileset>
+ <tileset firstgid="31" name="ventilflakt_hel_scale_up" tilewidth="253" tileheight="37">
+  <image source="../Resources/Schakt 1/ventilflakt_hel_scale_up.png" width="253" height="37"/>
+ </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
    <tile gid="0"/>
@@ -150,28 +156,52 @@
   <object name="Balk" type="StaticCollision" x="3309" y="1706">
    <polyline points="0,0 -1,-126 13,-137 23,-148 40,-148 41,-2"/>
   </object>
-  <object name="Nat" type="StaticCollision" x="2875" y="439">
+  <object name="Nat" type="StaticCollision" x="2875" y="438">
+   <properties>
+    <property name="id" value="blocksNoLight"/>
+   </properties>
    <polyline points="0,0 11,1 15,11 33,44 55,81 65,95 73,98 86,101 93,101 103,93 107,85"/>
   </object>
-  <object name="Nat" type="StaticCollision" x="2877" y="689">
+  <object name="Nat" type="StaticCollision" x="2875" y="689">
+   <properties>
+    <property name="id" value="blocksNoLight"/>
+   </properties>
    <polyline points="0,0 3,3 5,1 12,-1 28,-15 38,-35 43,-43 45,-48 57,-57 80,-70 87,-76 97,-78 105,-72 111,-66"/>
   </object>
-  <object name="Nat" type="StaticCollision" x="897" y="815">
+  <object name="Nat" type="StaticCollision" x="895" y="814">
+   <properties>
+    <property name="id" value="blocksNoLight"/>
+   </properties>
    <polyline points="0,0 -25,28 -33,40 -37,48 -42,57 -57,64 -69,71 -76,79 -86,83 -98,78 -104,73"/>
   </object>
-  <object name="Nat" type="StaticCollision" x="896" y="1065">
+  <object name="Nat" type="StaticCollision" x="895" y="1065">
+   <properties>
+    <property name="id" value="blocksNoLight"/>
+   </properties>
    <polyline points="0,0 -8,-19 -14,-31 -29,-50 -37,-62 -46,-86 -53,-92 -62,-95 -76,-99 -84,-97 -93,-87 -97,-82 -97,-78"/>
   </object>
-  <object name="Nat" type="StaticCollision" x="401" y="1666">
+  <object name="Nat" type="StaticCollision" x="400" y="1665">
+   <properties>
+    <property name="id" value="blocksNoLight"/>
+   </properties>
    <polyline points="0,0 6,5 15,14 34,27 57,44 66,59 79,77 84,88 77,104 74,106"/>
   </object>
-  <object name="Nat" type="StaticCollision" x="657" y="1667">
+  <object name="Nat" type="StaticCollision" x="655" y="1668">
+   <properties>
+    <property name="id" value="blocksNoLight"/>
+   </properties>
    <polyline points="0,0 -13,8 -29,14 -63,38 -75,42 -95,56 -100,70 -104,78 -100,84 -96,92 -85,98 -82,98"/>
   </object>
-  <object name="Nat" type="StaticCollision" x="1836" y="1841">
+  <object name="Nat" type="StaticCollision" x="1835" y="1840">
+   <properties>
+    <property name="id" value="blocksNoLight"/>
+   </properties>
    <polyline points="0,0 1,12 6,25 6,34 6,47 6,56 10,66 14,91 14,119 15,137 23,144 30,155 43,173 54,182 70,183 85,182"/>
   </object>
-  <object name="Nat" type="StaticCollision" x="1826" y="2097">
+  <object name="Nat" type="StaticCollision" x="1825" y="2097">
+   <properties>
+    <property name="id" value="blocksNoLight"/>
+   </properties>
    <polyline points="0,0 12,-1 22,-6 29,-10"/>
   </object>
   <object name="insket" type="StaticCollision" x="2228" y="1939">
@@ -206,13 +236,15 @@
   <object name="ZidStart" type="ZidSpawn" x="182" y="597" width="45" height="37">
    <ellipse/>
   </object>
-  <object name="NetZone1" type="NetZone" x="2250" y="1361" width="175" height="162">
+  <object name="NetZone1" type="StickyZone" x="2250" y="1361" width="175" height="162">
    <properties>
+    <property name="id" value="SpiderWeb"/>
     <property name="zidKiller" value=""/>
    </properties>
   </object>
-  <object name="NetZone2" type="NetZone" x="395" y="804" width="165" height="151">
+  <object name="NetZone2" type="StickyZone" x="395" y="804" width="165" height="151">
    <properties>
+    <property name="id" value="SpiderWeb"/>
     <property name="zidKiller" value=""/>
    </properties>
   </object>
@@ -325,5 +357,15 @@
   <object name="Kukong" type="EntitySprite" gid="27" x="1890" y="1432"/>
   <object name="Kukong" type="EntitySprite" gid="28" x="3482" y="1618"/>
   <object name="BalkPort" type="BalkPort" gid="29" x="3915" y="1311"/>
+  <object name="Fan2" type="EntitySprite" gid="30" x="1620" y="1065">
+   <properties>
+    <property name="id" value="SchaktFan"/>
+   </properties>
+  </object>
+  <object name="Fan1" type="EntitySprite" gid="31" x="2170" y="892">
+   <properties>
+    <property name="id" value="SchaktFan"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
