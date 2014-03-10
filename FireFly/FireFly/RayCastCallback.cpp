@@ -12,7 +12,7 @@ float32 RayCastCallback::ReportFixture(b2Fixture* fixture, const b2Vec2& point, 
 	if (userData != nullptr)
 	{
 		Entity* entity =  static_cast<Entity*>(userData);
-		if (entity->getID() == "StaticCollider")
+		if (entity->getID() == "StaticCollider" || entity->getID() == "CoatHoleCollision")
 		{	
 			this->fixture = fixture;
 			this->point = point;
