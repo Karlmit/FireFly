@@ -105,12 +105,14 @@ void Level::startLevel(string levelName)
 	// Runs start() on all entities
 	EntityList::getEntityList().startList();
 
+	// Zids light
+	Light * zidLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), 260, 360, 0, "zidLight");
+	EntityList::getEntityList().addEntity(zidLight, Layer::Light, false);
+
 	// Fade from black
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
-
-	Light * zidLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), 260, 360, 0, "zidLight");
-	EntityList::getEntityList().addEntity(zidLight, Layer::Light, false);
+	
 
 	Log::write("Finished loading level \"" + levelName + "\"");
 }

@@ -15,6 +15,8 @@ public:
 	~Light();
 	void createLight();
 
+	virtual void sendMessage(Entity* sender, string message, int value);
+
 private:
 	
 	sf::Color color;							// The lighs color.						

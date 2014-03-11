@@ -101,11 +101,17 @@ void PC::sendMessage(Entity* entity, std::string message)
 	{
 		mCamera = true;
 		mKeyboardHint = true;
+
+		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
+		Camera::currentCamera().setZoom(0.8f);
 	}
 	if(message == "out_of_PC_Zone")
 	{
 		mCamera = false;
 		mKeyboardHint = false;
+
+		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
+		Camera::currentCamera().setDefaultZoom();
 	}
 
 

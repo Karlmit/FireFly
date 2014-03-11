@@ -3,6 +3,7 @@
 #include "Animation.h"
 #include "EntityList.h"
 #include "Audio.h"
+#include "EntitySprite.h"
 
 #include <iostream>
 
@@ -36,7 +37,7 @@ private:
 	sf::Sprite mKeyboardHintSprite;
 	//Entities
 	Entity *termometer;
-
+	Entity *EntitySpritem;
 	sf::RectangleShape mScreen;
 	sf::String msfString;
 	sf::Font mFont;

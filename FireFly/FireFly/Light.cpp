@@ -26,6 +26,15 @@ Light::~Light()
 	
 }
 
+void Light::sendMessage(Entity* sender, string message, int value)
+{
+	if (message == "ChangeRadius")
+	{
+		float radiusStep = 30.f;
+		radius = max (50.f, radius + radiusStep * value);
+	}
+}
+
 float Light::getDistance(sf::Vector2f Point1, sf::Vector2f Point2)					
 {																																																			
 	float a = Point2.x - Point1.x;																				
@@ -44,6 +53,8 @@ void Light::createLightMap()
 
 void Light::createLight()
 {
+	
+
 	sf::VertexArray triangleFan(sf::TrianglesFan);
 	sf::VertexArray triangleFan2(sf::TrianglesFan);
 
@@ -91,13 +102,13 @@ void Light::createLight()
 		end.y += sin(radians) * dynamicLength;
 		 
         currentVertex.position = end;
-		currentVertex.color = sf::Color(255, 255, 255, 255*(dynamicLength/radius));
+		currentVertex.color = sf::Color(255, 255, 255, uint8(255*(dynamicLength/radius)));
 		
         triangleFan.append(currentVertex);
 		circleOutline.append(currentVertex);
 		
 
-		currentVertex.color = sf::Color(color.r, color.g, color.b, color.a*(1-(dynamicLength/radius)));
+		currentVertex.color = sf::Color(color.r, color.g, color.b, uint8(color.a*(1-(dynamicLength/radius))));
 
 		triangleFan2.append(currentVertex);
 
@@ -161,16 +172,20 @@ void Light::updateEntity(sf::Time dt)
 	//{
 	//	growLight = true;
 	//}
-	createLight();
+	if (radius > 50)
+		createLight();
 
 }
 
 void Light::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 { 
-	target.draw(fanLight, sf::BlendMultiply);
-	target.draw(fanColor, sf::BlendAdd);
-	target.draw(outlineLight, sf::BlendMultiply);
-	target.draw(outLineColor, sf::BlendAdd);
+	if (radius > 50)
+	{
+		target.draw(fanLight, sf::BlendMultiply);
+		target.draw(fanColor, sf::BlendAdd);
+		target.draw(outlineLight, sf::BlendMultiply);
+		target.draw(outLineColor, sf::BlendAdd);
+	}
 }
 
 
