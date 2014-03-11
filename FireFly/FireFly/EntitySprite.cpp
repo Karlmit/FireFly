@@ -2,6 +2,7 @@
 
 EntitySprite::EntitySprite(string textureID) 
 : mSprite(Loading::getTexture(textureID))
+, mActivate(true)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -10,6 +11,7 @@ EntitySprite::EntitySprite(string textureID)
 
 EntitySprite::EntitySprite(string textureID ,sf::Vector2f position) 
 : mSprite(Loading::getTexture(textureID))
+, mActivate(true)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
