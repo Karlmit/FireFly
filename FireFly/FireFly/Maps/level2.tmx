@@ -225,7 +225,7 @@
   <object name="AntPath" type="AntPath" x="545" y="4457">
    <polyline points="0,0 2935,9 2939,-963 3094,-959 3352,-686"/>
   </object>
-  <object name="PC_Zone" type="Trigger" x="2581" y="924" width="648" height="485" visible="0">
+  <object name="PC_Zone" type="Trigger" x="2581" y="924" width="648" height="485">
    <properties>
     <property name="id" value="PC_Zone"/>
    </properties>

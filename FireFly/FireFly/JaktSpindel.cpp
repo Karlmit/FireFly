@@ -9,7 +9,7 @@ const float FOLLOW_DISTANCE_ZID_SQR = 600.f*600.f;
 const float MIN_DISTANCE_TO_SWEET_ZID_SQR = 200.f*200.f;
 const float MIN_DISTANCE_TO_SUGAR_SQR = 150.f*150.f;
 const float TIME_CHECKING_OUT_SUGAR = 12.F;
-const float ATTACK_DISTANCE = 110.f;
+const float ATTACK_DISTANCE = 170.f;
 const float ATTACK_SPEED = 10.f;
 
 JaktSpindel::JaktSpindel(float pos, vector<sf::Vector2f> path, vector<float> lengths, vector<sf::Vector2f> directions, float totalLength)
