@@ -15,6 +15,7 @@ public:
 	static void changeMap(string filename);
 	static void fadeToBlackChangeLevel(string filename);
 	static void update();
+	static void restartLevel(float delay = 0);
 
 private:
 	Level();
@@ -30,6 +31,11 @@ private:
 	bool mChangeMap;
 	string mChangeMapTo;
 	sf::Vector2f mMapSize;
+
+	// restartlevel
+	bool mRestartingLevel;
+	float mDelay;
+	sf::Clock mDelayTimer;
 
 private:
 	// Spawn entities from a map file

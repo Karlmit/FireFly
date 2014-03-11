@@ -95,8 +95,8 @@ void JaktSpindel::updateEntity(sf::Time dt)
 			attackAnimation.updateAnimation();
 			mSprite = attackAnimation.getCurrentSprite();
 			mSprite.setOrigin(256/2, 240);
-			mZid->sendMessage(mZid, "kill");
-			Level::getLevel().fadeToBlackChangeLevel("schakt1.tmx");
+			mZid->sendMessage(this, "kill");
+			//Level::getLevel().fadeToBlackChangeLevel("schakt1.tmx");
 		}
 
 

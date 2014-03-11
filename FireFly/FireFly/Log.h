@@ -7,10 +7,10 @@ class Log
 {
 public:
 	static void init();
-	static void write(string str);
+	static void write(string str, bool repeatMessage = false);
 
 private:
 
 	static string mFilename;
-
+	static string mLastMessage;
 };

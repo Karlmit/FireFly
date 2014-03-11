@@ -14,6 +14,7 @@
 #include <Windows.h>
 
 string Log::mFilename;
+string Log::mLastMessage;
 
 std::string currentDateTimeForFileName() {
 	
@@ -76,10 +77,15 @@ void Log::init()
 }
 
 
-void Log::write(string str)
+void Log::write(string str, bool repeatMessage)
 {
-	std::ofstream outfile;
+	if (repeatMessage || mLastMessage != str)
+	{
+		mLastMessage = str;
 
-	outfile.open(mFilename, std::ios_base::app);
-	outfile << currentDateTime() << ": " << str << endl; 
+		std::ofstream outfile;
+
+		outfile.open(mFilename, std::ios_base::app);
+		outfile << currentDateTime() << ": " << str << endl; 
+	}
 }
