@@ -230,7 +230,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("schakt1.tmx");
 			break;
 		case sf::Keyboard::F4:
-			Level::changeMap("level4.tmx");
+			Level::changeMap("level3.tmx");
 			break;
 		case sf::Keyboard::F5:
 			Level::changeMap("level5.tmx");

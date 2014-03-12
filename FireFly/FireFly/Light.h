@@ -21,9 +21,11 @@ private:
 	
 	sf::Color color;							// The lighs color.						
 	float radius;								// How far the light will shine.
+	float targetRadius;							// Go to this value for radius
 	float angleSpread;							// Spread of the light
 	float angle;								// Where the light is pointing 
 	bool dynamic;
+	bool lightKilled;
 
 	void createLightMap();
 

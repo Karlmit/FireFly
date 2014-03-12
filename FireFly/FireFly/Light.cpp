@@ -4,6 +4,9 @@
 #include "Box2dWorld.h"
 #include "RayCastCallback.h"
 #include <iostream>
+#include "Utility.h"
+
+const float MIN_LIGHT = 2.f;
 
 Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSpread, float angle, std::string mID) // Constructor, creates a light with the attributes given to it.
 {
@@ -11,8 +14,10 @@ Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSp
 	this->color = color;
 	this->setPosition(position);
 	this->radius = radius;
+	this->targetRadius = radius;
 	this->angleSpread = angleSpread;
 	this->angle = angle;
+	this->lightKilled = false;
 	
 	if(angleSpread > 360)
 		angleSpread = 360;
@@ -28,10 +33,19 @@ Light::~Light()
 
 void Light::sendMessage(Entity* sender, string message, int value)
 {
+	if (lightKilled)
+		return;
+
 	if (message == "ChangeRadius")
 	{
 		float radiusStep = 30.f;
-		radius = max (50.f, radius + radiusStep * value);
+		targetRadius = max (0.f, targetRadius + radiusStep * value);
+	}
+
+	if (message == "KillLight")
+	{
+		targetRadius = float(value);
+		lightKilled = true;
 	}
 }
 
@@ -152,6 +166,23 @@ void Light::createLight()
 
 void Light::updateEntity(sf::Time dt)
 {
+	if (lightKilled && radius > 65)
+	{
+		float radiusDamping = 0.55f;
+		radius = Util::Lerp(radius, targetRadius, dt.asSeconds() * radiusDamping);
+	}
+	else if (lightKilled && radius <= 65)
+	{
+		float radiusDamping = 3.8f;
+		radius = Util::Lerp(radius, targetRadius, dt.asSeconds() * radiusDamping);
+	}
+	else
+	{
+		float radiusDamping = 3.f;
+		radius = Util::Lerp(radius, targetRadius, dt.asSeconds() * radiusDamping);
+	}
+	
+
 	//static float realRadius = radius;
 	//static bool growLight = true;
 	//
@@ -172,14 +203,14 @@ void Light::updateEntity(sf::Time dt)
 	//{
 	//	growLight = true;
 	//}
-	if (radius > 50)
+	if (radius > MIN_LIGHT)
 		createLight();
 
 }
 
 void Light::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 { 
-	if (radius > 50)
+	if (radius > MIN_LIGHT)
 	{
 		target.draw(fanLight, sf::BlendMultiply);
 		target.draw(fanColor, sf::BlendAdd);
