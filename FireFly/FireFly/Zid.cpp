@@ -561,6 +561,8 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		Entity* balkport = EntityList::getEntityList().getEntity("BalkPort");
 		balkport->sendMessage(balkport, "Activate");
+		jaktspindel = EntityList::getEntityList().getEntity("JaktSpindel");
+		jaktspindel->sendMessage(jaktspindel, "Deactivate");
 	}
 
 }

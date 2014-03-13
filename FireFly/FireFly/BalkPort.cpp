@@ -19,6 +19,7 @@ BalkPort::BalkPort(string texture, sf::Vector2f position, float width, float hei
 	rects.push_back(sf::FloatRect(mSprite.getLocalBounds().left, mSprite.getLocalBounds().top, bounds.width, bounds.height));
 	mRigidbody.AddDynRectBody(rects, position, 1.f, true);
 	mRigidbody.getBody()->SetFixedRotation(true);
+	mRigidbody.getBody()->SetUserData(this);
 	setPosition(position);
 }
 

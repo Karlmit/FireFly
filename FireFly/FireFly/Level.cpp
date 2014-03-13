@@ -31,6 +31,7 @@
 #include "Termometer.h"
 #include "Telefonsvarare.h"
 #include "ParallaxSprite.h"
+#include "FireflyZone.h"
 #include "Dust.h"
 #include "SpiderPath.h"
 #include "Sparks.h"
@@ -284,7 +285,8 @@ void Level::loadMap(string filename)
 			//
 			else if (entityType == "FireflyNPC")
 			{
-				eList.addEntity(new FireflyNPC(position), Layer::NPC, false);
+				Entity* dora = new FireflyNPC(position);
+				eList.addEntity(dora, Layer::NPC, false);
 			}
 
 			//
@@ -415,6 +417,22 @@ void Level::loadMap(string filename)
 				zone->setProperties(obj.getProperties());				
 				zone->setID(id);
 				eList.addEntity(zone, Layer::Foreground, false);
+			}
+
+			//
+			//	FireflyZone
+			//
+			else if (entityType == "FireflyZone")
+			{
+				sf::FloatRect rect;
+				rect.left = position.x;
+				rect.top = position.y;
+				rect.width = width;
+				rect.height = height;
+				FireflyZone* Fzone = new FireflyZone(rect);
+				Fzone->setProperties(obj.getProperties());
+				Fzone->setID(id);
+				eList.addEntity(Fzone, Layer::Foreground, false);
 			}
 
 			//

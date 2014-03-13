@@ -1,6 +1,7 @@
  #include "FireflyNPC.h"
-#include "Utility.h"
+ #include "Utility.h"
  #include "MirrorQueue.h"
+ #include <iostream>
 
 const float MIN_FOLLOW_DISTANCE = 5.f;
 const float DENSITY = 3.f;
@@ -39,13 +40,14 @@ FireflyNPC::~FireflyNPC(void)
 void FireflyNPC::start()
 {
 	mZid = EntityList::getEntityList().getEntity("Zid");
+	mZone = EntityList::getEntityList().getEntity("CrackZone");
 }
 
 void FireflyNPC::updateEntity(sf::Time timePerFrame)
 {
 
-	//Gets Zids position in Box2D coords
-	mZidPosition = Rigidbody::SfToBoxVec(mZid->getPosition());
+	//Gets CrackZones position in Box2D coords
+	mZonePosition = Rigidbody::SfToBoxVec(230, 1246);
 
 	//Get the sprite from animation
 	idleAnimation.updateAnimation();
@@ -102,15 +104,18 @@ void FireflyNPC::movement()
 
 	//Current position in box2d coords
 	b2Vec2 currentPosition = Rigidbody::SfToBoxVec(getPosition());
+//	std::cout << currentPosition.x << ", " << currentPosition.y << endl;
 
 	//Zid in sf coords
-	sf::Vector2f sfZidPos = Rigidbody::BoxToSfVec(mZidPosition);
+	sf::Vector2f sfZonePos = Rigidbody::BoxToSfVec(mZonePosition);
+//	std::cout << sfZonePos.x << ", " << sfZonePos.y << endl;
 
 	//Gets the direction from FireflyNPC to Zid
-	b2Vec2 direction = mZidPosition - currentPosition;
+	b2Vec2 direction = mZonePosition - currentPosition;
+//	std::cout << direction.x << ", " << direction.y << endl;
 
 	//Converts the direction into a distance
-	float length = sfZidPos.x - currentPosition.x;
+	float length = direction.Normalize();
 
 
 	//Depending on if Zid is next to the jar, FireFlyNPC either traces Zids movements or moves passively
@@ -125,6 +130,10 @@ void FireflyNPC::movement()
 	}
 	else
 	{
+		b2Vec2 dirRand = mZonePosition - currentPosition;
+		dirRand.Normalize();
+		dirRand *= FORCE;
+		body->ApplyForceToCenter(dirRand, true);
 	/*	auto q = MirrorQueue::getMirrorQueue().getQueue();
 		if (q->size() >= QUEUE_LENGTH)
 		{

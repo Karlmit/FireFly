@@ -8,6 +8,8 @@ const float SCALE = 1.f;
 const float FOLLOW_DISTANCE_ZID_SQR = 600.f*600.f;
 const float ATTACK_DISTANCE = 170.f;
 const float ATTACK_SPEED = 10.f;
+const float MUSIC_MUTE_DISTANCE = 600.f;
+const float MUSIC_FADEUP_DISTANCE = 500.f;
 
 JaktSpindel::JaktSpindel(float pos, vector<sf::Vector2f> path, vector<float> lengths, vector<sf::Vector2f> directions, float totalLength)
 	: mPath(path)
@@ -31,14 +33,9 @@ JaktSpindel::JaktSpindel(float pos, vector<sf::Vector2f> path, vector<float> len
 	sf::FloatRect bounds = walkAnimation.getCurrentSprite().getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 
-
-	//fadetoblack = static_cast<FadeToBlack*>(EntityList::getEntityList().getEntity("fade"));
-//	fadetoblack->setNextLevel("schakt1");
-//	fadetoblack->activate(false);
-//	//EntityList::getEntityList().addEntity(&fade);
-
 	mActivate = false;
 	mAttack = false;
+	mMusic = false;
 	setPosition(pos);
 }
 
@@ -54,11 +51,34 @@ void JaktSpindel::sendMessage(Entity* entity, std::string message)
 	{
 		mActivate = true;
 	}
+	if(message == "Deactivate")
+	{
+		mActivate = false;
+	}
+
 
 }
 
 void JaktSpindel::updateEntity(sf::Time dt)
 {
+	//check length from zid to jaktSpindel
+	sf::Vector2f direction = getPosition() - mZid->getPosition();
+	float length = direction.getLength();
+
+	//music
+	if(length >= MUSIC_MUTE_DISTANCE && mMusic == true)
+	{
+		MusicManager::fadeDown("fiol");
+		mMusic = false;
+	}
+
+	if(length <= MUSIC_FADEUP_DISTANCE && mMusic == false)
+	{
+		MusicManager::fadeUp("fiol");
+		mMusic = true;
+	}
+
+
 	if(mActivate == true)
 	{
 		walkAnimation.updateAnimation();
@@ -71,9 +91,7 @@ void JaktSpindel::updateEntity(sf::Time dt)
 			//this->killEntity();
 		}
 
-		//check length from zid to jaktSpindel
-		sf::Vector2f direction = getPosition() - mZid->getPosition();
-		float length = direction.getLength();
+		//Is Jaktspindel close enough for attack?
 		if(length <= ATTACK_DISTANCE)
 		{
 			mAttack = true;

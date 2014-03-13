@@ -37,6 +37,7 @@ void GameLoop::run()
 {
 	// Load the level "level1.tmx"
 	Level::startLevel("level1.tmx");
+
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;

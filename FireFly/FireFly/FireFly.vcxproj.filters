@@ -321,9 +321,6 @@
     <ClInclude Include="FireflyNPC.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="FireflyZone.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MirrorQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -395,6 +392,9 @@
     </ClInclude>
     <ClInclude Include="CrackZone.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FireflyZone.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -674,9 +674,6 @@
     <ClCompile Include="FireflyNPC.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="FireflyZone.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MirrorQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -731,9 +728,6 @@
     <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BalkPort.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="spiderWeb.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -744,7 +738,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CrackZone.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="FireflyZone.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="BalkPort.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -25,7 +25,8 @@ private:
 	Animation idleAnimation;
 	Animation dashAnimation;
 	Entity* mZid;
-	b2Vec2 mZidPosition;
+	Entity* mZone;
+	b2Vec2 mZonePosition;
 	sf::Sprite mSprite;
 	bool mDirLeft;
 };

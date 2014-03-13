@@ -7,6 +7,7 @@
 #include "Zid.h"
 #include "FadeToBlack.h"
 #include "Level.h"
+#include "MusicManager.h"
 
 class JaktSpindel : public Entity
 {
@@ -35,6 +36,7 @@ private:
 	vector<sf::Vector2f> mPath;
 	vector<float> mLengths;
 	vector<sf::Vector2f> mDirections;
+	
 	float mTotalLength;
 
 	float mPos;
@@ -42,7 +44,8 @@ private:
 
 	// Sugar
 	Zid* mZid; 
-
+	//Music
+	bool mMusic;
 
 	//attack
 	bool mAttack;
