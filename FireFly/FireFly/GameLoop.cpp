@@ -18,7 +18,8 @@ mFont(),
 mStatisticsText(),
 mStatisticsUpdateTime(),
 mStatisticsNumFrames(0),
-cursorSprite(Loading::getTexture("pointer.png", true))
+cursorSprite(Loading::getTexture("pointer.png", true)),
+mZidsLight(nullptr)
 {
 	mWindow.setMouseCursorVisible(false);
 	mWindow.setVerticalSyncEnabled(true);
@@ -84,7 +85,10 @@ void GameLoop::processEvents()
 			mWindow.close();
 			break;
 		case::sf::Event::MouseWheelMoved:
-			mCamera.changeZoom(event.mouseWheel.delta);
+			//if (mZidsLight == nullptr)
+			mZidsLight = EntityList::getEntityList().getEntity("zidLight");
+			if (mZidsLight != nullptr)
+				mZidsLight->sendMessage(nullptr, "ChangeRadius", event.mouseWheel.delta);
 			break;
 		case::sf::Event::TextEntered:
 			Zid* zidCast = static_cast<Zid*>(zid);
@@ -226,7 +230,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("schakt1.tmx");
 			break;
 		case sf::Keyboard::F4:
-			Level::changeMap("level4.tmx");
+			Level::changeMap("level3.tmx");
 			break;
 		case sf::Keyboard::F5:
 			Level::changeMap("level5.tmx");
@@ -239,6 +243,12 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			break;
 		case sf::Keyboard::F8:
 			Level::changeMap("level8.tmx");
+			break;
+		case sf::Keyboard::Num0:
+			mCamera.changeZoom(2);
+			break;
+		case sf::Keyboard::Num9:
+			mCamera.changeZoom(-2);
 			break;
 		default:
 			break;

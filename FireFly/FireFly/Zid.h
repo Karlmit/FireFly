@@ -20,13 +20,12 @@ public:
 	Zid(sf::Vector2f position);
 	bool isSweet();
 	sf::Vector2f getDroppedSugar();
-	virtual void sendMessage(Entity* entity, std::string message);
 	bool inPCZone();
+	virtual void sendMessage(Entity* entity, std::string message);
 
 private:
 	virtual void updateEntity(sf::Time dt);	
-	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
-	//virtual void sendMessage(Entity* sender, string message);
+	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;	
 
 	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	virtual void EndContact(b2Contact *contact, Entity* other); 
@@ -51,6 +50,10 @@ private:
 	bool mInStickyZone;
 	bool mAlive;
 	bool mInFireflyZone;
+
+	// Light
+	Entity* mLight;
+
 	//PC stuff
 	Entity* PC;
 	sf::Clock PCButton;

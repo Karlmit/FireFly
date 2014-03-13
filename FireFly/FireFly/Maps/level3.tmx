@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="20409" tileheight="4400">
+ <tileset firstgid="1" name="Bana3_fullscreen_part1" tilewidth="6803" tileheight="4400">
+  <image source="../Resources/Room 3/Bana3_fullscreen_part1.png" width="6803" height="4400"/>
+ </tileset>
+ <tileset firstgid="2" name="Bana3_fullscreen_part2" tilewidth="6803" tileheight="4400">
+  <image source="../Resources/Room 3/Bana3_fullscreen_part2.png" width="6803" height="4400"/>
+ </tileset>
+ <tileset firstgid="3" name="Bana3_fullscreen_part3" tilewidth="6803" tileheight="4400">
+  <image source="../Resources/Room 3/Bana3_fullscreen_part3.png" width="6803" height="4400"/>
+ </tileset>
+ <objectgroup name="Background" width="1" height="1">
+  <object name="Room3_Background_Part1" type="EntitySprite" gid="1" x="0" y="4400"/>
+  <object name="Room3_Background_Part2" type="EntitySprite" gid="2" x="6796" y="4400"/>
+  <object name="Room3_Background_Part3" type="EntitySprite" gid="3" x="13592" y="4400"/>
+ </objectgroup>
+ <objectgroup name="Back" width="1" height="1"/>
+ <objectgroup name="Front" width="1" height="1"/>
+ <objectgroup name="Foreground" width="1" height="1"/>
+ <objectgroup name="Collision" width="1" height="1"/>
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="Zid Spawn" type="ZidSpawn" x="4735" y="1118" width="143" height="158">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

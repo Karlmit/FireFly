@@ -14,7 +14,8 @@ PC::PC(sf::Vector2f position)
 	mBlip2(Loading::getSound("Room 2/Datorblips/Blip2.wav"), true),
 	mComputerOnSprite(Loading::getTexture("Room 2/datorskarm_gron_scale.png")),
 	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png")),
-	sucu(Loading::getTexture("Room 2/SuCu_computereye_spritesheet.png"), 600, 361, 1, 9, 100)
+	sucu(Loading::getTexture("Room 2/SuCu_computereye_spritesheet.png"), 600, 361, 1, 9, 100),
+	mKeyboardHintSprite(Loading::getTexture("Room 2/use_the_keyboard.png"))
 {
 	mID = "PC";
 	mPosition = position;
@@ -73,6 +74,7 @@ PC::PC(sf::Vector2f position)
 	mNewPC = true;
 	mAnimation = false;
 	mSucu = false;
+	mKeyboardHint = false;
 	//counter
 	mInvalidCounter = 0;
 
@@ -83,6 +85,9 @@ PC::PC(sf::Vector2f position)
 	mMessage = "";
 	mMaxChar = mSucuMessage.size() - 1;
 	currentChar = 0;
+
+	//Keyboard Hint
+	mKeyboardHintSprite.setPosition(position.x + 615, position.y - 20);
 }
 
 
@@ -95,10 +100,18 @@ void PC::sendMessage(Entity* entity, std::string message)
 	if(message == "in_PC_Zone")
 	{
 		mCamera = true;
+		mKeyboardHint = true;
+
+		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
+		Camera::currentCamera().setZoom(0.8f);
 	}
 	if(message == "out_of_PC_Zone")
 	{
 		mCamera = false;
+		mKeyboardHint = false;
+
+		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
+		Camera::currentCamera().setDefaultZoom();
 	}
 
 
@@ -254,6 +267,7 @@ void PC::updateEntity(sf::Time dt)
 	{
 		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
 		Camera::currentCamera().setZoom(0.8f);
+
 	}
 
 	termometer = EntityList::getEntityList().getEntity("Termometer");
@@ -329,6 +343,10 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(mComputerOffSprite, states);
 	}
 
+	if(mKeyboardHint == true)
+	{
+		target.draw(mKeyboardHintSprite);
+	}
 
 
 

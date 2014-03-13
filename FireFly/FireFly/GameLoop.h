@@ -41,6 +41,7 @@ private:
 	Entity *pc;
 	Entity *zid;
 	sf::Sprite cursorSprite;
+	Entity* mZidsLight;
 	
 
 };

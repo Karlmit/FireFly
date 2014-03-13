@@ -2,6 +2,7 @@
 
 EntitySprite::EntitySprite(string textureID) 
 : mSprite(Loading::getTexture(textureID))
+, mActivate(true)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -10,6 +11,7 @@ EntitySprite::EntitySprite(string textureID)
 
 EntitySprite::EntitySprite(string textureID ,sf::Vector2f position) 
 : mSprite(Loading::getTexture(textureID))
+, mActivate(true)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -25,6 +27,20 @@ void EntitySprite::updateEntity(sf::Time dt)
 		
 void EntitySprite::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 {	
-	states.transform *= getTransform();
-	target.draw(mSprite, states);
+	if(mActivate == true)
+	{
+		states.transform *= getTransform();
+		target.draw(mSprite, states);
+	}
+
+
+}
+
+void EntitySprite::sendMessage(Entity* entity, std::string message)
+{
+	if(message == "Activate")
+	{
+		mActivate = true;
+	}
+
 }

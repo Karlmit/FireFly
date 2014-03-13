@@ -73,15 +73,37 @@ void Level::changeMap(string filename)
 
 void Level::update()
 {
+	
+
+	if (level.mRestartingLevel && level.mDelayTimer.getElapsedTime().asSeconds() > level.mDelay)
+	{
+		fadeToBlackChangeLevel(level.mChangeMapTo);
+	}
+
 	if (level.mChangeMap)
 	{
 		level.startLevel(level.mChangeMapTo);
 		level.mChangeMap = false;
 	}
+	
+}
+
+void Level::restartLevel(float delay)
+{
+	if (!level.mRestartingLevel)
+	{
+		level.mRestartingLevel = true;
+		level.mDelayTimer.restart();
+		level.mDelay = delay;
+	}
 }
 
 void Level::startLevel(string levelName)
 {
+	// Reset restarting level
+	level.mRestartingLevel = false;
+	level.mChangeMapTo = levelName;
+
 	Log::write("Starts loading level \"" + levelName + "\"");
 
 	// Clear all entities
@@ -107,9 +129,7 @@ void Level::startLevel(string levelName)
 	// Fade from black
 	float fadeDelay = 5.f;
 	EntityList::getEntityList().addEntity(new FadeToBlack(fadeDelay, false), Layer::Foreground);
-
-	Light * zidLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), 260, 360, 0, "zidLight");
-	EntityList::getEntityList().addEntity(zidLight, Layer::Light, false);
+	
 
 	Log::write("Finished loading level \"" + levelName + "\"");
 }

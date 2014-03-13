@@ -7,6 +7,8 @@
 // #include "FireflyZone.h"
 // #include "MirrorQueue.h"
 #include "Log.h"
+#include "Level.h"
+#include "Light.h"
 
 #include <iostream>
 
@@ -44,6 +46,7 @@ Zid::Zid(sf::Vector2f position)
 , mAlive(true)
 , hivemindContact(false)
 , mSlooowDooown(0)
+, mLight(nullptr)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -102,10 +105,12 @@ Zid::Zid(sf::Vector2f position)
 	//PC Zone
 	mPC_Zone = false;
 	mJumpUp = false;
-} 
 
-	
-	
+	// Zids light
+
+	mLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), 280, 360, 0, "zidLight");
+	EntityList::getEntityList().addEntity(mLight, Layer::Light, false);
+} 
 
 
 void Zid::sendMessage(Entity* entity, string message)
@@ -132,7 +137,7 @@ void Zid::sendMessage(Entity* entity, string message)
 	if(message == "kill")
 	{
 		mAlive = false;
-		Log::write("Zid died.");
+		Log::write("Zid died from " + entity->getID() + ".");
 	}
 
 }
@@ -142,6 +147,15 @@ void Zid::sendMessage(Entity* entity, string message)
 
 void Zid::updateEntity(sf::Time dt) 
 {
+	// if dead restart level
+	if (mAlive == false)
+	{
+		Level::restartLevel(6.f);
+		mRigidbody.getBody()->SetLinearDamping(1);
+		mLight->sendMessage(this, "KillLight", 0);
+	}
+
+
 	// SugarStuff
 	sugarStuff(dt);	
 

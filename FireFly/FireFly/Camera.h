@@ -27,6 +27,7 @@ public:
 	void setBounds(sf::FloatRect bounds);
 	void changeZoom(int steps);
 	void setZoom(float zoom);
+	void setDefaultZoom();
 	
 private:
 	sf::Window* mWindow;

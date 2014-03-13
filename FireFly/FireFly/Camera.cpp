@@ -149,3 +149,8 @@ void Camera::setZoom(float zoom)
 {
 	mTargetZoom = zoom;
 }
+
+void Camera::setDefaultZoom()
+{
+	mTargetZoom = DEF_ZOOM;
+}
