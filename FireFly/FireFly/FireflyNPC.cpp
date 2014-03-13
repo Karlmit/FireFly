@@ -1,8 +1,8 @@
-// #include "FireflyNPC.h"
+ #include "FireflyNPC.h"
 #include "Utility.h"
-// #include "MirrorQueue.h"
+ #include "MirrorQueue.h"
 
-/* const float MIN_FOLLOW_DISTANCE = 5.f;
+const float MIN_FOLLOW_DISTANCE = 5.f;
 const float DENSITY = 3.f;
 const float FORCE = 5.f;
 
@@ -125,10 +125,12 @@ void FireflyNPC::movement()
 	}
 	else
 	{
-		auto q = MirrorQueue::getMirrorQueue().getQueue();
+	/*	auto q = MirrorQueue::getMirrorQueue().getQueue();
 		if (q->size() >= QUEUE_LENGTH)
+		{
 			body->ApplyForceToCenter(FORCE*(q->front()),true);
 			q->pop();
+		}	*/
 
 	}
-} */
+}

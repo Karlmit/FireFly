@@ -73,7 +73,7 @@ private:
 	sf::Vector2f mDroppedSugarPosition;
 	float mSlooowDooown;
 	bool mInAcZone;
-	bool webContact;
+	bool hivemindContact;
 };
 
 #endif
