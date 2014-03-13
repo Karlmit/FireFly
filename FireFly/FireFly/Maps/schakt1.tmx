@@ -1,97 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="5000" tileheight="2160">
  <tileset firstgid="1" name="SCHAKT" tilewidth="5000" tileheight="2160">
-  <image source="../Resources/Schakt 1/SCHAKT.png" width="5000" height="2160"/>
+  <image source="../Resources/Schakt/SCHAKT.png" width="5000" height="2160"/>
  </tileset>
  <tileset firstgid="2" name="balk1_scale" tilewidth="43" tileheight="146">
-  <image source="../Resources/Schakt 1/balk1_scale.png" width="43" height="146"/>
+  <image source="../Resources/Schakt/balk1_scale.png" width="43" height="146"/>
  </tileset>
  <tileset firstgid="3" name="balk2_scale" tilewidth="43" tileheight="146">
-  <image source="../Resources/Schakt 1/balk2_scale.png" width="43" height="146"/>
+  <image source="../Resources/Schakt/balk2_scale.png" width="43" height="146"/>
  </tileset>
  <tileset firstgid="4" name="balk4_scale" tilewidth="132" tileheight="135">
-  <image source="../Resources/Schakt 1/balk4_scale.png" width="132" height="135"/>
+  <image source="../Resources/Schakt/balk4_scale.png" width="132" height="135"/>
  </tileset>
  <tileset firstgid="5" name="balk5_scale" tilewidth="132" tileheight="135">
-  <image source="../Resources/Schakt 1/balk5_scale.png" width="132" height="135"/>
+  <image source="../Resources/Schakt/balk5_scale.png" width="132" height="135"/>
  </tileset>
  <tileset firstgid="6" name="balk6_scale" tilewidth="228" tileheight="78">
-  <image source="../Resources/Schakt 1/balk6_scale.png" width="228" height="78"/>
+  <image source="../Resources/Schakt/balk6_scale.png" width="228" height="78"/>
  </tileset>
  <tileset firstgid="7" name="balk7_scale" tilewidth="228" tileheight="78">
-  <image source="../Resources/Schakt 1/balk7_scale.png" width="228" height="78"/>
+  <image source="../Resources/Schakt/balk7_scale.png" width="228" height="78"/>
  </tileset>
  <tileset firstgid="8" name="balk1_scale - Copy" tilewidth="146" tileheight="43">
-  <image source="../Resources/Schakt 1/balk1_scale - Copy.png" width="146" height="43"/>
+  <image source="../Resources/Schakt/balk1_scale - Copy.png" width="146" height="43"/>
  </tileset>
  <tileset firstgid="9" name="balk3_scale" tilewidth="146" tileheight="43">
-  <image source="../Resources/Schakt 1/balk3_scale.png" width="146" height="43"/>
+  <image source="../Resources/Schakt/balk3_scale.png" width="146" height="43"/>
  </tileset>
  <tileset firstgid="10" name="balk3_scale - Copy" tilewidth="43" tileheight="146">
-  <image source="../Resources/Schakt 1/balk3_scale - Copy.png" width="43" height="146"/>
+  <image source="../Resources/Schakt/balk3_scale - Copy.png" width="43" height="146"/>
  </tileset>
  <tileset firstgid="11" name="balk2_scale - Copy" tilewidth="43" tileheight="146">
-  <image source="../Resources/Schakt 1/balk2_scale - Copy.png" width="43" height="146"/>
+  <image source="../Resources/Schakt/balk2_scale - Copy.png" width="43" height="146"/>
  </tileset>
  <tileset firstgid="12" name="balk2_scale -side" tilewidth="146" tileheight="43">
-  <image source="../Resources/Schakt 1/balk2_scale -side.png" width="146" height="43"/>
+  <image source="../Resources/Schakt/balk2_scale -side.png" width="146" height="43"/>
  </tileset>
  <tileset firstgid="13" name="nat1_scale" tilewidth="118" tileheight="254">
-  <image source="../Resources/Schakt 1/nat1_scale.png" width="118" height="254"/>
+  <image source="../Resources/Schakt/nat1_scale.png" width="118" height="254"/>
  </tileset>
  <tileset firstgid="14" name="nat2_scale" tilewidth="96" tileheight="254">
-  <image source="../Resources/Schakt 1/nat2_scale.png" width="96" height="254"/>
+  <image source="../Resources/Schakt/nat2_scale.png" width="96" height="254"/>
  </tileset>
  <tileset firstgid="15" name="nat1_scale - Side" tilewidth="254" tileheight="118">
-  <image source="../Resources/Schakt 1/nat1_scale - Side.png" width="254" height="118"/>
+  <image source="../Resources/Schakt/nat1_scale - Side.png" width="254" height="118"/>
  </tileset>
  <tileset firstgid="16" name="nat1_scale - Reverse" tilewidth="118" tileheight="254">
-  <image source="../Resources/Schakt 1/nat1_scale - Reverse.png" width="118" height="254"/>
+  <image source="../Resources/Schakt/nat1_scale - Reverse.png" width="118" height="254"/>
  </tileset>
  <tileset firstgid="17" name="spindelnat1_scale" tilewidth="186" tileheight="196">
-  <image source="../Resources/Schakt 1/spindelnat1_scale.png" width="186" height="196"/>
+  <image source="../Resources/Schakt/spindelnat1_scale.png" width="186" height="196"/>
  </tileset>
  <tileset firstgid="18" name="spindelnat4_scale" tilewidth="234" tileheight="219">
-  <image source="../Resources/Schakt 1/spindelnat4_scale.png" width="234" height="219"/>
+  <image source="../Resources/Schakt/spindelnat4_scale.png" width="234" height="219"/>
  </tileset>
  <tileset firstgid="19" name="sladd1_scale" tilewidth="144" tileheight="144">
-  <image source="../Resources/Schakt 1/sladd1_scale.png" width="144" height="144"/>
+  <image source="../Resources/Schakt/sladd1_scale.png" width="144" height="144"/>
  </tileset>
  <tileset firstgid="20" name="sladd2_scale" tilewidth="144" tileheight="144">
-  <image source="../Resources/Schakt 1/sladd2_scale.png" width="144" height="144"/>
+  <image source="../Resources/Schakt/sladd2_scale.png" width="144" height="144"/>
  </tileset>
  <tileset firstgid="21" name="sladd3_scale" tilewidth="144" tileheight="144">
-  <image source="../Resources/Schakt 1/sladd3_scale.png" width="144" height="144"/>
+  <image source="../Resources/Schakt/sladd3_scale.png" width="144" height="144"/>
  </tileset>
  <tileset firstgid="22" name="sladd2_scale - Copy" tilewidth="144" tileheight="144">
-  <image source="../Resources/Schakt 1/sladd2_scale - Copy.png" width="144" height="144"/>
+  <image source="../Resources/Schakt/sladd2_scale - Copy.png" width="144" height="144"/>
  </tileset>
  <tileset firstgid="23" name="sladd3_scale - Copy" tilewidth="144" tileheight="144">
-  <image source="../Resources/Schakt 1/sladd3_scale - Copy.png" width="144" height="144"/>
+  <image source="../Resources/Schakt/sladd3_scale - Copy.png" width="144" height="144"/>
  </tileset>
  <tileset firstgid="24" name="dodinsekt1_scale2" tilewidth="49" tileheight="171">
-  <image source="../Resources/Schakt 1/dodinsekt1_scale2.png" width="49" height="171"/>
+  <image source="../Resources/Schakt/dodinsekt1_scale2.png" width="49" height="171"/>
  </tileset>
  <tileset firstgid="25" name="dodinsekt2_scale2" tilewidth="62" tileheight="147">
-  <image source="../Resources/Schakt 1/dodinsekt2_scale2.png" width="62" height="147"/>
+  <image source="../Resources/Schakt/dodinsekt2_scale2.png" width="62" height="147"/>
  </tileset>
  <tileset firstgid="26" name="dodinsekt3_scale2" tilewidth="234" tileheight="135">
-  <image source="../Resources/Schakt 1/dodinsekt3_scale2.png" width="234" height="135"/>
+  <image source="../Resources/Schakt/dodinsekt3_scale2.png" width="234" height="135"/>
  </tileset>
  <tileset firstgid="27" name="kokong1" tilewidth="30" tileheight="166">
-  <image source="../Resources/Schakt 1/kokong1.png" width="30" height="166"/>
+  <image source="../Resources/Schakt/kokong1.png" width="30" height="166"/>
  </tileset>
  <tileset firstgid="28" name="kokong2" tilewidth="30" tileheight="166">
-  <image source="../Resources/Schakt 1/kokong2.png" width="30" height="166"/>
+  <image source="../Resources/Schakt/kokong2.png" width="30" height="166"/>
  </tileset>
  <tileset firstgid="29" name="balkport_scale2" tilewidth="76" tileheight="254">
-  <image source="../Resources/Schakt 1/balkport_scale2.png" width="76" height="254"/>
+  <image source="../Resources/Schakt/balkport_scale2.png" width="76" height="254"/>
  </tileset>
  <tileset firstgid="30" name="ventilflakt_hel_scale" tilewidth="37" tileheight="253">
-  <image source="../Resources/Schakt 1/ventilflakt_hel_scale.png" width="37" height="253"/>
+  <image source="../Resources/Schakt/ventilflakt_hel_scale.png" width="37" height="253"/>
  </tileset>
  <tileset firstgid="31" name="ventilflakt_hel_scale_up" tilewidth="253" tileheight="37">
-  <image source="../Resources/Schakt 1/ventilflakt_hel_scale_up.png" width="253" height="37"/>
+  <image source="../Resources/Schakt/ventilflakt_hel_scale_up.png" width="253" height="37"/>
  </tileset>
  <layer name="Tile Layer 1" width="1" height="1">
   <data>
