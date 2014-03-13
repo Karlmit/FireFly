@@ -30,6 +30,7 @@ Myra::Myra(float pos, vector<sf::Vector2f> path, vector<float> lengths, vector<s
 	, mDroppedSugarZid()
 	, mDroppedInBoiler(false)
 	, mPos(0)
+	, mWalking(Loading::getTexture("Room 2/myra_gång_spritesheet.png"), 128, 58, 1, 8, 80)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -50,7 +51,7 @@ void Myra::start()
 
 void Myra::updateEntity(sf::Time dt)
 {
-
+	
 	// Check if in boiler then destroy self and send a message to the boiler
 	if (mDroppedInBoiler && mPos == mTotalLength)
 	{
@@ -226,6 +227,10 @@ void Myra::idleMovement(sf::Time dt)
 
 void Myra::setPosition(float x)
 {	
+	mWalking.updateAnimation();
+	mSprite = mWalking.getCurrentSprite();
+
+
 	if (x > mTotalLength)
 		x = mTotalLength;
 	if (x < 0)

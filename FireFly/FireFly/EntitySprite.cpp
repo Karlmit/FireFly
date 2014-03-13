@@ -7,6 +7,7 @@ EntitySprite::EntitySprite(string textureID)
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+	mActivate = true;
 }
 
 EntitySprite::EntitySprite(string textureID ,sf::Vector2f position) 
@@ -18,6 +19,7 @@ EntitySprite::EntitySprite(string textureID ,sf::Vector2f position)
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 
 	setPosition(position);
+	mActivate = true;
 }
 
 void EntitySprite::updateEntity(sf::Time dt) 
@@ -42,5 +44,10 @@ void EntitySprite::sendMessage(Entity* entity, std::string message)
 	{
 		mActivate = true;
 	}
+	if(message == "Deactivate")
+	{
+		mActivate = false;
+	}
+
 
 }

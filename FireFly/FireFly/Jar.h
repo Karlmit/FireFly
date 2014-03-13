@@ -8,7 +8,7 @@ const float DEF_DENSITY = 4.f;
 class Jar : public Entity
 {
 public:
-	Jar(string texture, sf::Vector2f position, float density = DEF_DENSITY, bool dynamic = true);
+	Jar(string texture, sf::Vector2f position, float density = DEF_DENSITY, bool dynamic = true, bool plastic = false);
 
 private:
 	virtual void	updateEntity(sf::Time dt);	

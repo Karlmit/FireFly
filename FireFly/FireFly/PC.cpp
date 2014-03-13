@@ -14,8 +14,7 @@ PC::PC(sf::Vector2f position)
 	mBlip2(Loading::getSound("Room 2/Datorblips/Blip2.wav"), true),
 	mComputerOnSprite(Loading::getTexture("Room 2/datorskarm_gron_scale.png")),
 	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png")),
-	sucu(Loading::getTexture("Room 2/SuCu_computereye_spritesheet.png"), 600, 361, 1, 9, 100),
-	mKeyboardHintSprite(Loading::getTexture("Room 2/use_the_keyboard.png"))
+	sucu(Loading::getTexture("Room 2/SuCu_computereye_spritesheet.png"), 600, 361, 1, 9, 100)
 {
 	mID = "PC";
 	mPosition = position;
@@ -74,7 +73,6 @@ PC::PC(sf::Vector2f position)
 	mNewPC = true;
 	mAnimation = false;
 	mSucu = false;
-	mKeyboardHint = false;
 	//counter
 	mInvalidCounter = 0;
 
@@ -87,7 +85,9 @@ PC::PC(sf::Vector2f position)
 	currentChar = 0;
 
 	//Keyboard Hint
-	mKeyboardHintSprite.setPosition(position.x + 615, position.y - 20);
+	Entity * eSprite = new EntitySprite("Room 2/use_the_keyboard.png", sf::Vector2f(position.x + 658, position.y + 2));
+	mEntitySprite = eSprite;
+	EntityList::getEntityList().addEntity(eSprite, Layer::Foreground, true);
 }
 
 
@@ -100,7 +100,7 @@ void PC::sendMessage(Entity* entity, std::string message)
 	if(message == "in_PC_Zone")
 	{
 		mCamera = true;
-		mKeyboardHint = true;
+		mEntitySprite->sendMessage(mEntitySprite, "Activate");
 
 		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
 		Camera::currentCamera().setZoom(0.8f);
@@ -108,7 +108,8 @@ void PC::sendMessage(Entity* entity, std::string message)
 	if(message == "out_of_PC_Zone")
 	{
 		mCamera = false;
-		mKeyboardHint = false;
+		mEntitySprite->sendMessage(mEntitySprite, "Deactivate");
+
 
 		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
 		Camera::currentCamera().setDefaultZoom();
@@ -138,6 +139,7 @@ void PC::loggin()
 		mWelcome = true;
 		mWelcomeClock.restart();
 		mBlip1.play();
+		Log::write("Correct Password Entered");
 	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mLoggin == true)
 	{
@@ -160,6 +162,7 @@ void PC::menu()
 	{
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mMenu == true && mBulletin == false && mShuttingDown == false)
 		{
+			Log::write("Listened to Audiologg");
 			mAudioLogg = !mAudioLogg;
 			if(mAudioLogg == true)
 			{
@@ -169,6 +172,7 @@ void PC::menu()
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && mBulletin == false && mAudioLogg == false && mShuttingDown == false)
 		{
+			Log::write("Read Audiologg");
 			mBulletin = true;
 			mButtonClock.restart();
 		}
@@ -223,6 +227,7 @@ void PC::menu()
 			}
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 			{
+				Log::write("Shut off PC");
 				mMenu = false;
 				mLoggin = true;
 				mOff = true;
@@ -341,11 +346,6 @@ void PC::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 	else
 	{
 		target.draw(mComputerOffSprite, states);
-	}
-
-	if(mKeyboardHint == true)
-	{
-		target.draw(mKeyboardHintSprite);
 	}
 
 

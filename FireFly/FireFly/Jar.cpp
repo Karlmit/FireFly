@@ -6,7 +6,7 @@
 #include "BrokenJar.h"
 
 
-Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
+Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic, bool plastic)
 : mRigidbody()
 , mSprite(Loading::getTexture(texture, true))
 , mBreakSound(Loading::getSound("BurkKross_edit.wav"), false)
@@ -25,10 +25,15 @@ Jar::Jar(string texture, sf::Vector2f position, float density, bool dynamic)
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 
-
 	// Skapar rectanglar för kollision för Burken
 	float glassWidthAdjust = 25.f;
 	float glassHeightAdjust = 4.f;
+
+	if(plastic == true)
+	{
+		glassWidthAdjust = 5.f;
+		glassHeightAdjust = 4.f;
+	}
 
 	bounds.left += glassWidthAdjust;
 	bounds.top += glassHeightAdjust;

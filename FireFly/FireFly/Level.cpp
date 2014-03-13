@@ -21,8 +21,7 @@
 #include "SuCam.h"
 #include "Room2_Fan.h"
 #include "BalkPort.h"
-// #include "FireflyNPC.h"
-// #include "FireflyZone.h"
+#include "FireflyNPC.h"
 #include "PC.h"
 #include "SugarBowlTop.h"
 #include "Light.h"
@@ -35,7 +34,7 @@
 #include "Dust.h"
 #include "SpiderPath.h"
 #include "Sparks.h"
-#include "spiderWeb.h"
+#include "CrackZone.h"
 
 #include <iostream>
 using namespace std;
@@ -238,6 +237,8 @@ void Level::loadMap(string filename)
 					jar = new Jar(imageSrc, position, 1.f, false);
 				else if (obj.isProperty("density"))
 					jar = new Jar(imageSrc, position, obj.getProperty("density").getValueFloat());
+				else if (obj.isProperty("Plastic"))
+					jar = new Jar(imageSrc, position, 999.f, true, true);
 				else
 					jar = new Jar(imageSrc, position);
 				jar->setProperties(obj.getProperties());
@@ -281,10 +282,10 @@ void Level::loadMap(string filename)
 			//
 			// Firefly NPC
 			//
-		/*	else if (entityType == "FireflyNPC")
+			else if (entityType == "FireflyNPC")
 			{
 				eList.addEntity(new FireflyNPC(position), Layer::NPC, false);
-			} */
+			}
 
 			//
 			// SuCam
@@ -417,35 +418,19 @@ void Level::loadMap(string filename)
 			}
 
 			//
-			//	FireflyZone
+			//	CrackZone
 			//
-		/*	else if (entityType == "FireflyZone")
+			else if (entityType == "CrackZone")
 			{
 				sf::FloatRect rect;
 				rect.left = position.x;
 				rect.top = position.y;
 				rect.width = width;
 				rect.height = height;
-				FireflyZone* Fzone = new FireflyZone(rect);
-				Fzone->setProperties(obj.getProperties());				
-				Fzone->setID(id);
-				eList.addEntity(Fzone, Layer::Foreground, false);
-			} */
-
-			//
-			//	SpiderWeb
-			//
-			else if (entityType == "NetZone")
-			{
-				sf::FloatRect rect;
-				rect.left = position.x;
-				rect.top = position.y;
-				rect.width = width;
-				rect.height = height;
-				spiderWeb* web = new spiderWeb(rect);
-				web->setProperties(obj.getProperties());				
-				web->setID(id);
-				eList.addEntity(web, Layer::Foreground, false);
+				CrackZone* zone = new CrackZone(rect);
+				zone->setProperties(obj.getProperties());				
+				zone->setID(id);
+				eList.addEntity(zone, Layer::Foreground, false);
 			}
 
 			//
@@ -546,19 +531,19 @@ void Level::loadMap(string filename)
 
 			else if(entityType == "Spark_Position1")
 			{
-				Sparks* spark1 = new Sparks("Schakt 1/elsprak1_spritesheet.png", 246.f/3, 52.f, position, 3);
+				Sparks* spark1 = new Sparks("Schakt/elsprak1_spritesheet.png", 246.f/3, 52.f, position, 3);
 				spark1->setProperties(obj.getProperties());
 				eList.addEntity(spark1, Layer::Front, false);
 			}
 			else if(entityType == "Spark_Position2")
 			{
-				Sparks* spark2 = new Sparks("Schakt 1/elsprak2_spritesheet.png", 165.f/3, 69.f, position, 3);
+				Sparks* spark2 = new Sparks("Schakt/elsprak2_spritesheet.png", 165.f/3, 69.f, position, 3);
 				spark2->setProperties(obj.getProperties());
 				eList.addEntity(spark2, Layer::Front, false);
 			}
 			else if(entityType == "Spark_Position3")
 			{
-				Sparks* spark3 = new Sparks("Schakt 1/elsprak3_spritesheet.png", 273.f/3, 84.f, position, 3);
+				Sparks* spark3 = new Sparks("Schakt/elsprak3_spritesheet.png", 273.f/3, 84.f, position, 3);
 				spark3->setProperties(obj.getProperties());
 				eList.addEntity(spark3, Layer::Front, false);
 			}

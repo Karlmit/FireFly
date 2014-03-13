@@ -5,6 +5,7 @@
 #include "EntityList.h"
 #include "Animation.h"
 #include "Audio.h"
+#include "Log.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -60,7 +61,7 @@ private:
 	bool mPC_Zone;
 	bool mJumpUp;
 
-	//schakt 1
+	//Schakt
 	Entity* jaktspindel;
 
 	//sugar stuff
@@ -72,7 +73,7 @@ private:
 	sf::Vector2f mDroppedSugarPosition;
 	float mSlooowDooown;
 	bool mInAcZone;
-	bool webContact;
+	bool hivemindContact;
 };
 
 #endif

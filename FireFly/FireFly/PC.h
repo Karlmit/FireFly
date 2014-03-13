@@ -4,8 +4,9 @@
 #include "EntityList.h"
 #include "Audio.h"
 #include "EntitySprite.h"
-
+#include "PC.h"
 #include <iostream>
+#include "Log.h"
 
 #include <sstream>
 #include <SFML/Graphics/Sprite.hpp>
@@ -34,10 +35,11 @@ private:
 	//Sprites
 	sf::Sprite mComputerOnSprite;
 	sf::Sprite mComputerOffSprite;
-	sf::Sprite mKeyboardHintSprite;
 	//Entities
 	Entity *termometer;
-	Entity *EntitySpritem;
+	Entity *mEntitySprite;
+
+
 	sf::RectangleShape mScreen;
 	sf::String msfString;
 	sf::Font mFont;
@@ -70,7 +72,6 @@ private:
 	bool mNewPC;
 	bool mAnimation;
 	bool mSucu;
-	bool mKeyboardHint;
 	//invalid counter
 	int mInvalidCounter;
 	

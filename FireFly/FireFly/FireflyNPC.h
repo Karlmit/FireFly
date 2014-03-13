@@ -8,8 +8,7 @@
 #include <SFML\Graphics\RectangleShape.hpp>
 #include <Camera.h>
 
-
-/* class FireflyNPC : public Entity
+class FireflyNPC : public Entity
 {
 public:
 	FireflyNPC(sf::Vector2f position);
@@ -29,4 +28,4 @@ private:
 	b2Vec2 mZidPosition;
 	sf::Sprite mSprite;
 	bool mDirLeft;
-}; */
+};

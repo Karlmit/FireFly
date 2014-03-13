@@ -47,7 +47,7 @@ Zid::Zid(sf::Vector2f position)
 , mDroppedSugarPosition()
 , mInAcZone(false)
 , mAlive(true)
-, webContact(false)
+, hivemindContact(false)
 , mSlooowDooown(0)
 , mLight(nullptr)
 {
@@ -164,15 +164,12 @@ void Zid::updateEntity(sf::Time dt)
 	// S?ger att allt ljud som Zid g?r ska h?ras fr?n Zid.
 	sf::Listener::setPosition(getPosition().x, 1, getPosition().y);
 	
-	//Checks for contact with spider web
-	if(webContact == true)
+	//Checks for contact with plastic jar crack
+	if(hivemindContact == true)
 	{
-		//Gradually puts Zid to a halt. Might need a Zid animation for "webbed Zid" with this function. Is never reversed.
-		mSlooowDooown += 3.f;
-		mRigidbody.getBody()->SetLinearDamping(mSlooowDooown);
 		//Kills Zid
 		mAlive = false;
-		Log::write("Zid died from webContact.");
+		Log::write("Zid died from hivemindContact.");
 
 	}
 
@@ -512,7 +509,12 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 
 
 	if (other->getID() == "StickyZone")
+	{
 		mInStickyZone = true;
+		Log::write("Zid got stuck in StickyZone");
+	}
+
+
 
 	if(other->getID() == "PC_Zone")
 	{
@@ -536,12 +538,13 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	}
 	if (other->getID() == "Sugar")
 	{
+		Log::write("Zid found some sugar");
 		mSweetZid = true;
 		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
 	}
-	if(other->getID() == "SpiderWeb")
+	if(other->getID() == "CrackZone")
 	{
-		webContact = true;
+		hivemindContact = true;
 	}
 
 	if (other->getID() == "Wasp")
@@ -561,12 +564,8 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
 	
-	//if (other->getID() == "FireflyZone")
-//	if (other->getID() == "FireflyZone")
-
-//		mInFireflyZone = false;
-
-
+	if(other->getID() == "CrackZone")
+		hivemindContact = false;
 	if (other->getID() == "StickyZone")
 		mInStickyZone = false;
 	if(other->getID() == "PC_Zone")
