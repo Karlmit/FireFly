@@ -27,7 +27,7 @@ const float LOSE_SUGAR_TIME = 0.6f;
 const float AC_ZONE_SUGAR_VEL_X = -200.f;
 
 // Light
-const float ZIDS_LIGHT_RADIUS = 330.f;
+const float ZIDS_LIGHT_RADIUS = 300.f;
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))

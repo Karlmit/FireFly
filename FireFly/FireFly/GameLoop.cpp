@@ -10,9 +10,9 @@ const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
 
 GameLoop::GameLoop(sf::Vector2u windowSize)
-: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
+//: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
 //: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
-//: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
+: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
 mCamera(&mWindow),
 mFont(),
 mStatisticsText(),
@@ -36,7 +36,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level2.tmx");
+	Level::startLevel("level1.tmx");
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -208,12 +208,14 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 	if (key == sf::Keyboard::Escape && isPressed == true)
 		mWindow.close();
 
-	if (key == sf::Keyboard::P && isPressed == false)
+	
+	if (key == sf::Keyboard::Num6 && isPressed == false)
 		Globals::DEBUG_MODE = !Globals::DEBUG_MODE;
-	else if (key == sf::Keyboard::O && isPressed == false)
+	else if (key == sf::Keyboard::Num7 && isPressed == false)
 		Globals::SHOW_FPS = !Globals::SHOW_FPS;
-	else if (key == sf::Keyboard::I && isPressed == false)
+	else if (key == sf::Keyboard::Num8 && isPressed == false)
 		Globals::SHOW_LIGHT = !Globals::SHOW_LIGHT;
+	
 
 	if (isPressed == false)
 	{

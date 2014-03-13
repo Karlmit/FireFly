@@ -99,6 +99,9 @@
    <polyline points="0,0 2,68 1486,66 1484,2"/>
   </object>
   <object name="Suger Bowl" type="StaticCollisionLoop" x="4369" y="1314">
+   <properties>
+    <property name="id" value="SugarBowlColl"/>
+   </properties>
    <polyline points="0,0 -10,-12 -14,-36 -8,-59 5,-84 17,-94 38,-95 8,-75 0,-55 -2,-32 21,-25 63,-22 98,-27 127,-30 143,-32 144,-46 136,-63 123,-88 99,-95 125,-95 134,-88 145,-66 154,-43 151,-18 143,-3 137,-2 16,-2"/>
   </object>
   <object name="BoilerColl" type="StaticCollision" x="3521" y="4475">
@@ -136,6 +139,9 @@
   </object>
   <object name="TelefonColl" type="StaticCollisionLoop" x="3353" y="1421">
    <polyline points="0,0 1,-194 5,-197 230,-198 234,-195 235,-169 261,-167 261,0"/>
+  </object>
+  <object name="UnderBowlColl" type="StaticCollision" x="4378" y="1281">
+   <polyline points="0,0 106,1"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
@@ -247,5 +253,11 @@
   <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1342" y="460" width="8" height="55"/>
   <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1362" y="522" width="12" height="16"/>
   <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1836" y="440" width="7" height="14"/>
+  <object name="PC_Light" type="Light_Point" x="2857" y="1112" width="76" height="67">
+   <properties>
+    <property name="radius" value="200"/>
+   </properties>
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>
