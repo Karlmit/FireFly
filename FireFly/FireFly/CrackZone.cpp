@@ -11,5 +11,5 @@ CrackZone::CrackZone(sf::FloatRect rect)
 
 void CrackZone::BeginContact(b2Contact *contact, Entity* other)
 {
-		
+	
 }
