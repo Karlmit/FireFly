@@ -8,12 +8,14 @@
 
 const float MIN_LIGHT = 2.f;
 
+
 Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSpread, float angle, std::string mID) // Constructor, creates a light with the attributes given to it.
 {
 	dynamic = true; 
 	this->color = color;
 	this->setPosition(position);
 	this->radius = radius;
+	this->normal_radius = radius;
 	this->targetRadius = radius;
 	this->angleSpread = angleSpread;
 	this->angle = angle;
@@ -38,8 +40,13 @@ void Light::sendMessage(Entity* sender, string message, int value)
 
 	if (message == "ChangeRadius")
 	{
-		float radiusStep = 30.f;
-		targetRadius = max (0.f, targetRadius + radiusStep * value);
+		//float radiusStep = 30.f;
+		//targetRadius = max (0.f, targetRadius + radiusStep * value);
+
+		if (value > 0)
+			targetRadius = normal_radius;
+		if (value < 0)
+			targetRadius = 0;
 	}
 
 	if (message == "KillLight")

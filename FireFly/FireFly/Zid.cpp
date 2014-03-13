@@ -26,6 +26,9 @@ const float LOSE_SUGAR_EMISSION = 220.f;
 const float LOSE_SUGAR_TIME = 0.6f;
 const float AC_ZONE_SUGAR_VEL_X = -200.f;
 
+// Light
+const float ZIDS_LIGHT_RADIUS = 320.f;
+
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
 , idleAnimation(Loading::getTexture("Zid_flying_128.png", true), 128, 128, 5, 8, 20)
@@ -107,8 +110,7 @@ Zid::Zid(sf::Vector2f position)
 	mJumpUp = false;
 
 	// Zids light
-
-	mLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), 280, 360, 0, "zidLight");
+	mLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), ZIDS_LIGHT_RADIUS, 360, 0, "zidLight");
 	EntityList::getEntityList().addEntity(mLight, Layer::Light, false);
 } 
 
