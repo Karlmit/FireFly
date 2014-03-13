@@ -1,5 +1,7 @@
 #include "Spider.h"
 
+const float ATTACK_SPEED = -0.08f;
+
 Spider::Spider(sf::Vector2f position, sf::Vector2f startofRoom, sf::Vector2f sizeofRoom) :
 dangleAnimation(Loading::getTexture("spiderHanging_sheet256.png"), 256, 256, 5, 10, 10),
 walkingAnimation(Loading::getTexture("spiderwalking1.png"), 256, 256, 2, 8, 65),
@@ -14,7 +16,6 @@ walkSound(Loading::getSound("Spiderlegs.wav"), false)
 	float colRadius = 60.f;
 	float density = 4.f;
 	mRigidbody.AddDynCircleBody(colRadius, getPosition(), density, true);
-
 	//sound
 	walkSound.getSound()->setMinDistance(200);
 	walkSound.getSound()->setLoop(true);
@@ -225,7 +226,7 @@ void Spider::mMakeNet(float range)
 
 		//moves spoderman down
 		b2Vec2 move = Rigidbody::SfToBoxVec(getPosition());
-		move.y += -0.7f * 0.15f;
+		move.y += ATTACK_SPEED;
 		body->SetTransform(move, 0);
 
 		
