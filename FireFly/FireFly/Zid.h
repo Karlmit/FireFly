@@ -60,7 +60,7 @@ private:
 	bool mPC_Zone;
 	bool mJumpUp;
 
-	//schakt 1
+	//Schakt
 	Entity* jaktspindel;
 
 	//sugar stuff
