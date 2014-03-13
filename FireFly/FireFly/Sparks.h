@@ -9,9 +9,9 @@ class Sparks : public Entity
 {
 public: 
 	Sparks(std::string texture, 
-		float width, float height,
+		unsigned int width, unsigned int height,
 		sf::Vector2f position,
-		int numberOfColumns);
+		unsigned int numberOfColumns);
 
 private:
 	virtual void updateEntity(sf::Time dt);	

@@ -51,6 +51,11 @@ void JaktSpindel::sendMessage(Entity* entity, std::string message)
 	{
 		mActivate = true;
 	}
+	if(message == "Deactivate")
+	{
+		mActivate = false;
+	}
+
 
 }
 

@@ -1,6 +1,6 @@
 #include "Spider.h"
 
-const float ATTACK_SPEED = -0.08;
+const float ATTACK_SPEED = -0.08f;
 
 Spider::Spider(sf::Vector2f position, sf::Vector2f startofRoom, sf::Vector2f sizeofRoom) :
 dangleAnimation(Loading::getTexture("spiderHanging_sheet256.png"), 256, 256, 5, 10, 10),

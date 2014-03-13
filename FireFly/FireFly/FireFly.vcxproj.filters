@@ -731,9 +731,6 @@
     <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BalkPort.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="spiderWeb.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -745,6 +742,9 @@
     </ClCompile>
     <ClCompile Include="CrackZone.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalkPort.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

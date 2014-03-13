@@ -359,7 +359,11 @@
   <object name="insekt" type="EntitySprite" gid="26" x="2146" y="1976"/>
   <object name="Kukong" type="EntitySprite" gid="27" x="1890" y="1432"/>
   <object name="Kukong" type="EntitySprite" gid="28" x="3482" y="1618"/>
-  <object name="BalkPort" type="BalkPort" gid="29" x="3915" y="1311"/>
+  <object name="BalkPort" type="BalkPort" gid="29" x="3915" y="1311">
+   <properties>
+    <property name="id" value="StaticCollider"/>
+   </properties>
+  </object>
   <object name="Fan2" type="EntitySprite" gid="30" x="1620" y="1065">
    <properties>
     <property name="id" value="SchaktFan"/>

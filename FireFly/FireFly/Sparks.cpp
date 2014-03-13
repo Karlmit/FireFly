@@ -1,7 +1,7 @@
 #include "Sparks.h"
 
 
-Sparks::Sparks(std::string texture, float width, float height, sf::Vector2f position, int numberOfColumns)
+Sparks::Sparks(std::string texture, unsigned int width, unsigned int height, sf::Vector2f position, unsigned int numberOfColumns)
 	: spark(Loading::getTexture(texture), width, height, 1, numberOfColumns, 100) 
 {
 	setPosition(position);
