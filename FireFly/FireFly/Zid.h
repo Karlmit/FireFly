@@ -5,6 +5,7 @@
 #include "EntityList.h"
 #include "Animation.h"
 #include "Audio.h"
+#include "Log.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>

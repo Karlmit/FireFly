@@ -30,7 +30,8 @@ private:
 	vector<float> mLengths;
 	vector<sf::Vector2f> mDirections;
 	float mTotalLength;
-	
+	Animation mWalking;
+
 	float mPos;
 	float mSpeed;
 

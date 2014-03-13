@@ -510,7 +510,12 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 
 
 	if (other->getID() == "StickyZone")
+	{
 		mInStickyZone = true;
+		Log::write("Zid got stuck in StickyZone");
+	}
+
+
 
 	if(other->getID() == "PC_Zone")
 	{
@@ -534,6 +539,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	}
 	if (other->getID() == "Sugar")
 	{
+		Log::write("Zid found some sugar");
 		mSweetZid = true;
 		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
 	}

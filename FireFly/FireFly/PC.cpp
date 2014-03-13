@@ -139,6 +139,7 @@ void PC::loggin()
 		mWelcome = true;
 		mWelcomeClock.restart();
 		mBlip1.play();
+		Log::write("Correct Password Entered");
 	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mLoggin == true)
 	{
@@ -161,6 +162,7 @@ void PC::menu()
 	{
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && mMenu == true && mBulletin == false && mShuttingDown == false)
 		{
+			Log::write("Listened to Audiologg");
 			mAudioLogg = !mAudioLogg;
 			if(mAudioLogg == true)
 			{
@@ -170,6 +172,7 @@ void PC::menu()
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && mBulletin == false && mAudioLogg == false && mShuttingDown == false)
 		{
+			Log::write("Read Audiologg");
 			mBulletin = true;
 			mButtonClock.restart();
 		}
@@ -224,6 +227,7 @@ void PC::menu()
 			}
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 			{
+				Log::write("Shut off PC");
 				mMenu = false;
 				mLoggin = true;
 				mOff = true;
