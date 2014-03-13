@@ -21,8 +21,7 @@
 #include "SuCam.h"
 #include "Room2_Fan.h"
 #include "BalkPort.h"
-// #include "FireflyNPC.h"
-// #include "FireflyZone.h"
+#include "FireflyNPC.h"
 #include "PC.h"
 #include "SugarBowlTop.h"
 #include "Light.h"
@@ -35,7 +34,7 @@
 #include "Dust.h"
 #include "SpiderPath.h"
 #include "Sparks.h"
-#include "spiderWeb.h"
+#include "CrackZone.h"
 
 #include <iostream>
 using namespace std;
@@ -218,6 +217,8 @@ void Level::loadMap(string filename)
 					jar = new Jar(imageSrc, position, 1.f, false);
 				else if (obj.isProperty("density"))
 					jar = new Jar(imageSrc, position, obj.getProperty("density").getValueFloat());
+				else if (obj.isProperty("Plastic"))
+					jar = new Jar(imageSrc, position, 999.f, true, true);
 				else
 					jar = new Jar(imageSrc, position);
 				jar->setProperties(obj.getProperties());
@@ -261,10 +262,10 @@ void Level::loadMap(string filename)
 			//
 			// Firefly NPC
 			//
-		/*	else if (entityType == "FireflyNPC")
+			else if (entityType == "FireflyNPC")
 			{
 				eList.addEntity(new FireflyNPC(position), Layer::NPC, false);
-			} */
+			}
 
 			//
 			// SuCam
@@ -397,35 +398,19 @@ void Level::loadMap(string filename)
 			}
 
 			//
-			//	FireflyZone
+			//	CrackZone
 			//
-		/*	else if (entityType == "FireflyZone")
+			else if (entityType == "CrackZone")
 			{
 				sf::FloatRect rect;
 				rect.left = position.x;
 				rect.top = position.y;
 				rect.width = width;
 				rect.height = height;
-				FireflyZone* Fzone = new FireflyZone(rect);
-				Fzone->setProperties(obj.getProperties());				
-				Fzone->setID(id);
-				eList.addEntity(Fzone, Layer::Foreground, false);
-			} */
-
-			//
-			//	SpiderWeb
-			//
-			else if (entityType == "NetZone")
-			{
-				sf::FloatRect rect;
-				rect.left = position.x;
-				rect.top = position.y;
-				rect.width = width;
-				rect.height = height;
-				spiderWeb* web = new spiderWeb(rect);
-				web->setProperties(obj.getProperties());				
-				web->setID(id);
-				eList.addEntity(web, Layer::Foreground, false);
+				CrackZone* zone = new CrackZone(rect);
+				zone->setProperties(obj.getProperties());				
+				zone->setID(id);
+				eList.addEntity(zone, Layer::Foreground, false);
 			}
 
 			//

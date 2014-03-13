@@ -142,6 +142,7 @@
     <ClInclude Include="BrokenJar.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ContactListener.h" />
+    <ClInclude Include="CrackZone.h" />
     <ClInclude Include="Dust.h" />
     <ClInclude Include="FadeToBlack.h" />
     <ClInclude Include="FireflyNPC.h" />
@@ -259,6 +260,7 @@
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="BrokenJar.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CrackZone.cpp" />
     <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="Dust.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="5000" tileheight="2160">
+ <tileset firstgid="1" name="Schakt_2" tilewidth="5000" tileheight="2160">
+  <image source="../Resources/Schakt/Schakt_2.png" width="5000" height="2160"/>
+ </tileset>
+ <objectgroup name="Background" width="1" height="1">
+  <object name="Schakt_2" type="EntitySprite" gid="1" x="0" y="2160"/>
+ </objectgroup>
+ <objectgroup name="Collision" width="1" height="1">
+  <object name="wall" type="StaticCollision" x="1481" y="740">
+   <polyline points="0,0 516,0 516,1052 1,1053 0,1"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="0" y="1382">
+   <polyline points="0,0 1251,0 1253,642 2226,640 2227,-29 2738,-32"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="2740" y="1234">
+   <polyline points="0,0 -1,-631 -231,-631 -230,-111 -514,-111 -515,-724 -1488,-724 -1488,-80 -2197,-82"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="1249" y="1293">
+   <polyline points="0,0 -1,-138"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="542" y="1321">
+   <polyline points="0,0 0,57"/>
+  </object>
+  <object name="BendyPipe" type="StaticCollision" x="4246" y="0">
+   <polyline points="0,0 -1,1402 -27,1409 -182,1406 -200,1397 -215,1380 -227,1354 -236,1300 -231,1182 -201,972 -199,869 -207,743 -223,611 -244,481 -266,386 -313,265 -365,175 -424,106 -498,53 -581,29 -613,34 -678,55 -725,88 -755,136 -764,200 -753,270 -716,364 -623,518 -586,616 -544,774 -485,1082 -468,1206 -467,1301 -479,1394 -503,1475 -536,1535 -584,1585 -651,1622 -745,1659 -819,1672 -886,1673 -948,1657 -998,1626 -1039,1575 -1042,1561 -1041,1493 -1015,1402 -979,1331 -921,1251 -837,1163 -733,1064 -664,968 -631,887 -624,768 -627,676 -651,569 -686,495 -729,447 -769,420 -837,401 -887,406 -938,438 -984,499 -1016,584 -1040,709 -1049,845 -1065,923 -1103,1018 -1159,1120 -1188,1158 -1238,1190 -1318,1217 -1413,1230 -1541,1237 -1745,1225"/>
+  </object>
+  <object name="BendyPipe" type="StaticCollision" x="2501" y="1344">
+   <polyline points="0,0 235,5 508,-27 591,-68 666,-134 719,-213 761,-321 788,-419 841,-762 858,-803 885,-822 915,-823 956,-806 983,-781 1007,-730 1021,-676 1025,-540 1021,-505 1009,-472 981,-419 903,-320 763,-179 708,-115 672,-57 643,6 621,75 603,155 596,221 605,270 637,329 683,374 741,411 790,437 851,451 930,450 1021,432 1132,393 1233,342 1285,291 1334,202 1368,64 1379,-49 1378,-162 1370,-313 1330,-599 1286,-732 1237,-843 1141,-1031 1103,-1099 1091,-1148 1094,-1174 1105,-1194 1130,-1208 1162,-1213 1202,-1204 1245,-1175 1295,-1114 1331,-1044 1379,-909 1409,-784 1433,-639 1445,-508 1442,-393 1428,-303 1414,-259 1397,-181"/>
+  </object>
+  <object name="BendyPipe" type="StaticCollision" x="3898" y="1163">
+   <polyline points="0,0 -7,74 -6,163 8,253 20,287 49,320 98,345 191,364 301,365 348,361 349,996"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="542" y="1227">
+   <polyline points="0,0 0,-755 -230,-754 -230,-74 -542,-75"/>
+  </object>
+  <object name="wall" type="StaticCollision" x="4908" y="1">
+   <polyline points="0,0 0,2158"/>
+  </object>
+ </objectgroup>
+</map>

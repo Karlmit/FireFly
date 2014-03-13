@@ -36,21 +36,18 @@
  <tileset firstgid="11" name="BackgroundRoom1" tilewidth="5000" tileheight="2160">
   <image source="../Resources/Room 1/BackgroundRoom1.png" width="5000" height="2160"/>
  </tileset>
+ <tileset firstgid="12" name="plastburk_scale" tilewidth="210" tileheight="236">
+  <image source="../Resources/Room 1/plastburk_scale.png" width="210" height="236"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Moon" type="ParallaxSprite" gid="11" x="0" y="1944"/>
   <object name="ROOM1_Background" type="EntitySprite" gid="1" x="0" y="2160"/>
   <object name="Stol" type="EntitySprite" gid="7" x="1300" y="2169"/>
   <object name="EdibleCoat" type="Room1_Coat" gid="3" x="0" y="2160"/>
  </objectgroup>
- <objectgroup name="NPC" width="1" height="1"/>
+ <objectgroup name="NPC" width="1" height="1" visible="0"/>
  <objectgroup name="Front" width="1" height="1">
   <object name="Byra" type="EntitySprite" gid="6" x="-7" y="2163"/>
-  <object name="PlastJar" type="Jar" gid="5" x="25" y="1363">
-   <properties>
-    <property name="density" value="100"/>
-    <property name="unbreakable" value=""/>
-   </properties>
-  </object>
   <object name="StartJar" type="Jar" gid="5" x="420" y="1372">
    <properties>
     <property name="density" value="4"/>
@@ -63,7 +60,7 @@
   </object>
   <object name="UnderTableJar" type="Jar" gid="5" x="2260" y="1840"/>
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
-  <object name="PlastJar" type="Jar" gid="5" x="25" y="1093">
+  <object name="PlastJar" type="Jar" gid="5" x="21" y="1127">
    <properties>
     <property name="density" value="100"/>
     <property name="unbreakable" value=""/>
@@ -72,6 +69,13 @@
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
   <object name="CoatFrontPatch" type="EntitySprite" gid="10" x="3" y="2163" visible="0"/>
   <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
+  <object name="PlastJar" type="Jar" gid="12" x="35" y="1367">
+   <properties>
+    <property name="Density" value="100"/>
+    <property name="Plastic" value=""/>
+    <property name="unbreakable" value=""/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160" visible="0"/>
@@ -167,5 +171,10 @@
   </object>
   <object name="Dusty" type="Dust" x="5" y="9" width="4440" height="2130" visible="0"/>
   <object name="ViewPort" type="ViewPort" x="2850" y="67" width="420" height="534"/>
+  <object name="CrackZone" type="CrackZone" x="209" y="1246" width="56" height="15">
+   <properties>
+    <property name="id" value="CrackZone"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
