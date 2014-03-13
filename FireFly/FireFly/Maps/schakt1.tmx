@@ -301,12 +301,14 @@
   </object>
   <object name="Music" type="MusicManager" x="440" y="145" width="195" height="151">
    <properties>
-    <property name="Firefly Room 1 TrackVersion 1 (intense part).ogg" value="intense"/>
+    <property name="Schakt 1 - Fiol(OGG).ogg" value="fiol"/>
+    <property name="Schakt 1 - Grund(OGG).ogg" value="intense"/>
    </properties>
   </object>
   <object name="SuCamKontor" type="SuCam" x="4171" y="1364" width="246" height="71"/>
-  <object name="StartSlowMusic" type="Trigger" x="115" y="460" width="175" height="274">
+  <object name="StartSlowMusic" type="Trigger" x="-1" y="50" width="1394" height="670">
    <properties>
+    <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="intense"/>
     <property name="TriggerOnce" value="Zid"/>
    </properties>
