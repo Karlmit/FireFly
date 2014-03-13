@@ -43,6 +43,8 @@ private:
 	Animation dashAnimation;
 	Animation idleSugarAnimation;
 	Animation dashSugarAnimation;
+	Animation deathAnimation;
+	int deathAnimCount;
 	Audio dashSound;
 	Entity* mSpoderMan;
 	bool zidDash;
