@@ -92,7 +92,7 @@
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
  </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
-  <object name="CollRooms" type="StaticCollision" x="5071" y="4466">
+  <object name="CollRooms" type="StaticCollision" x="5071" y="4466" visible="0">
    <polyline points="0,0 -4,-2152 -4344,-2144 -4336,-776 -4684,-776 -4680,-3788 -4352,-3792 -4352,-2300 -4,-2300 0,-4460"/>
   </object>
   <object name="TableColl" type="StaticCollisionLoop" x="2176" y="1421">
@@ -122,10 +122,10 @@
   <object name="KeyBoard" type="StaticCollisionLoop" x="2592" y="1395">
    <polyline points="0,0 5,-3 658,-4 666,-3 669,4 668,19 663,27 6,26 -1,17 -2,1"/>
   </object>
-  <object name="CollVent2" type="StaticCollision" x="0" y="1906">
+  <object name="CollVent2" type="StaticCollision" x="0" y="1906" visible="0">
    <polyline points="0,0 35,1 39,-1541 713,-1540 716,-1902"/>
   </object>
-  <object name="CollVent1" type="StaticCollision" x="0" y="2161">
+  <object name="CollVent1" type="StaticCollision" x="0" y="2161" visible="0">
    <polyline points="0,0 36,1 43,1844 730,1843 731,2318"/>
   </object>
   <object name="AC_CollTop" type="StaticCollision" x="5071" y="157">
@@ -137,8 +137,35 @@
   <object name="TelefonColl" type="StaticCollisionLoop" x="3353" y="1421">
    <polyline points="0,0 1,-194 5,-197 230,-198 234,-195 235,-169 261,-167 261,0"/>
   </object>
+  <object name="Vent1" type="StaticCollision" x="716" y="1">
+   <polyline points="0,0 0,353 -703,355 -703,1904 -716,1904 -716,2161 -703,2161 -703,3767 12,3768"/>
+  </object>
+  <object name="Vent2" type="StaticCollision" x="729" y="3513">
+   <polyline points="0,0 -431,3 -431,-2880 -15,-2879"/>
+  </object>
+  <object name="VentOpening1" type="StaticCollision" x="729" y="3771">
+   <properties>
+    <property name="id" value="VentOp"/>
+   </properties>
+   <polyline points="0,0 12,0 40,-31 51,-52 63,-71"/>
+  </object>
+  <object name="VentOpening2" type="StaticCollision" x="729" y="3515">
+   <properties>
+    <property name="id" value="VentOp"/>
+   </properties>
+   <polyline points="0,0 12,0 19,21 35,48 41,77 55,93"/>
+  </object>
+  <object name="OfficeWall1" type="StaticCollision" x="716" y="636">
+   <polyline points="0,0 3,1527 4353,1524 4353,-48 4353,-104"/>
+  </object>
+  <object name="OfficeWall2" type="StaticCollision" x="716" y="0">
+   <polyline points="0,0 4352,1 4353,448"/>
+  </object>
+  <object name="BoilerWall" type="StaticCollision" x="729" y="3515">
+   <polyline points="0,0 3,-1191 4345,-1192 4345,968 8,968 -37,968 -28,953 -19,951 -23,932 -15,924 -12,911 0,901 0,257"/>
+  </object>
  </objectgroup>
- <objectgroup name="Misc" width="1" height="1">
+ <objectgroup name="Misc" width="1" height="1" visible="0">
   <object name="ZidStart" type="ZidSpawn" x="110" y="2031" width="40" height="30">
    <ellipse/>
   </object>
@@ -155,32 +182,32 @@
     <property name="Firefly Room 2 TrackVersion 1 (Vent).ogg" value="vent"/>
    </properties>
   </object>
-  <object name="MusicEnterOfficeTrigger" type="Trigger" x="724" y="367" width="43" height="318">
+  <object name="MusicEnterOfficeTrigger" type="Trigger" x="715" y="339" width="43" height="318" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="office"/>
    </properties>
   </object>
-  <object name="MusicEnterVentTrigger" type="Trigger" x="629" y="360" width="43" height="318">
+  <object name="MusicEnterVentTrigger" type="Trigger" x="633" y="336" width="43" height="318" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
-  <object name="MusicEnterVentTrigger" type="Trigger" x="630" y="3687" width="43" height="318">
+  <object name="MusicEnterVentTrigger" type="Trigger" x="634" y="3490" width="43" height="318" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
-  <object name="MusicEnterBoilerTrigger" type="Trigger" x="734" y="3695" width="43" height="318">
+  <object name="MusicEnterBoilerTrigger" type="Trigger" x="731" y="3494" width="43" height="318" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="boiler"/>
     <property name="Spider" value="activate"/>
    </properties>
   </object>
-  <object name="MusicEnterVentTrigger" type="Trigger" x="2" y="1914" width="451" height="452">
+  <object name="MusicEnterVentTrigger" type="Trigger" x="2" y="1914" width="451" height="452" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="vent"/>

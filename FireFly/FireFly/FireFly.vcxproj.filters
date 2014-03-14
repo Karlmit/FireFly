@@ -390,10 +390,10 @@
     <ClInclude Include="Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CrackZone.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FireflyZone.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CrackZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>

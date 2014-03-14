@@ -30,12 +30,12 @@ Myra::Myra(float pos, vector<sf::Vector2f> path, vector<float> lengths, vector<s
 	, mDroppedSugarZid()
 	, mDroppedInBoiler(false)
 	, mPos(0)
-	, mWalking(Loading::getTexture("Room 2/myra_gång_spritesheet.png"), 128, 58, 1, 8, 80)
+	, mWalking(Loading::getTexture("Room 2/myra_gang_spritesheet.png"), 128, 58, 1, 8, 80)
+	
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
-
 
 	setPosition(pos);
 }
