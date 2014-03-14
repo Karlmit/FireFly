@@ -27,7 +27,7 @@ const float LOSE_SUGAR_TIME = 0.6f;
 const float AC_ZONE_SUGAR_VEL_X = -200.f;
 
 // Light
-const float ZIDS_LIGHT_RADIUS = 330.f;
+const float ZIDS_LIGHT_RADIUS = 300.f;
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
@@ -35,6 +35,8 @@ Zid::Zid(sf::Vector2f position)
 , dashAnimation(Loading::getTexture("Zid_spurt_spritesheet.png"), 128, 128, 5, 5, 2)
 , idleSugarAnimation(Loading::getTexture("Zid_flygande_socker_spritesheet.png", true), 128, 128, 5, 8, 20)
 , dashSugarAnimation(Loading::getTexture("Zid_spurt_socker_spritesheet.png"), 128, 128, 5, 5, 2)
+, deathAnimation(Loading::getTexture("Zid_dod_spritesheet.png"), 128, 128, 5, 5, 20)
+, deathAnimCount(0)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
@@ -159,6 +161,13 @@ void Zid::updateEntity(sf::Time dt)
 		Level::restartLevel(6.f);
 		mRigidbody.getBody()->SetLinearDamping(1);
 		mLight->sendMessage(this, "KillLight", 0);
+
+		if (deathAnimCount < 24)
+		{
+			deathAnimCount++;
+			deathAnimation.updateAnimation();
+			mSprite = deathAnimation.getCurrentSprite();
+		}
 	}
 
 

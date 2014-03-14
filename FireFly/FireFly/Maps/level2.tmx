@@ -92,9 +92,6 @@
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
  </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
-  <object name="CollRooms" type="StaticCollision" x="5071" y="4466" visible="0">
-   <polyline points="0,0 -4,-2152 -4344,-2144 -4336,-776 -4684,-776 -4680,-3788 -4352,-3792 -4352,-2300 -4,-2300 0,-4460"/>
-  </object>
   <object name="TableColl" type="StaticCollisionLoop" x="2176" y="1421">
    <polyline points="0,0 2,68 1486,66 1484,2"/>
   </object>
@@ -121,12 +118,6 @@
   </object>
   <object name="KeyBoard" type="StaticCollisionLoop" x="2592" y="1395">
    <polyline points="0,0 5,-3 658,-4 666,-3 669,4 668,19 663,27 6,26 -1,17 -2,1"/>
-  </object>
-  <object name="CollVent2" type="StaticCollision" x="0" y="1906" visible="0">
-   <polyline points="0,0 35,1 39,-1541 713,-1540 716,-1902"/>
-  </object>
-  <object name="CollVent1" type="StaticCollision" x="0" y="2161" visible="0">
-   <polyline points="0,0 36,1 43,1844 730,1843 731,2318"/>
   </object>
   <object name="AC_CollTop" type="StaticCollision" x="5071" y="157">
    <polyline points="0,0 -47,46 -51,73 -52,288 1,294"/>
