@@ -665,9 +665,6 @@
     <ClCompile Include="Block.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Hivdemind.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SecuMonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -744,6 +741,9 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="BalkPort.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Hivemind.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

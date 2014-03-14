@@ -7,12 +7,14 @@
 class Hivemind : public Entity
 {
 public:
-	Hivemind(sf::Vector2f position, sf::Texture texture);
+	Hivemind(/* sf::Vector2f position, sf::Texture texture*/);
 	~Hivemind();
+	sf::Sprite hivemindProjection;
+
 
 private:
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void updateEntity(sf::Time dt);
-	sf::Sprite hivemindProjection;
+	sf::Texture texture;
 	bool project;
 };

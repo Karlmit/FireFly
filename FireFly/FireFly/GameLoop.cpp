@@ -3,7 +3,6 @@
 #include <Windows.h>
 #include "MusicManager.h"
 #include "Log.h"
-
 #include <iostream>
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
@@ -19,6 +18,7 @@ mStatisticsText(),
 mStatisticsUpdateTime(),
 mStatisticsNumFrames(0),
 cursorSprite(Loading::getTexture("pointer.png", true)),
+hivemindProjection(Loading::getTexture("sprite.jpg", true)),
 mZidsLight(nullptr)
 {
 	mWindow.setMouseCursorVisible(false);
@@ -27,6 +27,9 @@ mZidsLight(nullptr)
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
+
+//	zid = EntityList::getEntityList().getEntity("Zid");
+//	hivemindProjection.setPosition(200, 200);
 }
 
 GameLoop::~GameLoop()
@@ -145,7 +148,10 @@ void GameLoop::draw()
 	EntityList::getEntityList().drawForeground(mWindow);
 
 	mWindow.setView(mWindow.getDefaultView());
-	
+
+//	if(hivemindContact == true)
+//	mWindow.draw(hivemindProjection);
+
 	mWindow.draw(cursorSprite);
 
 	if (Globals::DEBUG_MODE || Globals::SHOW_FPS)

@@ -268,7 +268,7 @@
     <ClCompile Include="FireflyZone.cpp" />
     <ClCompile Include="ForceZone.cpp" />
     <ClCompile Include="Globals.cpp" />
-    <ClCompile Include="Hivdemind.cpp" />
+    <ClCompile Include="Hivemind.cpp" />
     <ClCompile Include="JaktSpindel.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />

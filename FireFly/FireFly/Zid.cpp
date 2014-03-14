@@ -181,8 +181,8 @@ void Zid::updateEntity(sf::Time dt)
 	if(hivemindContact == true)
 	{
 		//Kills Zid
-		mAlive = false;
-		Log::write("Zid died from hivemindContact.");
+//		mAlive = false;
+//		Log::write("Zid died from hivemindContact.");
 
 	}
 
