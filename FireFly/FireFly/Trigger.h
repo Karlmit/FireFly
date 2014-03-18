@@ -16,6 +16,8 @@ private:
 	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	virtual void EndContact(b2Contact *contact, Entity* other); 
 	Audio mSuccess;
+	Audio mDeadRat;
+	bool mDeadRatOnce;
 	bool mFanOn;
 
 private:

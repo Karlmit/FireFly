@@ -162,6 +162,11 @@ void Zid::sendMessage(Entity* entity, string message)
 
 void Zid::updateEntity(sf::Time dt) 
 {
+	//get spoderMan & wasp
+	mSpoderMan = EntityList::getEntityList().getEntity("spoderMan");
+	mWasp = EntityList::getEntityList().getEntity("Wasp");
+	
+
 	// if dead restart level
 	if (mAlive == false)
 	{
@@ -253,8 +258,7 @@ void Zid::updateEntity(sf::Time dt)
 	setPosition(mRigidbody.getPosition());
 	setRotation(mRigidbody.getRotation());
 
-	//get spoderMan
-	mSpoderMan = EntityList::getEntityList().getEntity("spoderMan");
+	
 	//activates or deactivates the spider for room 2	
 	if(mSweetZid && mSpoderMan != nullptr)
 	{
@@ -622,6 +626,8 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 		mRigidbody.getBody()->ApplyLinearImpulse(Rigidbody::SfToBoxVec(0, WATER_FORCE), mRigidbody.getBody()->GetWorldCenter(), true);
 	}
 
+
+	
 
 }
 

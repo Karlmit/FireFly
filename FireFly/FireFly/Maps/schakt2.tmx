@@ -3,6 +3,14 @@
  <tileset firstgid="1" name="Schakt_2" tilewidth="5000" tileheight="2160">
   <image source="../Resources/Schakt/Schakt_2.png" width="5000" height="2160"/>
  </tileset>
+ <tileset firstgid="2" name="dodinsektgolv1_scale" tilewidth="171" tileheight="46">
+  <tileoffset x="0" y="1"/>
+  <image source="../Resources/Schakt/dodinsektgolv1_scale.png" width="171" height="46"/>
+ </tileset>
+ <tileset firstgid="3" name="musfalla_scale" tilewidth="872" tileheight="192">
+  <tileoffset x="0" y="1"/>
+  <image source="../Resources/Schakt/musfalla_scale.png" width="872" height="192"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Schakt_2" type="EntitySprite" gid="1" x="0" y="2160"/>
  </objectgroup>
@@ -38,11 +46,44 @@
    <polyline points="0,0 0,2158"/>
   </object>
  </objectgroup>
- <objectgroup name="Misc" width="1" height="1" visible="0">
-  <object name="Water" type="Water" x="1250" y="510" width="225" height="1629"/>
-  <object name="Water" type="Water" x="2003" y="511" width="213" height="1617"/>
-  <object name="zids spawn" type="ZidSpawn" x="746" y="1214" width="100" height="84">
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="Water" type="Water" x="1275" y="508" width="40" height="1624">
+   <properties>
+    <property name="spawnTime" value="1"/>
+   </properties>
+  </object>
+  <object name="zids spawn" type="ZidSpawn" x="14" y="1228" width="100" height="84">
    <ellipse/>
+  </object>
+  <object name="DeadRatSoundZone" type="Trigger" x="255" y="1158" width="290" height="225">
+   <properties>
+    <property name="DeadRatSoundZone" value=""/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="1345" y="510" width="40" height="1624">
+   <properties>
+    <property name="spawnTime" value="3"/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="1415" y="512" width="40" height="1624">
+   <properties>
+    <property name="spawnTime" value="2"/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="2025" y="510" width="40" height="1609">
+   <properties>
+    <property name="spawnTime" value="1"/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="2096" y="513" width="40" height="1604">
+   <properties>
+    <property name="spawnTime" value="2"/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="2170" y="514" width="40" height="1605">
+   <properties>
+    <property name="spawnTime" value="3"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
@@ -62,5 +103,7 @@
     <property name="yForce" value="-12"/>
    </properties>
   </object>
+  <object name="litenfluga" type="EntitySprite" gid="2" x="335" y="1376"/>
+  <object name="musfalla" type="EntitySprite" gid="3" x="580" y="1376"/>
  </objectgroup>
 </map>

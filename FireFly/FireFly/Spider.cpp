@@ -75,6 +75,10 @@ void Spider::sendMessage(Entity* entity, std::string message)
 		activate = true;
 	}
 	
+	if(message == "Deactivate")
+	{
+		activate = false;
+	}
 
 }
 

@@ -36,7 +36,8 @@
 #include "SpiderPath.h"
 #include "Sparks.h"
 #include "CrackZone.h"
-#include "Water.h"
+#include "WaterDrop.h"
+
 
 #include <iostream>
 using namespace std;
@@ -611,9 +612,12 @@ void Level::loadMap(string filename)
 			//water for schakt 2
 			else if(entityType == "Water")
 			{
-				Water* water = new Water(position, width, height);
-				water->setProperties(obj.getProperties());
-				eList.addEntity(water, Layer::Front, false);
+				WaterDrop* waterdrop = new WaterDrop(position, position.y + height, obj.getProperty("spawnTime").getValueFloat());
+				waterdrop->setProperties(obj.getProperties());
+				eList.addEntity(waterdrop, Layer::Front, false);
+				//Water* water = new Water(position, width, height);
+				//water->setProperties(obj.getProperties());
+				//eList.addEntity(water, Layer::Front, false);
 
 			}
 

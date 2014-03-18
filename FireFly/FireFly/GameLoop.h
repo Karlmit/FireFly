@@ -9,6 +9,7 @@
 
 #include "PC.h"
 #include "Zid.h"
+#include "Light.h"
 
 #include "Camera.h"
 #include <Box2D\Box2D.h>
@@ -46,6 +47,6 @@ private:
 	sf::Sprite hivemindProjection;
 
 	Zid* zidCast;
-
+	Light* lightCast;
 };
 
