@@ -36,6 +36,7 @@
 #include "SpiderPath.h"
 #include "Sparks.h"
 #include "CrackZone.h"
+#include "ServerRoomDoor.h"
 
 #include <iostream>
 using namespace std;
@@ -605,6 +606,14 @@ void Level::loadMap(string filename)
 			else if (entityType == "Dust")
 			{
 				eList.addEntity(new Dust(rect), Layer::Front, false);
+			}
+
+			//
+			// ServerRoomDoor
+			//
+			else if (entityType == "ServerRoomDoor")
+			{
+				eList.addEntity(new ServerRoomDoor(imageSrc, positionSprite), layer, false);
 			}
 
 //			else if (entityType == "SecuMonitor")

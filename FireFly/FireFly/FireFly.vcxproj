@@ -176,6 +176,7 @@
     <ClInclude Include="Room2_AC.h" />
     <ClInclude Include="Room2_Fan.h" />
     <ClInclude Include="SecuMonitor.h" />
+    <ClInclude Include="ServerRoomDoor.h" />
     <ClInclude Include="Sparks.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="SpiderPath.h" />
@@ -292,6 +293,7 @@
     <ClCompile Include="Room2_AC.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
     <ClCompile Include="SecuMonitor.cpp" />
+    <ClCompile Include="ServerRoomDoor.cpp" />
     <ClCompile Include="Sparks.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="SpiderPath.cpp" />

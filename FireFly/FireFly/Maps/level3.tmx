@@ -9,12 +9,17 @@
  <tileset firstgid="3" name="Bana3_fullscreen_part3" tilewidth="6803" tileheight="4400">
   <image source="../Resources/Room 3/Bana3_fullscreen_part3.png" width="6803" height="4400"/>
  </tileset>
+ <tileset firstgid="4" name="SafetyDoorAnimation" tilewidth="432" tileheight="2160">
+  <image source="../Resources/Room 3/SafetyDoorAnimation.png" width="4320" height="2160"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room3_Background_Part1" type="EntitySprite" gid="1" x="0" y="4400"/>
   <object name="Room3_Background_Part2" type="EntitySprite" gid="2" x="6796" y="4400"/>
   <object name="Room3_Background_Part3" type="EntitySprite" gid="3" x="13592" y="4400"/>
  </objectgroup>
- <objectgroup name="Back" width="1" height="1"/>
+ <objectgroup name="Back" width="1" height="1">
+  <object name="ServerRoomDoor" type="ServerRoomDoor" gid="4" x="14913" y="4400"/>
+ </objectgroup>
  <objectgroup name="Front" width="1" height="1"/>
  <objectgroup name="Foreground" width="1" height="1"/>
  <objectgroup name="Collision" width="1" height="1">
@@ -29,12 +34,6 @@
   </object>
   <object name="HissRightColl" type="StaticCollision" x="11542" y="2">
    <polyline points="0,0 6,2368 222,2374 222,2238"/>
-  </object>
-  <object name="HissColl" type="StaticCollision" x="9266" y="629">
-   <properties>
-    <property name="id" value="HissColl"/>
-   </properties>
-   <polyline points="0,0 -2,170 52,172 516,28 516,-2 1786,-6 1784,18 2264,166"/>
   </object>
   <object name="VaktOchServerTakColl" type="StaticCollision" x="11756" y="2240">
    <polyline points="0,0 8632,4"/>
@@ -74,6 +73,9 @@
     <property name="id" value="ServerDoorColl"/>
    </properties>
    <polyline points="0,0 0,2153"/>
+  </object>
+  <object name="HissColl" type="StaticCollision" x="9484" y="0">
+   <polyline points="0,0 0,625 1880,623 1880,3"/>
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
