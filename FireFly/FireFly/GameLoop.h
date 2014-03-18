@@ -16,7 +16,7 @@
 class GameLoop
 {
 public:
-	GameLoop(sf::Vector2u windowSize);
+	GameLoop		(sf::Vector2u windowSize);
 	~GameLoop();
 
 	void run();
@@ -38,11 +38,13 @@ private:
 	sf::Time mStatisticsUpdateTime;
 	std::size_t	mStatisticsNumFrames;
 	sf::String textEntered;
-	Entity *pc;
-	Entity *zid;
+	Entity* pc;
+	Entity* zid;
 	sf::Sprite cursorSprite;
 	Entity* mZidsLight;
-	
+	sf::Texture hivemind;
+	sf::Sprite hivemindProjection;
 
+	Zid* zidCast;
 };
 

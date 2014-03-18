@@ -35,7 +35,8 @@ public:
 	// Dynamic Rectangles
 	void AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f position, float density = 1.f, bool dynamic = true);
 	// Trigger Box
-	void AddTriggerBoxBody(sf::FloatRect rect);
+	//if position is 0,0 then rect will set position.
+	void AddTriggerBoxBody(sf::FloatRect rect, bool dynamic, sf::Vector2f position);
 
 public:
 	void			update();

@@ -21,7 +21,7 @@ Telefonsvarare::Telefonsvarare(sf::Vector2f position)
 	rect.top = position.y - 5;
 	rect.width = 50;
 	rect.height = 50;
-	mRigidbody.AddTriggerBoxBody(rect);
+	mRigidbody.AddTriggerBoxBody(rect, false, sf::Vector2f(0,0));
 	mRigidbody.getBody()->SetUserData(this);	
 }
 

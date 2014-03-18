@@ -3,22 +3,22 @@
 #include <Windows.h>
 #include "MusicManager.h"
 #include "Log.h"
-
 #include <iostream>
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
 
 GameLoop::GameLoop(sf::Vector2u windowSize)
-//: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
+: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "The Firefly", sf::Style::Default),
 //: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
-: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
+//: mWindow(sf::VideoMode::getDesktopMode(), "The Firefly", sf::Style::Fullscreen),
 mCamera(&mWindow),
 mFont(),
 mStatisticsText(),
 mStatisticsUpdateTime(),
 mStatisticsNumFrames(0),
 cursorSprite(Loading::getTexture("pointer.png", true)),
+hivemindProjection(Loading::getTexture("sprite.jpg", true)),
 mZidsLight(nullptr)
 {
 	mWindow.setMouseCursorVisible(false);
@@ -27,6 +27,9 @@ mZidsLight(nullptr)
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
+
+//	zid = EntityList::getEntityList().getEntity("Zid");
+//	hivemindProjection.setPosition(200, 200);
 }
 
 GameLoop::~GameLoop()
@@ -36,8 +39,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level1.tmx");
-
+	Level::startLevel("level2.tmx");
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -92,7 +94,7 @@ void GameLoop::processEvents()
 				mZidsLight->sendMessage(nullptr, "ChangeRadius", event.mouseWheel.delta);
 			break;
 		case::sf::Event::TextEntered:
-			Zid* zidCast = static_cast<Zid*>(zid);
+			zidCast = static_cast<Zid*>(zid);
 			if(zidCast->inPCZone() == true)
 			{
 
@@ -145,7 +147,10 @@ void GameLoop::draw()
 	EntityList::getEntityList().drawForeground(mWindow);
 
 	mWindow.setView(mWindow.getDefaultView());
-	
+
+//	if(hivemindContact == true)
+//	mWindow.draw(hivemindProjection);
+
 	mWindow.draw(cursorSprite);
 
 	if (Globals::DEBUG_MODE || Globals::SHOW_FPS)

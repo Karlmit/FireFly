@@ -76,7 +76,7 @@ void EntityList::drawLight(sf::RenderWindow& window)
 			e->setPosition(sf::Vector2f((*zid).getPosition().x, (*zid).getPosition().y));
 		}
 		//rLightMap.clear(sf::Color(15,15,20,240));
-		rLightMap.clear(sf::Color(35,35,45,240));
+		rLightMap.clear(sf::Color(20,20,40,240));
 		rLightMap.draw(*e);
 		sLightMap.setTexture(rLightMap.getTexture());
 		window.draw(sLightMap, sf::BlendMultiply);

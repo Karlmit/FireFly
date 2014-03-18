@@ -378,9 +378,6 @@
     <ClInclude Include="JaktSpindel.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="BalkPort.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="spiderWeb.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -390,10 +387,25 @@
     <ClInclude Include="Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CrackZone.h">
+    <ClInclude Include="FireflyZone.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="BalkPort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FireflyZone.h">
+    <ClInclude Include="CrackZone.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Water.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterDrop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FallingSprite.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CrackZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -665,9 +677,6 @@
     <ClCompile Include="Block.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Hivdemind.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SecuMonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -744,6 +753,21 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="BalkPort.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Hivemind.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterDrop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hivemind.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="FallingSprite.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

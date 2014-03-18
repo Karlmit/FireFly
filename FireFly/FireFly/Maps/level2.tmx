@@ -46,15 +46,15 @@
   <image source="../Resources/Room 2/ventilflakt_spritesheet_band_motionblur.png" width="2296" height="449"/>
  </tileset>
  <tileset firstgid="26" name="termometer_hot" tilewidth="200" tileheight="555">
-  <image source="../Resources/Room 2/termometer_hot.png" width="200" height="555"/>
+  <image source="../Resources/Room 2/termometer_hot.png" width="128" height="92"/>
  </tileset>
- <tileset firstgid="27" name="phone_scale" tilewidth="229" tileheight="282">
+ <tileset firstgid="26" name="phone_scale" tilewidth="229" tileheight="282">
   <image source="../Resources/Room 2/phone_scale.png" width="229" height="282"/>
  </tileset>
- <tileset firstgid="28" name="dator_scale" tilewidth="313" tileheight="572">
+ <tileset firstgid="27" name="dator_scale" tilewidth="313" tileheight="572">
   <image source="../Resources/Room 2/dator_scale.png" width="313" height="572"/>
  </tileset>
- <tileset firstgid="29" name="tavlor" tilewidth="406" tileheight="158">
+ <tileset firstgid="28" name="tavlor" tilewidth="406" tileheight="158">
   <image source="../Resources/Room 2/tavlor.png" width="406" height="158"/>
  </tileset>
  <objectgroup name="Background" width="1" height="1">
@@ -67,10 +67,10 @@
   <object name="FlyCatcherLeft" type="EntitySprite" gid="3" x="1323" y="704"/>
   <object name="FlyCatcherRight" type="EntitySprite" gid="4" x="1792" y="602"/>
   <object name="BoilerSprite" type="Boiler" gid="8" x="3380" y="4506"/>
-  <object name="Termometer" type="Termometer" gid="26" x="1980" y="1225"/>
+  <object name="Termometer" type="Termometer" x="1976" y="1242"/>
   <object name="Telefonsvarare" type="Telefonsvarare" x="3353" y="1229" width="259" height="193"/>
   <object name="Keyboard" type="EntitySprite" gid="13" x="2592" y="1421"/>
-  <object name="PC" type="EntitySprite" gid="28" x="2604" y="2161"/>
+  <object name="PC" type="EntitySprite" gid="27" x="2604" y="2161"/>
  </objectgroup>
  <objectgroup name="NPC" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1">
@@ -86,22 +86,16 @@
   <object name="SugarBowlTop" type="SugarBowlTop" gid="7" x="4384" y="1204"/>
   <object name="TakFlakt" type="Room2_Fan" gid="15" x="2067" y="254"/>
   <object name="AC Flakt" type="Room2_AC" gid="18" x="4786" y="592"/>
-  <object name="Tavlor" type="EntitySprite" gid="29" x="2182" y="1423"/>
+  <object name="Tavlor" type="EntitySprite" gid="28" x="2182" y="1423"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1" visible="0">
   <object name="Room2 Foreground" type="EntitySprite" gid="2" x="0" y="4484"/>
  </objectgroup>
  <objectgroup name="Collision" width="1" height="1">
-  <object name="CollRooms" type="StaticCollision" x="5071" y="4466">
-   <polyline points="0,0 -4,-2152 -4344,-2144 -4336,-776 -4684,-776 -4680,-3788 -4352,-3792 -4352,-2300 -4,-2300 0,-4460"/>
-  </object>
   <object name="TableColl" type="StaticCollisionLoop" x="2176" y="1421">
    <polyline points="0,0 2,68 1486,66 1484,2"/>
   </object>
   <object name="Suger Bowl" type="StaticCollisionLoop" x="4369" y="1314">
-   <properties>
-    <property name="id" value="SugarBowlColl"/>
-   </properties>
    <polyline points="0,0 -10,-12 -14,-36 -8,-59 5,-84 17,-94 38,-95 8,-75 0,-55 -2,-32 21,-25 63,-22 98,-27 127,-30 143,-32 144,-46 136,-63 123,-88 99,-95 125,-95 134,-88 145,-66 154,-43 151,-18 143,-3 137,-2 16,-2"/>
   </object>
   <object name="BoilerColl" type="StaticCollision" x="3521" y="4475">
@@ -125,12 +119,6 @@
   <object name="KeyBoard" type="StaticCollisionLoop" x="2592" y="1395">
    <polyline points="0,0 5,-3 658,-4 666,-3 669,4 668,19 663,27 6,26 -1,17 -2,1"/>
   </object>
-  <object name="CollVent2" type="StaticCollision" x="0" y="1906">
-   <polyline points="0,0 35,1 39,-1541 713,-1540 716,-1902"/>
-  </object>
-  <object name="CollVent1" type="StaticCollision" x="0" y="2161">
-   <polyline points="0,0 36,1 43,1844 730,1843 731,2318"/>
-  </object>
   <object name="AC_CollTop" type="StaticCollision" x="5071" y="157">
    <polyline points="0,0 -47,46 -51,73 -52,288 1,294"/>
   </object>
@@ -140,11 +128,35 @@
   <object name="TelefonColl" type="StaticCollisionLoop" x="3353" y="1421">
    <polyline points="0,0 1,-194 5,-197 230,-198 234,-195 235,-169 261,-167 261,0"/>
   </object>
-  <object name="UnderBowlColl" type="StaticCollision" x="4378" y="1281">
-   <polyline points="0,0 106,1"/>
+  <object name="Vent1" type="StaticCollision" x="716" y="1">
+   <polyline points="0,0 0,353 -703,355 -703,1904 -716,1904 -716,2161 -703,2161 -703,3767 12,3768"/>
+  </object>
+  <object name="Vent2" type="StaticCollision" x="729" y="3513">
+   <polyline points="0,0 -431,3 -431,-2880 -15,-2879"/>
+  </object>
+  <object name="VentOpening1" type="StaticCollision" x="729" y="3771">
+   <properties>
+    <property name="id" value="VentOp"/>
+   </properties>
+   <polyline points="0,0 12,0 40,-31 51,-52 63,-71"/>
+  </object>
+  <object name="VentOpening2" type="StaticCollision" x="729" y="3515">
+   <properties>
+    <property name="id" value="VentOp"/>
+   </properties>
+   <polyline points="0,0 12,0 19,21 35,48 41,77 55,93"/>
+  </object>
+  <object name="OfficeWall1" type="StaticCollision" x="716" y="636">
+   <polyline points="0,0 3,1527 4353,1524 4353,-48 4353,-104"/>
+  </object>
+  <object name="OfficeWall2" type="StaticCollision" x="716" y="0">
+   <polyline points="0,0 4352,1 4353,448"/>
+  </object>
+  <object name="BoilerWall" type="StaticCollision" x="729" y="3515">
+   <polyline points="0,0 3,-1191 4345,-1192 4345,968 8,968 -37,968 -28,953 -19,951 -23,932 -15,924 -12,911 0,901 0,257"/>
   </object>
  </objectgroup>
- <objectgroup name="Misc" width="1" height="1">
+ <objectgroup name="Misc" width="1" height="1" visible="0">
   <object name="ZidStart" type="ZidSpawn" x="110" y="2031" width="40" height="30">
    <ellipse/>
   </object>
@@ -152,6 +164,7 @@
    <properties>
     <property name="ToggleOn" value="ToggleSpriteFanButton"/>
     <property name="TurnOn" value="Room2_Fan"/>
+    <property name="id" value="mSuccess"/>
    </properties>
   </object>
   <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179">
@@ -161,32 +174,32 @@
     <property name="Firefly Room 2 TrackVersion 1 (Vent).ogg" value="vent"/>
    </properties>
   </object>
-  <object name="MusicEnterOfficeTrigger" type="Trigger" x="724" y="367" width="43" height="318">
+  <object name="MusicEnterOfficeTrigger" type="Trigger" x="715" y="339" width="43" height="318" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="office"/>
    </properties>
   </object>
-  <object name="MusicEnterVentTrigger" type="Trigger" x="629" y="360" width="43" height="318">
+  <object name="MusicEnterVentTrigger" type="Trigger" x="633" y="336" width="43" height="318" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
-  <object name="MusicEnterVentTrigger" type="Trigger" x="630" y="3687" width="43" height="318">
+  <object name="MusicEnterVentTrigger" type="Trigger" x="634" y="3490" width="43" height="318" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="vent"/>
    </properties>
   </object>
-  <object name="MusicEnterBoilerTrigger" type="Trigger" x="734" y="3695" width="43" height="318">
+  <object name="MusicEnterBoilerTrigger" type="Trigger" x="731" y="3494" width="43" height="318" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="boiler"/>
     <property name="Spider" value="activate"/>
    </properties>
   </object>
-  <object name="MusicEnterVentTrigger" type="Trigger" x="2" y="1914" width="451" height="452">
+  <object name="MusicEnterVentTrigger" type="Trigger" x="2" y="1914" width="451" height="452" visible="0">
    <properties>
     <property name="MusicFadeDownAll" value=""/>
     <property name="MusicFadeUp" value="vent"/>
@@ -211,6 +224,7 @@
    <properties>
     <property name="ToggleOff" value="ToggleSpriteFanButton"/>
     <property name="TurnOff" value="Room2_Fan"/>
+    <property name="id" value="mSuccess"/>
    </properties>
   </object>
   <object name="Spider" type="Spider" x="729" y="2332" width="4342" height="2152">
@@ -253,11 +267,5 @@
   <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1342" y="460" width="8" height="55"/>
   <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1362" y="522" width="12" height="16"/>
   <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1836" y="440" width="7" height="14"/>
-  <object name="PC_Light" type="Light_Point" x="2857" y="1112" width="76" height="67">
-   <properties>
-    <property name="radius" value="200"/>
-   </properties>
-   <ellipse/>
-  </object>
  </objectgroup>
 </map>

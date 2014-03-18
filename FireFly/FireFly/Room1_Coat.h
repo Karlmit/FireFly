@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "Audio.h"
 
 class Room1_Coat : public Entity
 {
@@ -17,4 +18,5 @@ private:
 	float mEatProgress;
 	bool mEating;
 	int mCurrentSprite;
+	Audio mSuccess;
 };

@@ -36,6 +36,7 @@
 #include "SpiderPath.h"
 #include "Sparks.h"
 #include "CrackZone.h"
+#include "Water.h"
 
 #include <iostream>
 using namespace std;
@@ -549,19 +550,19 @@ void Level::loadMap(string filename)
 
 			else if(entityType == "Spark_Position1")
 			{
-				Sparks* spark1 = new Sparks("Schakt/elsprak1_spritesheet.png", 246.f/3, 52.f, position, 3);
+				Sparks* spark1 = new Sparks("Schakt/elsprak1_spritesheet.png", unsigned(246.f/3), 52, position, 3);
 				spark1->setProperties(obj.getProperties());
 				eList.addEntity(spark1, Layer::Front, false);
 			}
 			else if(entityType == "Spark_Position2")
 			{
-				Sparks* spark2 = new Sparks("Schakt/elsprak2_spritesheet.png", 165.f/3, 69.f, position, 3);
+				Sparks* spark2 = new Sparks("Schakt/elsprak2_spritesheet.png", unsigned(165.f/3), 69, position, 3);
 				spark2->setProperties(obj.getProperties());
 				eList.addEntity(spark2, Layer::Front, false);
 			}
 			else if(entityType == "Spark_Position3")
 			{
-				Sparks* spark3 = new Sparks("Schakt/elsprak3_spritesheet.png", 273.f/3, 84.f, position, 3);
+				Sparks* spark3 = new Sparks("Schakt/elsprak3_spritesheet.png", unsigned(273.f/3), 84, position, 3);
 				spark3->setProperties(obj.getProperties());
 				eList.addEntity(spark3, Layer::Front, false);
 			}
@@ -606,6 +607,18 @@ void Level::loadMap(string filename)
 			{
 				eList.addEntity(new Dust(rect), Layer::Front, false);
 			}
+
+			//water for schakt 2
+			else if(entityType == "Water")
+			{
+				Water* water = new Water(position, width, height);
+				water->setProperties(obj.getProperties());
+				eList.addEntity(water, Layer::Front, false);
+
+			}
+
+
+
 
 //			else if (entityType == "SecuMonitor")
 //			{

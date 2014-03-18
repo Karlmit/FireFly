@@ -106,7 +106,7 @@
    <polyline points="0,0 460,0 468,-408 1664,-408 1668,-34 2510,-28 2508,126 1480,130 1474,536 972,536 966,84 -288,90 -292,1366 -292,1370 2620,1374 2620,982 3016,982 3294,982"/>
   </object>
   <object name="wall" type="StaticCollision" x="3990" y="1696">
-   <polyline points="0,0 -4,140 474,144 478,10 1006,12"/>
+   <polyline points="0,19 -4,140 474,144 478,10 1006,12"/>
   </object>
   <object name="wall" type="StaticCollision" x="5000" y="1445">
    <polyline points="0,0 -528,4 -528,-132 -1002,-136 -1002,0 -990,-409 -1127,-388 -1101,13 -1237,2 -1472,3 -1942,6 -1940,392 -4340,398 -4338,-376 -3596,-374 -3592,70 -2574,76 -2572,-334 -1540,-334 -1540,-1004 -2382,-1006 -2382,-1388 -4094,-1388 -4094,-978 -4996,-972"/>
@@ -361,7 +361,7 @@
   <object name="Kukong" type="EntitySprite" gid="28" x="3482" y="1618"/>
   <object name="BalkPort" type="BalkPort" gid="29" x="3915" y="1311">
    <properties>
-    <property name="id" value="StaticCollider"/>
+    <property name="" value=""/>
    </properties>
   </object>
   <object name="Fan2" type="EntitySprite" gid="30" x="1620" y="1065">
