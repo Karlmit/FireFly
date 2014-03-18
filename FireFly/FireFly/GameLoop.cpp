@@ -11,7 +11,7 @@ void appInFocus(sf::RenderWindow* app);
 GameLoop::GameLoop(sf::Vector2u windowSize)
 : mWindow(sf::VideoMode(windowSize.x, windowSize.y), "The Firefly", sf::Style::Default),
 //: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
-//: mWindow(sf::VideoMode::getDesktopMode(), "The Firefly", sf::Style::Fullscreen),
+//: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
 mCamera(&mWindow),
 mFont(),
 mStatisticsText(),
@@ -38,8 +38,9 @@ GameLoop::~GameLoop()
 
 void GameLoop::run()
 {
-	// Load the level "level1.tmxa"
-	Level::startLevel("schakt2.tmx");
+	// Load the level "level1.tmx"
+	Level::startLevel("level1.tmx");
+
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;

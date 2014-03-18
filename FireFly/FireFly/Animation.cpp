@@ -20,30 +20,15 @@ Animation::Animation(const sf::Texture& texture, //Loads an image from file
 	mCurrentColumn(0), //used in updates
 	mTop(0), //used in updates
 	mLeft(0), //used in updates
-	mAnimFrame(0) //Used in oneLoop()
+	mAnimFrame(0), //Used in oneLoop()
+	mPlaying(false),
+	mForward(true)
 {
 	mSprite.setTextureRect(sf::IntRect(0,0, spriteWidth, spriteHeight));
 	mSprite.setOrigin( static_cast<float>(spriteWidth/2), static_cast<float>(spriteHeight/2) );
 }
 
-//Copy constructor (not in use)
-//
-//Animation::Animation(const Animation& animation) : 
-//		mNumberOfSprites(animation.mNumberOfSprites),
-//		mTimePerFrame(animation.mTimePerFrame),
-//		mCurrentFrame(animation.mCurrentFrame),
-//		mCurrentSprite(animation.mCurrentSprite),
-//		mSpriteHeight(animation.mSpriteHeight),
-//		mSpriteWidth(animation.mSpriteWidth),
-//		mTexture(animation.mTexture),
-//		mSprite(animation.mSprite),
-//		mEndOfAnimation(animation.mEndOfAnimation),
-//		mNumberOfColumns(animation.mNumberOfColumns),
-//		test(0),
-//		top(0),
-//		y(0)
-//{
-//}
+
 
 Animation::~Animation(void)
 {
@@ -86,6 +71,81 @@ void Animation::updateAnimation()
 			}
 		}
 	}		
+}
+
+void Animation::updatePlay()
+{
+	
+
+	/*
+	if (mForward)
+	{
+		if (mCurrentColumn == mNumberOfColumns && mCurrentRow == mNumberOfRows)
+			mPlaying = false;
+	}
+	else
+	{
+		if (mCurrentColumn == 0 && mCurrentRow == 0)
+			mPlaying = false;
+	}
+	*/
+
+	if (mPlaying == false)
+		return;
+		
+
+	//Makes sure that the animation is updated every Xth frame, as defined in the constructor.
+	if(mForward && frameClock.getElapsedTime().asMilliseconds() > int(mTimePerFrame))
+	{
+		frameClock.restart();
+		mLeft = mSpriteWidth * mCurrentColumn;
+		mTop = mSpriteHeight * mCurrentRow;
+		mSprite.setTextureRect(sf::IntRect(mLeft, mTop, mSpriteWidth, mSpriteHeight));
+		++mCurrentColumn; //Makes the viewer see the next image in the row of sprites.
+		//Changes the row of the sprite sheet once it hits the end of a row.
+		if(mCurrentColumn == mNumberOfColumns)
+		{
+			++mCurrentRow;
+			mCurrentColumn = 0;	
+
+			//Makes sure to reset the animation once the last row is fully shown.
+			if(mCurrentRow == mNumberOfRows)
+			{
+				mCurrentColumn = mNumberOfColumns-1;
+				mCurrentRow = mNumberOfRows-1;
+				mPlaying = false;
+			}
+		}
+	}
+
+	if (!mForward && frameClock.getElapsedTime().asMilliseconds() > int(mTimePerFrame))
+	{
+		frameClock.restart();
+		mLeft = mSpriteWidth * mCurrentColumn;
+		mTop = mSpriteHeight * mCurrentRow;
+		mSprite.setTextureRect(sf::IntRect(mLeft, mTop, mSpriteWidth, mSpriteHeight));
+		--mCurrentColumn; //Makes the viewer see the next image in the row of sprites.
+		//Changes the row of the sprite sheet once it hits the end of a row.
+		if(mCurrentColumn == -1)
+		{
+			--mCurrentRow;
+			mCurrentColumn = mNumberOfColumns-1;		
+
+			//Makes sure to reset the animation once the last row is fully shown.
+			if(mCurrentRow == -1)
+			{
+				mCurrentColumn = 0;
+				mCurrentRow = 0;
+				mPlaying = false;
+			}
+		}
+	}
+}
+
+void Animation::play(bool forward)
+{
+	mPlaying = true;
+	mForward = forward;
 }
 
 int Animation::getAnimLength()

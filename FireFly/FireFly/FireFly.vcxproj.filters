@@ -406,6 +406,9 @@
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="WaterDrop.h">
+	  <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerRoomDoor.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -757,6 +760,15 @@
     </ClCompile>
     <ClCompile Include="Hivemind.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerRoomDoor.cpp">
+	  <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterDrop.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Hivemind.cpp">
       <Filter>Source Files\Entities</Filter>

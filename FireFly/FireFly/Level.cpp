@@ -37,6 +37,7 @@
 #include "Sparks.h"
 #include "CrackZone.h"
 #include "WaterDrop.h"
+#include "ServerRoomDoor.h"
 
 
 #include <iostream>
@@ -590,7 +591,7 @@ void Level::loadMap(string filename)
 			//
 			else if (entityType == "Termometer")
 			{
-				eList.addEntity(new Termometer(positionSprite), layer, false);
+				eList.addEntity(new Termometer(position), layer, false);
 			}
 
 			// 
@@ -609,6 +610,15 @@ void Level::loadMap(string filename)
 				eList.addEntity(new Dust(rect), Layer::Front, false);
 			}
 
+			//
+			// ServerRoomDoor
+			//
+			else if (entityType == "ServerRoomDoor")
+			{
+				eList.addEntity(new ServerRoomDoor(imageSrc, positionSprite), layer, false);
+			}
+
+
 			//water for schakt 2
 			else if(entityType == "Water")
 			{
@@ -620,8 +630,6 @@ void Level::loadMap(string filename)
 				//eList.addEntity(water, Layer::Front, false);
 
 			}
-
-
 
 
 //			else if (entityType == "SecuMonitor")
