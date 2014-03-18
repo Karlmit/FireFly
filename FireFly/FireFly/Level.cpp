@@ -591,7 +591,7 @@ void Level::loadMap(string filename)
 			//
 			else if (entityType == "Termometer")
 			{
-				eList.addEntity(new Termometer(positionSprite), layer, false);
+				eList.addEntity(new Termometer(position), layer, false);
 			}
 
 			// 
