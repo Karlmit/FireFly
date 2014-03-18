@@ -9,6 +9,7 @@ Room1_Coat::Room1_Coat(sf::Vector2f position)
 	, mEatProgress(0)
 	, mEating(false)
 	, mCurrentSprite(0)
+	, mSuccess(Loading::getSound("Room 2/Datorblips/Blip1.wav"), true)
 {
 	setPosition(position);
 	mID = "Room1_Coat";
@@ -26,7 +27,9 @@ Room1_Coat::Room1_Coat(sf::Vector2f position)
 void Room1_Coat::sendMessage(Entity* sender, string message)
 {
 	if (message == "StartEating")
+	{
 		mEating = true;
+	}
 }
 
 
@@ -47,9 +50,11 @@ void Room1_Coat::updateEntity(sf::Time dt)
 
 			mEating = false;
 			for (Entity* mal : EntityList::getEntityList().getEntities("Mal"))
+			{
 				mal->sendMessage(this, "CoatFinished");
+				mSuccess.play();
+			}
 		}
-
 	}
 }
 

@@ -12,7 +12,7 @@ ForceZone::ForceZone(sf::FloatRect rect)
 	, mb2Width(Rigidbody::SfToBoxFloat(rect.width))
 	, mb2Height(Rigidbody::SfToBoxFloat(rect.height))
 {
-	mRigidbody.AddTriggerBoxBody(rect);
+	mRigidbody.AddTriggerBoxBody(rect, false, sf::Vector2f(0,0));
 	mRigidbody.getBody()->SetUserData(this);
 	
 }

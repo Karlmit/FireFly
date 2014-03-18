@@ -25,9 +25,13 @@ const float SUGAR_GRAVITY = 120.f;
 const float LOSE_SUGAR_EMISSION = 220.f;
 const float LOSE_SUGAR_TIME = 0.6f;
 const float AC_ZONE_SUGAR_VEL_X = -200.f;
-
+const float	PICK_UP_TIME_SECONDS = 0.2f;
+ 
 // Light
 const float ZIDS_LIGHT_RADIUS = 300.f;
+
+//waterDropp
+const float WATER_FORCE = 1000.f;
 
 Zid::Zid(sf::Vector2f position)
 : mSprite(Loading::getTexture("zid.png"))
@@ -52,6 +56,7 @@ Zid::Zid(sf::Vector2f position)
 , hivemindContact(false)
 , mSlooowDooown(0)
 , mLight(nullptr)
+, mFirstSugarDropped(false) 
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -91,7 +96,9 @@ Zid::Zid(sf::Vector2f position)
 	mEmitter.setParticleScale(sf::Vector2f(0.2f, 0.2f));
 	mEmitter.setParticleColor(sf::Color::White);
 
-	
+	//sugar
+	mSugarPile = false;
+	mSugarScale = 0;
 
 	// Create particle system, add reference to emitter
 	mParticleSystem.setTexture(Loading::getTexture("particle.png"));
@@ -357,7 +364,10 @@ void Zid::movement()
 
 	// Reset the damping if changed due to StickyZone when dashing
 	if (zidDash)
+	{
 		mRigidbody.getBody()->SetLinearDamping(DAMPING);
+		sugarClock.restart();
+	}
 
 	
 	// Apply force to go to the mouse position when pressing left mouse button
@@ -495,6 +505,19 @@ void Zid::sugarStuff(sf::Time dt)
 			mEmitter.setParticleLifetime(sf::seconds(lifetime*0.90f));
 
 			mDroppedSugarPosition = Rigidbody::BoxToSfVec(ray.point);
+			if(mSugarPile)
+			{
+				if(mFirstSugarDropped == true)
+				{
+					SugarEntity->killEntity();
+				}
+				Entity* sugarPile = new FallingSprite("Room 2/socker_faller.png", "Room 2/socker.png", getPosition(), mDroppedSugarPosition, "sugarPile", mSugarScale);
+				SugarEntity = sugarPile;
+				EntityList::getEntityList().addEntity(sugarPile);
+				mSugarPile = false;
+				mFirstSugarDropped = true;
+				
+			}
 		}
 	}
 	else
@@ -527,8 +550,6 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 		Log::write("Zid got stuck in StickyZone");
 	}
 
-
-
 	if(other->getID() == "PC_Zone")
 	{
 		mPC_Zone = true;
@@ -553,8 +574,25 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		Log::write("Zid found some sugar");
 		mSweetZid = true;
+		mSugarPile = true;
 		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
+		mSugarScale = 1.f;
 	}
+	if(other->getID() == "sugarPile" && sugarClock.getElapsedTime().asSeconds() > PICK_UP_TIME_SECONDS && mSugarPile == false && mSugarScale > 0.f)
+	{
+		sugarClock.restart();
+		Log::write("Zid found a sugarPile");
+		mSweetZid = true;
+		mSugarPile = true;
+		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
+		mSugarScale -= 0.3f;
+		if(mSugarScale <= 0.f)
+		{
+			mSugarScale = 0.f;
+		}
+
+	}
+
 	if(other->getID() == "CrackZone")
 	{
 		hivemindContact = true;
@@ -573,6 +611,17 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 		jaktspindel = EntityList::getEntityList().getEntity("JaktSpindel");
 		jaktspindel->sendMessage(jaktspindel, "Deactivate");
 	}
+
+	if(other->getID() == "KillZone")
+	{
+		mAlive = false;
+	}
+
+	if(other->getID() == "WaterDropp")
+	{
+		mRigidbody.getBody()->ApplyLinearImpulse(Rigidbody::SfToBoxVec(0, WATER_FORCE), mRigidbody.getBody()->GetWorldCenter(), true);
+	}
+
 
 }
 

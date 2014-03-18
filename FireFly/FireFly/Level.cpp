@@ -37,6 +37,8 @@
 #include "Sparks.h"
 #include "CrackZone.h"
 #include "ServerRoomDoor.h"
+#include "Water.h"
+
 
 #include <iostream>
 using namespace std;
@@ -615,6 +617,17 @@ void Level::loadMap(string filename)
 			{
 				eList.addEntity(new ServerRoomDoor(imageSrc, positionSprite), layer, false);
 			}
+
+
+			//water for schakt 2
+			else if(entityType == "Water")
+			{
+				Water* water = new Water(position, width, height);
+				water->setProperties(obj.getProperties());
+				eList.addEntity(water, Layer::Front, false);
+
+			}
+
 
 //			else if (entityType == "SecuMonitor")
 //			{

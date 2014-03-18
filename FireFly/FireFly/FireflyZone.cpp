@@ -4,7 +4,7 @@
 FireflyZone::FireflyZone(sf::FloatRect rect)
 	: mRigidbody()
 {
-	mRigidbody.AddTriggerBoxBody(rect);
+	mRigidbody.AddTriggerBoxBody(rect, false, sf::Vector2f(0,0));
 	mRigidbody.getBody()->SetUserData(this);
 
 	setPosition(rect.left+(rect.width/2), rect.top+(rect.height/2));

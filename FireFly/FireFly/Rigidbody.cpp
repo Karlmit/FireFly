@@ -206,12 +206,27 @@ void Rigidbody::AddDynRectBody(std::vector<sf::FloatRect> rects, sf::Vector2f po
 	}		
 }
 
-void Rigidbody::AddTriggerBoxBody(sf::FloatRect rect)
+void Rigidbody::AddTriggerBoxBody(sf::FloatRect rect, bool dynamic, sf::Vector2f position)
 {
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
-	bodyDef.type = b2_staticBody;
-	bodyDef.position = SfToBoxVec(sf::Vector2f(rect.left+rect.width/2, rect.top+rect.height/2));
+	if(dynamic == true)
+	{
+		bodyDef.type = b2_dynamicBody;
+	}
+	else
+	{
+		bodyDef.type = b2_staticBody;
+	}
+	if(position.x == 0 && position.y == 0)
+	{
+		bodyDef.position = SfToBoxVec(sf::Vector2f(rect.left+rect.width/2, rect.top+rect.height/2));
+	}
+	else
+	{
+		bodyDef.position = SfToBoxVec(position);
+	}
+
 	mBody = mB2World->CreateBody(&bodyDef);
 
 	// Define another box shape for our trigger body.

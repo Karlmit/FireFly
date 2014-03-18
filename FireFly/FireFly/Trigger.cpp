@@ -5,9 +5,13 @@
 
 Trigger::Trigger(sf::FloatRect rect)
 	: mRigidbody()
+	, mSuccess(Loading::getSound("Room 2/Datorblips/Blip1.wav"), true)
 {
-	mRigidbody.AddTriggerBoxBody(rect);
+	mRigidbody.AddTriggerBoxBody(rect, false, sf::Vector2f(0,0));
 	mRigidbody.getBody()->SetUserData(this);
+
+	//mSuccess
+	mFanOn = false;
 }
 
 void Trigger::updateEntity(sf::Time dt)
@@ -36,21 +40,40 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 			Level::getLevel().fadeToBlackChangeLevel(getProperty("ChangeMap"));
 
 		if (isProperty("ToggleOn"))
+		{
 			for (string id : getProperties("ToggleOn"))
+			{
 				EntityList::getEntityList().getEntity(id)->sendMessage(this, "ToggleOn");
-
+			
+			}
+		}
 		if (isProperty("ToggleOff"))
 			for (string id : getProperties("ToggleOff"))
+			{
 				EntityList::getEntityList().getEntity(id)->sendMessage(this, "ToggleOff");
+				mFanOn = false;
+			}
 
+				
 		if (isProperty("Toggle"))
 			for (string id : getProperties("Toggle"))
 				EntityList::getEntityList().getEntity(id)->sendMessage(this, "Toggle");
 
 		if (isProperty("TurnOn"))
+		{
 			EntityList::getEntityList().getEntity(getProperty("TurnOn"))->sendMessage(this, "TurnOn");
-		if (isProperty("TurnOff"))
+			if(mFanOn == false)
+			{
+				mSuccess.play();
+				mFanOn = true;
+			}
+		}
+			if (isProperty("TurnOff"))
+		{
 			EntityList::getEntityList().getEntity(getProperty("TurnOff"))->sendMessage(this, "TurnOff");
+		}
+
+			
 		if(isProperty("Spider"))
 			EntityList::getEntityList().getEntity("spoderMan")->sendMessage(this, "spiderisinRoom");
 	}	

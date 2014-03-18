@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "Audio.h"
 
 class Boiler : public Entity
 {
@@ -18,4 +19,5 @@ private:
 	bool mActive;
 	float mShakiness;
 	sf::Clock mDelayTimer;
+	Audio mSuccess;
 };

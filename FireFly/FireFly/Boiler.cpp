@@ -12,6 +12,7 @@ Boiler::Boiler(string textureID ,sf::Vector2f position)
 , mPos()
 , mActive(true)
 , mShakiness(SHAKE_DISTANCE)
+, mSuccess(Loading::getSound("Room 2/Datorblips/Blip1.wav"), true)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -53,7 +54,7 @@ void Boiler::sendMessage(Entity* sender, string message)
 	{
 		mActive = false;
 		mDelayTimer.restart();
-
+		mSuccess.play();
 		EntityList::getEntityList().getEntity("Termometer")->sendMessage(this, "BoilerOff");
 	}
 }

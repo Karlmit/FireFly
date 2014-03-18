@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 #include "MapObjectProperty.h"
+#include "Audio.h"
 
 class Trigger : public Entity
 {
@@ -14,6 +15,8 @@ public:
 private:
 	virtual void BeginContact(b2Contact *contact, Entity* other); 
 	virtual void EndContact(b2Contact *contact, Entity* other); 
+	Audio mSuccess;
+	bool mFanOn;
 
 private:
 	Rigidbody mRigidbody; 

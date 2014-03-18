@@ -16,7 +16,7 @@
 class GameLoop
 {
 public:
-	GameLoop(sf::Vector2u windowSize);
+	GameLoop		(sf::Vector2u windowSize);
 	~GameLoop();
 
 	void run();
@@ -44,5 +44,8 @@ private:
 	Entity* mZidsLight;
 	sf::Texture hivemind;
 	sf::Sprite hivemindProjection;
+
+	Zid* zidCast;
+
 };
 

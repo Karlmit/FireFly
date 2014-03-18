@@ -9,7 +9,7 @@ const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
 
 GameLoop::GameLoop(sf::Vector2u windowSize)
-: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
+: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "The Firefly", sf::Style::Default),
 //: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
 //: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
 mCamera(&mWindow),
@@ -40,7 +40,6 @@ void GameLoop::run()
 {
 	// Load the level "level1.tmx"
 	Level::startLevel("level1.tmx");
-
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -95,7 +94,7 @@ void GameLoop::processEvents()
 				mZidsLight->sendMessage(nullptr, "ChangeRadius", event.mouseWheel.delta);
 			break;
 		case::sf::Event::TextEntered:
-			Zid* zidCast = static_cast<Zid*>(zid);
+			zidCast = static_cast<Zid*>(zid);
 			if(zidCast->inPCZone() == true)
 			{
 
@@ -242,7 +241,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("level3.tmx");
 			break;
 		case sf::Keyboard::F5:
-			Level::changeMap("level5.tmx");
+			Level::changeMap("schakt2.tmx"); 
 			break;
 		case sf::Keyboard::F6:
 			Level::changeMap("level6.tmx");

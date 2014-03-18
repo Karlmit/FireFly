@@ -6,6 +6,7 @@
 #include "Animation.h"
 #include "Audio.h"
 #include "Log.h"
+#include "FallingSprite.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -53,6 +54,7 @@ private:
 	bool mInStickyZone;
 	bool mAlive;
 	bool mInFireflyZone;
+	bool mSugarPile;
 
 	// Light
 	Entity* mLight;
@@ -76,6 +78,10 @@ private:
 	float mSlooowDooown;
 	bool mInAcZone;
 	bool hivemindContact;
+	Entity* SugarEntity;
+	bool mFirstSugarDropped;
+	sf::Clock sugarClock;
+	float mSugarScale;
 };
 
 #endif

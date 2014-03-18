@@ -146,6 +146,7 @@
     <ClInclude Include="CrackZone.h" />
     <ClInclude Include="Dust.h" />
     <ClInclude Include="FadeToBlack.h" />
+    <ClInclude Include="FallingSprite.h" />
     <ClInclude Include="FireflyNPC.h" />
     <ClInclude Include="FireflyZone.h" />
     <ClInclude Include="ForceZone.h" />
@@ -202,6 +203,8 @@
     <ClInclude Include="Tween.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Wasp.h" />
+    <ClInclude Include="Water.h" />
+    <ClInclude Include="WaterDrop.h" />
     <ClInclude Include="WorldContactListener.h" />
     <ClInclude Include="Zid.h" />
   </ItemGroup>
@@ -266,6 +269,7 @@
     <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="Dust.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
+    <ClCompile Include="FallingSprite.cpp" />
     <ClCompile Include="FireflyNPC.cpp" />
     <ClCompile Include="FireflyZone.cpp" />
     <ClCompile Include="ForceZone.cpp" />
@@ -322,6 +326,8 @@
     <ClCompile Include="Tween.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wasp.cpp" />
+    <ClCompile Include="Water.cpp" />
+    <ClCompile Include="WaterDrop.cpp" />
     <ClCompile Include="WorldContactListener.cpp" />
     <ClCompile Include="Zid.cpp" />
   </ItemGroup>

@@ -4,7 +4,7 @@
 spiderWeb::spiderWeb(sf::FloatRect rect)
 	: mRigidbody()
 {
-	mRigidbody.AddTriggerBoxBody(rect);
+	mRigidbody.AddTriggerBoxBody(rect, false, sf::Vector2f(0,0));
 	mRigidbody.getBody()->SetUserData(this);
 }
 
