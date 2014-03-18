@@ -17,9 +17,67 @@
  <objectgroup name="Back" width="1" height="1"/>
  <objectgroup name="Front" width="1" height="1"/>
  <objectgroup name="Foreground" width="1" height="1"/>
- <objectgroup name="Collision" width="1" height="1"/>
+ <objectgroup name="Collision" width="1" height="1">
+  <object name="HissLeftColl" type="StaticCollision" x="9266" y="4396">
+   <polyline points="0,0 0,-3782 -120,-3788 -188,-3790 -188,-3746 -178,-3746 -174,-1992"/>
+  </object>
+  <object name="HissLeftColl" type="StaticCollision" x="9264" y="6">
+   <polyline points="0,0 6,174 -114,176 -114,164 -182,162 -184,124 -172,124 -170,-6"/>
+  </object>
+  <object name="HissRightColl" type="StaticCollision" x="11544" y="4394">
+   <polyline points="0,0 2,-1638 218,-1642 224,-8"/>
+  </object>
+  <object name="HissRightColl" type="StaticCollision" x="11542" y="2">
+   <polyline points="0,0 6,2368 222,2374 222,2238"/>
+  </object>
+  <object name="HissColl" type="StaticCollision" x="9266" y="629">
+   <properties>
+    <property name="id" value="HissColl"/>
+   </properties>
+   <polyline points="0,0 -2,170 52,172 516,28 516,-2 1786,-6 1784,18 2264,166"/>
+  </object>
+  <object name="VaktOchServerTakColl" type="StaticCollision" x="11756" y="2240">
+   <polyline points="0,0 8632,4"/>
+  </object>
+  <object name="KorridorOchSprinklerColl" type="StaticCollision" x="9082" y="2407">
+   <polyline points="0,0 -6856,-4 -6856,-36 -6936,-38 -6936,-2 -8942,-2 -8940,-2164 -6934,-2158 -6932,-74 -6866,-70 -6864,-2200 -6936,-2200 -6934,-2404"/>
+  </object>
+  <object name="VaktBordColl" type="StaticCollisionLoop" x="12266" y="3696">
+   <polyline points="0,0 1,32 877,31 875,-3"/>
+  </object>
+  <object name="VaktStolColl1" type="StaticCollisionLoop" x="11812" y="3141">
+   <polyline points="0,0 -16,9 -25,35 -21,73 16,181 33,195 57,197 81,188 92,171 88,139 55,61 45,25 23,-1"/>
+  </object>
+  <object name="VaktStolColl2" type="StaticCollisionLoop" x="11855" y="3364">
+   <polyline points="0,0 -17,19 -23,52 7,159 68,347 93,429 107,441 133,443 149,420 153,364 132,264 124,160 117,116 85,31 59,0 28,-4"/>
+  </object>
+  <object name="VaktStolColl3" type="StaticCollisionLoop" x="12003" y="3919">
+   <polyline points="0,0 15,-21 77,-49 108,-52 173,-44 287,-32 333,-28 395,-8 437,20 445,33 445,51 427,64 388,55 332,51 251,61 148,63 71,64 28,55 8,35 1,16"/>
+  </object>
+  <object name="VaktSkarmColl" type="StaticCollisionLoop" x="12858" y="3612">
+   <polyline points="0,0 25,7 51,-105 89,-164 135,-365 127,-417 152,-529 131,-533"/>
+  </object>
+  <object name="VaktACColl2" type="StaticCollisionLoop" x="11765" y="2759">
+   <properties>
+    <property name="id" value="NoShadow"/>
+   </properties>
+   <polyline points="0,0 49,-45 52,-275 1,-276"/>
+  </object>
+  <object name="VaktACColl1" type="StaticCollisionLoop" x="11769" y="2360">
+   <properties>
+    <property name="id" value="NoShadow"/>
+   </properties>
+   <polyline points="0,0 43,44 0,41"/>
+  </object>
+  <object name="ServerDoorColl" type="StaticCollision" x="15103" y="2244">
+   <properties>
+    <property name="id" value="ServerDoorColl"/>
+   </properties>
+   <polyline points="0,0 0,2153"/>
+  </object>
+ </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="Zid Spawn" type="ZidSpawn" x="4735" y="1118" width="143" height="158">
+  <object name="Zid Spawn" type="ZidSpawn" x="9510" y="4001" width="143" height="158">
    <ellipse/>
   </object>
  </objectgroup>
