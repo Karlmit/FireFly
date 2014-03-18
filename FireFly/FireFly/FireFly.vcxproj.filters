@@ -408,6 +408,9 @@
     <ClInclude Include="CrackZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="CrackZone.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">

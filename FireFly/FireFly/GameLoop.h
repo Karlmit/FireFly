@@ -46,5 +46,6 @@ private:
 	sf::Sprite hivemindProjection;
 
 	Zid* zidCast;
+
 };
 
