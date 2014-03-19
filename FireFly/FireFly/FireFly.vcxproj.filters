@@ -414,6 +414,12 @@
     <ClInclude Include="ServerRoomDoor.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="ServerRoomButton.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraScreen.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -765,7 +771,7 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="ServerRoomDoor.cpp">
-	  <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Water.cpp">
       <Filter>Source Files</Filter>
@@ -777,6 +783,12 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="FallingSprite.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerDoorButton.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraScreen.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

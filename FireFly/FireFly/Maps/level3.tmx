@@ -19,6 +19,14 @@
  </objectgroup>
  <objectgroup name="Back" width="1" height="1">
   <object name="ServerRoomDoor" type="ServerRoomDoor" gid="4" x="14913" y="4400"/>
+  <object name="ServerDoorButton" type="ServerRoomButton" x="12691" y="3673" width="19" height="15"/>
+  <object name="Screen1" type="CameraScreen" x="15919" y="2504" width="469" height="673">
+   <properties>
+    <property name="activeTexture" value="sucu_camera_lab_spritesheet.png"/>
+    <property name="id" value="Screen1"/>
+    <property name="openTexture" value="sucu_camera_lab_open.png"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1"/>
  <objectgroup name="Foreground" width="1" height="1"/>
@@ -79,8 +87,13 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="Zid Spawn" type="ZidSpawn" x="9510" y="4001" width="143" height="158">
+  <object name="Zid Spawn" type="ZidSpawn" x="9855" y="3720" width="143" height="158">
    <ellipse/>
+  </object>
+  <object name="Screen1Trigger" type="Trigger" x="15629" y="2402" width="1066" height="885">
+   <properties>
+    <property name="ScreenOn" value="Screen1"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

@@ -14,7 +14,6 @@ ServerRoomDoor::ServerRoomDoor(string texture, sf::Vector2f position)
 	mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 
 	setPosition(position);
-	mID = "Room2_Fan";
 }
 
 void ServerRoomDoor::start()

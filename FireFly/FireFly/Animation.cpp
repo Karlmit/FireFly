@@ -73,25 +73,10 @@ void Animation::updateAnimation()
 	}		
 }
 
-void Animation::updatePlay()
-{
-	
-
-	/*
-	if (mForward)
-	{
-		if (mCurrentColumn == mNumberOfColumns && mCurrentRow == mNumberOfRows)
-			mPlaying = false;
-	}
-	else
-	{
-		if (mCurrentColumn == 0 && mCurrentRow == 0)
-			mPlaying = false;
-	}
-	*/
-
+bool Animation::updatePlay()
+{	
 	if (mPlaying == false)
-		return;
+		return false;
 		
 
 	//Makes sure that the animation is updated every Xth frame, as defined in the constructor.
@@ -114,6 +99,7 @@ void Animation::updatePlay()
 				mCurrentColumn = mNumberOfColumns-1;
 				mCurrentRow = mNumberOfRows-1;
 				mPlaying = false;
+				return true;
 			}
 		}
 	}
@@ -137,9 +123,12 @@ void Animation::updatePlay()
 				mCurrentColumn = 0;
 				mCurrentRow = 0;
 				mPlaying = false;
+				return true;
 			}
 		}
 	}
+
+	return false;
 }
 
 void Animation::play(bool forward)
@@ -171,6 +160,17 @@ void Animation::resetAnimation()
 	mCurrentColumn = 0;
 	mCurrentRow = 0;
 	mAnimFrame = 0;
+}
+
+void Animation::resetPlayAnimation()
+{
+	mCurrentColumn = 0;
+	mCurrentRow = 0;
+	mAnimFrame = 0;
+
+	mPlaying = false;
+	mForward = true;
+	mSprite.setTextureRect(sf::IntRect(0,0, mSpriteWidth, mSpriteHeight));
 }
 
 

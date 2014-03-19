@@ -40,6 +40,17 @@ void GameLoop::run()
 {
 	// Load the level "level1.tmx"
 	Level::startLevel("level1.tmx");
+
+	// Test ladda in alla banor i minnet i början
+	/*
+	Level::startLevel("level2.tmx");
+	Level::startLevel("level3.tmx");
+	Level::startLevel("schakt1.tmx");
+	Level::startLevel("schakt2.tmx");
+	Level::startLevel("level1.tmx");
+	*/
+
+
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
