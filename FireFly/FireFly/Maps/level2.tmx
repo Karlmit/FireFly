@@ -167,7 +167,7 @@
     <property name="id" value="mSuccess"/>
    </properties>
   </object>
-  <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179">
+  <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179" visible="0">
    <properties>
     <property name="Firefly Room 2 TrackVersion 1 (Boiler).ogg" value="boiler"/>
     <property name="Firefly Room 2 TrackVersion 1 (Office).ogg" value="office"/>
@@ -241,7 +241,7 @@
   </object>
   <object name="SuCamKontor" type="SuCam" x="799" y="118" width="266" height="148"/>
   <object name="SuCamPannrum" type="SuCam" x="2198" y="2623" width="265" height="148"/>
-  <object name="PC_Text" x="2626" y="965" width="570" height="340" visible="0"/>
+  <object name="PC_Text" x="2626" y="965" width="570" height="340"/>
   <object name="AntPath" type="AntPath" x="545" y="4457">
    <polyline points="0,0 2935,9 2939,-963 3094,-959 3352,-686"/>
   </object>

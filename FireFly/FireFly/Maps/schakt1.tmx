@@ -268,13 +268,13 @@
    </properties>
    <ellipse/>
   </object>
-  <object name="Spark" type="Spark_Position1" x="2855" y="992">
+  <object name="Spark" type="Spark_Position" x="2855" y="992">
    <polyline points="0,0 2,-1"/>
   </object>
-  <object name="Spark" type="Spark_Position2" x="2833" y="1934">
+  <object name="Spark" type="Spark_Position" x="2833" y="1934">
    <polyline points="0,0 1,0"/>
   </object>
-  <object name="Spark" type="Spark_Position3" x="1219" y="1976">
+  <object name="Spark" type="Spark_Position" x="1219" y="1976">
    <polyline points="0,0 -1,1"/>
   </object>
   <object name="netInsect" type="StickyZone" x="3025" y="852" width="5" height="120"/>

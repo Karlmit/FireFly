@@ -39,7 +39,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level1.tmx");
+	Level::startLevel("schakt2.tmx");
 
 		
 	sf::Clock clock;
@@ -93,7 +93,7 @@ void GameLoop::processEvents()
 			//if (mZidsLight == nullptr)
 			mZidsLight = EntityList::getEntityList().getEntity("zidLight");
 			
-			if (mZidsLight != nullptr && zidCast != nullptr)
+			if (mZidsLight != nullptr)
 			{
 				mZidsLight->sendMessage(nullptr, "ChangeRadius", event.mouseWheel.delta);
 			}

@@ -11,10 +11,16 @@
   <tileoffset x="0" y="1"/>
   <image source="../Resources/Schakt/musfalla_scale.png" width="872" height="192"/>
  </tileset>
+ <tileset firstgid="4" name="schakt2bottomupdate" tilewidth="976" tileheight="135">
+  <image source="../Resources/Schakt/schakt2bottomupdate.png" width="976" height="135"/>
+ </tileset>
+ <tileset firstgid="5" name="fanForTiled" tilewidth="226" tileheight="17">
+  <image source="../Resources/Schakt/fanForTiled.png" width="226" height="17"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Schakt_2" type="EntitySprite" gid="1" x="0" y="2160"/>
  </objectgroup>
- <objectgroup name="Collision" width="1" height="1">
+ <objectgroup name="Collision" width="1" height="1" visible="0">
   <object name="wall" type="StaticCollision" x="1481" y="740">
    <polyline points="0,0 516,0 516,1052 1,1053 0,1"/>
   </object>
@@ -85,6 +91,28 @@
     <property name="spawnTime" value="3"/>
    </properties>
   </object>
+  <object name="Music" type="MusicManager" x="130" y="199" width="195" height="151">
+   <properties>
+    <property name="Schakt 2 (ogg).ogg" value="music"/>
+   </properties>
+  </object>
+  <object name="StartMusic" type="Trigger" x="-13" y="1155" width="245" height="224">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="music"/>
+    <property name="TriggerOnce" value="Zid"/>
+   </properties>
+  </object>
+  <object name="Killzone" type="Trigger" x="1250" y="2022" width="230" height="123">
+   <properties>
+    <property name="id" value="KillZone"/>
+   </properties>
+  </object>
+  <object name="killzone" type="Trigger" x="1991" y="2022" width="240" height="95">
+   <properties>
+    <property name="id" value="KillZone"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Front" width="1" height="1">
   <object name="Flakt1 ForceZone" type="ForceZone" x="1245" y="512" width="233" height="1633">
@@ -104,6 +132,10 @@
    </properties>
   </object>
   <object name="litenfluga" type="EntitySprite" gid="2" x="335" y="1376"/>
-  <object name="musfalla" type="EntitySprite" gid="3" x="580" y="1376"/>
+  <object name="musfalla" type="EntitySprite" gid="3" x="522" y="1376"/>
+  <object name="fan" type="SCHAKT2_FAN" gid="5" x="1255" y="2026"/>
+  <object name="fan" type="SCHAKT2_FAN" gid="5" x="2000" y="2025"/>
+  <object name="hiding" type="EntitySprite" gid="4" x="1250" y="2160"/>
  </objectgroup>
+ <objectgroup name="Foreground" width="1" height="1"/>
 </map>

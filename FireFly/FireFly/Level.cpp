@@ -38,6 +38,7 @@
 #include "CrackZone.h"
 #include "WaterDrop.h"
 #include "ServerRoomDoor.h"
+#include "SCHAKT2_FAN.h"
 
 
 #include <iostream>
@@ -550,23 +551,11 @@ void Level::loadMap(string filename)
 
 			}
 
-			else if(entityType == "Spark_Position1")
+			else if(entityType == "Spark_Position")
 			{
-				Sparks* spark1 = new Sparks("Schakt/elsprak1_spritesheet.png", unsigned(246.f/3), 52, position, 3);
-				spark1->setProperties(obj.getProperties());
-				eList.addEntity(spark1, Layer::Front, false);
-			}
-			else if(entityType == "Spark_Position2")
-			{
-				Sparks* spark2 = new Sparks("Schakt/elsprak2_spritesheet.png", unsigned(165.f/3), 69, position, 3);
-				spark2->setProperties(obj.getProperties());
-				eList.addEntity(spark2, Layer::Front, false);
-			}
-			else if(entityType == "Spark_Position3")
-			{
-				Sparks* spark3 = new Sparks("Schakt/elsprak3_spritesheet.png", unsigned(273.f/3), 84, position, 3);
-				spark3->setProperties(obj.getProperties());
-				eList.addEntity(spark3, Layer::Front, false);
+				Sparks* sparks = new Sparks(position);
+				sparks->setProperties(obj.getProperties());
+				eList.addEntity(sparks, Layer::Front, false);
 			}
 
 			//BalkPort
@@ -629,6 +618,12 @@ void Level::loadMap(string filename)
 				//water->setProperties(obj.getProperties());
 				//eList.addEntity(water, Layer::Front, false);
 
+			}
+			else if(entityType == "SCHAKT2_FAN")
+			{
+				SCHAKT2_FAN* schaktFan = new SCHAKT2_FAN(position);
+				schaktFan->setProperties(obj.getProperties());
+				eList.addEntity(schaktFan, layer, false);
 			}
 
 
