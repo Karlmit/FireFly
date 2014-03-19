@@ -39,7 +39,7 @@
 #include "WaterDrop.h"
 #include "ServerRoomDoor.h"
 #include "SCHAKT2_FAN.h"
-
+#include "EatingWasp.h"
 
 #include <iostream>
 using namespace std;
@@ -624,6 +624,13 @@ void Level::loadMap(string filename)
 				SCHAKT2_FAN* schaktFan = new SCHAKT2_FAN(position);
 				schaktFan->setProperties(obj.getProperties());
 				eList.addEntity(schaktFan, layer, false);
+			}
+
+			else if(entityType == "EatingWasp")
+			{
+				EatingWasp* eatingwasp = new EatingWasp(obj.getProperty("image").getValueString(), position);
+				eatingwasp->setProperties(obj.getProperties());
+				eList.addEntity(eatingwasp, layer, false);
 			}
 
 
