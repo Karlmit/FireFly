@@ -40,6 +40,7 @@ void GameLoop::run()
 {
 	// Load the level "level1.tmx"
 	Level::startLevel("level1.tmx");
+	
 
 	// Test ladda in alla banor i minnet i början
 	/*
@@ -49,8 +50,6 @@ void GameLoop::run()
 	Level::startLevel("schakt2.tmx");
 	Level::startLevel("level1.tmx");
 	*/
-
-
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -66,8 +65,9 @@ void GameLoop::run()
 		{
 			timeSinceLastUpdate -= TimePerFrame;
 
-			processEvents();
+			
 			update(TimePerFrame);
+			processEvents();
 
 		}
 
@@ -101,9 +101,12 @@ void GameLoop::processEvents()
 		case::sf::Event::MouseWheelMoved:
 			//if (mZidsLight == nullptr)
 			mZidsLight = EntityList::getEntityList().getEntity("zidLight");
+			
 			if (mZidsLight != nullptr)
+			{
 				mZidsLight->sendMessage(nullptr, "ChangeRadius", event.mouseWheel.delta);
-			break;
+			}
+				break;
 		case::sf::Event::TextEntered:
 			zidCast = static_cast<Zid*>(zid);
 			if(zidCast->inPCZone() == true)
@@ -252,7 +255,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("level3.tmx");
 			break;
 		case sf::Keyboard::F5:
-			Level::changeMap("schakt2.tmx"); 
+			Level::changeMap("schakt2.tmx");
 			break;
 		case sf::Keyboard::F6:
 			Level::changeMap("level6.tmx");

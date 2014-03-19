@@ -1,17 +1,28 @@
 #include "Sparks.h"
 
 
-Sparks::Sparks(std::string texture, unsigned int width, unsigned int height, sf::Vector2f position, unsigned int numberOfColumns)
-	: spark(Loading::getTexture(texture), width, height, 1, numberOfColumns, 100) 
+Sparks::Sparks(sf::Vector2f position)
+	: spark(Loading::getTexture("Schakt/elgnista_spritesheet.png"), 84, 84, 1, 8, 60) 
 {
 	setPosition(position);
+	spark.mLoopOnce = true;
 }
 
 
 void Sparks::updateEntity(sf::Time dt)
 {
-	spark.updateAnimation();
+	if(spark.mLoopOnce == true && mSparkClock.getElapsedTime().asSeconds() > 1)
+	{
+		spark.oneLoop();
+	}
+	
 	mSprite = spark.getCurrentSprite();
+	
+	if(spark.mLoopOnce == false)
+	{
+		mSparkClock.restart();
+		spark.mLoopOnce = true;
+	}
 }
 
 void Sparks::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const

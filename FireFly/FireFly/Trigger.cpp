@@ -6,10 +6,13 @@
 Trigger::Trigger(sf::FloatRect rect)
 	: mRigidbody()
 	, mSuccess(Loading::getSound("Room 2/Datorblips/Blip1.wav"), true)
+	, mDeadRat(Loading::getSound("Schakt/deadRatSound.wav"), true)
 {
 	mRigidbody.AddTriggerBoxBody(rect, false, sf::Vector2f(0,0));
 	mRigidbody.getBody()->SetUserData(this);
 
+	//DeadRat
+	mDeadRatOnce = false;
 	//mSuccess
 	mFanOn = false;
 }
@@ -89,6 +92,13 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 			
 		if(isProperty("Spider"))
 			EntityList::getEntityList().getEntity("spoderMan")->sendMessage(this, "spiderisinRoom");
+
+		if(isProperty("DeadRatSoundZone") && mDeadRatOnce == false)
+		{
+			mDeadRat.play();
+			mDeadRatOnce = true;
+		}
+
 	}	
 }
 

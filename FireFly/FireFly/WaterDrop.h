@@ -5,9 +5,7 @@
 class WaterDrop : public Entity
 {
 public:
-	WaterDrop(sf::Vector2f position, float endPosition, float width, float height);
-	WaterDrop(float xPosition, float yPosition, float endPosition, float width, float height);
-	
+	WaterDrop(sf::Vector2f position, float endPosition, float spawntime);
 	~WaterDrop();
 	virtual void sendMessage(Entity* entity, std::string message);
 private:
@@ -17,10 +15,10 @@ private:
 	sf::Sprite mSprite;
 
 	Rigidbody mRigidbody;
-	float width;
-	float height;
 	float mEndPosition;
-
+	sf::Clock mSpawnClock;
+	float mSpawnTime;
+	bool mActivate;
 
 
 };

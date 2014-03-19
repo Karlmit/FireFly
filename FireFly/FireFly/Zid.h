@@ -48,6 +48,7 @@ private:
 	int deathAnimCount;
 	Audio dashSound;
 	Entity* mSpoderMan;
+	Entity* mWasp;
 	bool zidDash;
 	int dashFrameNo;
 	bool mDirLeft;
@@ -55,7 +56,7 @@ private:
 	bool mAlive;
 	bool mInFireflyZone;
 	bool mSugarPile;
-
+	
 	// Light
 	Entity* mLight;
 

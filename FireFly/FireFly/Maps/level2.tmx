@@ -156,7 +156,7 @@
    <polyline points="0,0 3,-1191 4345,-1192 4345,968 8,968 -37,968 -28,953 -19,951 -23,932 -15,924 -12,911 0,901 0,257"/>
   </object>
  </objectgroup>
- <objectgroup name="Misc" width="1" height="1" visible="0">
+ <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="110" y="2031" width="40" height="30">
    <ellipse/>
   </object>
@@ -167,7 +167,7 @@
     <property name="id" value="mSuccess"/>
    </properties>
   </object>
-  <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179">
+  <object name="Music Manager" type="MusicManager" x="135" y="76" width="362" height="179" visible="0">
    <properties>
     <property name="Firefly Room 2 TrackVersion 1 (Boiler).ogg" value="boiler"/>
     <property name="Firefly Room 2 TrackVersion 1 (Office).ogg" value="office"/>
@@ -241,7 +241,7 @@
   </object>
   <object name="SuCamKontor" type="SuCam" x="799" y="118" width="266" height="148"/>
   <object name="SuCamPannrum" type="SuCam" x="2198" y="2623" width="265" height="148"/>
-  <object name="PC_Text" x="2626" y="965" width="570" height="340" visible="0"/>
+  <object name="PC_Text" x="2626" y="965" width="570" height="340"/>
   <object name="AntPath" type="AntPath" x="545" y="4457">
    <polyline points="0,0 2935,9 2939,-963 3094,-959 3352,-686"/>
   </object>
@@ -267,5 +267,10 @@
   <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1342" y="460" width="8" height="55"/>
   <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1362" y="522" width="12" height="16"/>
   <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1836" y="440" width="7" height="14"/>
+  <object name="NextMapTrigger" type="Trigger" x="5081" y="-4" width="340" height="937">
+   <properties>
+    <property name="ChangeMap" value="schakt2.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
