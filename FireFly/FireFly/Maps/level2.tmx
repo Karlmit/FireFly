@@ -156,7 +156,7 @@
    <polyline points="0,0 3,-1191 4345,-1192 4345,968 8,968 -37,968 -28,953 -19,951 -23,932 -15,924 -12,911 0,901 0,257"/>
   </object>
  </objectgroup>
- <objectgroup name="Misc" width="1" height="1" visible="0">
+ <objectgroup name="Misc" width="1" height="1">
   <object name="ZidStart" type="ZidSpawn" x="110" y="2031" width="40" height="30">
    <ellipse/>
   </object>
@@ -267,5 +267,10 @@
   <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1342" y="460" width="8" height="55"/>
   <object name="FlyTapeStickyZoneLeft" type="StickyZone" x="1362" y="522" width="12" height="16"/>
   <object name="FlyTapeStickyZoneR6" type="StickyZone" x="1836" y="440" width="7" height="14"/>
+  <object name="NextMapTrigger" type="Trigger" x="5081" y="-4" width="340" height="937">
+   <properties>
+    <property name="ChangeMap" value="schakt2.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

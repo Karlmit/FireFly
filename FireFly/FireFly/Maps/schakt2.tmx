@@ -7,15 +7,14 @@
   <tileoffset x="0" y="1"/>
   <image source="../Resources/Schakt/dodinsektgolv1_scale.png" width="171" height="46"/>
  </tileset>
- <tileset firstgid="3" name="musfalla_scale" tilewidth="872" tileheight="192">
-  <tileoffset x="0" y="1"/>
-  <image source="../Resources/Schakt/musfalla_scale.png" width="872" height="192"/>
- </tileset>
- <tileset firstgid="4" name="schakt2bottomupdate" tilewidth="976" tileheight="135">
+ <tileset firstgid="3" name="schakt2bottomupdate" tilewidth="976" tileheight="135">
   <image source="../Resources/Schakt/schakt2bottomupdate.png" width="976" height="135"/>
  </tileset>
- <tileset firstgid="5" name="fanForTiled" tilewidth="226" tileheight="17">
+ <tileset firstgid="4" name="fanForTiled" tilewidth="226" tileheight="17">
   <image source="../Resources/Schakt/fanForTiled.png" width="226" height="17"/>
+ </tileset>
+ <tileset firstgid="5" name="mus_scale_2" tilewidth="685" tileheight="150">
+  <image source="../Resources/Schakt/mus_scale_2.png" width="685" height="150"/>
  </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Schakt_2" type="EntitySprite" gid="1" x="0" y="2160"/>
@@ -132,10 +131,15 @@
    </properties>
   </object>
   <object name="litenfluga" type="EntitySprite" gid="2" x="335" y="1376"/>
-  <object name="musfalla" type="EntitySprite" gid="3" x="522" y="1376"/>
-  <object name="fan" type="SCHAKT2_FAN" gid="5" x="1255" y="2026"/>
-  <object name="fan" type="SCHAKT2_FAN" gid="5" x="2000" y="2025"/>
-  <object name="hiding" type="EntitySprite" gid="4" x="1250" y="2160"/>
+  <object name="fan" type="SCHAKT2_FAN" gid="4" x="1255" y="2026"/>
+  <object name="fan" type="SCHAKT2_FAN" gid="4" x="2000" y="2025"/>
+  <object name="hiding" type="EntitySprite" gid="3" x="1250" y="2160"/>
+  <object name="mus" type="EntitySprite" gid="5" x="557" y="1380"/>
+  <object name="NextMapTrigger" type="Trigger" x="4555" y="6" width="400" height="2158">
+   <properties>
+    <property name="ChangeMap" value="level3.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1"/>
 </map>
