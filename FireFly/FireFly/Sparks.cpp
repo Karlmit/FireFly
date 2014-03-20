@@ -2,7 +2,7 @@
 
 
 Sparks::Sparks(sf::Vector2f position)
-	: spark(Loading::getTexture("Schakt/elgnista_spritesheet.png"), 84, 84, 1, 8, 60) 
+	: spark(Loading::getTexture("Schakt/elgnista_spritesheet.png"), 84, 84, 1, 8, 40) 
 {
 	setPosition(position);
 	spark.mLoopOnce = true;

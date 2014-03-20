@@ -152,7 +152,7 @@ void PC::loggin()
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mLoggin == true && mButtonClock.getElapsedTime().asMilliseconds() > 100)
 	{
 		mInvalidCounter++;
-		if(mInvalidCounter > 5)
+		if(mInvalidCounter > 3)
 		{
 			mHint = true;
 		}

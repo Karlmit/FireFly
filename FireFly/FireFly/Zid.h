@@ -45,6 +45,8 @@ private:
 	Animation idleSugarAnimation;
 	Animation dashSugarAnimation;
 	Animation deathAnimation;
+	Animation electricDeathAnimation;
+	bool mElctricDeath;
 	int deathAnimCount;
 	Audio dashSound;
 	Entity* mSpoderMan;

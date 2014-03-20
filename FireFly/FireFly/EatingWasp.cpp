@@ -2,7 +2,7 @@
 
 
 EatingWasp::EatingWasp(std::string image, sf::Vector2f position)
-	: mAnimation(Loading::getTexture(image), 128, 128, 6, 5, 60)
+	: mAnimation(Loading::getTexture(image), 256, 82, 10, 3, 60)
 {
 	setPosition(position);
 }
