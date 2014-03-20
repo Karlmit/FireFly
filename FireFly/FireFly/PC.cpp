@@ -148,14 +148,15 @@ void PC::loggin()
 			Log::write("Correct Password Entered");
 		}
 	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mLoggin == true)
+
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mLoggin == true && mButtonClock.getElapsedTime().asMilliseconds() > 100)
 	{
 		mInvalidCounter++;
 		if(mInvalidCounter > 5)
 		{
 			mHint = true;
 		}
-
+		mButtonClock.restart();
 		mInvalid = true;
 	}
 

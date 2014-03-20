@@ -71,10 +71,23 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 				mFanOn = true;
 			}
 		}
-			if (isProperty("TurnOff"))
+
+		if (isProperty("TurnOff"))
 		{
 			EntityList::getEntityList().getEntity(getProperty("TurnOff"))->sendMessage(this, "TurnOff");
 		}
+
+		if (isProperty("ScreenOn"))
+		{
+			EntityList::getEntityList().getEntity(getProperty("ScreenOn"))->sendMessage(this, "ScreenOn");			
+		}
+			if (isProperty("ScreenOff"))
+		{
+			EntityList::getEntityList().getEntity(getProperty("ScreenOff"))->sendMessage(this, "ScreenOff");
+		}
+
+
+
 
 			
 		if(isProperty("Spider"))

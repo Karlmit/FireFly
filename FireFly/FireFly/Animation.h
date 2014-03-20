@@ -31,8 +31,9 @@ public:
 
 	bool mLoopOnce;
 
-	// Till server rum dörren
-	void updatePlay();
+	// Till server rummet
+	bool updatePlay();
+	void resetPlayAnimation();
 	void play(bool forward);
 private:
 	bool mPlaying;

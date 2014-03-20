@@ -405,6 +405,12 @@
     <ClInclude Include="ServerRoomDoor.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="ServerRoomButton.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraScreen.h">
+	  <Filter>Header Files\Entities</Filter>
+    </ClInclude>
     <ClInclude Include="SCHAKT2_FAN.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -787,6 +793,12 @@
     </ClCompile>
     <ClCompile Include="EatingWasp.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerDoorButton.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraScreen.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

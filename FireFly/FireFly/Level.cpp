@@ -38,8 +38,11 @@
 #include "CrackZone.h"
 #include "WaterDrop.h"
 #include "ServerRoomDoor.h"
+#include "ServerRoomButton.h"
+#include "CameraScreen.h"
 #include "SCHAKT2_FAN.h"
 #include "EatingWasp.h"
+
 
 #include <iostream>
 using namespace std;
@@ -607,6 +610,13 @@ void Level::loadMap(string filename)
 				eList.addEntity(new ServerRoomDoor(imageSrc, positionSprite), layer, false);
 			}
 
+			//
+			// ServerRoomButton
+			//
+			else if (entityType == "ServerRoomButton")
+			{
+				eList.addEntity(new ServerRoomButton(position), layer, false);
+			}
 
 			//water for schakt 2
 			else if(entityType == "Water")
@@ -626,12 +636,29 @@ void Level::loadMap(string filename)
 				eList.addEntity(schaktFan, layer, false);
 			}
 
+
 			else if(entityType == "EatingWasp")
 			{
 				EatingWasp* eatingwasp = new EatingWasp(obj.getProperty("image").getValueString(), position);
 				eatingwasp->setProperties(obj.getProperties());
 				eList.addEntity(eatingwasp, layer, false);
 			}
+
+
+			//
+			// CameraScreen
+			//
+			else if (entityType == "CameraScreen")
+			{
+				
+				string open = "Room 3/" + obj.getProperty("openTexture").getValueString();
+				string active = "Room 3/" + obj.getProperty("activeTexture").getValueString();
+				CameraScreen* cam = new CameraScreen(open, active, position);
+				cam->setID(id);
+				eList.addEntity(cam, layer, false);
+				
+			}
+
 
 
 //			else if (entityType == "SecuMonitor")

@@ -39,8 +39,17 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level3.tmx");
+	Level::startLevel("level1.tmx");
 
+
+	// Test ladda in alla banor i minnet i början
+	/*
+	Level::startLevel("level2.tmx");
+	Level::startLevel("level3.tmx");
+	Level::startLevel("schakt1.tmx");
+	Level::startLevel("schakt2.tmx");
+	Level::startLevel("level1.tmx");
+	*/
 		
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -124,6 +133,11 @@ void GameLoop::processEvents()
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 				{
 					textEntered.clear();	//Clears string if enter is pressed
+					if(pc != nullptr)
+					{
+						pc->sendSfString(pc, textEntered);
+					}
+
 				}
 
 			}
@@ -188,7 +202,7 @@ void GameLoop::update(sf::Time timePerFrame)
 	//pointers for event
 	pc = EntityList::getEntityList().getEntity("PC");
 	zid = EntityList::getEntityList().getEntity("Zid");
-	//clears text
+	//clears text when reloading map
 	PC* pcCast = static_cast<PC*>(pc);
 	if(pcCast != nullptr) 
 	{
