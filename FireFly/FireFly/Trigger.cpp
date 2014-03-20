@@ -86,6 +86,15 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 			EntityList::getEntityList().getEntity(getProperty("ScreenOff"))->sendMessage(this, "ScreenOff");
 		}
 
+		if (isProperty("Activate"))
+		{
+			EntityList::getEntityList().getEntity(getProperty("Activate"))->sendMessage(this, "Activate");			
+		}
+			if (isProperty("Deactivate"))
+		{
+			EntityList::getEntityList().getEntity(getProperty("Deactivate"))->sendMessage(this, "Deactivate");
+		}
+
 
 
 

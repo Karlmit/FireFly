@@ -409,7 +409,7 @@
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="CameraScreen.h">
-	  <Filter>Header Files\Entities</Filter>
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="SCHAKT2_FAN.h">
       <Filter>Header Files\Entities</Filter>
@@ -418,6 +418,12 @@
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="BalkPort.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerRoomEyeScreen.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeSprite.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -794,6 +800,12 @@
     <ClCompile Include="CameraScreen.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="ServerRoomEyeScreen.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeSprite.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Maps\level1.tmx">
@@ -803,6 +815,9 @@
       <Filter>Resource Files\Maps</Filter>
     </None>
     <None Include="Maps\schakt1.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Maps\level3.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
   </ItemGroup>
