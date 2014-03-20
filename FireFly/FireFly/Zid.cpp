@@ -40,6 +40,7 @@ Zid::Zid(sf::Vector2f position)
 , idleSugarAnimation(Loading::getTexture("Zid_flygande_socker_spritesheet.png", true), 128, 128, 5, 8, 20)
 , dashSugarAnimation(Loading::getTexture("Zid_spurt_socker_spritesheet.png"), 128, 128, 5, 5, 2)
 , deathAnimation(Loading::getTexture("Zid_dod_spritesheet.png"), 128, 128, 5, 5, 20)
+, electricDeathAnimation(Loading::getTexture("zid_eldod_spritesheet.png"), 128, 128, 5, 5, 20)
 , deathAnimCount(0)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
@@ -57,6 +58,7 @@ Zid::Zid(sf::Vector2f position)
 , mSlooowDooown(0)
 , mLight(nullptr)
 , mFirstSugarDropped(false) 
+, mElctricDeath(false)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -177,8 +179,17 @@ void Zid::updateEntity(sf::Time dt)
 		if (deathAnimCount < 24)
 		{
 			deathAnimCount++;
+			if(mElctricDeath == false)
+			{
 			deathAnimation.updateAnimation();
 			mSprite = deathAnimation.getCurrentSprite();
+			}
+			else
+			{
+				electricDeathAnimation.updateAnimation();
+				mSprite = electricDeathAnimation.getCurrentSprite();
+			}
+
 		}
 	}
 
@@ -573,6 +584,7 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 	{
 		mAlive = false;
 		Log::write("Zid died from electric.");
+		mElctricDeath = true;
 	}
 	if (other->getID() == "Sugar")
 	{

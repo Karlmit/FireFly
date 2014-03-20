@@ -60,7 +60,23 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup name="Front" width="1" height="1"/>
+ <objectgroup name="Front" width="1" height="1">
+  <object name="EatingWasp" type="EatingWasp" x="3059" y="1724">
+   <properties>
+    <property name="image" value="Room 3/Balgeting_matrester_spritesheet1.png"/>
+   </properties>
+  </object>
+  <object name="EatingWasp" type="EatingWasp" x="8082" y="2402">
+   <properties>
+    <property name="image" value="Room 3/balgeting_matrester_spritesheet2.png"/>
+   </properties>
+  </object>
+  <object name="EatingWasp" type="EatingWasp" x="6470" y="2402">
+   <properties>
+    <property name="image" value="Room 3/balgeting_matrester_spritesheet3.png"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="Foreground" width="1" height="1"/>
  <objectgroup name="Collision" width="1" height="1">
   <object name="HissLeftColl" type="StaticCollision" x="9266" y="4396">

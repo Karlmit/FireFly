@@ -147,6 +147,7 @@
     <ClInclude Include="CrackZone.h" />
     <ClInclude Include="Dust.h" />
     <ClInclude Include="FadeSprite.h" />
+    <ClInclude Include="EatingWasp.h" />
     <ClInclude Include="FadeToBlack.h" />
     <ClInclude Include="FallingSprite.h" />
     <ClInclude Include="FireflyNPC.h" />
@@ -274,6 +275,7 @@
     <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="Dust.cpp" />
     <ClCompile Include="FadeSprite.cpp" />
+    <ClCompile Include="EatingWasp.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="FallingSprite.cpp" />
     <ClCompile Include="FireflyNPC.cpp" />

@@ -43,6 +43,7 @@
 #include "SCHAKT2_FAN.h"
 #include "ServerRoomEyeScreen.h"
 #include "FadeSprite.h"
+#include "EatingWasp.h"
 
 
 
@@ -637,6 +638,15 @@ void Level::loadMap(string filename)
 				schaktFan->setProperties(obj.getProperties());
 				eList.addEntity(schaktFan, layer, false);
 			}
+
+
+			else if(entityType == "EatingWasp")
+			{
+				EatingWasp* eatingwasp = new EatingWasp(obj.getProperty("image").getValueString(), position);
+				eatingwasp->setProperties(obj.getProperties());
+				eList.addEntity(eatingwasp, layer, false);
+			}
+
 
 			//
 			// CameraScreen

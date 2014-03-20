@@ -425,6 +425,9 @@
     </ClInclude>
     <ClInclude Include="FadeSprite.h">
       <Filter>Header Files\Entities</Filter>
+	</ClInclude>  
+    <ClInclude Include="EatingWasp.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -793,6 +796,9 @@
     </ClCompile>
     <ClCompile Include="SecuMonitor.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="EatingWasp.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ServerDoorButton.cpp">
       <Filter>Source Files\Entities</Filter>
