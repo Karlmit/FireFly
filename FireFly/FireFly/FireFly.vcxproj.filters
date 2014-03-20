@@ -409,7 +409,7 @@
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="CameraScreen.h">
-	  <Filter>Header Files\Entities</Filter>
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="SCHAKT2_FAN.h">
       <Filter>Header Files\Entities</Filter>
@@ -421,6 +421,9 @@
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="EatingWasp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lever.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -799,6 +802,9 @@
     </ClCompile>
     <ClCompile Include="CameraScreen.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="lever.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

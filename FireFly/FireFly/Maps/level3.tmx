@@ -15,6 +15,12 @@
  <tileset firstgid="14" name="bålTiled" tilewidth="128" tileheight="128">
   <image source="../Resources/Room 3/bålTiled.png" width="128" height="128"/>
  </tileset>
+ <tileset firstgid="15" name="spak" tilewidth="118" tileheight="356">
+  <image source="../Resources/Room 3/spak.png" width="118" height="356"/>
+ </tileset>
+ <tileset firstgid="16" name="spak_kropp" tilewidth="806" tileheight="595">
+  <image source="../Resources/Room 3/spak_kropp.png" width="806" height="595"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room3_Background_Part1" type="EntitySprite" gid="1" x="0" y="4400"/>
   <object name="Room3_Background_Part2" type="EntitySprite" gid="2" x="6796" y="4400"/>
@@ -47,6 +53,8 @@
     <property name="image" value="Room 3/balgeting_matrester_spritesheet3.png"/>
    </properties>
   </object>
+  <object name="spak" type="spak" gid="15" x="776" y="1544"/>
+  <object name="spak_kropp" gid="16" x="429" y="2010"/>
  </objectgroup>
  <objectgroup name="Foreground" width="1" height="1"/>
  <objectgroup name="Collision" width="1" height="1">
@@ -106,7 +114,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="Zid Spawn" type="ZidSpawn" x="9855" y="3720" width="143" height="158">
+  <object name="Zid Spawn" type="ZidSpawn" x="1535" y="1432" width="143" height="158">
    <ellipse/>
   </object>
   <object name="Screen1Trigger" type="Trigger" x="15629" y="2402" width="1066" height="885">

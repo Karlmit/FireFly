@@ -42,7 +42,7 @@
 #include "CameraScreen.h"
 #include "SCHAKT2_FAN.h"
 #include "EatingWasp.h"
-
+#include "lever.h"
 
 #include <iostream>
 using namespace std;
@@ -657,6 +657,13 @@ void Level::loadMap(string filename)
 				cam->setID(id);
 				eList.addEntity(cam, layer, false);
 				
+			}
+
+			else if(entityType == "spak")
+			{
+				lever* spak = new lever(position, imageSrc);
+				spak->setProperties(obj.getProperties());
+				eList.addEntity(spak, layer, false);
 			}
 
 

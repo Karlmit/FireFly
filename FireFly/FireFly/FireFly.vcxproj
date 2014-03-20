@@ -157,6 +157,7 @@
     <ClInclude Include="JaktSpindel.h" />
     <ClInclude Include="Jar.h" />
     <ClInclude Include="LevelBoundryCollider.h" />
+    <ClInclude Include="lever.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Map.h" />
@@ -283,6 +284,7 @@
     <ClCompile Include="JaktSpindel.cpp" />
     <ClCompile Include="Jar.cpp" />
     <ClCompile Include="LevelBoundryCollider.cpp" />
+    <ClCompile Include="lever.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Map.cpp" />
