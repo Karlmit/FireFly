@@ -146,6 +146,7 @@
     <ClInclude Include="ContactListener.h" />
     <ClInclude Include="CrackZone.h" />
     <ClInclude Include="Dust.h" />
+    <ClInclude Include="FadeSprite.h" />
     <ClInclude Include="EatingWasp.h" />
     <ClInclude Include="FadeToBlack.h" />
     <ClInclude Include="FallingSprite.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="SecuMonitor.h" />
     <ClInclude Include="ServerRoomButton.h" />
     <ClInclude Include="ServerRoomDoor.h" />
+    <ClInclude Include="ServerRoomEyeScreen.h" />
     <ClInclude Include="Sparks.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="SpiderPath.h" />
@@ -273,6 +275,7 @@
     <ClCompile Include="CrackZone.cpp" />
     <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="Dust.cpp" />
+    <ClCompile Include="FadeSprite.cpp" />
     <ClCompile Include="EatingWasp.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
     <ClCompile Include="FallingSprite.cpp" />
@@ -307,6 +310,7 @@
     <ClCompile Include="SecuMonitor.cpp" />
     <ClCompile Include="ServerDoorButton.cpp" />
     <ClCompile Include="ServerRoomDoor.cpp" />
+    <ClCompile Include="ServerRoomEyeScreen.cpp" />
     <ClCompile Include="Sparks.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="SpiderPath.cpp" />
@@ -342,6 +346,7 @@
   <ItemGroup>
     <None Include="Maps\level1.tmx" />
     <None Include="Maps\level2.tmx" />
+    <None Include="Maps\level3.tmx" />
     <None Include="Maps\schakt1.tmx">
       <SubType>Designer</SubType>
     </None>

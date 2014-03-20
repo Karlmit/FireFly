@@ -41,8 +41,11 @@
 #include "ServerRoomButton.h"
 #include "CameraScreen.h"
 #include "SCHAKT2_FAN.h"
+#include "ServerRoomEyeScreen.h"
+#include "FadeSprite.h"
 #include "EatingWasp.h"
 #include "lever.h"
+
 
 #include <iostream>
 using namespace std;
@@ -226,7 +229,7 @@ void Level::loadMap(string filename)
 			}
 
 			//
-			//	EntitySprite
+			//	ParallaxSprite
 			//
 			if (entityType == "ParallaxSprite")
 			{
@@ -666,6 +669,23 @@ void Level::loadMap(string filename)
 				eList.addEntity(spak, layer, false);
 			}
 
+			//
+			// ServerRoomEyeScreen
+			//
+			else if (entityType == "ServerRoomEyeScreen")
+			{
+				eList.addEntity(new ServerRoomEyeScreen(position), layer, false);
+			}
+
+			//
+			//	FadeSprite
+			//
+			if (entityType == "FadeSprite")
+			{
+				Entity* fadeSprite = new FadeSprite(imageSrc, positionSprite);
+				fadeSprite->setID(id);
+				eList.addEntity(fadeSprite, layer, false);
+			}
 
 
 //			else if (entityType == "SecuMonitor")

@@ -12,11 +12,20 @@ public:
 	virtual void start();
 
 private:
+	enum class State 
+	{
+		Inactive,
+		Open1,
+		Open2,
+		Active,
+		Glitch,
+		Close
+	};
+
 	Animation mOpenScreenAnimation;
 	Animation mOpenAnimation;
 	Animation mActiveAnimation;
 	sf::Sprite mSprite;	
-	bool mOpenScreenDone;
-	bool mOpenDone;
-	bool mTurnOn;
+	bool mNoActiveAnimation;
+	State mState;
 };
