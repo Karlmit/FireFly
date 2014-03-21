@@ -4,8 +4,6 @@
 #include "Box2dWorld.h"
 #include "Camera.h"
 #include "RayCastCallback.h"
-// #include "FireflyZone.h"
-// #include "MirrorQueue.h"
 #include "Log.h"
 #include "Level.h"
 #include "Light.h"
@@ -40,7 +38,6 @@ Zid::Zid(sf::Vector2f position)
 , dashSound(Loading::getSound("canary.wav"), true)
 , mRigidbody()
 , mInStickyZone(false)
-, mInFireflyZone(false)
 , mParticleSystem()
 , mEmitter()
 , mSweetZid(false)
@@ -380,13 +377,13 @@ void Zid::movement()
 			force *= FORCE * (length / 0.5f) * 0.5f;
 			body->ApplyForceToCenter(force, true);
 		}
-/*		if (mInFireflyZone)
+
+		//Make the hivemind zone usable.
+		if(hivemindEnabled == false)
 		{
-			auto q = MirrorQueue::getMirrorQueue().getQueue();
-			if (q->size() > QUEUE_LENGTH)
-				q->pop();
-			q->push(force);
-		} */
+			hivemindEnabled = true;
+		}
+
 	}
 
 	// Apply impulse for the right mouse button
@@ -420,7 +417,6 @@ void Zid::movement()
 				mLoseSugarTimer.restart();
 				EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StopHunting");
 			}
-
 
 			//Temporary until a real dashsound
 			//dashSound.play();
@@ -514,25 +510,24 @@ sf::Vector2f Zid::getDroppedSugar()
 	return mDroppedSugarPosition;
 }
 
+bool Zid::inHivemindZone()
+{
+	return hivemindContact;
+}
+
 void Zid::BeginContact(b2Contact *contact, Entity* other)
 {
-	//if(other->getID() == "FireflyZone")
-//	if(other->getID() == "FireflyZone")
-//		mInFireflyZone = true;
-
-
 	if (other->getID() == "StickyZone")
 	{
 		mInStickyZone = true;
 		Log::write("Zid got stuck in StickyZone");
 	}
 
-
-
 	if(other->getID() == "PC_Zone")
 	{
 		mPC_Zone = true;
 	}
+
 	if(other->getID() == "spoderMan")
 	{
 		mAlive = false;
@@ -555,10 +550,6 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 		mSweetZid = true;
 		EntityList::getEntityList().getEntity("Wasp")->sendMessage(this, "StartHunting");
 	}
-	if(other->getID() == "CrackZone")
-	{
-		hivemindContact = true;
-	}
 
 	if (other->getID() == "Wasp")
 	{
@@ -578,9 +569,6 @@ void Zid::BeginContact(b2Contact *contact, Entity* other)
 
 void Zid::EndContact(b2Contact *contact, Entity* other)
 {
-	
-	if(other->getID() == "CrackZone")
-		hivemindContact = false;
 	if (other->getID() == "StickyZone")
 		mInStickyZone = false;
 	if(other->getID() == "PC_Zone")

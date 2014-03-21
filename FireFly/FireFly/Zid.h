@@ -6,6 +6,7 @@
 #include "Animation.h"
 #include "Audio.h"
 #include "Log.h"
+#include "Hivemind.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -21,8 +22,12 @@ public:
 	Zid(sf::Vector2f position);
 	bool isSweet();
 	sf::Vector2f getDroppedSugar();
+	bool inHivemindZone();
 	bool inPCZone();
+	bool inFireflyZone();
 	virtual void sendMessage(Entity* entity, std::string message);
+
+
 
 private:
 	virtual void updateEntity(sf::Time dt);	
@@ -52,7 +57,8 @@ private:
 	bool mDirLeft;
 	bool mInStickyZone;
 	bool mAlive;
-	bool mInFireflyZone;
+	bool hivemindContact;
+	bool hivemindEnabled;
 
 	// Light
 	Entity* mLight;
@@ -75,7 +81,6 @@ private:
 	sf::Vector2f mDroppedSugarPosition;
 	float mSlooowDooown;
 	bool mInAcZone;
-	bool hivemindContact;
 };
 
 #endif

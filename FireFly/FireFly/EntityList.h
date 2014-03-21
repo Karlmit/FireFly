@@ -12,6 +12,7 @@ enum class Layer
 	Collision,
 	Light,
 	Misc,
+	Hivemind,
 };
 
 class EntityList
@@ -28,6 +29,7 @@ public:
 	void drawFront(sf::RenderWindow& window);
 	void drawLight(sf::RenderWindow& window);
 	void drawForeground(sf::RenderWindow& window);
+	void drawHivemind(sf::RenderWindow& window);
 	
 	void addEntity(Entity *entity, Layer layer = Layer::Front, bool runStart = true);	//adds new entities
 	void updateList();	//deletes "dead" entities
@@ -52,6 +54,7 @@ private:
 	entityList FrontLayerList;
 	entityList ForegroundLayerList;
 	entityList LightLayerList;
+	entityList HivemindLayerList;
 
 	sf::RenderTexture rLightMap;
 	sf::Sprite sLightMap;

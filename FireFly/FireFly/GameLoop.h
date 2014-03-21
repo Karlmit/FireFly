@@ -42,7 +42,10 @@ private:
 	Entity* zid;
 	sf::Sprite cursorSprite;
 	Entity* mZidsLight;
-	sf::Texture hivemind;
-	sf::Sprite hivemindProjection;
+//	sf::Texture hivemind;
+//	sf::Sprite hivemindProjection;
+//	bool inTheHivemindZone;
+//	bool hivemindScaled;
+//	unsigned int hivemindScale;
 };
 

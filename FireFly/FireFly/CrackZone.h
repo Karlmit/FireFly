@@ -13,6 +13,5 @@ public:
 private:
 	Rigidbody mRigidbody;
 	bool mActivated;
-//	Hivemind fireflyHivemind;
 };
 

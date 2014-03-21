@@ -35,7 +35,7 @@
 #include "Dust.h"
 #include "SpiderPath.h"
 #include "Sparks.h"
-#include "CrackZone.h"
+#include "Hivemind.h"
 
 #include <iostream>
 using namespace std;
@@ -438,17 +438,17 @@ void Level::loadMap(string filename)
 			//
 			//	CrackZone
 			//
-			else if (entityType == "CrackZone")
+			else if (entityType == "HivemindZone")
 			{
 				sf::FloatRect rect;
 				rect.left = position.x;
 				rect.top = position.y;
 				rect.width = width;
 				rect.height = height;
-				CrackZone* zone = new CrackZone(rect);
-				zone->setProperties(obj.getProperties());				
-				zone->setID(id);
-				eList.addEntity(zone, Layer::Foreground, false);
+				Hivemind* mind = new Hivemind(rect, obj.getProperty("image").getValueString());
+				mind->setProperties(obj.getProperties());				
+				mind->setID(id);
+				eList.addEntity(mind, Layer::Hivemind, false);
 			}
 
 			//
@@ -649,6 +649,8 @@ Layer Level::getLayerFromString(string strLayer)
 		return Layer::Misc;
 	else if (strLayer == "NPC")
 		return Layer::NPC;
+	else if (strLayer == "Hivemind")
+		return Layer::Hivemind;
 
 	string ectStr = "Level::getLayerFromString - No Layer with that name: ";
 	ectStr.append(strLayer);
