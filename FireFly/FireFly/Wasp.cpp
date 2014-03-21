@@ -100,6 +100,8 @@ void Wasp::updateEntity(sf::Time timePerFrame)
 	mRigidbody.update();
 	setPosition(mRigidbody.getPosition());
 	setRotation(mRigidbody.getRotation());
+
+	mAlive = true;
 }
 
 void Wasp::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
@@ -113,9 +115,11 @@ void Wasp::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 void Wasp::movement()
 {
 	b2Body *body = mRigidbody.getBody();
-
+	if(mAlive == true)
+	{
 	//counter gravity
 	body->ApplyForce(body->GetMass() * - b2Vec2(0, -10.f), body->GetWorldCenter(), true);
+	}
 
 	//Current position in box2d coords
 	b2Vec2 currentPosition = Rigidbody::SfToBoxVec(getPosition());
@@ -175,4 +179,13 @@ void Wasp::movement()
 		bonkFrame = 0;
 		bonk = false;
 	}
+}
+
+void Wasp::BeginContact(b2Contact *contact, Entity* other)
+{
+	if (other->getID() == "KillZone")
+	{
+		mAlive = false;
+	}
+
 }

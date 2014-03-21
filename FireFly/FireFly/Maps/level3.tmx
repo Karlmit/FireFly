@@ -9,18 +9,164 @@
  <tileset firstgid="3" name="Bana3_fullscreen_part3" tilewidth="6803" tileheight="4400">
   <image source="../Resources/Room 3/Bana3_fullscreen_part3.png" width="6803" height="4400"/>
  </tileset>
+ <tileset firstgid="4" name="SafetyDoorAnimation" tilewidth="432" tileheight="2160">
+  <image source="../Resources/Room 3/SafetyDoorAnimation.png" width="4320" height="2160"/>
+ </tileset>
+ <tileset firstgid="14" name="Serverrum_lamps_on" tilewidth="5000" tileheight="2160">
+  <image source="../Resources/Room 3/Serverrum_lamps_on.png" width="5000" height="2160"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Room3_Background_Part1" type="EntitySprite" gid="1" x="0" y="4400"/>
   <object name="Room3_Background_Part2" type="EntitySprite" gid="2" x="6796" y="4400"/>
   <object name="Room3_Background_Part3" type="EntitySprite" gid="3" x="13592" y="4400"/>
+  <object name="ServerRoomLightsOn" type="FadeSprite" gid="14" x="15396" y="4400" visible="0">
+   <properties>
+    <property name="id" value="ServerRoomLightsOn"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="Back" width="1" height="1"/>
- <objectgroup name="Front" width="1" height="1"/>
- <objectgroup name="Foreground" width="1" height="1"/>
- <objectgroup name="Collision" width="1" height="1"/>
- <objectgroup name="Misc" width="1" height="1">
-  <object name="Zid Spawn" type="ZidSpawn" x="4735" y="1118" width="143" height="158">
+ <objectgroup name="Back" width="1" height="1">
+  <object name="ServerRoomDoor" type="ServerRoomDoor" gid="4" x="14913" y="4400"/>
+  <object name="ServerDoorButton" type="ServerRoomButton" x="12691" y="3673" width="19" height="15"/>
+  <object name="Screen1" type="CameraScreen" x="15923" y="2501" width="469" height="673">
+   <properties>
+    <property name="activeTexture" value="sucu_camera_lab_spritesheet.png"/>
+    <property name="id" value="Screen1"/>
+    <property name="openTexture" value="sucu_camera_lab_open.png"/>
+   </properties>
+  </object>
+  <object name="Screen2" type="CameraScreen" x="16604" y="2390" width="469" height="673">
+   <properties>
+    <property name="activeTexture" value="sucu_camera_office.png"/>
+    <property name="id" value="Screen2"/>
+    <property name="openTexture" value="sucu_camera_office_open.png"/>
+   </properties>
+  </object>
+  <object name="Screen3" type="CameraScreen" x="18703" y="2407" width="469" height="673">
+   <properties>
+    <property name="activeTexture" value="sucu_camera_boiler_spritesheet.png"/>
+    <property name="id" value="Screen3"/>
+    <property name="openTexture" value="sucu_camera_boiler_open.png"/>
+   </properties>
+  </object>
+  <object name="Screen4" type="CameraScreen" x="19382" y="2510" width="469" height="673">
+   <properties>
+    <property name="activeTexture" value="sucu_camera_cafe_not active.png"/>
+    <property name="id" value="Screen4"/>
+    <property name="openTexture" value="sucu_camera_cafe_open.png"/>
+   </properties>
+  </object>
+  <object name="ServerRoomEyeScreen" type="ServerRoomEyeScreen" x="17889" y="2760">
    <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Front" width="1" height="1">
+  <object name="EatingWasp" type="EatingWasp" x="3059" y="1724">
+   <properties>
+    <property name="image" value="Room 3/Balgeting_matrester_spritesheet1.png"/>
+   </properties>
+  </object>
+  <object name="EatingWasp" type="EatingWasp" x="8082" y="2402">
+   <properties>
+    <property name="image" value="Room 3/balgeting_matrester_spritesheet2.png"/>
+   </properties>
+  </object>
+  <object name="EatingWasp" type="EatingWasp" x="6470" y="2402">
+   <properties>
+    <property name="image" value="Room 3/balgeting_matrester_spritesheet3.png"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Foreground" width="1" height="1"/>
+ <objectgroup name="Collision" width="1" height="1">
+  <object name="HissLeftColl" type="StaticCollision" x="9266" y="4396">
+   <polyline points="0,0 0,-3782 -120,-3788 -188,-3790 -188,-3746 -178,-3746 -174,-1992"/>
+  </object>
+  <object name="HissLeftColl" type="StaticCollision" x="9264" y="6">
+   <polyline points="0,0 6,174 -114,176 -114,164 -182,162 -184,124 -172,124 -170,-6"/>
+  </object>
+  <object name="HissRightColl" type="StaticCollision" x="11544" y="4394">
+   <polyline points="0,0 2,-1638 218,-1642 224,-8"/>
+  </object>
+  <object name="HissRightColl" type="StaticCollision" x="11542" y="2">
+   <polyline points="0,0 6,2368 222,2374 222,2238"/>
+  </object>
+  <object name="VaktOchServerTakColl" type="StaticCollision" x="11756" y="2240">
+   <polyline points="0,0 8632,4"/>
+  </object>
+  <object name="KorridorOchSprinklerColl" type="StaticCollision" x="9082" y="2407">
+   <polyline points="0,0 -6856,-4 -6856,-36 -6936,-38 -6936,-2 -8942,-2 -8940,-2164 -6934,-2158 -6932,-74 -6866,-70 -6864,-2200 -6936,-2200 -6934,-2404"/>
+  </object>
+  <object name="VaktBordColl" type="StaticCollisionLoop" x="12266" y="3696">
+   <polyline points="0,0 1,32 877,31 875,-3"/>
+  </object>
+  <object name="VaktStolColl1" type="StaticCollisionLoop" x="11812" y="3141">
+   <polyline points="0,0 -16,9 -25,35 -21,73 16,181 33,195 57,197 81,188 92,171 88,139 55,61 45,25 23,-1"/>
+  </object>
+  <object name="VaktStolColl2" type="StaticCollisionLoop" x="11855" y="3364">
+   <polyline points="0,0 -17,19 -23,52 7,159 68,347 93,429 107,441 133,443 149,420 153,364 132,264 124,160 117,116 85,31 59,0 28,-4"/>
+  </object>
+  <object name="VaktStolColl3" type="StaticCollisionLoop" x="12003" y="3919">
+   <polyline points="0,0 15,-21 77,-49 108,-52 173,-44 287,-32 333,-28 395,-8 437,20 445,33 445,51 427,64 388,55 332,51 251,61 148,63 71,64 28,55 8,35 1,16"/>
+  </object>
+  <object name="VaktSkarmColl" type="StaticCollisionLoop" x="12858" y="3612">
+   <polyline points="0,0 25,7 51,-105 89,-164 135,-365 127,-417 152,-529 131,-533"/>
+  </object>
+  <object name="VaktACColl2" type="StaticCollisionLoop" x="11765" y="2759">
+   <properties>
+    <property name="id" value="NoShadow"/>
+   </properties>
+   <polyline points="0,0 49,-45 52,-275 1,-276"/>
+  </object>
+  <object name="VaktACColl1" type="StaticCollisionLoop" x="11769" y="2360">
+   <properties>
+    <property name="id" value="NoShadow"/>
+   </properties>
+   <polyline points="0,0 43,44 0,41"/>
+  </object>
+  <object name="ServerDoorColl" type="StaticCollision" x="15103" y="2244">
+   <properties>
+    <property name="id" value="ServerDoorColl"/>
+   </properties>
+   <polyline points="0,0 0,2153"/>
+  </object>
+  <object name="HissColl" type="StaticCollision" x="9484" y="0">
+   <polyline points="0,0 0,625 1880,623 1880,3"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="Zid Spawn" type="ZidSpawn" x="15211" y="2780" width="143" height="158">
+   <ellipse/>
+  </object>
+  <object name="Screen1Trigger" type="Trigger" x="15629" y="2402" width="1066" height="885">
+   <properties>
+    <property name="ScreenOn" value="Screen1"/>
+   </properties>
+  </object>
+  <object name="Screen2Trigger" type="Trigger" x="16348" y="2310" width="1061" height="884">
+   <properties>
+    <property name="ScreenOn" value="Screen2"/>
+   </properties>
+  </object>
+  <object name="Screen3Trigger" type="Trigger" x="18389" y="2319" width="1061" height="884">
+   <properties>
+    <property name="ScreenOn" value="Screen3"/>
+   </properties>
+  </object>
+  <object name="Screen4Trigger" type="Trigger" x="19042" y="2407" width="1061" height="884">
+   <properties>
+    <property name="ScreenOn" value="Screen4"/>
+   </properties>
+  </object>
+  <object name="Screen4Trigger" type="Trigger" x="17368" y="2319" width="1061" height="884">
+   <properties>
+    <property name="ScreenOn" value="ServerRoomEyeScreen"/>
+   </properties>
+  </object>
+  <object name="ServerLightsTrigger" type="Trigger" x="15490" y="2200" width="184" height="2204">
+   <properties>
+    <property name="Activate" value="ServerRoomLightsOn"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

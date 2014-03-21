@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="2160" tileheight="2160">
+ <tileset firstgid="1" name="sprinklerrum" tilewidth="2160" tileheight="2160">
+  <tileoffset x="0" y="1"/>
+  <image source="../Resources/Room 3/sprinklerrum.png" width="2160" height="2160"/>
+ </tileset>
+ <objectgroup name="Background" width="1" height="1">
+  <object name="whatevvver" type="EntitySprite" gid="1" x="0" y="2160" width="4665600" height="4665600"/>
+ </objectgroup>
+ <objectgroup name="Collision" width="1" height="1"/>
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="ZidStart" type="ZidSpawn" x="181" y="772" width="80" height="73">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

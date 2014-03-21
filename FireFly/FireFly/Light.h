@@ -16,6 +16,8 @@ public:
 	void createLight();
 
 	virtual void sendMessage(Entity* sender, string message, int value);
+	
+	bool getSneakMode();
 
 private:
 	
@@ -27,6 +29,7 @@ private:
 	float angle;								// Where the light is pointing 
 	bool dynamic;
 	bool lightKilled;
+	bool sneakMode;
 
 	void createLightMap();
 

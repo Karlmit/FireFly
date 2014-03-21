@@ -24,7 +24,9 @@ Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSp
 	if(angleSpread > 360)
 		angleSpread = 360;
 	this->mID = mID;
-	
+
+	sneakMode = true;
+
 	createLight();
 }
 
@@ -44,9 +46,15 @@ void Light::sendMessage(Entity* sender, string message, int value)
 		//targetRadius = max (0.f, targetRadius + radiusStep * value);
 
 		if (value > 0)
+		{
 			targetRadius = normal_radius;
+			sneakMode = false;
+		}
 		if (value < 0)
+		{
 			targetRadius = 0;
+			sneakMode = true;
+		}
 	}
 
 	if (message == "KillLight")
@@ -224,6 +232,11 @@ void Light::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(outlineLight, sf::BlendMultiply);
 		target.draw(outLineColor, sf::BlendAdd);
 	}
+}
+
+bool Light::getSneakMode()
+{
+	return sneakMode;
 }
 
 

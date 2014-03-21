@@ -109,11 +109,8 @@ void Myra::updateEntity(sf::Time dt)
 					// Move right
 					setPosition(mPos + SPEED * dt.asSeconds());
 					mMoveForward = true;
-			
 				}
-
 			}
-		
 		}
 		else
 		{

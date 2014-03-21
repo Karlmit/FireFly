@@ -80,7 +80,7 @@
  <objectgroup name="Foreground" width="1" height="1">
   <object name="ROOM1_Foreground" type="EntitySprite" gid="2" x="0" y="2160" visible="0"/>
  </objectgroup>
- <objectgroup name="Collision" width="1" height="1" visible="0">
+ <objectgroup name="Collision" width="1" height="1">
   <object name="Byra" type="StaticCollision" x="0" y="1372">
    <polyline points="0,0 614,0 612,36 588,44 586,76 572,100 572,742 552,784"/>
   </object>

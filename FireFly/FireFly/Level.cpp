@@ -36,6 +36,15 @@
 #include "SpiderPath.h"
 #include "Sparks.h"
 #include "Hivemind.h"
+#include "CrackZone.h"
+#include "WaterDrop.h"
+#include "ServerRoomDoor.h"
+#include "ServerRoomButton.h"
+#include "CameraScreen.h"
+#include "SCHAKT2_FAN.h"
+#include "ServerRoomEyeScreen.h"
+#include "FadeSprite.h"
+#include "EatingWasp.h"
 
 #include <iostream>
 using namespace std;
@@ -219,7 +228,7 @@ void Level::loadMap(string filename)
 			}
 
 			//
-			//	EntitySprite
+			//	ParallaxSprite
 			//
 			if (entityType == "ParallaxSprite")
 			{
@@ -547,23 +556,11 @@ void Level::loadMap(string filename)
 
 			}
 
-			else if(entityType == "Spark_Position1")
+			else if(entityType == "Spark_Position")
 			{
-				Sparks* spark1 = new Sparks("Schakt/elsprak1_spritesheet.png", 246.f/3, 52.f, position, 3);
-				spark1->setProperties(obj.getProperties());
-				eList.addEntity(spark1, Layer::Front, false);
-			}
-			else if(entityType == "Spark_Position2")
-			{
-				Sparks* spark2 = new Sparks("Schakt/elsprak2_spritesheet.png", 165.f/3, 69.f, position, 3);
-				spark2->setProperties(obj.getProperties());
-				eList.addEntity(spark2, Layer::Front, false);
-			}
-			else if(entityType == "Spark_Position3")
-			{
-				Sparks* spark3 = new Sparks("Schakt/elsprak3_spritesheet.png", 273.f/3, 84.f, position, 3);
-				spark3->setProperties(obj.getProperties());
-				eList.addEntity(spark3, Layer::Front, false);
+				Sparks* sparks = new Sparks(position);
+				sparks->setProperties(obj.getProperties());
+				eList.addEntity(sparks, Layer::Front, false);
 			}
 
 			//BalkPort
@@ -588,7 +585,7 @@ void Level::loadMap(string filename)
 			//
 			else if (entityType == "Termometer")
 			{
-				eList.addEntity(new Termometer(positionSprite), layer, false);
+				eList.addEntity(new Termometer(position), layer, false);
 			}
 
 			// 
@@ -606,6 +603,82 @@ void Level::loadMap(string filename)
 			{
 				eList.addEntity(new Dust(rect), Layer::Front, false);
 			}
+
+			//
+			// ServerRoomDoor
+			//
+			else if (entityType == "ServerRoomDoor")
+			{
+				eList.addEntity(new ServerRoomDoor(imageSrc, positionSprite), layer, false);
+			}
+
+			//
+			// ServerRoomButton
+			//
+			else if (entityType == "ServerRoomButton")
+			{
+				eList.addEntity(new ServerRoomButton(position), layer, false);
+			}
+
+			//water for schakt 2
+			else if(entityType == "Water")
+			{
+				WaterDrop* waterdrop = new WaterDrop(position, position.y + height, obj.getProperty("spawnTime").getValueFloat());
+				waterdrop->setProperties(obj.getProperties());
+				eList.addEntity(waterdrop, Layer::Front, false);
+				//Water* water = new Water(position, width, height);
+				//water->setProperties(obj.getProperties());
+				//eList.addEntity(water, Layer::Front, false);
+
+			}
+			else if(entityType == "SCHAKT2_FAN")
+			{
+				SCHAKT2_FAN* schaktFan = new SCHAKT2_FAN(position);
+				schaktFan->setProperties(obj.getProperties());
+				eList.addEntity(schaktFan, layer, false);
+			}
+
+
+			else if(entityType == "EatingWasp")
+			{
+				EatingWasp* eatingwasp = new EatingWasp(obj.getProperty("image").getValueString(), position);
+				eatingwasp->setProperties(obj.getProperties());
+				eList.addEntity(eatingwasp, layer, false);
+			}
+
+
+			//
+			// CameraScreen
+			//
+			else if (entityType == "CameraScreen")
+			{
+				
+				string open = "Room 3/" + obj.getProperty("openTexture").getValueString();
+				string active = "Room 3/" + obj.getProperty("activeTexture").getValueString();
+				CameraScreen* cam = new CameraScreen(open, active, position);
+				cam->setID(id);
+				eList.addEntity(cam, layer, false);
+				
+			}
+
+			//
+			// ServerRoomEyeScreen
+			//
+			else if (entityType == "ServerRoomEyeScreen")
+			{
+				eList.addEntity(new ServerRoomEyeScreen(position), layer, false);
+			}
+
+			//
+			//	FadeSprite
+			//
+			if (entityType == "FadeSprite")
+			{
+				Entity* fadeSprite = new FadeSprite(imageSrc, positionSprite);
+				fadeSprite->setID(id);
+				eList.addEntity(fadeSprite, layer, false);
+			}
+
 
 //			else if (entityType == "SecuMonitor")
 //			{

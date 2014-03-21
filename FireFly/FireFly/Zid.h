@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "Log.h"
 #include "Hivemind.h"
+#include "FallingSprite.h"
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
@@ -49,9 +50,12 @@ private:
 	Animation idleSugarAnimation;
 	Animation dashSugarAnimation;
 	Animation deathAnimation;
+	Animation electricDeathAnimation;
+	bool mElctricDeath;
 	int deathAnimCount;
 	Audio dashSound;
 	Entity* mSpoderMan;
+	Entity* mWasp;
 	bool zidDash;
 	int dashFrameNo;
 	bool mDirLeft;
@@ -59,6 +63,8 @@ private:
 	bool mAlive;
 	bool hivemindContact;
 	bool hivemindEnabled;
+	bool mInFireflyZone;
+	bool mSugarPile;
 
 	// Light
 	Entity* mLight;
@@ -79,8 +85,14 @@ private:
 	bool mLoseSugar;
 	sf::Clock mLoseSugarTimer;
 	sf::Vector2f mDroppedSugarPosition;
+	Entity* SugarEntity;
+	bool mFirstSugarDropped;
+	sf::Clock sugarClock;
+	float mSugarScale;
+
 	float mSlooowDooown;
 	bool mInAcZone;
+	bool hivemindContact;
 };
 
 #endif

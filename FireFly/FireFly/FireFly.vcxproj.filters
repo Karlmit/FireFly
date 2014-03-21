@@ -315,9 +315,6 @@
     <ClInclude Include="SuCam.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="SecuMonitor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FireflyNPC.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -378,14 +375,8 @@
     <ClInclude Include="JaktSpindel.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="BalkPort.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="spiderWeb.h">
       <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="BalkPort.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">
       <Filter>Header Files</Filter>
@@ -393,10 +384,53 @@
     <ClInclude Include="FireflyZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="BalkPort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="CrackZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="FallingSprite.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CrackZone.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="ResourceHolder.h">
+=======
+    <ClInclude Include="CrackZone.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterDrop.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerRoomDoor.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerRoomButton.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraScreen.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SCHAKT2_FAN.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SecuMonitor.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="BalkPort.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerRoomEyeScreen.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeSprite.h">
+      <Filter>Header Files\Entities</Filter>
+	</ClInclude>  
+    <ClInclude Include="EatingWasp.h">
+>>>>>>> f758c0a1fd4943184b447ef821741344242bbd23
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -668,9 +702,6 @@
     <ClCompile Include="Block.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SecuMonitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FireflyNPC.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -731,9 +762,6 @@
     <ClCompile Include="spiderWeb.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="BalkPort.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -749,6 +777,45 @@
     <ClCompile Include="Hivemind.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="ServerRoomDoor.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Hivemind.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="FallingSprite.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterDrop.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterDrop.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="BalkPort.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SCHAKT2_FAN.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SecuMonitor.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="EatingWasp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerDoorButton.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraScreen.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerRoomEyeScreen.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeSprite.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Maps\level1.tmx">
@@ -758,6 +825,9 @@
       <Filter>Resource Files\Maps</Filter>
     </None>
     <None Include="Maps\schakt1.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Maps\level3.tmx">
       <Filter>Resource Files\Maps</Filter>
     </None>
   </ItemGroup>

@@ -73,6 +73,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)\..\SFML-2.1\include;$(SolutionDir)\FireFly\;$(SolutionDir)\FireFly\Thor\include;$(SolutionDir)\FireFly\Thor\extlibs\aurora\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,10 +142,14 @@
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
     <ClInclude Include="BrokenJar.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraScreen.h" />
     <ClInclude Include="ContactListener.h" />
     <ClInclude Include="CrackZone.h" />
     <ClInclude Include="Dust.h" />
+    <ClInclude Include="FadeSprite.h" />
+    <ClInclude Include="EatingWasp.h" />
     <ClInclude Include="FadeToBlack.h" />
+    <ClInclude Include="FallingSprite.h" />
     <ClInclude Include="FireflyNPC.h" />
     <ClInclude Include="FireflyZone.h" />
     <ClInclude Include="ForceZone.h" />
@@ -175,7 +180,11 @@
     <ClInclude Include="Room1_Coat.h" />
     <ClInclude Include="Room2_AC.h" />
     <ClInclude Include="Room2_Fan.h" />
+    <ClInclude Include="SCHAKT2_FAN.h" />
     <ClInclude Include="SecuMonitor.h" />
+    <ClInclude Include="ServerRoomButton.h" />
+    <ClInclude Include="ServerRoomDoor.h" />
+    <ClInclude Include="ServerRoomEyeScreen.h" />
     <ClInclude Include="Sparks.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="SpiderPath.h" />
@@ -201,6 +210,7 @@
     <ClInclude Include="Tween.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Wasp.h" />
+    <ClInclude Include="WaterDrop.h" />
     <ClInclude Include="WorldContactListener.h" />
     <ClInclude Include="Zid.h" />
   </ItemGroup>
@@ -261,10 +271,14 @@
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="BrokenJar.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraScreen.cpp" />
     <ClCompile Include="CrackZone.cpp" />
     <ClCompile Include="DBTweener\dbtweener.cpp" />
     <ClCompile Include="Dust.cpp" />
+    <ClCompile Include="FadeSprite.cpp" />
+    <ClCompile Include="EatingWasp.cpp" />
     <ClCompile Include="FadeToBlack.cpp" />
+    <ClCompile Include="FallingSprite.cpp" />
     <ClCompile Include="FireflyNPC.cpp" />
     <ClCompile Include="FireflyZone.cpp" />
     <ClCompile Include="ForceZone.cpp" />
@@ -291,7 +305,11 @@
     <ClCompile Include="Room1_Coat.cpp" />
     <ClCompile Include="Room2_AC.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
+    <ClCompile Include="SCHAKT2_FAN.cpp" />
     <ClCompile Include="SecuMonitor.cpp" />
+    <ClCompile Include="ServerDoorButton.cpp" />
+    <ClCompile Include="ServerRoomDoor.cpp" />
+    <ClCompile Include="ServerRoomEyeScreen.cpp" />
     <ClCompile Include="Sparks.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="SpiderPath.cpp" />
@@ -320,12 +338,14 @@
     <ClCompile Include="Tween.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wasp.cpp" />
+    <ClCompile Include="WaterDrop.cpp" />
     <ClCompile Include="WorldContactListener.cpp" />
     <ClCompile Include="Zid.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Maps\level1.tmx" />
     <None Include="Maps\level2.tmx" />
+    <None Include="Maps\level3.tmx" />
     <None Include="Maps\schakt1.tmx">
       <SubType>Designer</SubType>
     </None>

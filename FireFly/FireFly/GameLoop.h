@@ -9,6 +9,7 @@
 
 #include "PC.h"
 #include "Zid.h"
+#include "Light.h"
 
 #include "Camera.h"
 #include <Box2D\Box2D.h>
@@ -16,7 +17,7 @@
 class GameLoop
 {
 public:
-	GameLoop(sf::Vector2u windowSize);
+	GameLoop		(sf::Vector2u windowSize);
 	~GameLoop();
 
 	void run();
@@ -42,10 +43,9 @@ private:
 	Entity* zid;
 	sf::Sprite cursorSprite;
 	Entity* mZidsLight;
-//	sf::Texture hivemind;
-//	sf::Sprite hivemindProjection;
-//	bool inTheHivemindZone;
-//	bool hivemindScaled;
-//	unsigned int hivemindScale;
+	sf::Texture hivemind;
+	sf::Sprite hivemindProjection;
+	Zid* zidCast;
+	Light* lightCast;
 };
 

@@ -3,15 +3,28 @@
  <tileset firstgid="1" name="Schakt_2" tilewidth="5000" tileheight="2160">
   <image source="../Resources/Schakt/Schakt_2.png" width="5000" height="2160"/>
  </tileset>
+ <tileset firstgid="2" name="dodinsektgolv1_scale" tilewidth="171" tileheight="46">
+  <tileoffset x="0" y="1"/>
+  <image source="../Resources/Schakt/dodinsektgolv1_scale.png" width="171" height="46"/>
+ </tileset>
+ <tileset firstgid="3" name="schakt2bottomupdate" tilewidth="976" tileheight="135">
+  <image source="../Resources/Schakt/schakt2bottomupdate.png" width="976" height="135"/>
+ </tileset>
+ <tileset firstgid="4" name="fanForTiled" tilewidth="226" tileheight="17">
+  <image source="../Resources/Schakt/fanForTiled.png" width="226" height="17"/>
+ </tileset>
+ <tileset firstgid="5" name="mus_scale_2" tilewidth="685" tileheight="150">
+  <image source="../Resources/Schakt/mus_scale_2.png" width="685" height="150"/>
+ </tileset>
  <objectgroup name="Background" width="1" height="1">
   <object name="Schakt_2" type="EntitySprite" gid="1" x="0" y="2160"/>
  </objectgroup>
- <objectgroup name="Collision" width="1" height="1">
+ <objectgroup name="Collision" width="1" height="1" visible="0">
   <object name="wall" type="StaticCollision" x="1481" y="740">
    <polyline points="0,0 516,0 516,1052 1,1053 0,1"/>
   </object>
   <object name="wall" type="StaticCollision" x="0" y="1382">
-   <polyline points="0,0 1251,0 1253,642 2226,640 2227,-29 2738,-32"/>
+   <polyline points="0,0 1251,0 1253,642 1251,751 1353,751 1479,748 1480,639 1740,641 1983,641 1987,742 2228,740 2226,640 2227,-29 2738,-32"/>
   </object>
   <object name="wall" type="StaticCollision" x="2740" y="1234">
    <polyline points="0,0 -1,-631 -231,-631 -230,-111 -514,-111 -515,-724 -1488,-724 -1488,-80 -2197,-82"/>
@@ -38,4 +51,95 @@
    <polyline points="0,0 0,2158"/>
   </object>
  </objectgroup>
+ <objectgroup name="Misc" width="1" height="1">
+  <object name="Water" type="Water" x="1275" y="508" width="40" height="1624">
+   <properties>
+    <property name="spawnTime" value="1"/>
+   </properties>
+  </object>
+  <object name="zids spawn" type="ZidSpawn" x="14" y="1228" width="100" height="84">
+   <ellipse/>
+  </object>
+  <object name="DeadRatSoundZone" type="Trigger" x="255" y="1158" width="290" height="225">
+   <properties>
+    <property name="DeadRatSoundZone" value=""/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="1345" y="510" width="40" height="1624">
+   <properties>
+    <property name="spawnTime" value="3"/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="1415" y="512" width="40" height="1624">
+   <properties>
+    <property name="spawnTime" value="2"/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="2025" y="510" width="40" height="1609">
+   <properties>
+    <property name="spawnTime" value="1"/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="2096" y="513" width="40" height="1604">
+   <properties>
+    <property name="spawnTime" value="2"/>
+   </properties>
+  </object>
+  <object name="Water" type="Water" x="2170" y="514" width="40" height="1605">
+   <properties>
+    <property name="spawnTime" value="3"/>
+   </properties>
+  </object>
+  <object name="Music" type="MusicManager" x="130" y="199" width="195" height="151">
+   <properties>
+    <property name="Schakt 2 (ogg).ogg" value="music"/>
+   </properties>
+  </object>
+  <object name="StartMusic" type="Trigger" x="-13" y="1155" width="245" height="224">
+   <properties>
+    <property name="MusicFadeDownAll" value=""/>
+    <property name="MusicFadeUp" value="music"/>
+    <property name="TriggerOnce" value="Zid"/>
+   </properties>
+  </object>
+  <object name="Killzone" type="Trigger" x="1250" y="2022" width="230" height="123">
+   <properties>
+    <property name="id" value="KillZone"/>
+   </properties>
+  </object>
+  <object name="killzone" type="Trigger" x="1991" y="2022" width="240" height="95">
+   <properties>
+    <property name="id" value="KillZone"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Front" width="1" height="1">
+  <object name="Flakt1 ForceZone" type="ForceZone" x="1245" y="512" width="233" height="1633">
+   <properties>
+    <property name="Direction" value="Down"/>
+    <property name="id" value="F1ForceZone"/>
+    <property name="xForce" value="0"/>
+    <property name="yForce" value="-12"/>
+   </properties>
+  </object>
+  <object name="Flakt1 ForceZone" type="ForceZone" x="2000" y="512" width="227" height="1605">
+   <properties>
+    <property name="Direction" value="Down"/>
+    <property name="id" value="F1ForceZone"/>
+    <property name="xForce" value="0"/>
+    <property name="yForce" value="-12"/>
+   </properties>
+  </object>
+  <object name="litenfluga" type="EntitySprite" gid="2" x="335" y="1376"/>
+  <object name="fan" type="SCHAKT2_FAN" gid="4" x="1255" y="2026"/>
+  <object name="fan" type="SCHAKT2_FAN" gid="4" x="2000" y="2025"/>
+  <object name="hiding" type="EntitySprite" gid="3" x="1250" y="2160"/>
+  <object name="mus" type="EntitySprite" gid="5" x="557" y="1380"/>
+  <object name="NextMapTrigger" type="Trigger" x="4555" y="6" width="400" height="2158">
+   <properties>
+    <property name="ChangeMap" value="level3.tmx"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Foreground" width="1" height="1"/>
 </map>

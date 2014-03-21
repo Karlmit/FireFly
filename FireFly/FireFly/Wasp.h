@@ -20,6 +20,8 @@ private:
 
 	void movement();
 	
+	virtual void BeginContact(b2Contact *contact, Entity* other); 
+	
 
 private:
 	Rigidbody mRigidbody;
@@ -32,6 +34,7 @@ private:
 	bool bonk;
 	unsigned int bonkFrame;
 
+	bool mAlive;
 	bool mHunting;
 };
 

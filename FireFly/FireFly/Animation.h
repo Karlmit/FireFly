@@ -30,6 +30,15 @@ public:
 	~Animation();
 
 	bool mLoopOnce;
+
+	// Till server rummet
+	bool updatePlay();
+	void resetPlayAnimation();
+	void play(bool forward);
+private:
+	bool mPlaying;
+	bool mForward;
+	
 private:
 	sf::Clock frameClock;
 	sf::Sprite mSprite;
