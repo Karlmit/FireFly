@@ -3,13 +3,14 @@
 #include <Windows.h>
 #include "MusicManager.h"
 #include "Log.h"
+#include "Hivemind.h"
 #include <iostream>
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
 
 GameLoop::GameLoop(sf::Vector2u windowSize)
-: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "The Firefly", sf::Style::Default),
+: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
 //: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
 //: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
 mCamera(&mWindow),
@@ -18,7 +19,6 @@ mStatisticsText(),
 mStatisticsUpdateTime(),
 mStatisticsNumFrames(0),
 cursorSprite(Loading::getTexture("pointer.png", true)),
-hivemindProjection(Loading::getTexture("sprite.jpg", true)),
 mZidsLight(nullptr)
 {
 	mWindow.setMouseCursorVisible(false);
@@ -28,7 +28,6 @@ mZidsLight(nullptr)
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
 
-//	zid = EntityList::getEntityList().getEntity("Zid");
 //	hivemindProjection.setPosition(200, 200);
 }
 
@@ -79,6 +78,7 @@ void GameLoop::run()
 void GameLoop::processEvents()
 {
 	sf::Event event;
+	Zid* zidCast = static_cast<Zid*>(zid);
 	while (mWindow.pollEvent(event))
 	{
 		switch (event.type)
@@ -167,8 +167,7 @@ void GameLoop::draw()
 
 	mWindow.setView(mWindow.getDefaultView());
 
-//	if(hivemindContact == true)
-//	mWindow.draw(hivemindProjection);
+	EntityList::getEntityList().drawHivemind(mWindow);
 
 	mWindow.draw(cursorSprite);
 

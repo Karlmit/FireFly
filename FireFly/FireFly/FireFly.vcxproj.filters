@@ -396,6 +396,8 @@
     <ClInclude Include="CrackZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="ResourceHolder.h">
+    </ClInclude>
     <ClInclude Include="CrackZone.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>

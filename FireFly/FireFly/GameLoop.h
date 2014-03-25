@@ -45,7 +45,6 @@ private:
 	Entity* mZidsLight;
 	sf::Texture hivemind;
 	sf::Sprite hivemindProjection;
-
 	Zid* zidCast;
 	Light* lightCast;
 };

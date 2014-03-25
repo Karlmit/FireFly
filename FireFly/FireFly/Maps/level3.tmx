@@ -143,7 +143,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Misc" width="1" height="1">
-  <object name="Zid Spawn" type="ZidSpawn" x="15211" y="2780" width="143" height="158">
+  <object name="Zid Spawn" type="ZidSpawn" x="14738" y="3231" width="143" height="158">
    <ellipse/>
   </object>
   <object name="Screen1Trigger" type="Trigger" x="15629" y="2402" width="1066" height="885">

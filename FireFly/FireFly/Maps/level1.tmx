@@ -60,7 +60,7 @@
   </object>
   <object name="UnderTableJar" type="Jar" gid="5" x="2260" y="1840"/>
   <object name="Table" type="EntitySprite" gid="4" x="2054" y="2470"/>
-  <object name="PlastJar" type="Jar" gid="5" x="21" y="1127">
+  <object name="PlastJar" type="Jar" gid="5" x="10" y="1136">
    <properties>
     <property name="density" value="100"/>
     <property name="unbreakable" value=""/>
@@ -69,7 +69,7 @@
   <object name="mikroskap" type="EntitySprite" gid="8" x="2067" y="1321"/>
   <object name="CoatFrontPatch" type="EntitySprite" gid="10" x="3" y="2163" visible="0"/>
   <object name="testtubes" type="EntitySprite" gid="9" x="2426" y="1320"/>
-  <object name="PlastJar" type="Jar" gid="12" x="35" y="1367">
+  <object name="PlastJar" type="Jar" gid="12" x="25" y="1369">
    <properties>
     <property name="Density" value="100"/>
     <property name="Plastic" value=""/>
@@ -119,7 +119,7 @@
   <object name="zids spawn" type="ZidSpawn" x="492" y="1213" width="100" height="84">
    <ellipse/>
   </object>
-  <object name="Music" type="MusicManager" x="125" y="52" width="195" height="151">
+  <object name="Music" type="MusicManager" x="31" y="19" width="86" height="74">
    <properties>
     <property name="Firefly Room 1 TrackVersion 1 (intense part).ogg" value="intense"/>
     <property name="Firefly Room 1 TrackVersion 1 (slow part).ogg" value="slow"/>
@@ -145,7 +145,7 @@
   </object>
   <object name="NextMapTrigger" type="Trigger" x="4740" y="1471" width="390" height="577">
    <properties>
-    <property name="ChangeMap" value="schakt1.tmx"/>
+    <property name="ChangeMap" value="level2.tmx"/>
    </properties>
   </object>
   <object name="StartSlowMusic" type="Trigger" x="380" y="1039" width="300" height="361">
@@ -154,7 +154,7 @@
     <property name="TriggerOnce" value="Zid"/>
    </properties>
   </object>
-  <object name="BurkDeathZone" type="Trigger" x="409" y="2152" width="4154" height="137">
+  <object name="BurkDeathZone" type="Trigger" x="410" y="2151" width="4155" height="136">
    <properties>
     <property name="id" value="BurkDeathZone"/>
    </properties>
@@ -166,15 +166,20 @@
     <property name="y" value="128"/>
    </properties>
   </object>
-  <object name="FireflyNPC" type="FireflyNPC" x="88" y="1214" width="98" height="84">
+  <object name="FireflyNPC" type="FireflyNPC" x="76" y="1220" width="100" height="84">
    <ellipse/>
   </object>
   <object name="Dusty" type="Dust" x="5" y="9" width="4440" height="2130" visible="0"/>
-  <object name="CrackZone" type="CrackZone" x="231" y="1246" width="21" height="17">
+  <object name="ViewPort" type="ViewPort" x="2850" y="67" width="420" height="534"/>
+  <object name="FireflyHivemind" type="HivemindZone" x="225" y="1259" width="20" height="17">
    <properties>
-    <property name="id" value="CrackZone"/>
+    <property name="" value=""/>
+    <property name="id" value="fireflyHivemind"/>
+    <property name="image" value="hivemindTest.png"/>
+    <property name="image2" value="placeholderAnimation.png"/>
    </properties>
   </object>
-  <object name="FireflyZone" type="FireflyZone" x="243" y="1159" width="127" height="194"/>
+  <object name="FireflyZone" type="FireflyZone" x="222" y="1153" width="145" height="209"/>
+  <object name="Hivemind" type="HivemindManager" x="139" y="18" width="87" height="73"/>
  </objectgroup>
 </map>

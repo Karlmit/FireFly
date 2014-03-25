@@ -39,6 +39,8 @@ void EntityList::draw(sf::RenderWindow& window)
 		window.draw(*e);
 	for (Entity* e : ForegroundLayerList)
 		window.draw(*e);
+	for (Entity* e : HivemindLayerList)
+		window.draw(*e);
 
 }
 
@@ -89,6 +91,12 @@ void EntityList::drawForeground(sf::RenderWindow& window)
 		window.draw(*e);
 }
 
+void EntityList::drawHivemind(sf::RenderWindow& window)
+{
+	for (Entity* e : HivemindLayerList)
+		window.draw(*e);
+}
+
 
 void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 {
@@ -107,6 +115,8 @@ void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 		LightLayerList.push_back(entity);
 	else if (layer == Layer::Foreground)
 		ForegroundLayerList.push_back(entity);
+	else if (layer == Layer::Hivemind)
+		HivemindLayerList.push_back(entity);
 
 	if (runStart)
 		entity->start();
@@ -199,6 +209,20 @@ void EntityList::updateList()
 			++i;
 		}
 	}
+	// HivemindLayerList
+	i = HivemindLayerList.begin();
+	while (i != HivemindLayerList.end())
+	{
+		bool isAlive = (*i)->getAliveStatus();
+		if (!isAlive)
+		{
+			HivemindLayerList.erase(i++);
+		}
+		else
+		{
+			++i;
+		}
+	}
 
 	// Removes and deletes entities from the main list listedEntities if dead
 	for(entityList::iterator i = listedEntities.begin(); i != listedEntities.end(); i++)
@@ -231,6 +255,7 @@ void EntityList::emptyList()
 	FrontLayerList = entityList();
 	ForegroundLayerList = entityList();
 	LightLayerList = entityList();
+	HivemindLayerList = entityList();
 }
 
 void EntityList::startList()
