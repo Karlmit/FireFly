@@ -2,11 +2,11 @@
 #include "Utility.h"
 
 //
-const float MIN_FOLLOW_DISTANCE = 6.f;
+const float MIN_FOLLOW_DISTANCE = 8.f;
 const float DENSITY = 2.f;
 const float FORCE = 4.f;
 
-const float INNER_FOLLOW_RADIUS = 120.f;
+const float INNER_FOLLOW_RADIUS = 100.f;
 const float OUTER_FOLLOW_RADIUS = 300.f;
 
 Mal::Mal(sf::Vector2f position)
