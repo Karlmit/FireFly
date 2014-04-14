@@ -112,6 +112,8 @@ void Level::restartLevel(float delay)
 
 void Level::startLevel(string levelName)
 {
+	getLevel().mCurrentMap = levelName;
+
 	// Reset restarting level
 	level.mRestartingLevel = false;
 	level.mChangeMapTo = levelName;

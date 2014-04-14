@@ -7,4 +7,5 @@ public:
 	static bool DEBUG_MODE;
 	static bool SHOW_FPS;
 	static bool SHOW_LIGHT;
+	static bool ZID_INPUT;
 };

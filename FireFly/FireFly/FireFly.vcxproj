@@ -187,6 +187,7 @@
     <ClInclude Include="ServerRoomButton.h" />
     <ClInclude Include="ServerRoomDoor.h" />
     <ClInclude Include="ServerRoomEyeScreen.h" />
+    <ClInclude Include="SimpleMenu.h" />
     <ClInclude Include="Sparks.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="SpiderPath.h" />
@@ -314,6 +315,7 @@
     <ClCompile Include="ServerDoorButton.cpp" />
     <ClCompile Include="ServerRoomDoor.cpp" />
     <ClCompile Include="ServerRoomEyeScreen.cpp" />
+    <ClCompile Include="SimpleMenu.cpp" />
     <ClCompile Include="Sparks.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="SpiderPath.cpp" />

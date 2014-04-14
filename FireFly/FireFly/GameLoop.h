@@ -14,6 +14,8 @@
 #include "Camera.h"
 #include <Box2D\Box2D.h>
 
+#include "SimpleMenu.h"
+
 class GameLoop
 {
 public:
@@ -47,5 +49,6 @@ private:
 	sf::Sprite hivemindProjection;
 	Zid* zidCast;
 	Light* lightCast;
+	SimpleMenu mSimpleMenu;
 };
 

@@ -383,7 +383,7 @@ void Zid::movement()
 
 	
 	// Apply force to go to the mouse position when pressing left mouse button
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) == true) {
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) == true && Globals::ZID_INPUT) {
 		sf::Vector2f mousePos = Camera::currentCamera().getMousePosition();
 
 		b2Vec2 mouse = Rigidbody::SfToBoxVec(mousePos);
@@ -413,7 +413,7 @@ void Zid::movement()
 
 	// Apply impulse for the right mouse button
 	static bool mouseRightDownLast = false;
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Right) == true) 
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Right) == true && Globals::ZID_INPUT) 
 	{
 		if (mouseRightDownLast) {
 			//mouseRightDownLast = false;
@@ -454,7 +454,7 @@ void Zid::movement()
 
 
 	// Debug teleport ability with F11 and mouse position
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F11))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F11) && Globals::ZID_INPUT)
 	{
 		body->SetTransform(Rigidbody::SfToBoxVec(Camera::currentCamera().getMousePosition()), 0);
 	}

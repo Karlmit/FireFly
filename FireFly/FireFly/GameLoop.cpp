@@ -20,7 +20,8 @@ mStatisticsText(),
 mStatisticsUpdateTime(),
 mStatisticsNumFrames(0),
 cursorSprite(Loading::getTexture("pointer.png", true)),
-mZidsLight(nullptr)
+mZidsLight(nullptr),
+mSimpleMenu(&mWindow)
 {
 	mWindow.setMouseCursorVisible(false);
 	mWindow.setVerticalSyncEnabled(true);
@@ -108,7 +109,7 @@ void GameLoop::processEvents()
 			//if (mZidsLight == nullptr)
 			mZidsLight = EntityList::getEntityList().getEntity("zidLight");
 			
-			if (mZidsLight != nullptr)
+			if (mZidsLight != nullptr && Globals::ZID_INPUT)
 			{
 				mZidsLight->sendMessage(nullptr, "ChangeRadius", event.mouseWheel.delta);
 			}
@@ -175,6 +176,8 @@ void GameLoop::draw()
 
 	EntityList::getEntityList().drawHivemind(mWindow);
 
+	mWindow.draw(mSimpleMenu);
+
 	mWindow.draw(cursorSprite);
 
 	if (Globals::DEBUG_MODE || Globals::SHOW_FPS)
@@ -203,6 +206,9 @@ void GameLoop::update(sf::Time timePerFrame)
 
 	// Check if change map
 	Level::update();
+
+	// Update simple menu
+	mSimpleMenu.update(timePerFrame);
 
 	//pointers for event
 	pc = EntityList::getEntityList().getEntity("PC");
@@ -236,7 +242,8 @@ void GameLoop::updateStatistics(sf::Time elapsedTime)
 void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
 	if (key == sf::Keyboard::Escape && isPressed == true)
-		mWindow.close();
+		mSimpleMenu.toggleActive();
+	//mWindow.close();
 
 	
 	if (key == sf::Keyboard::Num6 && isPressed == false)

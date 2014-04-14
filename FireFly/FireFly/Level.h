@@ -26,11 +26,12 @@ private:
 public:
 	
 	
-
+	string mCurrentMap;
 private:
 	bool mChangeMap;
 	string mChangeMapTo;
 	sf::Vector2f mMapSize;
+	 
 
 	// restartlevel
 	bool mRestartingLevel;
