@@ -427,11 +427,14 @@
     </ClInclude>
     <ClInclude Include="FadeSprite.h">
       <Filter>Header Files\Entities</Filter>
-	</ClInclude>  
+    </ClInclude>
     <ClInclude Include="EatingWasp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lever.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Save.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -819,6 +822,9 @@
     </ClCompile>
     <ClCompile Include="FadeSprite.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Save.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@
 #include "Log.h"
 #include "Hivemind.h"
 #include <iostream>
+#include "Save.h"
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
@@ -27,6 +28,7 @@ mZidsLight(nullptr)
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
+	Save::init();
 
 //	hivemindProjection.setPosition(200, 200);
 }
@@ -38,8 +40,12 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level1.tmx");
+	//Level::startLevel("level1.tmx");
 
+	if (Save::readLevel() == "")
+		Level::startLevel("level1.tmx");
+	else
+		Level::startLevel(Save::readLevel());
 
 	// Test ladda in alla banor i minnet i början
 	/*
@@ -268,7 +274,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("level7.tmx");
 			break;
 		case sf::Keyboard::F8:
-			Level::changeMap("level8.tmx");
+			Level::changeMap("meny.tmx");
 			break;
 		case sf::Keyboard::Num0:
 			mCamera.changeZoom(2);
