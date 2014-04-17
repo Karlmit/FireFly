@@ -16,7 +16,7 @@ void Save::init()
 void Save::writeLevel(string level)
 {
 	ofstream myfile;
-	myfile.open ("data\\save.txt", ios::out | ios::trunc );
+	myfile.open ("data\\save", ios::out | ios::trunc );
 	myfile << level << endl;
 	myfile.close();
 }
@@ -25,7 +25,7 @@ void Save::writeLevel(string level)
 string Save::readLevel()
 {
 	string line;
-	ifstream myfile ("data\\save.txt");
+	ifstream myfile ("data\\save");
 	if (myfile.is_open())
 	{
 		getline(myfile,line);

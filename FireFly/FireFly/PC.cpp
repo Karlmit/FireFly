@@ -242,6 +242,12 @@ void PC::menu()
 				mSucu = false;
 				mAnimation = false;
 				mBlip1.play();
+
+				// Destroy computerlight when the computer is turned off.
+				for (Entity* e : EntityList::getEntityList().getEntities("computerLight"))
+				{
+					e->killEntity();
+				}
 				
 			}
 		}

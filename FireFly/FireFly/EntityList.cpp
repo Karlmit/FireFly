@@ -2,11 +2,21 @@
 
 EntityList EntityList::eL;
 
+
+static const float WIDTH_OF_LIGHTMAP = 11000;
+static const float HEIGHT_OF_LIGHTMAP = 5000;
+
 EntityList::EntityList()
 {
-	rLightMap.create(6000, 6000); //Måste fixas sEden anpassas efter levelens storlek
-	sLightMap.setPosition(0,6000);
+	rLightMap.create(WIDTH_OF_LIGHTMAP, HEIGHT_OF_LIGHTMAP); 
+	rLightMap2.create(WIDTH_OF_LIGHTMAP, HEIGHT_OF_LIGHTMAP);
+
+	sLightMap.setPosition(0,HEIGHT_OF_LIGHTMAP);
 	sLightMap.scale(1, -1);
+
+	sLightMap2.setPosition(WIDTH_OF_LIGHTMAP,HEIGHT_OF_LIGHTMAP);
+	sLightMap2.scale(1, -1);
+
 }
 
 EntityList::~EntityList()
@@ -70,19 +80,24 @@ void EntityList::drawFront(sf::RenderWindow& window)
 
 void EntityList::drawLight(sf::RenderWindow& window)
 {
+	rLightMap.clear(sf::Color(20,20,40,240));
+	rLightMap2.clear(sf::Color(20,20,40,240));
+
 	for (Entity* e : LightLayerList)
 	{
-		if((*e).getID() == "zidLight")
-		{
-			Entity* zid = EntityList::getEntityList().getEntity("Zid");
-			e->setPosition(sf::Vector2f((*zid).getPosition().x, (*zid).getPosition().y));
-		}
-		//rLightMap.clear(sf::Color(15,15,20,240));
-		rLightMap.clear(sf::Color(20,20,40,240));
 		rLightMap.draw(*e);
-		sLightMap.setTexture(rLightMap.getTexture());
-		window.draw(sLightMap, sf::BlendMultiply);
+		
+		sf::Transform trans;
+		trans.translate(-WIDTH_OF_LIGHTMAP, 0);
+		sf::RenderStates state(trans);
+		rLightMap2.draw(*e, state);		
 	}
+
+	sLightMap.setTexture(rLightMap.getTexture());
+	window.draw(sLightMap, sf::BlendMultiply);
+
+	sLightMap2.setTexture(rLightMap2.getTexture());
+	window.draw(sLightMap2, sf::BlendMultiply);
 }
 
 void EntityList::drawForeground(sf::RenderWindow& window)

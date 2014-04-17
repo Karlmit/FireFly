@@ -690,6 +690,31 @@ void Level::loadMap(string filename)
 				eList.addEntity(fadeSprite, layer, false);
 			}
 
+			//
+			// LightPoint
+			//
+			if (entityType == "LightPoint")
+			{
+				int r,g,b;
+				if (obj.isProperty("r") && obj.isProperty("g") && obj.isProperty("b"))
+				{
+					r = obj.getProperty("r").getValueInt();
+					g = obj.getProperty("g").getValueInt();
+					b = obj.getProperty("b").getValueInt();
+				}
+				else
+				{
+					r = g = b = 255;
+				}
+				float radius = width/2;
+				sf::Vector2f pos = sf::Vector2f( position.x + radius, position.y + radius);
+				
+				Entity* light = new Light(sf::Color(r,g,b,255), pos, radius, 360, 0, "zidLight", true, false);
+				light->setID(id);
+				EntityList::getEntityList().addEntity(light, Layer::Light, false);
+			}
+			
+
 
 //			else if (entityType == "SecuMonitor")
 //			{

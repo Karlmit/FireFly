@@ -272,5 +272,58 @@
     <property name="ChangeMap" value="schakt2.tmx"/>
    </properties>
   </object>
+  <object name="SuCamOfficeLight" type="LightPoint" x="792" y="71" width="282" height="265">
+   <properties>
+    <property name="b" value="255"/>
+    <property name="g" value="128"/>
+    <property name="r" value="128"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="SuCamBoilerLight" type="LightPoint" x="2189" y="2576" width="279" height="254">
+   <properties>
+    <property name="b" value="255"/>
+    <property name="g" value="128"/>
+    <property name="r" value="128"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="OfficeScreenLight" type="LightPoint" x="2549" y="789" width="734" height="686">
+   <properties>
+    <property name="id" value="computerLight"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="OfficePowerLight1" type="LightPoint" x="2738" y="1646" width="49" height="45">
+   <properties>
+    <property name="id" value="computerLight"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="OfficePowerLight2" type="LightPoint" x="2743" y="1695" width="32" height="31">
+   <properties>
+    <property name="b" value="255"/>
+    <property name="g" value="80"/>
+    <property name="id" value="computerLight"/>
+    <property name="r" value="80"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="OfficeVoiceRecLight" type="LightPoint" x="3348" y="1179" width="275" height="269">
+   <properties>
+    <property name="b" value="80"/>
+    <property name="g" value="80"/>
+    <property name="r" value="100"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object name="OfficeTempLight" type="LightPoint" x="2030" y="960" width="108" height="108">
+   <properties>
+    <property name="b" value="120"/>
+    <property name="g" value="120"/>
+    <property name="r" value="210"/>
+   </properties>
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>

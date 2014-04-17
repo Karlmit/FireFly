@@ -4,7 +4,7 @@
 
 ParallaxSprite::ParallaxSprite(string textureID ,sf::Vector2f position) 
 : mSprite(Loading::getTexture(textureID))
-, mSpeedFactor(0.2f)
+, mSpeedFactor(0.02f)
 {
 	// Sätter origin för spriten till mitten
 	sf::FloatRect bounds = mSprite.getLocalBounds();
@@ -13,12 +13,12 @@ ParallaxSprite::ParallaxSprite(string textureID ,sf::Vector2f position)
 	mPos = position;
 	setPosition(position);
 
-	mPos = sf::Vector2f(2970, 600);
+	mPos = sf::Vector2f(2540, 600);
 }
 
 void ParallaxSprite::updateEntity(sf::Time dt) 
 {
-
+	
 	sf::Vector2f pos;
 	pos.x = mPos.x -  Camera::currentCamera().getPosition().x * mSpeedFactor;
 	pos.y = mPos.y;// + Camera::currentCamera().getPosition().y * mSpeedFactor;

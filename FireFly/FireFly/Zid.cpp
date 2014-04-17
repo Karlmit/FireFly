@@ -118,8 +118,10 @@ Zid::Zid(sf::Vector2f position)
 	mJumpUp = false;
 
 	// Zids light
-	mLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), ZIDS_LIGHT_RADIUS, 360, 0, "zidLight");
+	mLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), ZIDS_LIGHT_RADIUS, 360, 0, "zidLight", true);
 	EntityList::getEntityList().addEntity(mLight, Layer::Light, false);
+
+	
 } 
 
 
@@ -161,6 +163,9 @@ void Zid::sendMessage(Entity* entity, string message)
 
 void Zid::updateEntity(sf::Time dt) 
 {
+	// Set lightposition to zids position
+	mLight->setPosition(getPosition()+ sf::Vector2f(0, 0));
+
 	//get spoderMan & wasp
 	mSpoderMan = EntityList::getEntityList().getEntity("spoderMan");
 	mWasp = EntityList::getEntityList().getEntity("Wasp");
