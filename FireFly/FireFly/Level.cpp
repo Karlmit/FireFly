@@ -52,6 +52,7 @@
 using namespace std;
 
 Level Level::level;
+sf::RenderWindow* Level::sWindow;
 
 Level::Level()
 {
@@ -112,6 +113,8 @@ void Level::restartLevel(float delay)
 
 void Level::startLevel(string levelName)
 {
+	showLoadingScreen();
+
 	getLevel().mCurrentMap = levelName;
 
 	// Reset restarting level
@@ -765,5 +768,28 @@ Layer Level::getLayerFromString(string strLayer)
 	ectStr.append(strLayer);
 	throw logic_error(ectStr);
 	return Layer::Background;
+}
+
+void Level::init( sf::RenderWindow* window )
+{
+	sWindow = window;
+}
+
+void Level::showLoadingScreen()
+{
+	sf::Font font;
+	font.loadFromFile("Resources/BEBAS___.ttf");
+
+	sf::Text loadingText;
+	loadingText.setFont(font);
+	loadingText.setPosition(sWindow->getSize().x - 200.f, sWindow->getSize().y - 100.f);
+	loadingText.setCharacterSize(40);
+	loadingText.setString("LOADING");
+	loadingText.setColor(sf::Color::White);
+
+	sWindow->clear(sf::Color::Black);
+	sWindow->setView(sWindow->getDefaultView());
+	sWindow->draw(loadingText);
+	sWindow->display();
 }
 

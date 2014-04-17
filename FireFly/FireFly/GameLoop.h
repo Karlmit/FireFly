@@ -30,7 +30,8 @@ private:
 	void update(sf:: Time timePerFrame);
 	void processEvents();
 	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
-	void updateStatistics(sf::Time elapsedTime);	
+	void updateStatistics(sf::Time elapsedTime);
+	void preloadLevels(string startLevel);
 	
 	static const sf::Time TimePerFrame;
 	

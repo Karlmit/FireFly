@@ -30,6 +30,7 @@ mSimpleMenu(&mWindow)
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
 	Save::init();
+	Level::init(&mWindow);
 
 //	hivemindProjection.setPosition(200, 200);
 }
@@ -38,25 +39,24 @@ GameLoop::~GameLoop()
 {
 }
 
+
+
 void GameLoop::run()
 {
-	// Load the level "level1.tmx"
-	//Level::startLevel("level1.tmx");
+	// Shows the loading screen and preloads all levels into memory
+#ifndef _DEBUG	// Only preload when in release mode
+	preloadLevels(Save::readLevel());
+#endif
 
+	// Starts up the game on the last level you were on
+	
 	if (Save::readLevel() == "")
 		Level::startLevel("level1.tmx");
 	else
 		Level::startLevel(Save::readLevel());
 
-	// Test ladda in alla banor i minnet i början
-	/*
-	Level::startLevel("level2.tmx");
-	Level::startLevel("level3.tmx");
-	Level::startLevel("schakt1.tmx");
-	Level::startLevel("schakt2.tmx");
-	Level::startLevel("level1.tmx");
-	*/
-		
+	
+	// Game Loop
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
@@ -303,3 +303,48 @@ void appInFocus(sf::RenderWindow* app)
     SetForegroundWindow(handle);
 }
 
+void GameLoop::preloadLevels(string startLevel)
+{
+	
+
+	if (startLevel == "")
+	{
+		//Level::startLevel("level1.tmx");
+		Level::startLevel("schakt1.tmx");	
+		Level::startLevel("level2.tmx");
+		//Level::startLevel("schakt2.tmx");
+		//Level::startLevel("level3.tmx");		
+	}
+	else if (startLevel == "schakt1.tmx")
+	{
+		//Level::startLevel("level1.tmx");
+		//Level::startLevel("schakt1.tmx");	
+		Level::startLevel("level2.tmx");
+		Level::startLevel("schakt2.tmx");
+		//Level::startLevel("level3.tmx");
+	}
+	else if (startLevel == "level2.tmx")
+	{
+		//Level::startLevel("level1.tmx");
+		//Level::startLevel("schakt1.tmx");	
+		//Level::startLevel("level2.tmx");
+		Level::startLevel("schakt2.tmx");
+		Level::startLevel("level3.tmx");
+	}
+	else if (startLevel == "schakt2.tmx")
+	{
+		//Level::startLevel("level1.tmx");
+		//Level::startLevel("schakt1.tmx");	
+		//Level::startLevel("level2.tmx");
+		//Level::startLevel("schakt2.tmx");
+		Level::startLevel("level3.tmx");
+	}
+	else if (startLevel == "level3.tmx")
+	{
+		//Level::startLevel("level1.tmx");
+		//Level::startLevel("schakt1.tmx");	
+		//Level::startLevel("level2.tmx");
+		//Level::startLevel("schakt2.tmx");
+		//Level::startLevel("level3.tmx");
+	}
+}

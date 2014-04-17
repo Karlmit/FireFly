@@ -16,12 +16,15 @@ public:
 	static void fadeToBlackChangeLevel(string filename);
 	static void update();
 	static void restartLevel(float delay = 0);
+	static void showLoadingScreen();
+	static void init(sf::RenderWindow* window);
 
 private:
 	Level();
 	~Level();
 	void operator=(const Level &level);
 	static Level level;
+	static sf::RenderWindow* sWindow;
 
 public:
 	
