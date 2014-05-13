@@ -10,6 +10,8 @@ public:
 	Audio(sf::SoundBuffer& buffer, bool global = false);
 	~Audio();
 	void play();
+	void pause();
+	void stop();
 	void setPosition(sf::Vector2f position);
 	sf::Sound::Status getStatus();
 	sf::Sound* getSound();

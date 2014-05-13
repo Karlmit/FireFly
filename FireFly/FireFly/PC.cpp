@@ -4,7 +4,7 @@
 #include "Camera.h"
 
 PC::PC(sf::Vector2f position)
-	: mAudioLoggSound(Loading::getSound("Room 2/AudioLogg.wav"), true),
+	: mAudioLoggSound(Loading::getSound("Room 2/AudioLogg.wav"), false),
 	mButton1(Loading::getSound("Room 2/Tangentbord/Tangent1.wav"), true),
 	mButton2(Loading::getSound("Room 2/Tangentbord/Tangent2.wav"), true),
 	mButton3(Loading::getSound("Room 2/Tangentbord/Tangent3.wav"), true),
@@ -72,6 +72,10 @@ PC::PC(sf::Vector2f position)
 	mNewPC = true;
 	mAnimation = false;
 	mSucu = false;
+
+	//inside zone check
+	inPcZone = false;
+
 	//counter
 	mInvalidCounter = 0;
 
@@ -87,6 +91,9 @@ PC::PC(sf::Vector2f position)
 	Entity * eSprite = new EntitySprite("Room 2/use_the_keyboard.png", sf::Vector2f(position.x + 658, position.y + 2));
 	mEntitySprite = eSprite;
 	EntityList::getEntityList().addEntity(eSprite, Layer::Foreground, true);
+
+	//Audio
+	mAudioLoggSound.setPosition(position);
 }
 
 
@@ -100,7 +107,7 @@ void PC::sendMessage(Entity* entity, std::string message)
 	{
 		mCamera = true;
 		mEntitySprite->sendMessage(mEntitySprite, "Activate");
-
+		inPcZone = true;
 		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
 		Camera::currentCamera().setZoom(0.8f);
 	}
@@ -109,6 +116,7 @@ void PC::sendMessage(Entity* entity, std::string message)
 		mCamera = false;
 		mEntitySprite->sendMessage(mEntitySprite, "Deactivate");
 
+		inPcZone = false;
 
 		Camera::currentCamera().setTargetPosition(sf::Vector2f( mScreen.getPosition().x + mScreen.getSize().x/2, mScreen.getPosition().y + mScreen.getSize().y/2));
 		Camera::currentCamera().setDefaultZoom();
@@ -176,6 +184,11 @@ void PC::menu()
 			{
 			mAudioLoggSound.play();
 			}
+			else
+			{
+				mAudioLoggSound.stop();
+			}
+
 			mButtonClock.restart();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && mBulletin == false && mAudioLogg == false && mShuttingDown == false)
@@ -265,22 +278,25 @@ void PC::updateEntity(sf::Time dt)
 	ac << " / " << mAudioLoggSound.getSound()->getBuffer()->getDuration().asSeconds();
 	ac << "\n\n\n 1. back";
 	mAudioLoggText.setString(ac.str());
-
-	if(mWelcomeClock.getElapsedTime().asSeconds() > 3 && mLoggin == false)
+	
+	if(inPcZone == true)
 	{
-		mMenu = true;
-		mWelcome = false;
-	}
+		if(mWelcomeClock.getElapsedTime().asSeconds() > 3 && mLoggin == false)
+		{
+			mMenu = true;
+			mWelcome = false;
+		}
 
-	if(mLoggin == true)
-	{
-		loggin();
-	}
-	else if(mMenu == true)
-	{
-		menu();
-	}
+		if(mLoggin == true)
+		{
+			loggin();
+		}
+		else if(mMenu == true)
+		{
+			menu();
+		}
 
+	}
 	//Camera
 	if(mCamera == true)
 	{

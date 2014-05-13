@@ -18,6 +18,17 @@ void Audio::play() //Lets others play the sound with a function.
 	mSound.play();
 }
 
+void Audio::pause()
+{
+	mSound.pause();
+}
+
+void Audio::stop()
+{
+	mSound.stop();
+}
+
+
 void Audio::setPosition(sf::Vector2f position) //Places the sound so it is heard by the listener from that point.
 {
 	mSound.setPosition (position.x, 1, position.y);

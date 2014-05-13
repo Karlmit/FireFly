@@ -39,6 +39,8 @@ private:
 	Entity *termometer;
 	Entity *mEntitySprite;
 
+	//Inside Zone check
+	bool inPcZone;
 
 	sf::RectangleShape mScreen;
 	sf::String msfString;
