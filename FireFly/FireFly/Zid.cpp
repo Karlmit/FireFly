@@ -118,8 +118,10 @@ Zid::Zid(sf::Vector2f position)
 	mJumpUp = false;
 
 	// Zids light
-	mLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), ZIDS_LIGHT_RADIUS, 360, 0, "zidLight");
+	mLight = new Light(sf::Color(250,226,175,255), sf::Vector2f(1000,1000), ZIDS_LIGHT_RADIUS, 360, 0, "zidLight", true);
 	EntityList::getEntityList().addEntity(mLight, Layer::Light, false);
+
+	
 } 
 
 
@@ -161,6 +163,9 @@ void Zid::sendMessage(Entity* entity, string message)
 
 void Zid::updateEntity(sf::Time dt) 
 {
+	// Set lightposition to zids position
+	mLight->setPosition(getPosition()+ sf::Vector2f(0, 0));
+
 	//get spoderMan & wasp
 	mSpoderMan = EntityList::getEntityList().getEntity("spoderMan");
 	mWasp = EntityList::getEntityList().getEntity("Wasp");
@@ -383,7 +388,7 @@ void Zid::movement()
 
 	
 	// Apply force to go to the mouse position when pressing left mouse button
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) == true) {
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) == true && Globals::ZID_INPUT) {
 		sf::Vector2f mousePos = Camera::currentCamera().getMousePosition();
 
 		b2Vec2 mouse = Rigidbody::SfToBoxVec(mousePos);
@@ -413,7 +418,7 @@ void Zid::movement()
 
 	// Apply impulse for the right mouse button
 	static bool mouseRightDownLast = false;
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Right) == true) 
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Right) == true && Globals::ZID_INPUT) 
 	{
 		if (mouseRightDownLast) {
 			//mouseRightDownLast = false;
@@ -454,7 +459,7 @@ void Zid::movement()
 
 
 	// Debug teleport ability with F11 and mouse position
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F11))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F11) && Globals::ZID_INPUT)
 	{
 		body->SetTransform(Rigidbody::SfToBoxVec(Camera::currentCamera().getMousePosition()), 0);
 	}

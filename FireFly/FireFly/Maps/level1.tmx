@@ -181,5 +181,13 @@
   </object>
   <object name="FireflyZone" type="FireflyZone" x="222" y="1153" width="145" height="209"/>
   <object name="Hivemind" type="HivemindManager" x="139" y="18" width="87" height="73"/>
+  <object name="MoonLight" type="LightPoint" x="1927" y="196" width="1074" height="1048">
+   <properties>
+    <property name="b" value="255"/>
+    <property name="g" value="255"/>
+    <property name="r" value="255"/>
+   </properties>
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>

@@ -181,11 +181,13 @@
     <ClInclude Include="Room1_Coat.h" />
     <ClInclude Include="Room2_AC.h" />
     <ClInclude Include="Room2_Fan.h" />
+    <ClInclude Include="Save.h" />
     <ClInclude Include="SCHAKT2_FAN.h" />
     <ClInclude Include="SecuMonitor.h" />
     <ClInclude Include="ServerRoomButton.h" />
     <ClInclude Include="ServerRoomDoor.h" />
     <ClInclude Include="ServerRoomEyeScreen.h" />
+    <ClInclude Include="SimpleMenu.h" />
     <ClInclude Include="Sparks.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="SpiderPath.h" />
@@ -307,11 +309,13 @@
     <ClCompile Include="Room1_Coat.cpp" />
     <ClCompile Include="Room2_AC.cpp" />
     <ClCompile Include="Room2_Fan.cpp" />
+    <ClCompile Include="Save.cpp" />
     <ClCompile Include="SCHAKT2_FAN.cpp" />
     <ClCompile Include="SecuMonitor.cpp" />
     <ClCompile Include="ServerDoorButton.cpp" />
     <ClCompile Include="ServerRoomDoor.cpp" />
     <ClCompile Include="ServerRoomEyeScreen.cpp" />
+    <ClCompile Include="SimpleMenu.cpp" />
     <ClCompile Include="Sparks.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="SpiderPath.cpp" />

@@ -57,7 +57,9 @@ private:
 	entityList HivemindLayerList;
 
 	sf::RenderTexture rLightMap;
+	sf::RenderTexture rLightMap2;
 	sf::Sprite sLightMap;
+	sf::Sprite sLightMap2;
 
 };
 

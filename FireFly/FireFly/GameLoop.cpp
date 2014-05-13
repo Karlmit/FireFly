@@ -5,6 +5,7 @@
 #include "Log.h"
 #include "Hivemind.h"
 #include <iostream>
+#include "Save.h"
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
@@ -19,7 +20,8 @@ mStatisticsText(),
 mStatisticsUpdateTime(),
 mStatisticsNumFrames(0),
 cursorSprite(Loading::getTexture("pointer.png", true)),
-mZidsLight(nullptr)
+mZidsLight(nullptr),
+mSimpleMenu(&mWindow)
 {
 	mWindow.setMouseCursorVisible(false);
 	mWindow.setVerticalSyncEnabled(true);
@@ -27,6 +29,8 @@ mZidsLight(nullptr)
 	mStatisticsText.setFont(mFont);
 	mStatisticsText.setPosition(5.f, 5.f);
 	mStatisticsText.setCharacterSize(12);
+	Save::init();
+	Level::init(&mWindow);
 
 //	hivemindProjection.setPosition(200, 200);
 }
@@ -34,6 +38,8 @@ mZidsLight(nullptr)
 GameLoop::~GameLoop()
 {
 }
+
+
 
 void GameLoop::run()
 {
@@ -50,6 +56,20 @@ void GameLoop::run()
 	Level::startLevel("level1.tmx");
 	*/
 		
+	// Shows the loading screen and preloads all levels into memory
+#ifndef _DEBUG	// Only preload when in release mode
+	preloadLevels(Save::readLevel());
+#endif
+
+	// Starts up the game on the last level you were on
+	
+	if (Save::readLevel() == "")
+		Level::startLevel("level1.tmx");
+	else
+		Level::startLevel(Save::readLevel());
+
+	
+	// Game Loop
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
@@ -102,7 +122,7 @@ void GameLoop::processEvents()
 			//if (mZidsLight == nullptr)
 			mZidsLight = EntityList::getEntityList().getEntity("zidLight");
 			
-			if (mZidsLight != nullptr)
+			if (mZidsLight != nullptr && Globals::ZID_INPUT)
 			{
 				mZidsLight->sendMessage(nullptr, "ChangeRadius", event.mouseWheel.delta);
 			}
@@ -169,6 +189,8 @@ void GameLoop::draw()
 
 	EntityList::getEntityList().drawHivemind(mWindow);
 
+	mWindow.draw(mSimpleMenu);
+
 	mWindow.draw(cursorSprite);
 
 	if (Globals::DEBUG_MODE || Globals::SHOW_FPS)
@@ -197,6 +219,9 @@ void GameLoop::update(sf::Time timePerFrame)
 
 	// Check if change map
 	Level::update();
+
+	// Update simple menu
+	mSimpleMenu.update(timePerFrame);
 
 	//pointers for event
 	pc = EntityList::getEntityList().getEntity("PC");
@@ -230,7 +255,8 @@ void GameLoop::updateStatistics(sf::Time elapsedTime)
 void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
 	if (key == sf::Keyboard::Escape && isPressed == true)
-		mWindow.close();
+		mSimpleMenu.toggleActive();
+	//mWindow.close();
 
 	
 	if (key == sf::Keyboard::Num6 && isPressed == false)
@@ -268,7 +294,7 @@ void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 			Level::changeMap("level7.tmx");
 			break;
 		case sf::Keyboard::F8:
-			Level::changeMap("level8.tmx");
+			Level::changeMap("meny.tmx");
 			break;
 		case sf::Keyboard::Num0:
 			mCamera.changeZoom(2);
@@ -290,3 +316,48 @@ void appInFocus(sf::RenderWindow* app)
     SetForegroundWindow(handle);
 }
 
+void GameLoop::preloadLevels(string startLevel)
+{
+	
+
+	if (startLevel == "")
+	{
+		//Level::startLevel("level1.tmx");
+		Level::startLevel("schakt1.tmx");	
+		Level::startLevel("level2.tmx");
+		//Level::startLevel("schakt2.tmx");
+		//Level::startLevel("level3.tmx");		
+	}
+	else if (startLevel == "schakt1.tmx")
+	{
+		//Level::startLevel("level1.tmx");
+		//Level::startLevel("schakt1.tmx");	
+		Level::startLevel("level2.tmx");
+		Level::startLevel("schakt2.tmx");
+		//Level::startLevel("level3.tmx");
+	}
+	else if (startLevel == "level2.tmx")
+	{
+		//Level::startLevel("level1.tmx");
+		//Level::startLevel("schakt1.tmx");	
+		//Level::startLevel("level2.tmx");
+		Level::startLevel("schakt2.tmx");
+		Level::startLevel("level3.tmx");
+	}
+	else if (startLevel == "schakt2.tmx")
+	{
+		//Level::startLevel("level1.tmx");
+		//Level::startLevel("schakt1.tmx");	
+		//Level::startLevel("level2.tmx");
+		//Level::startLevel("schakt2.tmx");
+		Level::startLevel("level3.tmx");
+	}
+	else if (startLevel == "level3.tmx")
+	{
+		//Level::startLevel("level1.tmx");
+		//Level::startLevel("schakt1.tmx");	
+		//Level::startLevel("level2.tmx");
+		//Level::startLevel("schakt2.tmx");
+		//Level::startLevel("level3.tmx");
+	}
+}

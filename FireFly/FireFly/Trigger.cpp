@@ -2,6 +2,7 @@
 #include <iostream>
 #include "MusicManager.h"
 #include "Level.h"
+#include "Save.h"
 
 Trigger::Trigger(sf::FloatRect rect)
 	: mRigidbody()
@@ -40,7 +41,10 @@ void Trigger::BeginContact(b2Contact *contact, Entity* other)
 			MusicManager::fadeUp(getProperty("MusicFadeUp"));
 
 		if (isProperty("ChangeMap"))
+		{
 			Level::getLevel().fadeToBlackChangeLevel(getProperty("ChangeMap"));
+			Save::writeLevel(getProperty("ChangeMap"));
+		}
 
 		if (isProperty("ToggleOn"))
 		{

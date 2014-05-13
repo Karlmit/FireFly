@@ -4,3 +4,4 @@
 bool Globals::DEBUG_MODE = false;
 bool Globals::SHOW_FPS = false;
 bool Globals::SHOW_LIGHT = true;
+bool Globals::ZID_INPUT = true;

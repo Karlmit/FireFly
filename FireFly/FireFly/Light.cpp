@@ -5,13 +5,17 @@
 #include "RayCastCallback.h"
 #include <iostream>
 #include "Utility.h"
+#include "EntityList.h"
 
 const float MIN_LIGHT = 2.f;
 
 
-Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSpread, float angle, std::string mID) // Constructor, creates a light with the attributes given to it.
+
+Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSpread, 
+			 float angle, std::string mID, bool dynamic, bool shadows) // Constructor, creates a light with the attributes given to it.
 {
-	dynamic = true; 
+	
+	this->dynamic = dynamic; 
 	this->color = color;
 	this->setPosition(position);
 	this->radius = radius;
@@ -20,6 +24,7 @@ Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSp
 	this->angleSpread = angleSpread;
 	this->angle = angle;
 	this->lightKilled = false;
+	this->shadows = shadows;
 	
 	if(angleSpread > 360)
 		angleSpread = 360;
@@ -27,7 +32,13 @@ Light::Light(sf::Color color, sf::Vector2f position, float radius, float angleSp
 
 	sneakMode = true;
 
-	createLight();
+	//createLight();
+	
+}
+
+void Light::start()
+{
+	mZid = EntityList::getEntityList().getEntity("Zid");
 }
 
 Light::~Light()
@@ -81,8 +92,7 @@ void Light::createLightMap()
 }
 
 void Light::createLight()
-{
-	
+{	
 
 	sf::VertexArray triangleFan(sf::TrianglesFan);
 	sf::VertexArray triangleFan2(sf::TrianglesFan);
@@ -92,7 +102,21 @@ void Light::createLight()
 
 	sf::Vertex currentVertex;
 	
-	currentVertex.position = getPosition();
+	/*
+	Entity* zid = EntityList::getEntityList().getEntity("Zid");
+	if (zid != nullptr)
+		currentVertex.position = getPosition() - zid->getPosition() - sf::Vector2f(-3000, 3000);
+	else
+		currentVertex.position = getPosition();
+	*/
+
+	//sf::Vector2f zidRel = sf::Vector2f(getPosition().x - mZid->getPosition().x, getPosition().y - mZid->getPosition().y);
+	//sf::Vector2f myRelativePosition = getPosition() + sf::Vector2f(-mZid->getPosition().x+WIDTH_OF_LIGHTMAP/2, -mZid->getPosition().y+HEIGHT_OF_LIGHTMAP/2);
+	//sf::Vector2f myRelativePosition = sf::Vector2f(WIDTH_OF_LIGHTMAP/2, HEIGHT_OF_LIGHTMAP/2);
+	sf::Vector2f myRelativePosition = getPosition();
+
+	currentVertex.position = myRelativePosition;
+
 	currentVertex.color = sf::Color(color.r,color.g,color.b,0);
 	
 	triangleFan.append(currentVertex);
@@ -113,7 +137,7 @@ void Light::createLight()
         
 		float radians = currentAngle * (3.1415926f/180);
 
-		if(dynamic)
+		if(dynamic && !mUnmoved && shadows)
 		{
 			RayCastCallback ray;
 			b2Vec2 from = Rigidbody::SfToBoxVec(getPosition());
@@ -126,7 +150,7 @@ void Light::createLight()
 			}
 		}
 	
-		sf::Vector2f end = getPosition();
+		sf::Vector2f end = myRelativePosition;
 		end.x += cos(radians) * dynamicLength;
 		end.y += sin(radians) * dynamicLength;
 		 
@@ -181,6 +205,17 @@ void Light::createLight()
 
 void Light::updateEntity(sf::Time dt)
 {
+	if ((mLastPosition - getPosition()).getLengthSqr() < 0.05f)
+	{
+		mUnmoved = true;
+	}
+	else
+	{
+		mUnmoved = false;
+	}
+
+	mLastPosition = getPosition();
+
 	if (lightKilled && radius > 65)
 	{
 		float radiusDamping = 0.55f;
@@ -198,27 +233,8 @@ void Light::updateEntity(sf::Time dt)
 	}
 	
 
-	//static float realRadius = radius;
-	//static bool growLight = true;
-	//
-	//if(growLight)
-	//{
-	//	radius += 0.5;
-	//}
-	//else
-	//{
-	//	radius -= 0.5;
-	//}
-	//
-	//if(radius >= realRadius+5)
-	//{
-	//	growLight = false;
-	//}
-	//else if(radius <= realRadius-5)
-	//{
-	//	growLight = true;
-	//}
-	if (radius > MIN_LIGHT)
+	
+	if (radius > MIN_LIGHT && !mUnmoved || abs(targetRadius - radius) > 0.5f)
 		createLight();
 
 }
@@ -227,10 +243,17 @@ void Light::drawEntity(sf::RenderTarget& target, sf::RenderStates states) const
 { 
 	if (radius > MIN_LIGHT)
 	{
-		target.draw(fanLight, sf::BlendMultiply);
-		target.draw(fanColor, sf::BlendAdd);
-		target.draw(outlineLight, sf::BlendMultiply);
-		target.draw(outLineColor, sf::BlendAdd);
+		states.blendMode = sf::BlendMultiply;
+		target.draw(fanLight, states);
+
+		states.blendMode = sf::BlendAdd;
+		target.draw(fanColor, states);
+
+		states.blendMode = sf::BlendMultiply;
+		target.draw(outlineLight, states);
+
+		states.blendMode = sf::BlendAdd;
+		target.draw(outLineColor, states);
 	}
 }
 

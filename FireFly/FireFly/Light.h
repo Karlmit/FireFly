@@ -11,11 +11,13 @@
 class Light : public Entity
 {
 public:
-	Light(sf::Color color, sf::Vector2f position, float radius, float angleSpread, float angle, std::string mID); // Creates a light with the attributes given to it.
+	Light(sf::Color color, sf::Vector2f position, float radius, float angleSpread, 
+		float angle, std::string mID, bool dynamic, bool shadows = true); // Creates a light with the attributes given to it.
 	~Light();
 	void createLight();
 
 	virtual void sendMessage(Entity* sender, string message, int value);
+	virtual void start();
 	
 	bool getSneakMode();
 
@@ -30,6 +32,10 @@ private:
 	bool dynamic;
 	bool lightKilled;
 	bool sneakMode;
+	sf::Vector2f mLastPosition;
+	bool mUnmoved;	// The light hasn't moved since last update
+	Entity* mZid;
+	bool shadows;
 
 	void createLightMap();
 

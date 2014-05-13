@@ -52,6 +52,7 @@
 using namespace std;
 
 Level Level::level;
+sf::RenderWindow* Level::sWindow;
 
 Level::Level()
 {
@@ -112,6 +113,10 @@ void Level::restartLevel(float delay)
 
 void Level::startLevel(string levelName)
 {
+	showLoadingScreen();
+
+	getLevel().mCurrentMap = levelName;
+
 	// Reset restarting level
 	level.mRestartingLevel = false;
 	level.mChangeMapTo = levelName;
@@ -688,6 +693,31 @@ void Level::loadMap(string filename)
 				eList.addEntity(fadeSprite, layer, false);
 			}
 
+			//
+			// LightPoint
+			//
+			if (entityType == "LightPoint")
+			{
+				int r,g,b;
+				if (obj.isProperty("r") && obj.isProperty("g") && obj.isProperty("b"))
+				{
+					r = obj.getProperty("r").getValueInt();
+					g = obj.getProperty("g").getValueInt();
+					b = obj.getProperty("b").getValueInt();
+				}
+				else
+				{
+					r = g = b = 255;
+				}
+				float radius = width/2;
+				sf::Vector2f pos = sf::Vector2f( position.x + radius, position.y + radius);
+				
+				Entity* light = new Light(sf::Color(r,g,b,255), pos, radius, 360, 0, "zidLight", true, false);
+				light->setID(id);
+				EntityList::getEntityList().addEntity(light, Layer::Light, false);
+			}
+			
+
 
 //			else if (entityType == "SecuMonitor")
 //			{
@@ -738,5 +768,28 @@ Layer Level::getLayerFromString(string strLayer)
 	ectStr.append(strLayer);
 	throw logic_error(ectStr);
 	return Layer::Background;
+}
+
+void Level::init( sf::RenderWindow* window )
+{
+	sWindow = window;
+}
+
+void Level::showLoadingScreen()
+{
+	sf::Font font;
+	font.loadFromFile("Resources/BEBAS___.ttf");
+
+	sf::Text loadingText;
+	loadingText.setFont(font);
+	loadingText.setPosition(sWindow->getSize().x - 200.f, sWindow->getSize().y - 100.f);
+	loadingText.setCharacterSize(40);
+	loadingText.setString("LOADING");
+	loadingText.setColor(sf::Color::White);
+
+	sWindow->clear(sf::Color::Black);
+	sWindow->setView(sWindow->getDefaultView());
+	sWindow->draw(loadingText);
+	sWindow->display();
 }
 
