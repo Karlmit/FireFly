@@ -1,0 +1,12 @@
+f1 level 1
+f2 level 2
+f3 schakt 1
+f4 level 3
+f5 schakt 2
+
+f11 teleport to mouse
+0 zoom out
+9 zoom in
+8 turn off/on darkness
+7 fps on/off
+6 debug zones

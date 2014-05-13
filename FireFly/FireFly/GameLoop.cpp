@@ -38,7 +38,7 @@ GameLoop::~GameLoop()
 void GameLoop::run()
 {
 	// Load the level "level1.tmx"
-	Level::startLevel("level3.tmx");
+	Level::startLevel("level1.tmx");
 
 
 	// Test ladda in alla banor i minnet i början
