@@ -11,9 +11,9 @@ const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
 
 GameLoop::GameLoop(sf::Vector2u windowSize)
-//: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
+: mWindow(sf::VideoMode(windowSize.x, windowSize.y), "Firefly", sf::Style::Default),
 //: mWindow(sf::VideoMode(1600, 900), "Firefly", sf::Style::Default),
-: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
+//: mWindow(sf::VideoMode::getDesktopMode(), "Firefly", sf::Style::Fullscreen),
 mCamera(&mWindow),
 mFont(),
 mStatisticsText(),
