@@ -43,3 +43,8 @@ sf::Sound* Audio::getSound()
 {
 	return &mSound;
 }
+
+void Audio::setLoop(bool statement)
+{
+	mSound.setLoop(statement);
+}

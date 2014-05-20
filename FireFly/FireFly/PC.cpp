@@ -11,6 +11,8 @@ PC::PC(sf::Vector2f position)
 	mButton4(Loading::getSound("Room 2/Tangentbord/Tangent4.wav"), true),
 	mButton5(Loading::getSound("Room 2/Tangentbord/TangentSpacebar.wav"), true),
 	mBlip1(Loading::getSound("Room 2/Datorblips/Blip1.wav"), true),
+	mPCOn(Loading::getSound("Room 2/dator mitt loop.wav"), false),
+	mPCOff(Loading::getSound("Room 2/dator slut.wav"), false),
 	mComputerOnSprite(Loading::getTexture("Room 2/datorskarm_gron_scale.png")),
 	mComputerOffSprite(Loading::getTexture("Room 2/PC_Screen_SCALE.png")),
 	sucu(Loading::getTexture("Room 2/SuCu_computereye_spritesheet.png"), 600, 361, 1, 9, 100)
@@ -94,6 +96,11 @@ PC::PC(sf::Vector2f position)
 
 	//Audio
 	mAudioLoggSound.setPosition(position);
+	mAudioLoggSound.getSound()->setMinDistance(300.f);
+	mPCOn.setLoop(true);
+	mPCOn.setPosition(position);
+	mPCOn.play();
+	mPCOff.setPosition(position);
 }
 
 
@@ -255,6 +262,8 @@ void PC::menu()
 				mSucu = false;
 				mAnimation = false;
 				mBlip1.play();
+				mPCOn.stop();
+				mPCOff.play();
 
 				// Destroy computerlight when the computer is turned off.
 				for (Entity* e : EntityList::getEntityList().getEntities("computerLight"))

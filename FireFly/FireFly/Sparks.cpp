@@ -3,8 +3,13 @@
 
 Sparks::Sparks(sf::Vector2f position)
 	: spark(Loading::getTexture("Schakt/elgnista_spritesheet.png"), 84, 84, 1, 8, 40) 
+	,mNoise(Loading::getSound("Schakt/ElectricCracklingNoReverb.wav"), false)
 {
 	setPosition(position);
+	mNoise.setPosition(position);
+	mNoise.setLoop(true);
+	mNoise.play();
+	mNoise.getSound()->setMinDistance(175.f);
 	spark.mLoopOnce = true;
 }
 

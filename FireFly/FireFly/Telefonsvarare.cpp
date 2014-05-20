@@ -9,7 +9,7 @@ Telefonsvarare::Telefonsvarare(sf::Vector2f position)
 : mBlinking(Loading::getTexture("Room 2/TlfnSvarareBlinkande.png"), 784, 594, 1, 2, TIME_PER_FRAME)
 , mRepeat(Loading::getTexture("Room 2/TlfnSvarareRepeat.png"), 784, 594, 1, 2, TIME_PER_FRAME)
 , mRunning(Loading::getTexture("Room 2/TlfnSvarareRunning.png"), 784, 594, 1, 4, TIME_PER_FRAME)
-, mAudioMessage(Loading::getSound("Room 2/firefly dotter 1.2.wav"), false)
+, mAudioMessage(Loading::getSound("Room 2/firefly dotter klar.wav"), false)
 , mState(State::Blinking)
 {
 	setPosition(position + sf::Vector2f(SCALE*784/2, SCALE*594/2 - 7));

@@ -13,6 +13,7 @@ public:
 	void pause();
 	void stop();
 	void setPosition(sf::Vector2f position);
+	void setLoop(bool statement);
 	sf::Sound::Status getStatus();
 	sf::Sound* getSound();
 

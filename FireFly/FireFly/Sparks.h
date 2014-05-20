@@ -14,6 +14,7 @@ private:
 	virtual void updateEntity(sf::Time dt);	
 	virtual void drawEntity(sf::RenderTarget& target, sf::RenderStates states) const;
 	Animation spark;
+	Audio mNoise;
 	sf::Sprite mSprite;
 	sf::Clock mSparkClock;
 };
