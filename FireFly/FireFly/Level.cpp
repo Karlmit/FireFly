@@ -46,6 +46,7 @@
 #include "FadeSprite.h"
 #include "EatingWasp.h"
 #include "lever.h"
+#include "Movie.h"
 
 
 #include <iostream>
@@ -716,6 +717,22 @@ void Level::loadMap(string filename)
 				light->setID(id);
 				EntityList::getEntityList().addEntity(light, Layer::Light, false);
 			}
+
+			//
+			// Movie
+			//
+			if (entityType == "Movie")
+			{
+				string movieFile;
+				if (obj.isProperty("movie"))
+					movieFile = obj.getProperty("movie").getValueString();					
+				else				
+					movieFile = "";
+
+				Entity* movie = new Movie(movieFile);
+
+				EntityList::getEntityList().addEntity(movie, Layer::GUI, false);
+			}
 			
 
 
@@ -763,6 +780,8 @@ Layer Level::getLayerFromString(string strLayer)
 		return Layer::NPC;
 	else if (strLayer == "Hivemind")
 		return Layer::Hivemind;
+	else if (strLayer == "GUI")
+		return Layer::GUI;
 
 	string ectStr = "Level::getLayerFromString - No Layer with that name: ";
 	ectStr.append(strLayer);

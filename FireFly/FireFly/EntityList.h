@@ -13,6 +13,7 @@ enum class Layer
 	Light,
 	Misc,
 	Hivemind,
+	GUI
 };
 
 class EntityList
@@ -30,6 +31,7 @@ public:
 	void drawLight(sf::RenderWindow& window);
 	void drawForeground(sf::RenderWindow& window);
 	void drawHivemind(sf::RenderWindow& window);
+	void drawGUI(sf::RenderWindow& window);
 	
 	void addEntity(Entity *entity, Layer layer = Layer::Front, bool runStart = true);	//adds new entities
 	void updateList();	//deletes "dead" entities
@@ -55,6 +57,7 @@ private:
 	entityList ForegroundLayerList;
 	entityList LightLayerList;
 	entityList HivemindLayerList;
+	entityList GUILayerList;
 
 	sf::RenderTexture rLightMap;
 	sf::RenderTexture rLightMap2;

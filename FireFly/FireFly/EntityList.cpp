@@ -8,8 +8,8 @@ static const float HEIGHT_OF_LIGHTMAP = 5000;
 
 EntityList::EntityList()
 {
-	rLightMap.create(WIDTH_OF_LIGHTMAP, HEIGHT_OF_LIGHTMAP); 
-	rLightMap2.create(WIDTH_OF_LIGHTMAP, HEIGHT_OF_LIGHTMAP);
+	rLightMap.create(int(WIDTH_OF_LIGHTMAP), int(HEIGHT_OF_LIGHTMAP)); 
+	rLightMap2.create(int(WIDTH_OF_LIGHTMAP), int(HEIGHT_OF_LIGHTMAP));
 
 	sLightMap.setPosition(0,HEIGHT_OF_LIGHTMAP);
 	sLightMap.scale(1, -1);
@@ -50,6 +50,8 @@ void EntityList::draw(sf::RenderWindow& window)
 	for (Entity* e : ForegroundLayerList)
 		window.draw(*e);
 	for (Entity* e : HivemindLayerList)
+		window.draw(*e);
+	for (Entity* e : GUILayerList)
 		window.draw(*e);
 
 }
@@ -112,6 +114,12 @@ void EntityList::drawHivemind(sf::RenderWindow& window)
 		window.draw(*e);
 }
 
+void EntityList::drawGUI(sf::RenderWindow& window)
+{
+	for (Entity* e : GUILayerList)
+		window.draw(*e);
+}
+
 
 void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 {
@@ -132,6 +140,8 @@ void EntityList::addEntity(Entity *entity, Layer layer, bool runStart)
 		ForegroundLayerList.push_back(entity);
 	else if (layer == Layer::Hivemind)
 		HivemindLayerList.push_back(entity);
+	else if (layer == Layer::GUI)
+		GUILayerList.push_back(entity);
 
 	if (runStart)
 		entity->start();
@@ -238,6 +248,20 @@ void EntityList::updateList()
 			++i;
 		}
 	}
+	// GUILayerList
+	i = GUILayerList.begin();
+	while (i != GUILayerList.end())
+	{
+		bool isAlive = (*i)->getAliveStatus();
+		if (!isAlive)
+		{
+			GUILayerList.erase(i++);
+		}
+		else
+		{
+			++i;
+		}
+	}
 
 	// Removes and deletes entities from the main list listedEntities if dead
 	for(entityList::iterator i = listedEntities.begin(); i != listedEntities.end(); i++)
@@ -271,6 +295,7 @@ void EntityList::emptyList()
 	ForegroundLayerList = entityList();
 	LightLayerList = entityList();
 	HivemindLayerList = entityList();
+	GUILayerList = entityList();
 }
 
 void EntityList::startList()

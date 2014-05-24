@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="1111" tileheight="1111">
+ <objectgroup name="GUI" width="1" height="1">
+  <object name="Movie" type="Movie" x="93" y="93" width="338" height="232">
+   <properties>
+    <property name="movie" value="firefly intro.wmv"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Misc" width="1" height="1"/>
+</map>

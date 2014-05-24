@@ -6,6 +6,8 @@
 #include "Hivemind.h"
 #include <iostream>
 #include "Save.h"
+#include "sfeMovie\Movie.hpp"
+#include "Movie.h"
 
 const sf::Time GameLoop::TimePerFrame = sf::seconds(1.f/60.f);
 void appInFocus(sf::RenderWindow* app);
@@ -31,6 +33,7 @@ mSimpleMenu(&mWindow)
 	mStatisticsText.setCharacterSize(12);
 	Save::init();
 	Level::init(&mWindow);
+	Movie::init(&mWindow);
 
 //	hivemindProjection.setPosition(200, 200);
 }
@@ -43,31 +46,14 @@ GameLoop::~GameLoop()
 
 void GameLoop::run()
 {
-	// Load the level "level1.tmx"
-	Level::startLevel("level2.tmx");
 
-
-	// Test ladda in alla banor i minnet i början
-	/*
-	Level::startLevel("level2.tmx");
-	Level::startLevel("level3.tmx");
-	Level::startLevel("schakt1.tmx");
-	Level::startLevel("schakt2.tmx");
-	Level::startLevel("level1.tmx");
-	*/
-		
-	// Shows the loading screen and preloads all levels into memory
-#ifndef _DEBUG	// Only preload when in release mode
-	preloadLevels(Save::readLevel());
-#endif
-
-	// Starts up the game on the last level you were on
 	
-	if (Save::readLevel() == "")
-		Level::startLevel("level1.tmx");
-	else
-		Level::startLevel(Save::readLevel());
+	// Load the level "level1.tmx"
+	//Level::startLevel("level1.tmx");
+	Level::startLevel("intro movie.tmx");
 
+
+		
 	
 	// Game Loop
 	sf::Clock clock;
@@ -92,6 +78,7 @@ void GameLoop::run()
 
 		updateStatistics(elapsedTime);
 		draw();
+		
 	}
 }
 
@@ -129,7 +116,7 @@ void GameLoop::processEvents()
 				break;
 		case::sf::Event::TextEntered:
 			zidCast = static_cast<Zid*>(zid);
-			if(zidCast->inPCZone() == true)
+			if(zid != nullptr && zidCast->inPCZone() == true)
 			{
 
 				if (event.text.unicode == '\b' && textEntered.end() != textEntered.begin())
@@ -189,12 +176,20 @@ void GameLoop::draw()
 
 	EntityList::getEntityList().drawHivemind(mWindow);
 
-	mWindow.draw(mSimpleMenu);
+	EntityList::getEntityList().drawGUI(mWindow);
 
-	mWindow.draw(cursorSprite);
+	// Ugly check if in a movie level
+	if (Level::getLevel().mCurrentMap != "intro movie.tmx")
+	{
+		mWindow.draw(mSimpleMenu);
+		mWindow.draw(cursorSprite);
+	}
 
 	if (Globals::DEBUG_MODE || Globals::SHOW_FPS)
 		mWindow.draw(mStatisticsText);
+
+
+
 
 	mWindow.display();
 }
@@ -254,6 +249,21 @@ void GameLoop::updateStatistics(sf::Time elapsedTime)
 
 void GameLoop::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
+	// Ugly
+	if (Level::getLevel().mCurrentMap == "intro movie.tmx")
+	{			
+		// Shows the loading screen and preloads all levels into memory
+		//preloadLevels(Save::readLevel());
+
+		// Starts up the game on the last level you were on	
+		if (Save::readLevel() == "")
+			Level::startLevel("level1.tmx");
+		else
+			Level::startLevel(Save::readLevel());
+		
+		return;
+	}
+
 	if (key == sf::Keyboard::Escape && isPressed == true)
 		mSimpleMenu.toggleActive();
 	//mWindow.close();

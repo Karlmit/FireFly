@@ -440,6 +440,9 @@
     <ClInclude Include="SimpleMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Movie.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityList.cpp">
@@ -831,6 +834,12 @@
     </ClCompile>
     <ClCompile Include="SimpleMenu.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MovieMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Movie.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

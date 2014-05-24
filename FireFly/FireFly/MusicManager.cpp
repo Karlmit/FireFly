@@ -12,6 +12,9 @@ void MusicManager::newManager()
 
 void MusicManager::update(sf::Time dt)
 {
+	if (instance == nullptr)
+		return;
+
 	for(auto& iter : instance->mMusicsMap) 
 	{  
 		auto& music = (*iter.second);
