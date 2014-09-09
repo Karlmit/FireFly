@@ -1,5 +1,7 @@
 #include "MusicManager.h"
 
+
+
 unique_ptr<MusicManager> MusicManager::instance = nullptr;
 
 const float MAX_VOLUME = 14;
@@ -25,12 +27,12 @@ void MusicManager::update(sf::Time dt)
 		
 		if (bfadeUp && music.getVolume() < MAX_VOLUME)
 		{
-			float newVolume = min(music.getVolume() + dt.asSeconds()*FADE_SPEED, MAX_VOLUME);
+			float newVolume = fmin(music.getVolume() + dt.asSeconds()*FADE_SPEED, MAX_VOLUME);
 			music.setVolume(newVolume);
 		}
 		else if (!bfadeUp && music.getVolume() > 0)
 		{
-			float newVolume = max(music.getVolume() - dt.asSeconds()*FADE_SPEED, 0.f);
+			float newVolume = fmax(music.getVolume() - dt.asSeconds()*FADE_SPEED, 0.f);
 			music.setVolume(newVolume);
 		}
 	}
